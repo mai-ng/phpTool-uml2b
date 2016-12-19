@@ -1,0 +1,159 @@
+«IMPORT b»
+
+«DEFINE file FOR BSpec»
+
+B Specification : «name»
+	«FILE name + ".mch"-»«REM»GLOBALVAR txtFile«ENDREM»
+		«EXPAND machine FOREACH machines.select(m | m.name.matches("Functional"))» 
+	«ENDFILE»
+END Specification
+
+
+«ENDDEFINE»
+
+
+
+
+«DEFINE machine  FOR BMachine »
+
+
+MACHINE 
+	«name»
+«IF this.includes.size>0 » 
+INCLUDES
+«FOREACH this.includes AS inc SEPARATOR ','-»
+	«inc.name-»
+«ENDFOREACH»
+«ENDIF -» 
+«IF this.uses.size>0 -» 
+USES
+«FOREACH this.uses AS inc SEPARATOR ','-»
+	«inc.name»
+«ENDFOREACH -»
+«ENDIF »
+SETS
+«FOREACH data.typeSelect(BAbstractSet).select(e|!e.name.matches("USERS") && !e.name.contains("fromRole")) AS dabs SEPARATOR ';'-»	
+«dabs.name»
+«ENDFOREACH»
+«FOREACH data.typeSelect(BEnumSet) AS es -»
+; «es.name-»={«FOREACH es.values AS value SEPARATOR ','»«value.name»«ENDFOREACH»}
+«ENDFOREACH»
+ABSTRACT_VARIABLES
+«FOREACH data.typeSelect(BVariable) AS dvar SEPARATOR ','-»
+ «dvar.name»
+«ENDFOREACH»
+INVARIANT
+«FOREACH data.typeSelect(BVariable) AS bvar SEPARATOR '& '-»  
+«EXPAND getLabel FOREACH bvar.typingPredicate SEPARATOR '& '»
+«ENDFOREACH-»
+«IF !(data.typeSelect(BVariable).isEmpty || invariant.isEmpty)»&«ENDIF»
+«FOREACH invariant AS invar SEPARATOR '& '-»
+« invar.body »
+«ENDFOREACH-»
+
+«IF this.initialisation.size>0 -» 
+INITIALISATION
+«FOREACH this.initialisation AS inc SEPARATOR '||'-»
+«IF inc.substitution != null»
+  «inc.init.name-» := «inc.substitution.precondition.body»
+«ELSE»  «inc.init.name-» := {«FOREACH inc.values AS val SEPARATOR ','»«val.name»«ENDFOREACH»}
+«ENDIF -»
+«ENDFOREACH -»
+«ENDIF» 
+«IF this.operations.size>0 -» 
+OPERATIONS
+«FOREACH this.operations AS op SEPARATOR ';' »
+
+«IF (op.body!=null)&&(op.body.contains("result"))»result <-- «ENDIF»«op.name-»«IF op.param.size>0 -»
+(«FOREACH op.param  AS p SEPARATOR ',' -»
+«p.name-»
+«ENDFOREACH -»
+)«ENDIF -»=
+«IF op.param.size>0 -»
+	PRE
+	«FOREACH op.param.typingPredicate AS p SEPARATOR '&'-»
+	«EXPAND getLabel FOR p-» 
+	«ENDFOREACH »
+«IF (op.substitution.precondition.body!=null)&&(op.substitution.precondition.body!="")-»
+&		«op.substitution.precondition.body»«ENDIF-»
+
+«IF   ( op.substitution.precondition.typingPredicate!=null) -»
+&«FOREACH op.substitution.precondition.typingPredicate AS tp SEPARATOR '&'-» «tp.name -» «ENDFOREACH -»
+«ENDIF-»
+	THEN«ENDIF -»		
+ 		«op.body »
+	END«ENDFOREACH -»
+«ENDIF »
+ END
+
+«ENDDEFINE»
+
+
+«DEFINE getLabel  FOR b::TypingOperator-»
+«IF this.toString()=="In"»:«ENDIF-»
+«IF this.toString()=="Equal"»=«ENDIF-»
+«IF this.toString()=="SubSet"»<<:«ENDIF-»
+«IF this.toString()=="SubSetEqual"»<:«ENDIF-»
+«ENDDEFINE»
+
+
+«DEFINE getLabel FOR In»:«ENDDEFINE»
+«DEFINE getLabel FOR Equal»=«ENDDEFINE»
+«DEFINE getLabel FOR SubSet»<<:«ENDDEFINE»
+«DEFINE getLabel FOR SubSetEqual»<:«ENDDEFINE»
+
+«DEFINE getLabel FOR b::BNamedElement»«this.name.replaceFirst("fromRole","")»«ENDDEFINE»
+«DEFINE getLabel FOR b::BPowType»POW(«EXPAND getLabel FOR this.pow»)«ENDDEFINE»
+
+«DEFINE getLabel FOR b::String»String«ENDDEFINE»
+«DEFINE getLabel FOR b::Z»INTEGER«ENDDEFINE»
+«DEFINE getLabel FOR b::Bool»BOOL«ENDDEFINE»
+
+
+
+
+«DEFINE getLabel  FOR b::ComposedTypeExp-»
+«IF this.toString()=="Relation"»<->«ENDIF-»
+«IF this.toString()=="TotalFunction"»-->«ENDIF-»
+«IF this.toString()=="PartialFunction"»+->«ENDIF-»
+«IF this.toString()=="TotalInjection"»>->«ENDIF-»
+«IF this.toString()=="PartialInjection"»>+>«ENDIF-»
+«IF this.toString()=="TotalSurjection"»-->>«ENDIF-»
+«IF this.toString()=="PartialSurjection"»+->>«ENDIF-»
+«IF this.toString()=="TotalBijection"»>->>«ENDIF-»
+«IF this.toString()=="PartialBijection"»>+>>«ENDIF-»
+«ENDDEFINE»
+
+«DEFINE getLabel  FOR   Relation»<->«ENDDEFINE»
+«DEFINE getLabel  FOR TotalFunction»-->«ENDDEFINE»
+«DEFINE getLabel  FOR PartialFunction»+->«ENDDEFINE»
+«DEFINE getLabel  FOR TotalInjection»>->«ENDDEFINE»
+«DEFINE getLabel  FOR PartialInjection»>+>«ENDDEFINE»
+«DEFINE getLabel  FOR TotalSurjection»-->>«ENDDEFINE»
+«DEFINE getLabel  FOR PartialSurjection»+->>«ENDDEFINE»
+«DEFINE getLabel  FOR TotalBijection»>->>«ENDDEFINE»
+«DEFINE getLabel  FOR PartialBijection»>+>>«ENDDEFINE»
+
+«DEFINE getLabel  FOR b::BComposedType»«EXPAND getLabel FOR this.dom» «EXPAND getLabel FOR this.expression» «EXPAND getLabel FOR this.ran»«ENDDEFINE»
+
+
+«DEFINE getLabel  FOR b::TypingPredicate»«IF name!=null && name!=""»«name»«ELSE»«EXPAND getLabel FOR eContainer» «EXPAND getLabel FOR operator» «EXPAND getLabel FOR type»«ENDIF» «ENDDEFINE»
+«EXPAND getLabel FOR this.»
+
+
+
+
+
+
+
+
+
+
+
+ «FOREACH AS » «ENDFOREACH »
+  «IF »«ENDIF »
+  «ELSEIF »
+  «ELSE »
+  «ENDIF »
+   « »
+    

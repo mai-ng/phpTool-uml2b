@@ -1,0 +1,565 @@
+«IMPORT b»
+«IMPORT uml»
+«IMPORT ORBAC2»
+«IMPORT trace»
+
+
+«EXTENSION GeneratorHelper»
+
+
+
+«DEFINE file FOR Policy»
+	«FILE   "RBAC_Model.mch"-»
+		«EXPAND secureMachine FOR this» 
+	«ENDFILE»
+	«FILE   "UserAssignments.mch"-»
+		«EXPAND uaMachine FOR this» 
+	«ENDFILE»
+	«FILE   "ContextMachine.mch"-»
+		«EXPAND ContextMachine FOR this» 
+	«ENDFILE»
+	
+	«FILE   "AbstractScenario.mch"-»
+		«EXPAND AbstractScenario FOR this» 
+	«ENDFILE»
+	
+	«FILE   "ConcreteScenario.ref"-»
+		«EXPAND ConcreteScenario FOR this» 
+	«ENDFILE»
+	
+«ENDDEFINE»
+
+
+
+«DEFINE secureMachine  FOR Policy»
+MACHINE
+    RBAC_Model
+INCLUDES
+    «getMachine().name»,
+    UserAssignments
+SEES
+	ContextMachine
+SETS«REM»retrieve from functional model or trace «ENDREM»
+    ENTITIES = {«REM»«FOREACH PACKAGE().allOwnedElements().select(e|Class.isInstance(e)) .toSet() AS entity SEPARATOR ','»«EXPAND getLabel FOR entity»«ENDFOREACH»«ENDREM»
+    «FOREACH this.permissions.entity.toSet() AS entity SEPARATOR ','»«EXPAND getLabel FOR entity»«ENDFOREACH»};
+    Attributes = {«FOREACH this.permissions.entity.attribute.toSet() AS attr SEPARATOR ','»«EXPAND getLabel FOR attr»«ENDFOREACH»
+    «REM»«FOREACH this.permissions.entity.attribute.toSet() AS attr SEPARATOR ','»«EXPAND getLabel FOR attr»«ENDFOREACH»«ENDREM»};
+«REM»these operations should be those available in the Functional B Specification«ENDREM»
+    Operations = {«FOREACH getBOperations() AS op SEPARATOR ',' »«EXPAND getLabel FOR op»
+    «ENDFOREACH»
+    
+«REM»«FOREACH this.permissions.entity.ownedOperation AS op SEPARATOR ','»«EXPAND getLabel FOR op»«ENDFOREACH»«ENDREM»};
+	KindsOfAtt = {public, private};    
+    PERMISSIONS = {«FOREACH this.permissions AS perm SEPARATOR ','»«EXPAND getLabel FOR perm»«ENDFOREACH»};        
+	ActionsType = {read, create, modify, delete, privateRead, privateModify,fullAccess};
+	Stereotypes = {readOp, modifyOp}
+	;
+	AssociationRole = {not_yet_implemented}
+VARIABLES
+    AttributeKind, AttributeOf, OperationOf, 
+    constructorOf, destructorOf, setterOf, getterOf, 
+    AssoRoleOf,AssoRoleAccessorOf,AssoRoleMutatorOf,
+    PermissionAssignement, 
+    EntityActions,
+	MethodActions,
+    StereotypeOps,
+    isPermitted
+INVARIANT
+    /*Function model Elements*/
+	AttributeKind : Attributes --> KindsOfAtt &
+	AttributeOf : Attributes --> ENTITIES &
+	OperationOf : Operations --> ENTITIES &
+	constructorOf : Operations >+> ENTITIES &
+	destructorOf : Operations >+> ENTITIES &
+	setterOf : Operations >+> Attributes &
+	getterOf : Operations >+> Attributes &
+	StereotypeOps :  Stereotypes <-> Operations &
+
+	setterOf /\ getterOf = {} &
+	
+	/*---ClassRoles*/
+	
+	AssoRoleOf : AssociationRole +-> ENTITIES &
+	AssoRoleAccessorOf : Operations <-> AssociationRole &
+	AssoRoleMutatorOf : Operations <-> AssociationRole &
+	
+	
+	
+	/* Access Control Elements */
+	
+	PermissionAssignement : PERMISSIONS --> (ROLES * ENTITIES) &
+	EntityActions : PERMISSIONS +-> POW(ActionsType) &
+	MethodActions : PERMISSIONS +-> POW(Operations) &
+	/* ! (pp | pp : PERMISSIONS => MethodActions(pp) <: OperationOf~[ran(PermissionAssignement(pp))] ) & */
+	isPermitted : ROLES <-> Operations
+	
+DEFINITIONS   
+    
+/*Transformee de relation de EntityActions*/
+	allEntityActions == {pp, at | pp : PERMISSIONS & at : ActionsType 
+    					& pp : dom(EntityActions) & at : EntityActions(pp)} ;
+
+/* Les roles ayant des des droits de creation : renvoit des couples (role, entite)*/
+    PermEntitiesCreation == ran({create} <| (allEntityActions~ ; PermissionAssignement)) ;
+    /*les operations de creation permises : renvoit des couples (role, constructeur)*/ 
+    PermOpCreation == (PermEntitiesCreation ; constructorOf~);
+    
+/* Les roles ayant des des droits de detruction : renvoit des couples (role, entite)*/
+    PermEntitiesDestruction == ran({delete} <| (allEntityActions~ ; PermissionAssignement)) ;
+    /*les operations de destruction permises : renvoit des couples (role, destructeur)*/ 
+    PermOpDestruction == (PermEntitiesDestruction ; destructorOf~);
+    
+	/* Les roles ayant des des droits de lecture : renvoit des couples (role, entite)*/
+    PermEntitiesPRead == ran({privateRead} <| (allEntityActions~ ; PermissionAssignement)) ;
+    /*les operations de lecture permises : renvoit des couples (role, getterprive)*/ 
+    PermOpPRead == (PermEntitiesPRead ; (getterOf ; AttributeOf)~)  ;
+    
+    /*getters des attribus publics*/
+    publicGetters == getterOf |> dom(AttributeKind |> {public});
+    /* Les roles ayant des des droits de lecture : renvoit des couples (role, entite)*/
+    PermEntitiesRead == ran({read} <| (allEntityActions~ ; PermissionAssignement)) ;
+    /*les operations de lecture permises : renvoit des couples (role, getter public)*/ 
+    PermOpRead == (PermEntitiesRead ; (publicGetters ; AttributeOf)~) ;
+    
+    /*Permissions sur les operations de modification*/
+    PermEntitiesPModify == ran({privateModify} <| (allEntityActions~ ; PermissionAssignement)) ;
+    PermOpPModify == (PermEntitiesPModify ; (setterOf ; AttributeOf)~) ;
+    
+    publicSetters == setterOf |> dom(AttributeKind |> {public});
+    PermEntitiesModify == ran({modify} <| (allEntityActions~ ; PermissionAssignement)) ;
+    PermOpModify == (PermEntitiesModify ; (publicSetters ; AttributeOf)~) ;
+
+	PermEntitiesAbsoluteRead == ran({privateRead, read} <| (allEntityActions~ ; PermissionAssignement)) ;
+	PermEntitiesAbsoluteModify == ran({privateModify, modify} <| (allEntityActions~ ; PermissionAssignement)) ;
+	PermOpReadOps == (PermEntitiesAbsoluteRead ; (StereotypeOps[{readOp}] <| OperationOf)~)  ;
+	PermOpModifyOps == (PermEntitiesAbsoluteModify ; (StereotypeOps[{modifyOp}] <| OperationOf)~)  ;
+	
+	    PermOpMethodAction== {ro, op |ro: ROLES &  op <: Operations & op :ran(MethodActions) & ro : dom((MethodActions~ ; PermissionAssignement)[{op}]) }   ;     
+	    
+	    PermOpMethodActions == {ro, op | ro : ROLES & op : Operations & op : union(PermOpMethodAction[{ro}])} ;
+	    
+    /*classRoles perms*/
+    PermOpAssoRoleRead == (PermEntitiesRead ; (AssoRoleAccessorOf ; AssoRoleOf)~) ;
+	PermOpAssoRoleModify == (PermEntitiesModify ; (AssoRoleMutatorOf ; AssoRoleOf)~) ;
+    /**/
+    
+    
+    
+	/*currentRole == (roleOf(currentUser) \/ ran(roleOf(currentUser)<|closure1(Roles_Hierarchy))) ;*/	    
+	currentRole == (Session[{currentUser}] \/ ran(Session[{currentUser}]<|closure1(Roles_Hierarchy))) ;
+	
+	permissions == PermOpCreation \/
+				   PermOpDestruction \/ 
+	        	   PermOpPRead \/ 
+				   PermOpReadOps \/ 
+	        	   PermOpRead \/       	   
+	        	   PermOpPModify \/ 
+				   PermOpModifyOps \/ 
+				   PermOpModify \/
+				   PermOpMethodActions
+				   \/PermOpAssoRoleRead
+				   \/PermOpAssoRoleModify
+    
+    
+INITIALISATION
+    AttributeKind := {«FOREACH this.permissions.entity.attribute.toSet() AS attr SEPARATOR ','»(«EXPAND getLabel FOR attr»|->«EXPAND getLabel FOR attr.visibility»)«ENDFOREACH»}
+    ||
+    AttributeOf := {«FOREACH this.permissions.entity.attribute.toSet() AS attr SEPARATOR ','»(«EXPAND getLabel FOR attr»|->«EXPAND getLabel FOR attr.class»)«ENDFOREACH»}
+    ||«REM»these operations should be those available in the Functional B Specification«ENDREM»
+    
+    OperationOf := {«FOREACH getBOperations() AS op SEPARATOR ',' »(«EXPAND getLabel FOR op»|->«EXPAND getLabel FOR op.getEntityOfBOp()»)
+    «ENDFOREACH»
+   «REM»«FOREACH this.permissions.entity.ownedOperation AS op SEPARATOR ','»(«EXPAND getLabel FOR op»|->«EXPAND getLabel FOR op.class»)«ENDFOREACH»«ENDREM»
+     «REM»«FOREACH getMachine().operations AS op SEPARATOR ','»(«EXPAND getLabel FOR op»|->«EXPAND mappedFrom FOR op»)«ENDFOREACH»«ENDREM»
+  «REM» «FOREACH getMachine().operations AS op SEPARATOR ','»(«EXPAND getLabel FOR op»|->«EXPAND getLabel FOR op.MappedFrom() »)«ENDFOREACH»«ENDREM»
+    }
+    ||
+    constructorOf := {«FOREACH getBOperations().toSet().select(e|e.isConstructor()) AS op SEPARATOR ',' »(«EXPAND getLabel FOR op»|->«EXPAND getLabel FOR op.getEntityOfBOp()»)«ENDFOREACH»
+    «REM»«FOREACH PACKAGE().eAllContents.select(c|uml::Class.isInstance(c)) AS c SEPARATOR ','»(«EXPAND getLabel FOR c»|->«EXPAND getLabel FOR op.class»)«ENDFOREACH»«ENDREM»
+    }
+    ||
+    destructorOf := {«FOREACH getBOperations().toSet().select(e|e.isDestructor()) AS op SEPARATOR ',' »(«EXPAND getLabel FOR op»|->«EXPAND getLabel FOR op.getEntityOfBOp()»)«ENDFOREACH»}
+    ||
+    StereotypeOps := {«FOREACH getBOperations().toSet().select(e|e.isMethodBOp()&& !e.isAutoGenerated() && e.getMethodOfBOp().isOperationTypeTagged()) AS op SEPARATOR ',' »(«EXPAND getLabelOfOperationType FOR op.getMethodOfBOp()»|->«EXPAND getLabel FOR op»)
+    «ENDFOREACH»«REM»/*(modifyOp |-> Patient_SetSSN), 
+					  (readOp |-> Managementact_GetValidated)*/«ENDREM»}
+    ||
+    setterOf := {«FOREACH getBOperations().toSet().select(e|e.isSetter()&& e.isAttributeBOp()) AS op SEPARATOR ',' »(«EXPAND getLabel FOR op»|->«EXPAND getLabel FOR op.getAttributeOfBOp()»)«ENDFOREACH»}
+    ||
+    getterOf := {«FOREACH getBOperations().toSet().select(e|e.isGetter()&& e.isAttributeBOp()) AS op SEPARATOR ',' »(«EXPAND getLabel FOR op»|->«EXPAND getLabel FOR op.getAttributeOfBOp()»)«ENDFOREACH»}    
+    ||    
+    PermissionAssignement := {«FOREACH this.permissions AS perm SEPARATOR ','»(«EXPAND getLabel FOR perm»|->(«EXPAND getLabel FOR perm.role»|->«EXPAND getLabel FOR perm.entity»))«ENDFOREACH»}
+    ||
+  
+
+    EntityActions := {«FOREACH this.permissions AS perm SEPARATOR ','»(«EXPAND getLabel FOR perm»|->{«FOREACH perm.actions.select(a|EntityAction.isInstance(a)) AS act SEPARATOR ','»«EXPAND getLabel FOR ((EntityAction) act).type»«ENDFOREACH»})«ENDFOREACH»}
+   	||
+   	MethodActions := {«FOREACH this.permissions AS perm SEPARATOR ','»(«EXPAND getLabel FOR perm»|->{«FOREACH perm.actions.select(a|MethodAction.isInstance(a)) AS act SEPARATOR ','»«EXPAND getLabel FOR act»«ENDFOREACH»})«ENDFOREACH»}
+	
+	
+	    	|| AssoRoleOf:={}
+
+		|| AssoRoleAccessorOf:={}
+
+
+|| AssoRoleMutatorOf:={}
+	
+	
+	
+	||
+   	isPermitted := {}
+OPERATIONS
+
+
+setPermissions = PRE isPermitted = {} THEN isPermitted := permissions END;
+
+
+«FOREACH getBOperations() AS op SEPARATOR ';' »
+«EXPAND SecureOperation FOR op»
+«ENDFOREACH»
+;
+
+
+
+changeCurrentUser(user) = 
+	PRE user : USERS & isPermitted /= {} THEN	    
+        setCurrentUser(user)
+    END ;
+    
+Connect(user,roleSet) = 
+    PRE
+        user : USERS 
+        & roleSet : POW1(ROLES) & roleSet <: roleOf(user)  
+«FOREACH getBData() AS data»«IF data.name.contains("fromRole")»	
+		& user : ((USERS - «data.name.replaceFirst("fromRole","")») \/ «data.name.replaceFirst("fromRole","").toLowerCase().toFirstUpper()»)  «ENDIF»«ENDFOREACH»
+    THEN
+        safeConnect(user,roleSet)
+    END    ;
+
+    
+disconnectUser(user) = 
+    PRE
+        user : USERS & user:dom(Session)  & user /= currentUser
+    THEN
+        disconnect(user)
+    END
+
+END
+«ENDDEFINE»
+
+
+«DEFINE SecureOperation  FOR BOperation»
+
+«IF (this.body!=null)&&(this.body.contains("result"))»result <-- «ENDIF»secure_«this.name-»«IF this.param.size>0 -»
+(«FOREACH this.param  AS p SEPARATOR ',' -»
+«p.name-»
+«ENDFOREACH -»
+)«ENDIF -»=
+«IF this.param.size>0 -»
+	PRE
+	«FOREACH this.param.typingPredicate AS p SEPARATOR '&'-»
+	«EXPAND getLabel FOR p-» 
+	«ENDFOREACH »
+«IF (this.substitution.precondition.body!=null)&&(this.substitution.precondition.body!="")-»
+&		«this.substitution.precondition.body»«ENDIF-»
+«IF   ( this.substitution.precondition.typingPredicate!=null) -»
+&«FOREACH this.substitution.precondition.typingPredicate AS tp SEPARATOR '&'-»«tp.name -»«ENDFOREACH -»
+«ENDIF-»
+	THEN«ENDIF -»		
+ 		SELECT 
+	        «EXPAND getLabel FOR this» : isPermitted[currentRole]
+	    THEN
+	        «IF (this.body!=null)&&(this.body.contains("result"))»result <-- «ENDIF-»
+	        «this.name»(«FOREACH this.param  AS p SEPARATOR ','»«p.name»«ENDFOREACH»)
+	    END
+	END«ENDDEFINE»
+
+
+«REM»«ENDREM»
+
+
+
+
+
+«REM»___________ORBAC2 Naming System____________________«ENDREM»
+«DEFINE getLabel  FOR Permission»«this.name»«ENDDEFINE»
+«DEFINE getLabel  FOR Role»«this.name»«ENDDEFINE»
+
+«DEFINE getLabel  FOR MethodAction»«EXPAND getLabel FOR this.operation»«ENDDEFINE»
+«DEFINE getLabel  FOR EntityAction»«this.name»«ENDDEFINE»
+
+«DEFINE getLabel  FOR ActionTypeName»«this»«ENDDEFINE»
+
+
+«REM»___________UML Naming System____________________«ENDREM»
+«DEFINE getLabel  FOR uml::Class»«name»_Label«ENDDEFINE»
+«DEFINE getLabel  FOR uml::Association»«name»_Label«ENDDEFINE»
+«DEFINE getLabel  FOR uml::Operation»«class.name»__«this.name»_Label«ENDDEFINE»
+«DEFINE getLabel  FOR  VisibilityKind»«this.toString()»«ENDDEFINE»
+«DEFINE getLabel FOR uml::Property-»
+«IF this.class!=null»«class.name»_«name»_Label«ELSEIF this.association!=null -»
+«association.name»_«name»_Label«ENDIF»«ENDDEFINE»
+
+«DEFINE getLabelOfOperationType FOR uml::Operation»«IF this.isQuery==null »null«ELSE»«IF this.isQuery »readOp«ELSE»modifyOp«ENDIF»«ENDIF»«ENDDEFINE»
+ 
+
+
+
+«DEFINE ContextMachine  FOR Policy »
+	
+MACHINE 
+	ContextMachine
+
+ 
+SETS
+     USERS = {«FOREACH this.users  AS u SEPARATOR ','»«u.name»«ENDFOREACH»«IF ! this.users.isEmpty »,«ENDIF » none}
+     ;ORGANIZATIONS = {«FOREACH this.organizations  AS u SEPARATOR ','»«u.name»«ENDFOREACH»«IF !this.organizations.isEmpty »,«ENDIF »noneOrg }
+	«REM»For each org type create a AbstractSet (Enum)«ENDREM»
+END
+«ENDDEFINE»
+
+
+
+
+
+
+«DEFINE uaMachine  FOR Policy »
+
+MACHINE
+    UserAssignments  
+SEES
+    ContextMachine
+DEFINITIONS
+
+    assignedUsers(role)=={uu|uu:USERS & role:roleOf(uu)};
+    assignedUsersOfRoleSet(roleSet)==union({uu| uu:POW(USERS) & !rr.(rr:ROLES & rr:roleSet => uu <:assignedUsers(rr)) } );
+    /*INTER(rr).{rr:roleSet | assignedUsers(rr)} ;*/
+    allAssignedUsers(role)=={uu|uu:USERS & 
+        ({role}\/getSubRoles( {role})) /\roleOf(uu)/={}};
+	getSubRoles(roleSet)==closure1(Roles_Hierarchy~)[roleSet];
+	 
+	authorizedUsers(roleSet)== assignedUsersOfRoleSet(getSubRoles(roleSet)\/roleSet);
+
+	getSuperRoles(roleSet)==closure1(Roles_Hierarchy)[roleSet];
+	allAssignedRoles(user)==getSuperRoles(roleOf(user))\/roleOf(user)
+
+SETS
+    ROLES = {«FOREACH this.roles  AS r SEPARATOR ','»«r.name»«ENDFOREACH»}
+    
+    
+VARIABLES
+    roleOf,    
+    Roles_Hierarchy,
+    currentUser,
+    SSD_mutex,
+    DSD_mutex,
+    Session
+    
+INVARIANT
+    Roles_Hierarchy : ROLES <-> ROLES &
+    roleOf : USERS --> POW(ROLES) &  
+    closure1(Roles_Hierarchy) /\ id(ROLES) = {} &    
+    currentUser : USERS 
+
+	& Session : USERS<-> ROLES
+	& !(uu).(uu:USERS & uu:dom(Session)=> Session[{uu}]<:roleOf(uu))
+
+
+    & SSD_mutex : POW1(ROLES)<->NAT1 /*card(RoleSet)>= n >=2*/
+    & !nn.(nn:NAT1 & nn:ran(SSD_mutex) => nn>=2)
+	& !rs.(rs:POW1(ROLES) & rs:dom(SSD_mutex) => card(rs)>=SSD_mutex(rs))
+	/*SSD_mutex check*/
+	
+	& !uu.(uu:USERS & uu:dom(roleOf) => 
+	     !rs.(rs:POW1(ROLES) & rs:dom(SSD_mutex) =>  
+				card(( closure1(Roles_Hierarchy)[roleOf(uu)]\/roleOf(uu) /\ rs)) < SSD_mutex(rs)
+				)
+)
+
+	& DSD_mutex :POW1(ROLES)<->NAT1 
+	 & !nn.(nn:NAT1 & nn:ran(DSD_mutex) => nn>=2)
+	& !rs.(rs:POW1(ROLES) & rs:dom(DSD_mutex) => card(rs)>=DSD_mutex(rs))
+	& !uu.(uu:USERS & uu:dom(Session) => 
+	     !rs.(rs:POW1(ROLES) & rs:dom(DSD_mutex) =>  
+				card(( closure1(Roles_Hierarchy)[Session[{uu}]]\/Session[{uu}] /\ rs)) < DSD_mutex(rs)
+				)
+)
+				«REM»«FOREACH this AS  SEPARATOR ','»«ENDFOREACH»«ENDREM»
+INITIALISATION
+    roleOf := {«FOREACH this.users  AS u SEPARATOR ','»(«u.name»|->{«FOREACH u.assignments.role AS r SEPARATOR ','»«r.name»«ENDFOREACH»})«ENDFOREACH-»
+«IF ! this.users.isEmpty »,«ENDIF »(none |-> {})} ||
+    Roles_Hierarchy := {«FOREACH this.roles.select(e|!e.superRole.isEmpty) AS subRole SEPARATOR ','»«FOREACH subRole.superRole AS superRole SEPARATOR ','»(«subRole.name»|->«superRole.name»)«ENDFOREACH»«ENDFOREACH»} 
+    ||
+    currentUser := none 
+
+|| Session:={}/*(Jack|-> Operator),(Jack|-> Team_Doctor)}*/
+
+		||SSD_mutex :={«FOREACH this.SoD_constraints.select(e|SSD_RoleMutex.isInstance(e)) AS ssd SEPARATOR ','»({«FOREACH ssd.roleSet AS role SEPARATOR ','»«role.name»«ENDFOREACH»}|->«ssd.count»)«ENDFOREACH»}
+		||DSD_mutex :={«FOREACH this.SoD_constraints.select(e|DSD_RoleMutex.isInstance(e)) AS dsd SEPARATOR ','»({«FOREACH dsd.roleSet AS role SEPARATOR ','»«role.name»«ENDFOREACH»}|->«dsd.count»)«ENDFOREACH»}
+OPERATIONS
+  
+  /*  
+    result<--authorizedUser(roleSet)=
+    PRE
+        roleSet:ROLES & roleSet=Team_Member
+    THEN
+           result := authorizedUsers({roleSet})
+        
+	END;
+	*/
+	
+	
+	addRole(user,role) = 
+    PRE
+        user : USERS
+		& role:ROLES & role/:(roleOf(user)\/getSuperRoles(roleOf(user)))  
+    THEN
+        roleOf := ({user}<<|roleOf) \/{(user|-> ({role} \/ roleOf(user)) ) }
+    END;
+    
+
+	addRoleSafe(user,role) = 
+    PRE
+        user : USERS
+		& role:ROLES & role/:(roleOf(user)\/getSuperRoles(roleOf(user)))   
+		&!rs.(rs:POW1(ROLES) & rs:dom(SSD_mutex) =>  
+				card(( (closure1(Roles_Hierarchy)[roleOf(user)\/{role}]\/roleOf(user)\/{role}) /\ rs)) < SSD_mutex(rs)
+				)
+    THEN
+        roleOf := ({user}<<|roleOf) \/{(user|-> ({role} \/ roleOf(user)) ) }
+    END;
+
+
+	removeRole(user,role) = 
+    PRE
+        user : USERS
+		& role:ROLES & role:roleOf(user)  
+		& role/:ran(Session)
+    THEN
+        roleOf := ({user}<<|roleOf) \/{(user|-> (roleOf(user)-{role}) ) }
+    END;
+    
+    
+   setCurrentUser(user) = 
+    PRE
+        user : USERS & user /= currentUser 
+        & user : dom(Session) 
+    THEN
+        currentUser := user
+    END ;
+
+
+  connect(user,roleSet) = 
+    PRE
+        user : USERS & user/:dom(Session) 
+		& roleSet:POW1(ROLES) & roleSet<:roleOf(user)  
+    THEN
+        Session := Session\/({user}*roleSet)
+    END;
+	
+
+safeConnect(user,roleSet) = 
+    PRE
+        user : USERS & user/:dom(Session) 
+        & roleSet : POW1(ROLES) & roleSet <: roleOf(user)  
+        /*avoid hierarchical redundancy in the roleSet*/
+        & !(r1,r2).(r1 : roleSet & r2 : roleSet & r1 /= r2 
+            =>  r2 /: closure1(Roles_Hierarchy)[{r1}])
+        /*avoid DSD violation*/
+        & !rs.(rs:POW1(ROLES) & rs:dom(DSD_mutex) =>  
+		card(( closure1(Roles_Hierarchy)[roleSet]\/roleSet /\ rs)) < DSD_mutex(rs)
+			)
+    THEN
+        Session := Session \/ ({user}*roleSet)
+    END;
+  
+
+	disconnect(user) = 
+    PRE
+        user : USERS & user:dom(Session)  
+    THEN
+        Session := {user}<<|Session
+    END
+
+
+END
+
+«ENDDEFINE»
+
+
+
+
+
+
+«REM»___________B Naming System____________________«ENDREM»
+
+
+
+
+«DEFINE getLabel FOR BOperation»«name»_Label«ENDDEFINE»
+
+
+«DEFINE getLabel  FOR b::TypingOperator-»
+«IF this.toString()=="In"»:«ENDIF-»
+«IF this.toString()=="Equal"»=«ENDIF-»
+«IF this.toString()=="SubSet"»<<:«ENDIF-»
+«IF this.toString()=="SubSetEqual"»<:«ENDIF-»
+«ENDDEFINE»
+
+
+«DEFINE getLabel FOR In»:«ENDDEFINE»
+«DEFINE getLabel FOR Equal»=«ENDDEFINE»
+«DEFINE getLabel FOR SubSet»<<:«ENDDEFINE»
+«DEFINE getLabel FOR SubSetEqual»<:«ENDDEFINE»
+
+«DEFINE getLabel FOR b::BNamedElement»«this.name.replaceFirst("fromRole","")»«ENDDEFINE»
+«DEFINE getLabel FOR b::BPowType»POW(«EXPAND getLabel FOR this.pow»)«ENDDEFINE»
+
+«DEFINE getLabel FOR b::String»String«ENDDEFINE»
+«DEFINE getLabel FOR b::Z»INTEGER«ENDDEFINE»
+«DEFINE getLabel FOR b::Bool»BOOL«ENDDEFINE»
+
+
+
+
+«DEFINE getLabel  FOR b::ComposedTypeExp-»
+«IF this.toString()=="Relation"»<->«ENDIF-»
+«IF this.toString()=="TotalFunction"»-->«ENDIF-»
+«IF this.toString()=="PartialFunction"»+->«ENDIF-»
+«IF this.toString()=="TotalInjection"»>->«ENDIF-»
+«IF this.toString()=="PartialInjection"»>+>«ENDIF-»
+«IF this.toString()=="TotalSurjection"»-->>«ENDIF-»
+«IF this.toString()=="PartialSurjection"»+->>«ENDIF-»
+«IF this.toString()=="TotalBijection"»>->>«ENDIF-»
+«IF this.toString()=="PartialBijection"»>+>>«ENDIF-»
+«ENDDEFINE»
+
+«DEFINE getLabel  FOR b::BComposedType»«EXPAND getLabel FOR this.dom» «EXPAND getLabel FOR this.expression» «EXPAND getLabel FOR this.ran»«ENDDEFINE»
+
+«DEFINE getLabel  FOR b::TypingPredicate»«IF name!=null && name!=""»«name»«ELSE»«EXPAND getLabel FOR eContainer» «EXPAND getLabel FOR operator» «EXPAND getLabel FOR type»«ENDIF» «ENDDEFINE»
+
+«DEFINE AbstractScenario  FOR Policy »
+MACHINE
+    AbstractScenario
+OPERATIONS
+	step = BEGIN skip END
+END
+«ENDDEFINE»
+
+«DEFINE ConcreteScenario  FOR Policy »
+REFINEMENT
+   ConcreteScenario
+REFINES
+   AbstractScenario
+
+INCLUDES
+    RBAC_Model
+OPERATIONS
+	step = 
+		BEGIN
+			setPermissions ;
+			skip /* replace with sequence of operations */
+		END
+END
+«ENDDEFINE»
+

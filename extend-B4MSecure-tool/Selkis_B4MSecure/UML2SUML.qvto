@@ -1,0 +1,296 @@
+modeltype UML "strict" uses "http://www.eclipse.org/uml2/2.1.0/UML";
+modeltype AC  uses	"http://ORBAC2/1.0";
+modeltype ecore  uses "http://www.eclipse.org/emf/2002/Ecore";
+
+transformation CS2AS(in uml : UML,out ac: AC);
+	
+
+
+main() {
+getRootPackage()->map Policy();
+
+}
+
+query getRootPackage() : UML::Package{
+	return uml.rootObjects()[UML::Package]->any(true);
+}
+
+query UML::Element::hasStereotype(stereotypeName : String) : Boolean {
+	return self.getAppliedStereotype(stereotypeName)<>null;
+}
+
+
+query UML::AssociationClass::getRole() : UML::Class {
+	return self.memberEnd.type[Class]->
+	select(c: Class | c.hasStereotype('UML_CD_AC_profile::Role'))->first()	
+}
+
+query UML::AssociationClass::getEntity() : UML::Class {
+	return self.memberEnd.type[Class]->select(c: Class | not c.hasStereotype('UML_CD_AC_profile::Role'))->first()	
+}
+
+
+mapping UML::Package::Policy() : AC::Policy  {
+	roles:= (self.allOwnedElements()[UML::Class]->map Role())->asOrderedSet();
+	permissions:= (self.allOwnedElements()[UML::AssociationClass]->map Permission())->asOrderedSet();
+	organizations:= (self.allOwnedElements()[UML::Class]->map Organization())->asOrderedSet();
+	
+	users:= (self.allOwnedElements()[UML::Class]->map User())->asOrderedSet();
+	--
+	SoD_constraints:=(self.allOwnedElements()[UML::Class]->map SSD_RoleMutex())->asOrderedSet();
+	SoD_constraints+=(self.allOwnedElements()[UML::Class]->map DSD_RoleMutex())->asOrderedSet();
+	log('Policy extracted from : '+self.name);
+}
+
+
+mapping UML::Class::Role() : AC::Role 
+when{self.hasStereotype('UML_CD_AC_profile::Role')} 
+	{
+	name := self.name;	
+	superRole:=(self.superClass->select(c|c.hasStereotype('UML_CD_AC_profile::Role'))->map Role())->asOrderedSet();
+	log('Transformation : '+self.name);
+}
+
+
+------------------Org------------------------
+query UML::Class::getOrganizationAvailableRoles() : Collection(UML::Class) {	
+	--log(self.name+':'+self._package.ownedElement[Association]->select(a|a.memberEnd->exists(type=self)).memberEnd.type->select(t|t<>self and t.oclIsTypeOf(Class))->collect(c|c.oclAsType(Class))->size().toString());
+	return self._package.ownedElement[Association]->select(a|a.memberEnd->exists(type=self)).memberEnd.type->select(t|t<>self and t.oclIsTypeOf(Class))->collect(c|c.oclAsType(Class));
+}
+
+mapping UML::Class::Organization() : AC::Organization 
+	when{self.hasStereotype('UML_CD_AC_profile::Organization')} {
+		name := self.name;
+		parents := (self.superClass->select(c|c.hasStereotype('UML_CD_AC_profile::Organization'))->map Organization())->asOrderedSet();
+		availabeRoles := (self.getOrganizationAvailableRoles()->map Role())->asOrderedSet();	
+		log('Translation of org : '+name)
+}
+
+--------------------------------------
+
+
+mapping UML::AssociationClass::Permission() : AC::Permission 
+when{
+	self.hasStereotype('UML_CD_AC_profile::Permission')
+	and (self.getRole()->notEmpty())
+	and (self.getEntity()->notEmpty())
+} 
+{
+	name := self.name;
+	role:=self.getRole().resolveone(Role);
+	entity:=self.getEntity();
+	
+	actions:=(self.ownedOperation->select(entityActionType()!=null)->map entityAction())->asOrderedSet();
+	actions+=(self.ownedOperation->map methodAction())->asOrderedSet();
+	
+	--constraint := (self.ownedRule.specification[OpaqueExpression]->map oclConstraint())->any(true);
+	
+	
+	organizations := self.PermOrg();
+	
+	
+}
+
+
+mapping UML::Operation::entityAction() : AC::EntityAction 
+	when{
+		self.hasStereotype('UML_CD_AC_profile::EntityAction')
+	--and self.class.hasStereotype('UML_CD_AC_profile::Permission')	 
+	}{	
+		inLog:=self.hasStereotype('UML_CD_AC_profile::Log');
+		type:=self.entityActionType();	
+	
+	constAction := (self.ownedRule.specification[OpaqueExpression]->map oclConstraint())->any(true);
+}
+
+
+query UML::Operation::entityActionType() : AC::ActionTypeName{
+	if (self.hasStereotype('UML_CD_AC_profile::EntityAction')) then {
+	return switch {
+		case ('read'=self.name.toLower()) AC::ActionTypeName::read;
+		case ('modify'=self.name.toLower()) AC::ActionTypeName::modify;
+		case ('create'=self.name.toLower()) AC::ActionTypeName::create;
+		case ('delete'=self.name.toLower()) AC::ActionTypeName::delete;
+		case ('privateread'=self.name.toLower()) AC::ActionTypeName::privateRead;
+		case ('privatemodify'=self.name.toLower()) AC::ActionTypeName::privateModify;
+		case ('fullacces'=self.name.toLower()) AC::ActionTypeName::fullAccess;
+		else null;
+	};
+	
+	} endif;
+	return null;
+	
+		
+}
+
+
+
+query Class::findOperation(o: UML::Operation) : UML::Operation {	
+	var ops : Set(UML::Operation):= self.ownedOperation->select(op|op.name=o.name);
+	if (ops->isEmpty()) then {return null;} endif;
+	return ops->any(true);
+	--ops->select(op|op.ownedParameter.type->)
+		
+}
+
+mapping UML::Operation::methodAction() : AC::MethodAction 
+	when{
+		self.hasStereotype('UML_CD_AC_profile::MethodAction') 
+	--and self.class.hasStereotype('UML_CD_AC_profile::Permission')	 
+	}{	
+		inLog:=self.hasStereotype('UML_CD_AC_profile::Log');
+		
+		operation:=self._class.oclAsType(AssociationClass).getEntity().findOperation(self);
+			--end{log('INFO [methodAction]: '+result.perm.name+'::'+result.perm.entity.name);}
+		
+		constAction := (self.ownedRule.specification[OpaqueExpression]->map oclConstraint())->any(true);
+}
+
+
+mapping OpaqueExpression::oclConstraint() : AC::constraint
+when {self.language->includes('OCL')}
+	{	
+	--var cd : String := self._body->at(self.language->indexOf('OCL'));	
+	_body:=self._body->at(self.language->indexOf('OCL'));	
+	
+}
+
+--------------------User-------------
+
+mapping UML::Class::User(): AC::User
+	when{self.hasStereotype('UML_CD_AC_profile::User')}{
+		name:=self.name;
+		log('Traitement de USER : '+self.name);	
+		--assignments:= self.getLinkedClasses()->map EmployFromUA();	
+		assignments+= self.getLinkedAssociations_byStereotypeUA()->map EmployFromUAassoc();
+		
+}
+
+mapping Association::EmployFromUAassoc() : AC::Employ {	
+	role := (self.memberEnd.type[Class]->map Role())->any(true); 
+	--organization := (self.oclAsType(AssociationClass)->map Organization())->any(true);
+	if(self.oclIsTypeOf(AssociationClass))
+	then{
+		var orgName := self.oclAsType(AssociationClass).ownedAttribute->select(hasStereotype('UML_CD_AC_profile::Organization')).name->first();
+		organization := (self._package.ownedElement[Class]->any(name = orgName)->map Organization())->any(true);
+		log('Considering AssocitaiveClass UA : ' + orgName);	
+	}endif ;
+}
+
+
+
+--UA
+
+--------------------Employ-------------
+
+query UML::Class::getLinkedAssociations_byStereotypeUA() : Set(UML::Association){
+	return getRootPackage().allOwnedElements()[Association] 
+	--uml.allInstances(UML::Association)
+			--self.owner->oclAsType(Package).ownedMember[Association]
+			->select(a : Association | a.hasStereotype('UML_CD_AC_profile::UA') and a.memberEnd.type->includes(self))->asSet()
+}
+query UML::Class::getLinkedClasses_byAssociationStereotypeUA() : Set(UML::Class){
+	return self.getLinkedAssociations_byStereotypeUA().memberEnd.type[Class]->reject(t|t=self)->asSet(); 
+}
+
+mapping UML::Class::EmployFromRole(): AC::Employ
+	when{self.hasStereotype('UML_CD_AC_profile::Role')}{
+		role:=(self->map Role())->any(true);
+		log('Traitement de EmployFromRole '+self.name);			
+}
+
+mapping UML::Class::EmployFromRole2(): AC::Employ
+	when{self.hasStereotype('UML_CD_AC_profile::Role')}{		
+		log('Traitement de EmployFromRole '+self.name);			
+}
+
+mapping UML::Class::EmployFromUA(): AC::Employ
+	when{self.hasStereotype('UML_CD_AC_profile::UA')}{
+		role:=(self.getLinkedClasses()->map Role())->any(true);		
+		
+	var orgNames:=self.ownedAttribute->select(hasStereotype('UML_CD_AC_profile::Organization')).name->asSet();
+	var org :=(getRootPackage().allOwnedElements()[Class]->select(orgNames->includes(name) )->map Organization())->asOrderedSet();
+		org+=(self.getLinkedClasses()->map Organization())->any(true);
+		organization := org->any(true)		;	
+		
+		log('Traitement de EmployFromUA ');	
+}
+--UA
+--------------------SoD-------------
+
+
+--mapping UML::Class::SoD_RoleMutex(): AC:SoD_RoleMutex
+
+mapping UML::Class::SSD_RoleMutex(): AC::SSD_RoleMutex
+	when{self.hasStereotype('UML_CD_AC_profile::SSD_RoleMutex')}{
+		name:=self.name;
+		roleSet:= (self.getLinkedClasses()->map Role())->asOrderedSet();
+		count:= self.getSoD_RoleMutex_Count();	//self.attribute->any(hasStereotype('UML_CD_AC_profile::SoD_RoleMutex_Count')).getSoD_RoleMutex_Count();
+		--var orgNames:=self.ownedAttribute->select(hasStereotype('UML_CD_AC_profile::Organization')).name->asSet();
+		var orgName := self.attribute->any(hasStereotype("UML_CD_AC_profile::Organization")).name ;		
+		organization := (self._package.ownedElement[Class]->any(name = orgName)->map Organization())->any(true);
+		log('Considering org : ' + orgName);	
+}
+
+mapping UML::Class::DSD_RoleMutex(): AC::DSD_RoleMutex
+	when{self.hasStereotype('UML_CD_AC_profile::DSD_RoleMutex')}{
+		name:=self.name;
+		roleSet:= (self.getLinkedClasses()->map Role())->asOrderedSet();
+		count:= self.getSoD_RoleMutex_Count();		
+}
+
+query UML::Class::getSoD_RoleMutex_Count() : Integer{
+	var count:=2;--defaultValue
+	count:=self.getLinkedClasses()->size();	
+	if (self.attribute->exists(hasStereotype('UML_CD_AC_profile::SoD_RoleMutex_Count')))then{
+		count:= self.attribute->any(hasStereotype('UML_CD_AC_profile::SoD_RoleMutex_Count')).getSoD_RoleMutex_Count();
+	} endif;	
+	return count;	
+}
+
+query UML::Property::getSoD_RoleMutex_Count() : Integer{
+	var count:=2;--defaultValue
+	if (self.hasStereotype('UML_CD_AC_profile::SoD_RoleMutex_Count'))then{
+		if(self.defaultValue.oclIsKindOf(UML::LiteralInteger))then{
+			count:= self.defaultValue.oclAsType(UML::LiteralInteger).value;
+		}endif;	
+	} endif;	
+	return count;	
+}
+
+
+
+--------------------perm's org-----------------
+
+query UML::Class::getLinkedAssociations() : Set(UML::Association){
+	return 
+	getRootPackage().allOwnedElements()[Association]
+	--uml.allInstances(UML::Association)
+	--self.eResource().allInstances(Association)
+		--	self.owner->oclAsType(Package).ownedMember[Association]
+			->select(a : Association | a.memberEnd.type->includes(self))->asSet()
+}
+query UML::Class::getLinkedClasses() : Set(UML::Class){
+	return self.getLinkedAssociations().memberEnd.type[Class]->reject(t|t=self)->asSet(); 
+}
+
+
+--query UML::Package::getAssociations() : Set(UML::Association){	return self.ownedMember[Association];}
+
+query UML::AssociationClass::PermOrg() : OrderedSet(AC::Organization) {	
+	--var orgNames:=self.ownedAttribute->select(hasStereotype('UML_CD_AC_profile::Organization')).name->asOrderedSet();
+	var orgNames:=self.ownedAttribute->select(hasStereotype('UML_CD_AC_profile::Organization')).name->asSet();
+	-- 
+	-- orgNames+=self.getLinkedClasses()->select(hasStereotype('UML_CD_AC_profile::Organization')).name->asSet();
+	--orgNames+=orgNames2;
+	--log('INFO [PermOrg]: orgNames2():'+val->any(true));
+		
+	var org :=(getRootPackage().allOwnedElements()[Class]->select(orgNames->includes(name) )->map Organization())->asOrderedSet();
+	--org->union(self._package.ownedElement[Association]->select(a|a.memberEnd->exists(type=self)).memberEnd.type->select(t|t<>self and t.oclIsTypeOf(Class))->collect(c|c.oclAsType(Class))->map Organization());
+	org+=(self.getLinkedClasses()->select(hasStereotype('UML_CD_AC_profile::Organization'))->map Organization() )->asOrderedSet();
+	
+	--log ('Org['+self.name+'] : '+org->size().toString());--->any(true).permissions.name->any(true));
+	return org;
+	--self.ownedAttribute->select(hasStereotype('UML_CD_AC_profile::Organization')).name
+}
+
