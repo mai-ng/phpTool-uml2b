@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:adsec="http://adsec/1.0">
+  <adsec:ADsecMachine xmi:id="_p57esPBDEeW4vcV3e24oLg">
+    <operation xmi:id="_p57esfBDEeW4vcV3e24oLg" name="MedicalRecord__validate">
+      <postOperation xmi:id="_p57esvBDEeW4vcV3e24oLg" name="Doctor__leaveHospital">
+        <parameter xmi:id="_p57es_BDEeW4vcV3e24oLg" name="dd" type="Doctor"/>
+      </postOperation>
+      <preOperation xmi:id="_p57etPBDEeW4vcV3e24oLg" name="HospitalStay__admission" orderExecution="1"/>
+    </operation>
+    <operation xmi:id="_p57etfBDEeW4vcV3e24oLg" name="HospitalStay__makePayment">
+      <preOperation xmi:id="_p57etvBDEeW4vcV3e24oLg" name="HospitalStay__admission" orderExecution="1">
+        <parameter xmi:id="_p57et_BDEeW4vcV3e24oLg" name="hh" type="Hospital"/>
+        <parameter xmi:id="_p57euPBDEeW4vcV3e24oLg" name="pp" type="Patient"/>
+      </preOperation>
+      <preOperation xmi:id="_p57eufBDEeW4vcV3e24oLg" name="MedicalRecord__validate" orderExecution="1">
+        <parameter xmi:id="_p57euvBDEeW4vcV3e24oLg" name="mr" type="MedicalRecord"/>
+      </preOperation>
+      <parameter xmi:id="_p57eu_BDEeW4vcV3e24oLg" name="pp" type="Patient"/>
+      <parameter xmi:id="_p57evPBDEeW4vcV3e24oLg" name="hh" type="Hospital"/>
+    </operation>
+  </adsec:ADsecMachine>
+  <adsec:ADsecActor xmi:id="_p57evfBDEeW4vcV3e24oLg" name="dd"/>
+  <adsec:ADsecActor xmi:id="_p57evvBDEeW4vcV3e24oLg" name="User"/>
+</xmi:XMI>

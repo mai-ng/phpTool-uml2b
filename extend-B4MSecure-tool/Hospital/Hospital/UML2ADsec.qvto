@@ -1,0 +1,130 @@
+modeltype UML "strict" uses "http://www.eclipse.org/uml2/2.1.0/UML";
+//modeltype AC  uses	"http://ORBAC2/1.0";
+modeltype ADsec  uses	"http://adsec/1.0";
+// modeltype ecore  uses "http://www.eclipse.org/emf/2002/Ecore";
+
+transformation AD2ADsec(in uml : UML,out ac: ADsec);
+	
+
+// Entry point
+main() {
+	log("[debug] Entry point");
+	getRootPackage()-> map getADsecPackage();
+}
+
+// Query to get root package
+query getRootPackage() : UML::Package{
+	log("[debug] getRootPackage of UML diagram");
+	return uml.rootObjects()[UML::Package]->any(true);
+}
+
+// Map a root package to a B-machine. 1 uml file -> 1 Machine
+mapping UML::Package::getADsecPackage() : ADsec::ADsecMachine{
+	// Set machine name
+	name := self.name;
+	self.allOwnedElements()[UML::Package]->forEach(i|i.name = 'AD'){
+		log(" Package: " + i.name);
+		i.allOwnedElements()[UML::Activity]->forEach(a){
+			log("\t Activity: " + a.name);
+			a.allOwnedElements()[UML::CallOperationAction]->forEach(o|o.hasStereotype('SecureAD::Secure')){
+				// Each SecureOperation will be mapped to an ADsecOperation
+				o->map secureOperation();
+			}
+		}	
+	}
+}
+// Map an action in Activity diagram to an operation in B machine
+mapping UML::CallOperationAction::secureOperation() : ADsec::ADsecOperation
+	--when{self.hasStereotype('SecureAD::Secure')}
+	{
+		log("\t\t ADsecOperation: " + self.name);
+		name := self.operation._class.name +"__"+ self.operation.name;
+		
+		log("\n\t\t\t GET ACTOR");
+		self.inPartition->forOne(act){
+			log("\t\t\t ADsec_Actor: " + act.name);
+			actor:= act.map Actor(self,self);
+		};
+		
+		log("\n\t\t\t GET PARAMETER OF SECURE OPERATION");
+		self.operation.allOwnedElements()[UML::Parameter]->forEach(p){
+			parameter += p->map Parameter(self);
+			log("\t\t\t ADsec_Parameter: " + p.name);
+		};
+		
+		log("\n\t\t\t GET PRE-OPERATION");
+		preOperation := self.getPreActions()->map PreOperation(self,1);
+		
+		log("\n\t\t\t GET POST-OPERATION");
+		postOperation := self.getPostActions()->map PostOperation(self);
+		
+}
+
+// Map a post operation in Activity diagram to in B machine
+mapping UML::CallOperationAction::PostOperation(secOp:UML::CallOperationAction) : ADsec::ADsecPostOperation{
+	name := self.operation._class.name +"__"+self.operation.name;	
+	log("\n\t\t\t ADsec_Post-action: " + self.operation.name);
+	parameter := self.getParameters()-> map Parameter(secOp);
+	parameter->forEach(pa){
+		log(name+': xxx : ' + pa.name);
+	};
+	self.operation.allOwnedElements()[UML::Parameter]->forEach(p){
+			log("\t\t\t ADsec_Post-Parameter: " + p.name+" : " + self.operation.name);
+	};
+	operationToSecure :=secOp.operation._class.name+'__'+ secOp.operation.name;
+	postOperation := self.getPostActions()->map PostOperation(secOp);
+}
+
+// Map a pre operation in Activity diagram to in B machine
+mapping UML::CallOperationAction::PreOperation(secOp:UML::CallOperationAction,order:Integer) : ADsec::ADsecPreOperation{
+	name := self.operation._class.name +"__"+self.operation.name;
+	log("\n\t\t\t ADsec_Pre-action: " + self.operation.name);
+	var next_order:Integer:=order;
+	orderExecution := order;
+	next_order := order +1;
+	parameter := self.getParameters()-> map Parameter(secOp);
+	self.operation.allOwnedElements()[UML::Parameter]->forEach(p){
+			log("\t\t\t ADsec_Pre-Parameter: " + p.name+" : " + self.operation.name);
+	};
+	self.inPartition->forOne(act){
+			log("\t\t\t ADsec_Actor: " + act.name);
+			actor:=act.map Actor(self, secOp);
+	};
+	operationToSecure :=secOp.operation._class.name+'__'+ secOp.operation.name;
+	preOperation:=self.getPreActions()->map PreOperation(secOp,next_order);
+}
+
+/*get parameters of an operation*/
+/*get parameters of an operation*/
+query UML::CallOperationAction::getParameters(): Set(UML::Parameter){
+	return self.operation.allOwnedElements()[UML::Parameter]-> asSet();
+}
+// Map a parameter in Act to in B
+mapping UML::Parameter::Parameter(secOp:UML::CallOperationAction) : ADsecParameter{
+	log("\t\t\t (Parameter): " + self.name+" : "+self.operation.name);
+	name := self.name;
+	type := self.type.name;
+	operationToSecure :=secOp.operation._class.name+'__'+ secOp.operation.name;
+}
+// Map an actor in Activity diagram to in B machine
+mapping UML::ActivityPartition::Actor(op: UML::CallOperationAction,secOp : UML::CallOperationAction) : ADsec::ADsecActor{
+	log("\t\t\t (Actor): " + self.name);
+	name := self.name;	
+	actOn := op.operation._class.name+'__'+op.operation.name;
+	operationToSecure := secOp.operation._class.name+'__'+secOp.operation.name;
+}
+/*check if an element has stereotypes or not?
+	return true if it hase, otherwise return false.
+*/
+query UML::Element::hasStereotype(stereotypeName : String) : Boolean {
+	return self.getAppliedStereotype(stereotypeName)<>null;
+}
+
+/*get pre-actions of an action. Note that only direct preactions are returned*/
+query UML::CallOperationAction::getPreActions() : Set(UML::CallOperationAction){
+	return self.incoming.source[UML::CallOperationAction]->asSet();
+}	
+/*get post-actions of an action. Note that only direct preactions are returned*/
+query UML::CallOperationAction::getPostActions() : Set(UML::CallOperationAction){
+	return self.outgoing.target[UML::CallOperationAction]->asSet();
+}	

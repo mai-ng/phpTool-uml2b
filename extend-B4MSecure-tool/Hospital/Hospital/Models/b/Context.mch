@@ -1,0 +1,12 @@
+MACHINE 
+	Context
+SETS
+	STR
+	;	MEDICALRECORD
+	;	PATIENT
+	;	DOCTOR
+	;	HOSPITAL
+	; 	EXECUTION ={Ok, Ko}
+END
+ 
+ 

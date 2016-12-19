@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:adsec="http://adsec/1.0">
+  <adsec:ADsecMachine xmi:id="_mc8bsPIKEeWuJfmBjsJ2Aw" name="B4MSecureModel"/>
+  <adsec:ADsecOperation xmi:id="_mc8bsfIKEeWuJfmBjsJ2Aw" name="HospitalStay__makePayment">
+    <preOperation xmi:id="_mc8bsvIKEeWuJfmBjsJ2Aw" name="Doctor__joinHospital" operationToSecure="HospitalStay__makePayment" orderExecution="1">
+      <parameter xmi:id="_mc8bs_IKEeWuJfmBjsJ2Aw" name="dd" type="Doctor" operationToSecure="HospitalStay__makePayment"/>
+      <parameter xmi:id="_mc8btPIKEeWuJfmBjsJ2Aw" name="hh" type="Hospital" operationToSecure="HospitalStay__makePayment"/>
+    </preOperation>
+    <preOperation xmi:id="_mc8btfIKEeWuJfmBjsJ2Aw" name="HospitalStay__admission" operationToSecure="HospitalStay__makePayment" orderExecution="1">
+      <parameter xmi:id="_mc8btvIKEeWuJfmBjsJ2Aw" name="pp" type="Patient" operationToSecure="HospitalStay__makePayment"/>
+      <parameter xmi:id="_mc8bt_IKEeWuJfmBjsJ2Aw" name="hh" type="Hospital" operationToSecure="HospitalStay__makePayment"/>
+    </preOperation>
+    <parameter xmi:id="_mc8buPIKEeWuJfmBjsJ2Aw" name="hh" type="Hospital" operationToSecure="HospitalStay__makePayment"/>
+    <parameter xmi:id="_mc8bufIKEeWuJfmBjsJ2Aw" name="pp" type="Patient" operationToSecure="HospitalStay__makePayment"/>
+  </adsec:ADsecOperation>
+  <adsec:ADsecOperation xmi:id="_mc8buvIKEeWuJfmBjsJ2Aw" name="MedicalRecord__validate">
+    <postOperation xmi:id="_mc8bu_IKEeWuJfmBjsJ2Aw" name="Doctor__leaveHospital" operationToSecure="MedicalRecord__validate">
+      <parameter xmi:id="_mc8bvPIKEeWuJfmBjsJ2Aw" name="dd" type="Doctor" operationToSecure="MedicalRecord__validate"/>
+    </postOperation>
+    <preOperation xmi:id="_mc8bvfIKEeWuJfmBjsJ2Aw" name="HospitalStay__admission" operationToSecure="MedicalRecord__validate" orderExecution="1">
+      <actor xmi:id="_mc8bvvIKEeWuJfmBjsJ2Aw" name="dd" operationToSecure="MedicalRecord__validate" actOn="HospitalStay__admission"/>
+      <parameter xmi:id="_mc8bv_IKEeWuJfmBjsJ2Aw" name="pp" type="Patient" operationToSecure="MedicalRecord__validate"/>
+      <parameter xmi:id="_mc8bwPIKEeWuJfmBjsJ2Aw" name="hh" type="Hospital" operationToSecure="MedicalRecord__validate"/>
+      <preOperation xmi:id="_mc8bwfIKEeWuJfmBjsJ2Aw" name="Doctor__joinHospital" operationToSecure="MedicalRecord__validate" orderExecution="2">
+        <parameter xmi:id="_mc8bwvIKEeWuJfmBjsJ2Aw" name="hh" type="Hospital" operationToSecure="MedicalRecord__validate"/>
+        <parameter xmi:id="_mc8bw_IKEeWuJfmBjsJ2Aw" name="dd" type="Doctor" operationToSecure="MedicalRecord__validate"/>
+      </preOperation>
+    </preOperation>
+    <actor xmi:id="_mc8bxPIKEeWuJfmBjsJ2Aw" name="dd" operationToSecure="MedicalRecord__validate" actOn="MedicalRecord__validate"/>
+    <parameter xmi:id="_mc8bxfIKEeWuJfmBjsJ2Aw" name="mr" type="MedicalRecord" operationToSecure="MedicalRecord__validate"/>
+  </adsec:ADsecOperation>
+</xmi:XMI>

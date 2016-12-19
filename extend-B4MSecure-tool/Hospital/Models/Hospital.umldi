@@ -1,0 +1,845 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<diagrams:Diagrams xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.topcased.org/DI/1.0" xmlns:diagrams="http://www.topcased.org/Diagrams/1.0" xmi:id="_5CP78MRBEeWKx5llftJWKg" activeDiagram="_lpBuwMvnEeWHCL1R0LEiVg">
+  <model href="Hospital.uml#_w8IxIM37EdqwVrslYOdUDA"/>
+  <diagrams xmi:id="_5CQjAMRBEeWKx5llftJWKg" position="0,0" size="100,100" name="Hospital" viewport="55,0">
+    <property xmi:id="_5CrZwMRBEeWKx5llftJWKg" key="pageFormatName" value="A4"/>
+    <property xmi:id="_5CrZwcRBEeWKx5llftJWKg" key="diagramWidth" value="840"/>
+    <property xmi:id="_5CrZwsRBEeWKx5llftJWKg" key="diagramHeight" value="1188"/>
+    <property xmi:id="_5CsA0MRBEeWKx5llftJWKg" key="pageMarginName" value="Small Margin"/>
+    <property xmi:id="_5CsA0cRBEeWKx5llftJWKg" key="diagramTopMargin" value="20"/>
+    <property xmi:id="_5CsA0sRBEeWKx5llftJWKg" key="diagramBottomMargin" value="20"/>
+    <property xmi:id="_5CsA08RBEeWKx5llftJWKg" key="diagramLeftMargin" value="20"/>
+    <property xmi:id="_5CsA1MRBEeWKx5llftJWKg" key="diagramRightMargin" value="20"/>
+    <property xmi:id="_5CsA1cRBEeWKx5llftJWKg" key="orientation" value="portrait"/>
+    <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_5CQjAcRBEeWKx5llftJWKg" presentation="org.topcased.modeler.uml.classdiagram">
+      <element href="Hospital.uml#_w8IxIM37EdqwVrslYOdUDA"/>
+    </semanticModel>
+    <contained xsi:type="di:GraphNode" xmi:id="_6ukT0MRBEeWKx5llftJWKg" position="113,62" size="150,120">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_6ukT0cRBEeWKx5llftJWKg" presentation="default">
+        <element href="Hospital.uml#_6uxvMMRBEeWKx5llftJWKg"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_83ST0MRBEeWKx5llftJWKg" position="379,60" size="150,120">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_83ST0cRBEeWKx5llftJWKg" presentation="default">
+        <element href="Hospital.uml#_83Th8MRBEeWKx5llftJWKg"/>
+      </semanticModel>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_-ncC0MRBEeWKx5llftJWKg" position="595,54" size="150,120">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_-ncC0cRBEeWKx5llftJWKg" presentation="default">
+        <element href="Hospital.uml#_-nd4AMRBEeWKx5llftJWKg"/>
+      </semanticModel>
+    </contained>
+  </diagrams>
+  <subdiagrams xmi:id="_AUPi4MRCEeWKx5llftJWKg">
+    <model href="Hospital.uml#_6uxvMMRBEeWKx5llftJWKg"/>
+    <diagrams xmi:id="_AUPi4cRCEeWKx5llftJWKg" position="0,0" size="100,100" name="Functional" viewport="0,0">
+      <property xmi:id="_AUgBkMRCEeWKx5llftJWKg" key="pageFormatName" value="A4"/>
+      <property xmi:id="_AUgBkcRCEeWKx5llftJWKg" key="diagramWidth" value="840"/>
+      <property xmi:id="_AUgBksRCEeWKx5llftJWKg" key="diagramHeight" value="1188"/>
+      <property xmi:id="_AUgooMRCEeWKx5llftJWKg" key="pageMarginName" value="Small Margin"/>
+      <property xmi:id="_AUgoocRCEeWKx5llftJWKg" key="diagramTopMargin" value="20"/>
+      <property xmi:id="_AUgoosRCEeWKx5llftJWKg" key="diagramBottomMargin" value="20"/>
+      <property xmi:id="_AUgoo8RCEeWKx5llftJWKg" key="diagramLeftMargin" value="20"/>
+      <property xmi:id="_AUgopMRCEeWKx5llftJWKg" key="diagramRightMargin" value="20"/>
+      <property xmi:id="_AUgopcRCEeWKx5llftJWKg" key="orientation" value="portrait"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_AUQJ8MRCEeWKx5llftJWKg" presentation="org.topcased.modeler.uml.classdiagram">
+        <element href="Hospital.uml#_6uxvMMRBEeWKx5llftJWKg"/>
+      </semanticModel>
+      <contained xsi:type="di:GraphNode" xmi:id="_JoumAMRCEeWKx5llftJWKg" position="503,19" size="198,-1">
+        <anchorage xmi:id="_mBO3MMRDEeWKx5llftJWKg" graphEdge="_mBTIoMRDEeWKx5llftJWKg"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_JoumAcRCEeWKx5llftJWKg" presentation="default">
+          <element href="Hospital.uml#_Jo1TsMRCEeWKx5llftJWKg"/>
+        </semanticModel>
+        <contained xsi:type="di:GraphNode" xmi:id="_JoumAsRCEeWKx5llftJWKg">
+          <property xmi:id="_JoumA8RCEeWKx5llftJWKg" key="eStructuralFeatureID" value="37"/>
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_JoumBMRCEeWKx5llftJWKg" presentation="default">
+            <element href="Hospital.uml#_Jo1TsMRCEeWKx5llftJWKg"/>
+          </semanticModel>
+          <contained xsi:type="di:GraphNode" xmi:id="_LaZ_AMRCEeWKx5llftJWKg" position="0,0" size="-1,-1">
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_LaZ_AcRCEeWKx5llftJWKg" presentation="default">
+              <element href="Hospital.uml#_Lae3gMRCEeWKx5llftJWKg"/>
+            </semanticModel>
+          </contained>
+          <contained xsi:type="di:GraphNode" xmi:id="_btsnUMRCEeWKx5llftJWKg" position="0,0" size="-1,-1">
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_bttOYMRCEeWKx5llftJWKg" presentation="default">
+              <element href="Hospital.uml#_btvqoMRCEeWKx5llftJWKg"/>
+            </semanticModel>
+          </contained>
+        </contained>
+        <contained xsi:type="di:GraphNode" xmi:id="_JoumBcRCEeWKx5llftJWKg">
+          <property xmi:id="_JoumBsRCEeWKx5llftJWKg" key="eStructuralFeatureID" value="47 50 "/>
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_JoumB8RCEeWKx5llftJWKg" presentation="default">
+            <element href="Hospital.uml#_Jo1TsMRCEeWKx5llftJWKg"/>
+          </semanticModel>
+          <contained xsi:type="di:GraphNode" xmi:id="_ewGoYMRCEeWKx5llftJWKg" position="0,0" size="-1,-1">
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_ewGoYcRCEeWKx5llftJWKg" presentation="default">
+              <element href="Hospital.uml#_ewMvAMRCEeWKx5llftJWKg"/>
+            </semanticModel>
+          </contained>
+        </contained>
+      </contained>
+      <contained xsi:type="di:GraphNode" xmi:id="_mSElAMRCEeWKx5llftJWKg" position="14,19" size="280,-1">
+        <anchorage xmi:id="_Ba_6IMRDEeWKx5llftJWKg" graphEdge="_BbFZsMRDEeWKx5llftJWKg _mBTIoMRDEeWKx5llftJWKg"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_mSElAcRCEeWKx5llftJWKg" presentation="default">
+          <element href="Hospital.uml#_mSOWAMRCEeWKx5llftJWKg"/>
+        </semanticModel>
+        <contained xsi:type="di:GraphNode" xmi:id="_mSElAsRCEeWKx5llftJWKg">
+          <property xmi:id="_mSElA8RCEeWKx5llftJWKg" key="eStructuralFeatureID" value="37"/>
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_mSElBMRCEeWKx5llftJWKg" presentation="default">
+            <element href="Hospital.uml#_mSOWAMRCEeWKx5llftJWKg"/>
+          </semanticModel>
+          <contained xsi:type="di:GraphNode" xmi:id="_nsGTAMRCEeWKx5llftJWKg" position="0,0" size="-1,-1">
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_nsGTAcRCEeWKx5llftJWKg" presentation="default">
+              <element href="Hospital.uml#_nsIIMMRCEeWKx5llftJWKg"/>
+            </semanticModel>
+          </contained>
+          <contained xsi:type="di:GraphNode" xmi:id="_qcCrEMRCEeWKx5llftJWKg" position="0,0" size="-1,-1">
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_qcCrEcRCEeWKx5llftJWKg" presentation="default">
+              <element href="Hospital.uml#_qcEgQMRCEeWKx5llftJWKg"/>
+            </semanticModel>
+          </contained>
+        </contained>
+        <contained xsi:type="di:GraphNode" xmi:id="_mSElBcRCEeWKx5llftJWKg">
+          <property xmi:id="_mSElBsRCEeWKx5llftJWKg" key="eStructuralFeatureID" value="47 50 "/>
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_mSElB8RCEeWKx5llftJWKg" presentation="default">
+            <element href="Hospital.uml#_mSOWAMRCEeWKx5llftJWKg"/>
+          </semanticModel>
+          <contained xsi:type="di:GraphNode" xmi:id="_gTJTAMRDEeWKx5llftJWKg" position="0,0" size="-1,-1">
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_gTJTAcRDEeWKx5llftJWKg" presentation="default">
+              <element href="Hospital.uml#_gTKhIMRDEeWKx5llftJWKg"/>
+            </semanticModel>
+          </contained>
+        </contained>
+      </contained>
+      <contained xsi:type="di:GraphNode" xmi:id="_vNFYMMRCEeWKx5llftJWKg" position="460,233" size="242,-1">
+        <anchorage xmi:id="_pDyCMMRDEeWKx5llftJWKg" graphEdge="_pD1skMRDEeWKx5llftJWKg"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_vNFYMcRCEeWKx5llftJWKg" presentation="default">
+          <element href="Hospital.uml#_vNOiIMRCEeWKx5llftJWKg"/>
+        </semanticModel>
+        <contained xsi:type="di:GraphNode" xmi:id="_vNFYMsRCEeWKx5llftJWKg">
+          <property xmi:id="_vNFYM8RCEeWKx5llftJWKg" key="eStructuralFeatureID" value="37"/>
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_vNFYNMRCEeWKx5llftJWKg" presentation="default">
+            <element href="Hospital.uml#_vNOiIMRCEeWKx5llftJWKg"/>
+          </semanticModel>
+        </contained>
+        <contained xsi:type="di:GraphNode" xmi:id="_vNFYNcRCEeWKx5llftJWKg">
+          <property xmi:id="_vNFYNsRCEeWKx5llftJWKg" key="eStructuralFeatureID" value="47 50 "/>
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_vNFYN8RCEeWKx5llftJWKg" presentation="default">
+            <element href="Hospital.uml#_vNOiIMRCEeWKx5llftJWKg"/>
+          </semanticModel>
+          <contained xsi:type="di:GraphNode" xmi:id="_wTu3MMRCEeWKx5llftJWKg" position="0,0" size="-1,-1">
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_wTu3McRCEeWKx5llftJWKg" presentation="default">
+              <element href="Hospital.uml#_wTwsYMRCEeWKx5llftJWKg"/>
+            </semanticModel>
+          </contained>
+          <contained xsi:type="di:GraphNode" xmi:id="_5ZpS0MRCEeWKx5llftJWKg" position="0,0" size="-1,-1">
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_5ZpS0cRCEeWKx5llftJWKg" presentation="default">
+              <element href="Hospital.uml#_5Zp54MRCEeWKx5llftJWKg"/>
+            </semanticModel>
+          </contained>
+        </contained>
+      </contained>
+      <contained xsi:type="di:GraphNode" xmi:id="_0yKKUMRCEeWKx5llftJWKg" position="104,244" size="100,-1">
+        <anchorage xmi:id="_Ba_6IcRDEeWKx5llftJWKg" graphEdge="_BbFZsMRDEeWKx5llftJWKg _pD1skMRDEeWKx5llftJWKg"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_0yKKUcRCEeWKx5llftJWKg" presentation="default">
+          <element href="Hospital.uml#_0yaB8MRCEeWKx5llftJWKg"/>
+        </semanticModel>
+        <contained xsi:type="di:GraphNode" xmi:id="_0yKKUsRCEeWKx5llftJWKg">
+          <property xmi:id="_0yKKU8RCEeWKx5llftJWKg" key="eStructuralFeatureID" value="37"/>
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_0yKKVMRCEeWKx5llftJWKg" presentation="default">
+            <element href="Hospital.uml#_0yaB8MRCEeWKx5llftJWKg"/>
+          </semanticModel>
+        </contained>
+        <contained xsi:type="di:GraphNode" xmi:id="_0yKKVcRCEeWKx5llftJWKg">
+          <property xmi:id="_0yKKVsRCEeWKx5llftJWKg" key="eStructuralFeatureID" value="47 50 "/>
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_0yKKV8RCEeWKx5llftJWKg" presentation="default">
+            <element href="Hospital.uml#_0yaB8MRCEeWKx5llftJWKg"/>
+          </semanticModel>
+        </contained>
+      </contained>
+      <contained xsi:type="di:GraphEdge" xmi:id="_BbFZsMRDEeWKx5llftJWKg" anchor="_Ba_6IMRDEeWKx5llftJWKg _Ba_6IcRDEeWKx5llftJWKg">
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_BbGAwMRDEeWKx5llftJWKg" presentation="default">
+          <element href="Hospital.uml#_BbPxwMRDEeWKx5llftJWKg"/>
+        </semanticModel>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_BbGAwcRDEeWKx5llftJWKg" id="srcNameEdgeObject" uDistance="11" vDistance="-10"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_BbGAwsRDEeWKx5llftJWKg" id="srcCountEdgeObject" uDistance="10" vDistance="11"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_BbGAw8RDEeWKx5llftJWKg" id="targetNameEdgeObject" uDistance="21" vDistance="-8"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_BbGAxMRDEeWKx5llftJWKg" id="targetCountEdgeObject" uDistance="9" vDistance="11"/>
+        <contained xsi:type="di:EdgeObjectOffset" xmi:id="_BbGAxcRDEeWKx5llftJWKg" visible="false" id="middleNameEdgeObject" offset="0,20"/>
+        <contained xsi:type="di:EdgeObjectOffset" xmi:id="_BbGAxsRDEeWKx5llftJWKg" visible="false" id="stereotypeEdgeObject"/>
+        <contained xsi:type="di:GraphNode" xmi:id="_BbGAx8RDEeWKx5llftJWKg" position="230,143" size="100,-1">
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_BbGAyMRDEeWKx5llftJWKg" presentation="default">
+            <element href="Hospital.uml#_BbPxwMRDEeWKx5llftJWKg"/>
+          </semanticModel>
+          <contained xsi:type="di:GraphNode" xmi:id="_BbGAycRDEeWKx5llftJWKg">
+            <property xmi:id="_BbGAysRDEeWKx5llftJWKg" key="eStructuralFeatureID" value="37"/>
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_BbGAy8RDEeWKx5llftJWKg" presentation="default">
+              <element href="Hospital.uml#_BbPxwMRDEeWKx5llftJWKg"/>
+            </semanticModel>
+            <contained xsi:type="di:GraphNode" xmi:id="_SfjnUMRDEeWKx5llftJWKg" position="0,0" size="-1,-1">
+              <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_SfjnUcRDEeWKx5llftJWKg" presentation="default">
+                <element href="Hospital.uml#_SflcgMRDEeWKx5llftJWKg"/>
+              </semanticModel>
+            </contained>
+            <contained xsi:type="di:GraphNode" xmi:id="_MnTJ4MybEeWUhI-tmoleQw" position="0,0" size="-1,-1">
+              <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_MnTJ4cybEeWUhI-tmoleQw" presentation="default">
+                <element href="Hospital.uml#_MnfXIMybEeWUhI-tmoleQw"/>
+              </semanticModel>
+            </contained>
+          </contained>
+          <contained xsi:type="di:GraphNode" xmi:id="_BbGAzMRDEeWKx5llftJWKg">
+            <property xmi:id="_BbGAzcRDEeWKx5llftJWKg" key="eStructuralFeatureID" value="47 50 "/>
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_BbGAzsRDEeWKx5llftJWKg" presentation="default">
+              <element href="Hospital.uml#_BbPxwMRDEeWKx5llftJWKg"/>
+            </semanticModel>
+            <contained xsi:type="di:GraphNode" xmi:id="_EYgNEMRDEeWKx5llftJWKg" position="0,0" size="-1,-1">
+              <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_EYgNEcRDEeWKx5llftJWKg" presentation="default">
+                <element href="Hospital.uml#_EYg0IMRDEeWKx5llftJWKg"/>
+              </semanticModel>
+            </contained>
+            <contained xsi:type="di:GraphNode" xmi:id="_JrVYoMRDEeWKx5llftJWKg" position="0,0" size="-1,-1">
+              <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_JrVYocRDEeWKx5llftJWKg" presentation="default">
+                <element href="Hospital.uml#_JrX04MRDEeWKx5llftJWKg"/>
+              </semanticModel>
+            </contained>
+            <contained xsi:type="di:GraphNode" xmi:id="_eaUcgMsPEeWkO9UiFG_vOw" position="0,0" size="-1,-1">
+              <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_eaUcgcsPEeWkO9UiFG_vOw" presentation="default">
+                <element href="Hospital.uml#_eaUcgssPEeWkO9UiFG_vOw"/>
+              </semanticModel>
+            </contained>
+          </contained>
+        </contained>
+      </contained>
+      <contained xsi:type="di:GraphEdge" xmi:id="_mBTIoMRDEeWKx5llftJWKg" anchor="_Ba_6IMRDEeWKx5llftJWKg _mBO3MMRDEeWKx5llftJWKg">
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_mBTIocRDEeWKx5llftJWKg" presentation="default">
+          <element href="Hospital.uml#_mBfV4MRDEeWKx5llftJWKg"/>
+        </semanticModel>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_mBTIosRDEeWKx5llftJWKg" id="srcNameEdgeObject" uDistance="10" vDistance="-10"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_mBTIo8RDEeWKx5llftJWKg" id="srcPropertiesEdgeObject" uDistance="25" vDistance="10"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_mBTIpMRDEeWKx5llftJWKg" id="srcCountEdgeObject" uDistance="9" vDistance="7"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_mBTIpcRDEeWKx5llftJWKg" id="targetNameEdgeObject" uDistance="12" vDistance="-17"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_mBTIpsRDEeWKx5llftJWKg" id="targetPropertiesEdgeObject" uDistance="25" vDistance="10"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_mBTIp8RDEeWKx5llftJWKg" id="targetCountEdgeObject" uDistance="11" vDistance="3"/>
+        <contained xsi:type="di:EdgeObjectOffset" xmi:id="_mBTIqMRDEeWKx5llftJWKg" id="middleNameEdgeObject" offset="0,10"/>
+        <contained xsi:type="di:EdgeObjectOffset" xmi:id="_mBTIqcRDEeWKx5llftJWKg" id="stereotypeEdgeObject" offset="0,-10"/>
+      </contained>
+      <contained xsi:type="di:GraphEdge" xmi:id="_pD1skMRDEeWKx5llftJWKg" anchor="_pDyCMMRDEeWKx5llftJWKg _Ba_6IcRDEeWKx5llftJWKg">
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_pD1skcRDEeWKx5llftJWKg" presentation="default">
+          <element href="Hospital.uml#_pD-2gMRDEeWKx5llftJWKg"/>
+        </semanticModel>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_pD1sksRDEeWKx5llftJWKg" id="srcNameEdgeObject" uDistance="10" vDistance="10"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_pD1sk8RDEeWKx5llftJWKg" visible="false" id="srcPropertiesEdgeObject" uDistance="25" vDistance="10"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_pD1slMRDEeWKx5llftJWKg" id="srcCountEdgeObject" uDistance="10" vDistance="-10"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_pD1slcRDEeWKx5llftJWKg" id="targetNameEdgeObject" uDistance="10" vDistance="10"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_pD1slsRDEeWKx5llftJWKg" id="targetPropertiesEdgeObject" uDistance="25" vDistance="10"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_pD1sl8RDEeWKx5llftJWKg" id="targetCountEdgeObject" uDistance="10" vDistance="-10"/>
+        <contained xsi:type="di:EdgeObjectOffset" xmi:id="_pD1smMRDEeWKx5llftJWKg" id="middleNameEdgeObject" offset="4,-10"/>
+        <contained xsi:type="di:EdgeObjectOffset" xmi:id="_pD1smcRDEeWKx5llftJWKg" id="stereotypeEdgeObject" offset="0,-10"/>
+      </contained>
+    </diagrams>
+  </subdiagrams>
+  <subdiagrams xmi:id="_PYfDYMq_EeWRnd7gJKXOgw">
+    <model href="Hospital.uml#_83Th8MRBEeWKx5llftJWKg"/>
+    <diagrams xmi:id="_PYfDYcq_EeWRnd7gJKXOgw" position="0,0" size="100,100" name="Policy" viewport="0,0">
+      <property xmi:id="_PYo0YMq_EeWRnd7gJKXOgw" key="pageFormatName" value="A4"/>
+      <property xmi:id="_PYo0Ycq_EeWRnd7gJKXOgw" key="diagramWidth" value="840"/>
+      <property xmi:id="_PYo0Ysq_EeWRnd7gJKXOgw" key="diagramHeight" value="1188"/>
+      <property xmi:id="_PYo0Y8q_EeWRnd7gJKXOgw" key="pageMarginName" value="Small Margin"/>
+      <property xmi:id="_PYo0ZMq_EeWRnd7gJKXOgw" key="diagramTopMargin" value="20"/>
+      <property xmi:id="_PYo0Zcq_EeWRnd7gJKXOgw" key="diagramBottomMargin" value="20"/>
+      <property xmi:id="_PYo0Zsq_EeWRnd7gJKXOgw" key="diagramLeftMargin" value="20"/>
+      <property xmi:id="_PYo0Z8q_EeWRnd7gJKXOgw" key="diagramRightMargin" value="20"/>
+      <property xmi:id="_PYo0aMq_EeWRnd7gJKXOgw" key="orientation" value="portrait"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_PYfDYsq_EeWRnd7gJKXOgw" presentation="org.topcased.modeler.uml.classdiagram">
+        <element href="Hospital.uml#_83Th8MRBEeWKx5llftJWKg"/>
+      </semanticModel>
+      <contained xsi:type="di:GraphNode" xmi:id="_W90dEMq_EeWRnd7gJKXOgw" position="83,76" size="150,120">
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_W90dEcq_EeWRnd7gJKXOgw" presentation="default">
+          <element href="Hospital.uml#_W99nAMq_EeWRnd7gJKXOgw"/>
+        </semanticModel>
+      </contained>
+      <contained xsi:type="di:GraphNode" xmi:id="_g3kJYMq_EeWRnd7gJKXOgw" position="329,79" size="150,120">
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_g3kJYcq_EeWRnd7gJKXOgw" presentation="default">
+          <element href="Hospital.uml#_g3kJYsq_EeWRnd7gJKXOgw"/>
+        </semanticModel>
+      </contained>
+    </diagrams>
+    <subdiagrams xmi:id="_Ys-tkMq_EeWRnd7gJKXOgw">
+      <model href="Hospital.uml#_W99nAMq_EeWRnd7gJKXOgw"/>
+      <diagrams xmi:id="_Ys-tkcq_EeWRnd7gJKXOgw" position="0,0" size="100,100" name="Roles" viewport="0,0">
+        <property xmi:id="_YtRogMq_EeWRnd7gJKXOgw" key="pageFormatName" value="A4"/>
+        <property xmi:id="_YtRogcq_EeWRnd7gJKXOgw" key="diagramWidth" value="840"/>
+        <property xmi:id="_YtRogsq_EeWRnd7gJKXOgw" key="diagramHeight" value="1188"/>
+        <property xmi:id="_YtRog8q_EeWRnd7gJKXOgw" key="pageMarginName" value="Small Margin"/>
+        <property xmi:id="_YtRohMq_EeWRnd7gJKXOgw" key="diagramTopMargin" value="20"/>
+        <property xmi:id="_YtRohcq_EeWRnd7gJKXOgw" key="diagramBottomMargin" value="20"/>
+        <property xmi:id="_YtRohsq_EeWRnd7gJKXOgw" key="diagramLeftMargin" value="20"/>
+        <property xmi:id="_YtRoh8q_EeWRnd7gJKXOgw" key="diagramRightMargin" value="20"/>
+        <property xmi:id="_YtRoiMq_EeWRnd7gJKXOgw" key="orientation" value="portrait"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_Ys-tksq_EeWRnd7gJKXOgw" presentation="org.topcased.modeler.uml.classdiagram">
+          <element href="Hospital.uml#_W99nAMq_EeWRnd7gJKXOgw"/>
+        </semanticModel>
+        <contained xsi:type="di:GraphNode" xmi:id="_ZH8yUMq_EeWRnd7gJKXOgw" position="44,37" size="84,-1">
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_ZH8yUcq_EeWRnd7gJKXOgw" presentation="default">
+            <element href="Hospital.uml#_PzT-MMq_EeWRnd7gJKXOgw"/>
+          </semanticModel>
+          <contained xsi:type="di:GraphNode" xmi:id="_ZH8yUsq_EeWRnd7gJKXOgw">
+            <property xmi:id="_ZH8yU8q_EeWRnd7gJKXOgw" key="eStructuralFeatureID" value="37"/>
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_ZH8yVMq_EeWRnd7gJKXOgw" presentation="default">
+              <element href="Hospital.uml#_PzT-MMq_EeWRnd7gJKXOgw"/>
+            </semanticModel>
+          </contained>
+          <contained xsi:type="di:GraphNode" xmi:id="_ZH8yVcq_EeWRnd7gJKXOgw">
+            <property xmi:id="_ZH8yVsq_EeWRnd7gJKXOgw" key="eStructuralFeatureID" value="47 50 "/>
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_ZH8yV8q_EeWRnd7gJKXOgw" presentation="default">
+              <element href="Hospital.uml#_PzT-MMq_EeWRnd7gJKXOgw"/>
+            </semanticModel>
+          </contained>
+        </contained>
+        <contained xsi:type="di:GraphNode" xmi:id="_ZpVBEMq_EeWRnd7gJKXOgw" position="233,32" size="103,-1">
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_ZpVBEcq_EeWRnd7gJKXOgw" presentation="default">
+            <element href="Hospital.uml#_SE4_QMq_EeWRnd7gJKXOgw"/>
+          </semanticModel>
+          <contained xsi:type="di:GraphNode" xmi:id="_ZpVBEsq_EeWRnd7gJKXOgw">
+            <property xmi:id="_ZpVBE8q_EeWRnd7gJKXOgw" key="eStructuralFeatureID" value="37"/>
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_ZpVBFMq_EeWRnd7gJKXOgw" presentation="default">
+              <element href="Hospital.uml#_SE4_QMq_EeWRnd7gJKXOgw"/>
+            </semanticModel>
+          </contained>
+          <contained xsi:type="di:GraphNode" xmi:id="_ZpVBFcq_EeWRnd7gJKXOgw">
+            <property xmi:id="_ZpVBFsq_EeWRnd7gJKXOgw" key="eStructuralFeatureID" value="47 50 "/>
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_ZpVBF8q_EeWRnd7gJKXOgw" presentation="default">
+              <element href="Hospital.uml#_SE4_QMq_EeWRnd7gJKXOgw"/>
+            </semanticModel>
+          </contained>
+        </contained>
+        <contained xsi:type="di:GraphNode" xmi:id="_CA3d0MrGEeWCOYB84Soz2Q" position="59,167" size="100,-1">
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_CA3d0crGEeWCOYB84Soz2Q" presentation="default">
+            <element href="Hospital.uml#_CBBO0MrGEeWCOYB84Soz2Q"/>
+          </semanticModel>
+          <contained xsi:type="di:GraphNode" xmi:id="_CA3d0srGEeWCOYB84Soz2Q">
+            <property xmi:id="_CA3d08rGEeWCOYB84Soz2Q" key="eStructuralFeatureID" value="37"/>
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_CA3d1MrGEeWCOYB84Soz2Q" presentation="default">
+              <element href="Hospital.uml#_CBBO0MrGEeWCOYB84Soz2Q"/>
+            </semanticModel>
+          </contained>
+          <contained xsi:type="di:GraphNode" xmi:id="_CA3d1crGEeWCOYB84Soz2Q">
+            <property xmi:id="_CA3d1srGEeWCOYB84Soz2Q" key="eStructuralFeatureID" value="47 50 "/>
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_CA3d18rGEeWCOYB84Soz2Q" presentation="default">
+              <element href="Hospital.uml#_CBBO0MrGEeWCOYB84Soz2Q"/>
+            </semanticModel>
+          </contained>
+        </contained>
+        <contained xsi:type="di:GraphNode" xmi:id="_DnrqoMrGEeWCOYB84Soz2Q" position="244,170" size="100,-1">
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_DnrqocrGEeWCOYB84Soz2Q" presentation="default">
+            <element href="Hospital.uml#_Dn1boMrGEeWCOYB84Soz2Q"/>
+          </semanticModel>
+          <contained xsi:type="di:GraphNode" xmi:id="_DnrqosrGEeWCOYB84Soz2Q">
+            <property xmi:id="_Dnrqo8rGEeWCOYB84Soz2Q" key="eStructuralFeatureID" value="37"/>
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_DnrqpMrGEeWCOYB84Soz2Q" presentation="default">
+              <element href="Hospital.uml#_Dn1boMrGEeWCOYB84Soz2Q"/>
+            </semanticModel>
+          </contained>
+          <contained xsi:type="di:GraphNode" xmi:id="_DnrqpcrGEeWCOYB84Soz2Q">
+            <property xmi:id="_DnrqpsrGEeWCOYB84Soz2Q" key="eStructuralFeatureID" value="47 50 "/>
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_Dnrqp8rGEeWCOYB84Soz2Q" presentation="default">
+              <element href="Hospital.uml#_Dn1boMrGEeWCOYB84Soz2Q"/>
+            </semanticModel>
+          </contained>
+        </contained>
+        <contained xsi:type="di:GraphNode" xmi:id="_FWQFQMrGEeWCOYB84Soz2Q" position="410,174" size="100,-1">
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_FWQFQcrGEeWCOYB84Soz2Q" presentation="default">
+            <element href="Hospital.uml#_FWZ2QMrGEeWCOYB84Soz2Q"/>
+          </semanticModel>
+          <contained xsi:type="di:GraphNode" xmi:id="_FWQFQsrGEeWCOYB84Soz2Q">
+            <property xmi:id="_FWQFQ8rGEeWCOYB84Soz2Q" key="eStructuralFeatureID" value="37"/>
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_FWQFRMrGEeWCOYB84Soz2Q" presentation="default">
+              <element href="Hospital.uml#_FWZ2QMrGEeWCOYB84Soz2Q"/>
+            </semanticModel>
+          </contained>
+          <contained xsi:type="di:GraphNode" xmi:id="_FWQFRcrGEeWCOYB84Soz2Q">
+            <property xmi:id="_FWQFRsrGEeWCOYB84Soz2Q" key="eStructuralFeatureID" value="47 50 "/>
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_FWQFR8rGEeWCOYB84Soz2Q" presentation="default">
+              <element href="Hospital.uml#_FWZ2QMrGEeWCOYB84Soz2Q"/>
+            </semanticModel>
+          </contained>
+        </contained>
+        <contained xsi:type="di:GraphNode" xmi:id="_GUPXgMrGEeWCOYB84Soz2Q" position="50,285" size="100,-1">
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_GUPXgcrGEeWCOYB84Soz2Q" presentation="default">
+            <element href="Hospital.uml#_GUPXiMrGEeWCOYB84Soz2Q"/>
+          </semanticModel>
+          <contained xsi:type="di:GraphNode" xmi:id="_GUPXgsrGEeWCOYB84Soz2Q">
+            <property xmi:id="_GUPXg8rGEeWCOYB84Soz2Q" key="eStructuralFeatureID" value="37"/>
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_GUPXhMrGEeWCOYB84Soz2Q" presentation="default">
+              <element href="Hospital.uml#_GUPXiMrGEeWCOYB84Soz2Q"/>
+            </semanticModel>
+          </contained>
+          <contained xsi:type="di:GraphNode" xmi:id="_GUPXhcrGEeWCOYB84Soz2Q">
+            <property xmi:id="_GUPXhsrGEeWCOYB84Soz2Q" key="eStructuralFeatureID" value="47 50 "/>
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_GUPXh8rGEeWCOYB84Soz2Q" presentation="default">
+              <element href="Hospital.uml#_GUPXiMrGEeWCOYB84Soz2Q"/>
+            </semanticModel>
+          </contained>
+        </contained>
+      </diagrams>
+    </subdiagrams>
+    <subdiagrams xmi:id="_iVvXkMq_EeWRnd7gJKXOgw">
+      <model href="Hospital.uml#_g3kJYsq_EeWRnd7gJKXOgw"/>
+      <diagrams xmi:id="_iVvXkcq_EeWRnd7gJKXOgw" position="0,0" size="100,100" name="Permissions" viewport="0,0">
+        <property xmi:id="_iV5IkMq_EeWRnd7gJKXOgw" key="pageFormatName" value="A4"/>
+        <property xmi:id="_iV5Ikcq_EeWRnd7gJKXOgw" key="diagramWidth" value="840"/>
+        <property xmi:id="_iV5Iksq_EeWRnd7gJKXOgw" key="diagramHeight" value="1188"/>
+        <property xmi:id="_iV5Ik8q_EeWRnd7gJKXOgw" key="pageMarginName" value="Small Margin"/>
+        <property xmi:id="_iV5IlMq_EeWRnd7gJKXOgw" key="diagramTopMargin" value="20"/>
+        <property xmi:id="_iV5Ilcq_EeWRnd7gJKXOgw" key="diagramBottomMargin" value="20"/>
+        <property xmi:id="_iV5Ilsq_EeWRnd7gJKXOgw" key="diagramLeftMargin" value="20"/>
+        <property xmi:id="_iV5Il8q_EeWRnd7gJKXOgw" key="diagramRightMargin" value="20"/>
+        <property xmi:id="_iV5ImMq_EeWRnd7gJKXOgw" key="orientation" value="portrait"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_iVvXksq_EeWRnd7gJKXOgw" presentation="org.topcased.modeler.uml.classdiagram">
+          <element href="Hospital.uml#_g3kJYsq_EeWRnd7gJKXOgw"/>
+        </semanticModel>
+        <contained xsi:type="di:GraphNode" xmi:id="_QFEnIMrAEeWRnd7gJKXOgw" position="119,83" size="104,-1">
+          <anchorage xmi:id="_iBsIQMrBEeWRnd7gJKXOgw" graphEdge="_iB1SMcrBEeWRnd7gJKXOgw _hBQMscrGEeWCOYB84Soz2Q _iFf38crGEeWCOYB84Soz2Q"/>
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_QFEnIcrAEeWRnd7gJKXOgw" presentation="default">
+            <element href="Hospital.uml#_SE4_QMq_EeWRnd7gJKXOgw"/>
+          </semanticModel>
+          <contained xsi:type="di:GraphNode" xmi:id="_QFEnIsrAEeWRnd7gJKXOgw">
+            <property xmi:id="_QFEnI8rAEeWRnd7gJKXOgw" key="eStructuralFeatureID" value="37"/>
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_QFEnJMrAEeWRnd7gJKXOgw" presentation="default">
+              <element href="Hospital.uml#_SE4_QMq_EeWRnd7gJKXOgw"/>
+            </semanticModel>
+          </contained>
+          <contained xsi:type="di:GraphNode" xmi:id="_QFEnJcrAEeWRnd7gJKXOgw">
+            <property xmi:id="_QFEnJsrAEeWRnd7gJKXOgw" key="eStructuralFeatureID" value="47 50 "/>
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_QFEnJ8rAEeWRnd7gJKXOgw" presentation="default">
+              <element href="Hospital.uml#_SE4_QMq_EeWRnd7gJKXOgw"/>
+            </semanticModel>
+          </contained>
+        </contained>
+        <contained xsi:type="di:GraphNode" xmi:id="_FB5YIMrBEeWRnd7gJKXOgw" position="483,69" size="143,-1">
+          <anchorage xmi:id="_iB1SMMrBEeWRnd7gJKXOgw" graphEdge="_iB1SMcrBEeWRnd7gJKXOgw"/>
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_FB5YIcrBEeWRnd7gJKXOgw" presentation="default">
+            <element href="Hospital.uml#_FB5YKMrBEeWRnd7gJKXOgw"/>
+          </semanticModel>
+          <contained xsi:type="di:GraphNode" xmi:id="_FB5YIsrBEeWRnd7gJKXOgw">
+            <property xmi:id="_FB5YI8rBEeWRnd7gJKXOgw" key="eStructuralFeatureID" value="37"/>
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_FB5YJMrBEeWRnd7gJKXOgw" presentation="default">
+              <element href="Hospital.uml#_FB5YKMrBEeWRnd7gJKXOgw"/>
+            </semanticModel>
+          </contained>
+          <contained xsi:type="di:GraphNode" xmi:id="_FB5YJcrBEeWRnd7gJKXOgw">
+            <property xmi:id="_FB5YJsrBEeWRnd7gJKXOgw" key="eStructuralFeatureID" value="47 50 "/>
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_FB5YJ8rBEeWRnd7gJKXOgw" presentation="default">
+              <element href="Hospital.uml#_FB5YKMrBEeWRnd7gJKXOgw"/>
+            </semanticModel>
+            <contained xsi:type="di:GraphNode" xmi:id="_ObTXgMrBEeWRnd7gJKXOgw" position="0,0" size="-1,-1">
+              <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_ObTXgcrBEeWRnd7gJKXOgw" presentation="default">
+                <element href="Hospital.uml#_Obm5gMrBEeWRnd7gJKXOgw"/>
+              </semanticModel>
+            </contained>
+            <contained xsi:type="di:GraphNode" xmi:id="_X6E_EMrBEeWRnd7gJKXOgw" position="0,0" size="-1,-1">
+              <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_X6E_EcrBEeWRnd7gJKXOgw" presentation="default">
+                <element href="Hospital.uml#_X6E_EsrBEeWRnd7gJKXOgw"/>
+              </semanticModel>
+            </contained>
+            <contained xsi:type="di:GraphNode" xmi:id="_TJEnMMsOEeWkO9UiFG_vOw" position="0,0" size="-1,-1">
+              <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_TJEnMcsOEeWkO9UiFG_vOw" presentation="default">
+                <element href="Hospital.uml#_TJXiIMsOEeWkO9UiFG_vOw"/>
+              </semanticModel>
+            </contained>
+          </contained>
+        </contained>
+        <contained xsi:type="di:GraphEdge" xmi:id="_iB1SMcrBEeWRnd7gJKXOgw" anchor="_iBsIQMrBEeWRnd7gJKXOgw _iB1SMMrBEeWRnd7gJKXOgw">
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_iB1SMsrBEeWRnd7gJKXOgw" presentation="default">
+            <element href="Hospital.uml#_iB1SQcrBEeWRnd7gJKXOgw"/>
+          </semanticModel>
+          <contained xsi:type="di:EdgeObjectUV" xmi:id="_iB1SM8rBEeWRnd7gJKXOgw" visible="false" id="srcNameEdgeObject" uDistance="10" vDistance="10"/>
+          <contained xsi:type="di:EdgeObjectUV" xmi:id="_iB1SNMrBEeWRnd7gJKXOgw" visible="false" id="srcCountEdgeObject" uDistance="10" vDistance="-10"/>
+          <contained xsi:type="di:EdgeObjectUV" xmi:id="_iB1SNcrBEeWRnd7gJKXOgw" visible="false" id="targetNameEdgeObject" uDistance="10" vDistance="10"/>
+          <contained xsi:type="di:EdgeObjectUV" xmi:id="_iB1SNsrBEeWRnd7gJKXOgw" visible="false" id="targetCountEdgeObject" uDistance="10" vDistance="-10"/>
+          <contained xsi:type="di:EdgeObjectOffset" xmi:id="_iB1SN8rBEeWRnd7gJKXOgw" visible="false" id="middleNameEdgeObject" offset="0,20"/>
+          <contained xsi:type="di:EdgeObjectOffset" xmi:id="_iB1SOMrBEeWRnd7gJKXOgw" visible="false" id="stereotypeEdgeObject"/>
+          <contained xsi:type="di:GraphNode" xmi:id="_iB1SOcrBEeWRnd7gJKXOgw" position="226,12" size="100,-1">
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_iB1SOsrBEeWRnd7gJKXOgw" presentation="default">
+              <element href="Hospital.uml#_iB1SQcrBEeWRnd7gJKXOgw"/>
+            </semanticModel>
+            <contained xsi:type="di:GraphNode" xmi:id="_iB1SO8rBEeWRnd7gJKXOgw">
+              <property xmi:id="_iB1SPMrBEeWRnd7gJKXOgw" key="eStructuralFeatureID" value="37"/>
+              <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_iB1SPcrBEeWRnd7gJKXOgw" presentation="default">
+                <element href="Hospital.uml#_iB1SQcrBEeWRnd7gJKXOgw"/>
+              </semanticModel>
+            </contained>
+            <contained xsi:type="di:GraphNode" xmi:id="_iB1SPsrBEeWRnd7gJKXOgw">
+              <property xmi:id="_iB1SP8rBEeWRnd7gJKXOgw" key="eStructuralFeatureID" value="47 50 "/>
+              <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_iB1SQMrBEeWRnd7gJKXOgw" presentation="default">
+                <element href="Hospital.uml#_iB1SQcrBEeWRnd7gJKXOgw"/>
+              </semanticModel>
+              <contained xsi:type="di:GraphNode" xmi:id="_obUj0MrBEeWRnd7gJKXOgw" position="0,0" size="-1,-1">
+                <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_obUj0crBEeWRnd7gJKXOgw" presentation="default">
+                  <element href="Hospital.uml#_obUj0srBEeWRnd7gJKXOgw"/>
+                </semanticModel>
+              </contained>
+              <contained xsi:type="di:GraphNode" xmi:id="_qAWA4MrBEeWRnd7gJKXOgw" position="0,0" size="-1,-1">
+                <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_qAWA4crBEeWRnd7gJKXOgw" presentation="default">
+                  <element href="Hospital.uml#_qAWA4srBEeWRnd7gJKXOgw"/>
+                </semanticModel>
+              </contained>
+              <contained xsi:type="di:GraphNode" xmi:id="_U9S94MsOEeWkO9UiFG_vOw" position="0,0" size="-1,-1">
+                <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_U9S94csOEeWkO9UiFG_vOw" presentation="default">
+                  <element href="Hospital.uml#_U9S94ssOEeWkO9UiFG_vOw"/>
+                </semanticModel>
+              </contained>
+            </contained>
+          </contained>
+        </contained>
+        <contained xsi:type="di:GraphNode" xmi:id="_fx_PIMrEEeWfR5EjY9mL-A" position="117,212" size="90,-1">
+          <anchorage xmi:id="_zWXNsMrEEeWCOYB84Soz2Q" graphEdge="_zWXNssrEEeWCOYB84Soz2Q _ilF-AcrGEeWCOYB84Soz2Q _jKDFMcrGEeWCOYB84Soz2Q"/>
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_fx_PIcrEEeWfR5EjY9mL-A" presentation="default">
+            <element href="Hospital.uml#_PzT-MMq_EeWRnd7gJKXOgw"/>
+          </semanticModel>
+          <contained xsi:type="di:GraphNode" xmi:id="_fx_PIsrEEeWfR5EjY9mL-A">
+            <property xmi:id="_fx_PI8rEEeWfR5EjY9mL-A" key="eStructuralFeatureID" value="37"/>
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_fx_PJMrEEeWfR5EjY9mL-A" presentation="default">
+              <element href="Hospital.uml#_PzT-MMq_EeWRnd7gJKXOgw"/>
+            </semanticModel>
+          </contained>
+          <contained xsi:type="di:GraphNode" xmi:id="_fx_PJcrEEeWfR5EjY9mL-A">
+            <property xmi:id="_fx_PJsrEEeWfR5EjY9mL-A" key="eStructuralFeatureID" value="47 50 "/>
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_fx_PJ8rEEeWfR5EjY9mL-A" presentation="default">
+              <element href="Hospital.uml#_PzT-MMq_EeWRnd7gJKXOgw"/>
+            </semanticModel>
+          </contained>
+        </contained>
+        <contained xsi:type="di:GraphNode" xmi:id="_gUHr0MrEEeWfR5EjY9mL-A" position="485,204" size="199,-1">
+          <anchorage xmi:id="_zWXNscrEEeWCOYB84Soz2Q" graphEdge="_zWXNssrEEeWCOYB84Soz2Q"/>
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_gUHr0crEEeWfR5EjY9mL-A" presentation="default">
+            <element href="Hospital.uml#_Jo1TsMRCEeWKx5llftJWKg"/>
+          </semanticModel>
+          <contained xsi:type="di:GraphNode" xmi:id="_gUHr0srEEeWfR5EjY9mL-A">
+            <property xmi:id="_gUHr08rEEeWfR5EjY9mL-A" key="eStructuralFeatureID" value="37"/>
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_gUHr1MrEEeWfR5EjY9mL-A" presentation="default">
+              <element href="Hospital.uml#_Jo1TsMRCEeWKx5llftJWKg"/>
+            </semanticModel>
+            <contained xsi:type="di:GraphNode" xmi:id="_ghO6wMrEEeWfR5EjY9mL-A" position="0,0" size="-1,-1">
+              <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_ghO6wcrEEeWfR5EjY9mL-A" presentation="default">
+                <element href="Hospital.uml#_Lae3gMRCEeWKx5llftJWKg"/>
+              </semanticModel>
+            </contained>
+            <contained xsi:type="di:GraphNode" xmi:id="_ghO6wsrEEeWfR5EjY9mL-A" position="0,0" size="-1,-1">
+              <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_ghO6w8rEEeWfR5EjY9mL-A" presentation="default">
+                <element href="Hospital.uml#_btvqoMRCEeWKx5llftJWKg"/>
+              </semanticModel>
+            </contained>
+          </contained>
+          <contained xsi:type="di:GraphNode" xmi:id="_gUHr1crEEeWfR5EjY9mL-A">
+            <property xmi:id="_gUHr1srEEeWfR5EjY9mL-A" key="eStructuralFeatureID" value="47 50 "/>
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_gUHr18rEEeWfR5EjY9mL-A" presentation="default">
+              <element href="Hospital.uml#_Jo1TsMRCEeWKx5llftJWKg"/>
+            </semanticModel>
+            <contained xsi:type="di:GraphNode" xmi:id="_ghYEsMrEEeWfR5EjY9mL-A" position="0,0" size="-1,-1">
+              <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_ghYEscrEEeWfR5EjY9mL-A" presentation="default">
+                <element href="Hospital.uml#_ewMvAMRCEeWKx5llftJWKg"/>
+              </semanticModel>
+            </contained>
+          </contained>
+        </contained>
+        <contained xsi:type="di:GraphEdge" xmi:id="_zWXNssrEEeWCOYB84Soz2Q" anchor="_zWXNsMrEEeWCOYB84Soz2Q _zWXNscrEEeWCOYB84Soz2Q">
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_zWXNs8rEEeWCOYB84Soz2Q" presentation="default">
+            <element href="Hospital.uml#_zWXNwsrEEeWCOYB84Soz2Q"/>
+          </semanticModel>
+          <contained xsi:type="di:EdgeObjectUV" xmi:id="_zWXNtMrEEeWCOYB84Soz2Q" visible="false" id="srcNameEdgeObject" uDistance="10" vDistance="10"/>
+          <contained xsi:type="di:EdgeObjectUV" xmi:id="_zWXNtcrEEeWCOYB84Soz2Q" visible="false" id="srcCountEdgeObject" uDistance="10" vDistance="-10"/>
+          <contained xsi:type="di:EdgeObjectUV" xmi:id="_zWXNtsrEEeWCOYB84Soz2Q" visible="false" id="targetNameEdgeObject" uDistance="10" vDistance="10"/>
+          <contained xsi:type="di:EdgeObjectUV" xmi:id="_zWXNt8rEEeWCOYB84Soz2Q" visible="false" id="targetCountEdgeObject" uDistance="10" vDistance="-10"/>
+          <contained xsi:type="di:EdgeObjectOffset" xmi:id="_zWXNuMrEEeWCOYB84Soz2Q" visible="false" id="middleNameEdgeObject" offset="0,20"/>
+          <contained xsi:type="di:EdgeObjectOffset" xmi:id="_zWXNucrEEeWCOYB84Soz2Q" visible="false" id="stereotypeEdgeObject"/>
+          <contained xsi:type="di:GraphNode" xmi:id="_zWXNusrEEeWCOYB84Soz2Q" position="256,190" size="100,-1">
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_zWXNu8rEEeWCOYB84Soz2Q" presentation="default">
+              <element href="Hospital.uml#_zWXNwsrEEeWCOYB84Soz2Q"/>
+            </semanticModel>
+            <contained xsi:type="di:GraphNode" xmi:id="_zWXNvMrEEeWCOYB84Soz2Q">
+              <property xmi:id="_zWXNvcrEEeWCOYB84Soz2Q" key="eStructuralFeatureID" value="37"/>
+              <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_zWXNvsrEEeWCOYB84Soz2Q" presentation="default">
+                <element href="Hospital.uml#_zWXNwsrEEeWCOYB84Soz2Q"/>
+              </semanticModel>
+            </contained>
+            <contained xsi:type="di:GraphNode" xmi:id="_zWXNv8rEEeWCOYB84Soz2Q">
+              <property xmi:id="_zWXNwMrEEeWCOYB84Soz2Q" key="eStructuralFeatureID" value="47 50 "/>
+              <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_zWXNwcrEEeWCOYB84Soz2Q" presentation="default">
+                <element href="Hospital.uml#_zWXNwsrEEeWCOYB84Soz2Q"/>
+              </semanticModel>
+              <contained xsi:type="di:GraphNode" xmi:id="_2u4BoMrEEeWCOYB84Soz2Q" position="0,0" size="-1,-1">
+                <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_2u4BocrEEeWCOYB84Soz2Q" presentation="default">
+                  <element href="Hospital.uml#_2u4BosrEEeWCOYB84Soz2Q"/>
+                </semanticModel>
+              </contained>
+            </contained>
+          </contained>
+        </contained>
+        <contained xsi:type="di:GraphNode" xmi:id="_P6xM4MrGEeWCOYB84Soz2Q" position="14,218" size="65,-1">
+          <anchorage xmi:id="_jKDFMMrGEeWCOYB84Soz2Q" graphEdge="_jKDFMcrGEeWCOYB84Soz2Q"/>
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_P6xM4crGEeWCOYB84Soz2Q" presentation="default">
+            <element href="Hospital.uml#_GUPXiMrGEeWCOYB84Soz2Q"/>
+          </semanticModel>
+          <contained xsi:type="di:GraphNode" xmi:id="_P6xM4srGEeWCOYB84Soz2Q">
+            <property xmi:id="_P6xM48rGEeWCOYB84Soz2Q" key="eStructuralFeatureID" value="37"/>
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_P6xM5MrGEeWCOYB84Soz2Q" presentation="default">
+              <element href="Hospital.uml#_GUPXiMrGEeWCOYB84Soz2Q"/>
+            </semanticModel>
+          </contained>
+          <contained xsi:type="di:GraphNode" xmi:id="_P6xM5crGEeWCOYB84Soz2Q">
+            <property xmi:id="_P6xM5srGEeWCOYB84Soz2Q" key="eStructuralFeatureID" value="47 50 "/>
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_P6xM58rGEeWCOYB84Soz2Q" presentation="default">
+              <element href="Hospital.uml#_GUPXiMrGEeWCOYB84Soz2Q"/>
+            </semanticModel>
+          </contained>
+        </contained>
+        <contained xsi:type="di:GraphNode" xmi:id="_ThbxkMrGEeWCOYB84Soz2Q" position="14,91" size="65,-1">
+          <anchorage xmi:id="_iFf38MrGEeWCOYB84Soz2Q" graphEdge="_iFf38crGEeWCOYB84Soz2Q"/>
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_ThbxkcrGEeWCOYB84Soz2Q" presentation="default">
+            <element href="Hospital.uml#_FWZ2QMrGEeWCOYB84Soz2Q"/>
+          </semanticModel>
+          <contained xsi:type="di:GraphNode" xmi:id="_ThbxksrGEeWCOYB84Soz2Q">
+            <property xmi:id="_Thbxk8rGEeWCOYB84Soz2Q" key="eStructuralFeatureID" value="37"/>
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_ThbxlMrGEeWCOYB84Soz2Q" presentation="default">
+              <element href="Hospital.uml#_FWZ2QMrGEeWCOYB84Soz2Q"/>
+            </semanticModel>
+          </contained>
+          <contained xsi:type="di:GraphNode" xmi:id="_ThbxlcrGEeWCOYB84Soz2Q">
+            <property xmi:id="_ThbxlsrGEeWCOYB84Soz2Q" key="eStructuralFeatureID" value="47 50 "/>
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_Thbxl8rGEeWCOYB84Soz2Q" presentation="default">
+              <element href="Hospital.uml#_FWZ2QMrGEeWCOYB84Soz2Q"/>
+            </semanticModel>
+          </contained>
+        </contained>
+        <contained xsi:type="di:GraphNode" xmi:id="_T1jAYMrGEeWCOYB84Soz2Q" position="14,156" size="66,-1">
+          <anchorage xmi:id="_ilF-AMrGEeWCOYB84Soz2Q" graphEdge="_ilF-AcrGEeWCOYB84Soz2Q"/>
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_T1jAYcrGEeWCOYB84Soz2Q" presentation="default">
+            <element href="Hospital.uml#_Dn1boMrGEeWCOYB84Soz2Q"/>
+          </semanticModel>
+          <contained xsi:type="di:GraphNode" xmi:id="_T1jAYsrGEeWCOYB84Soz2Q">
+            <property xmi:id="_T1jAY8rGEeWCOYB84Soz2Q" key="eStructuralFeatureID" value="37"/>
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_T1jAZMrGEeWCOYB84Soz2Q" presentation="default">
+              <element href="Hospital.uml#_Dn1boMrGEeWCOYB84Soz2Q"/>
+            </semanticModel>
+          </contained>
+          <contained xsi:type="di:GraphNode" xmi:id="_T1jAZcrGEeWCOYB84Soz2Q">
+            <property xmi:id="_T1jAZsrGEeWCOYB84Soz2Q" key="eStructuralFeatureID" value="47 50 "/>
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_T1jAZ8rGEeWCOYB84Soz2Q" presentation="default">
+              <element href="Hospital.uml#_Dn1boMrGEeWCOYB84Soz2Q"/>
+            </semanticModel>
+          </contained>
+        </contained>
+        <contained xsi:type="di:GraphNode" xmi:id="_UMDb4MrGEeWCOYB84Soz2Q" position="14,28" size="65,-1">
+          <anchorage xmi:id="_hBQMsMrGEeWCOYB84Soz2Q" graphEdge="_hBQMscrGEeWCOYB84Soz2Q"/>
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_UMDb4crGEeWCOYB84Soz2Q" presentation="default">
+            <element href="Hospital.uml#_CBBO0MrGEeWCOYB84Soz2Q"/>
+          </semanticModel>
+          <contained xsi:type="di:GraphNode" xmi:id="_UMDb4srGEeWCOYB84Soz2Q">
+            <property xmi:id="_UMDb48rGEeWCOYB84Soz2Q" key="eStructuralFeatureID" value="37"/>
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_UMDb5MrGEeWCOYB84Soz2Q" presentation="default">
+              <element href="Hospital.uml#_CBBO0MrGEeWCOYB84Soz2Q"/>
+            </semanticModel>
+          </contained>
+          <contained xsi:type="di:GraphNode" xmi:id="_UMDb5crGEeWCOYB84Soz2Q">
+            <property xmi:id="_UMDb5srGEeWCOYB84Soz2Q" key="eStructuralFeatureID" value="47 50 "/>
+            <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_UMDb58rGEeWCOYB84Soz2Q" presentation="default">
+              <element href="Hospital.uml#_CBBO0MrGEeWCOYB84Soz2Q"/>
+            </semanticModel>
+          </contained>
+        </contained>
+        <contained xsi:type="di:GraphEdge" xmi:id="_hBQMscrGEeWCOYB84Soz2Q" anchor="_hBQMsMrGEeWCOYB84Soz2Q _iBsIQMrBEeWRnd7gJKXOgw">
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_hBQMssrGEeWCOYB84Soz2Q" presentation="default">
+            <element href="Hospital.uml#_hBQMu8rGEeWCOYB84Soz2Q"/>
+          </semanticModel>
+          <contained xsi:type="di:EdgeObjectUV" xmi:id="_hBQMs8rGEeWCOYB84Soz2Q" visible="false" id="srcNameEdgeObject" uDistance="10" vDistance="10"/>
+          <contained xsi:type="di:EdgeObjectUV" xmi:id="_hBQMtMrGEeWCOYB84Soz2Q" visible="false" id="srcPropertiesEdgeObject" uDistance="25" vDistance="10"/>
+          <contained xsi:type="di:EdgeObjectUV" xmi:id="_hBQMtcrGEeWCOYB84Soz2Q" visible="false" id="srcCountEdgeObject" uDistance="10" vDistance="-10"/>
+          <contained xsi:type="di:EdgeObjectUV" xmi:id="_hBQMtsrGEeWCOYB84Soz2Q" visible="false" id="targetNameEdgeObject" uDistance="10" vDistance="10"/>
+          <contained xsi:type="di:EdgeObjectUV" xmi:id="_hBQMt8rGEeWCOYB84Soz2Q" visible="false" id="targetPropertiesEdgeObject" uDistance="25" vDistance="10"/>
+          <contained xsi:type="di:EdgeObjectUV" xmi:id="_hBQMuMrGEeWCOYB84Soz2Q" visible="false" id="targetCountEdgeObject" uDistance="10" vDistance="-10"/>
+          <contained xsi:type="di:EdgeObjectOffset" xmi:id="_hBQMucrGEeWCOYB84Soz2Q" visible="false" id="middleNameEdgeObject" offset="0,10"/>
+          <contained xsi:type="di:EdgeObjectOffset" xmi:id="_hBQMusrGEeWCOYB84Soz2Q" visible="false" id="stereotypeEdgeObject" offset="0,-10"/>
+        </contained>
+        <contained xsi:type="di:GraphEdge" xmi:id="_iFf38crGEeWCOYB84Soz2Q" anchor="_iFf38MrGEeWCOYB84Soz2Q _iBsIQMrBEeWRnd7gJKXOgw">
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_iFf38srGEeWCOYB84Soz2Q" presentation="default">
+            <element href="Hospital.uml#_iFpo8MrGEeWCOYB84Soz2Q"/>
+          </semanticModel>
+          <contained xsi:type="di:EdgeObjectUV" xmi:id="_iFf388rGEeWCOYB84Soz2Q" visible="false" id="srcNameEdgeObject" uDistance="10" vDistance="10"/>
+          <contained xsi:type="di:EdgeObjectUV" xmi:id="_iFf39MrGEeWCOYB84Soz2Q" id="srcPropertiesEdgeObject" uDistance="25" vDistance="10"/>
+          <contained xsi:type="di:EdgeObjectUV" xmi:id="_iFf39crGEeWCOYB84Soz2Q" visible="false" id="srcCountEdgeObject" uDistance="10" vDistance="-10"/>
+          <contained xsi:type="di:EdgeObjectUV" xmi:id="_iFf39srGEeWCOYB84Soz2Q" visible="false" id="targetNameEdgeObject" uDistance="5"/>
+          <contained xsi:type="di:EdgeObjectUV" xmi:id="_iFf398rGEeWCOYB84Soz2Q" visible="false" id="targetPropertiesEdgeObject" uDistance="25" vDistance="10"/>
+          <contained xsi:type="di:EdgeObjectUV" xmi:id="_iFf3-MrGEeWCOYB84Soz2Q" visible="false" id="targetCountEdgeObject" uDistance="10" vDistance="-10"/>
+          <contained xsi:type="di:EdgeObjectOffset" xmi:id="_iFf3-crGEeWCOYB84Soz2Q" visible="false" id="middleNameEdgeObject" offset="3,-32"/>
+          <contained xsi:type="di:EdgeObjectOffset" xmi:id="_iFf3-srGEeWCOYB84Soz2Q" visible="false" id="stereotypeEdgeObject" offset="0,-10"/>
+        </contained>
+        <contained xsi:type="di:GraphEdge" xmi:id="_ilF-AcrGEeWCOYB84Soz2Q" anchor="_ilF-AMrGEeWCOYB84Soz2Q _zWXNsMrEEeWCOYB84Soz2Q">
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_ilF-AsrGEeWCOYB84Soz2Q" presentation="default">
+            <element href="Hospital.uml#_ilPvAMrGEeWCOYB84Soz2Q"/>
+          </semanticModel>
+          <contained xsi:type="di:EdgeObjectUV" xmi:id="_ilF-A8rGEeWCOYB84Soz2Q" visible="false" id="srcNameEdgeObject" uDistance="10" vDistance="10"/>
+          <contained xsi:type="di:EdgeObjectUV" xmi:id="_ilF-BMrGEeWCOYB84Soz2Q" visible="false" id="srcPropertiesEdgeObject" uDistance="25" vDistance="10"/>
+          <contained xsi:type="di:EdgeObjectUV" xmi:id="_ilF-BcrGEeWCOYB84Soz2Q" visible="false" id="srcCountEdgeObject" uDistance="10" vDistance="-10"/>
+          <contained xsi:type="di:EdgeObjectUV" xmi:id="_ilF-BsrGEeWCOYB84Soz2Q" visible="false" id="targetNameEdgeObject" uDistance="13" vDistance="5"/>
+          <contained xsi:type="di:EdgeObjectUV" xmi:id="_ilF-B8rGEeWCOYB84Soz2Q" visible="false" id="targetPropertiesEdgeObject" uDistance="25" vDistance="10"/>
+          <contained xsi:type="di:EdgeObjectUV" xmi:id="_ilF-CMrGEeWCOYB84Soz2Q" visible="false" id="targetCountEdgeObject" uDistance="10" vDistance="-10"/>
+          <contained xsi:type="di:EdgeObjectOffset" xmi:id="_ilF-CcrGEeWCOYB84Soz2Q" visible="false" id="middleNameEdgeObject" offset="17,-61"/>
+          <contained xsi:type="di:EdgeObjectOffset" xmi:id="_ilF-CsrGEeWCOYB84Soz2Q" visible="false" id="stereotypeEdgeObject" offset="0,-10"/>
+        </contained>
+        <contained xsi:type="di:GraphEdge" xmi:id="_jKDFMcrGEeWCOYB84Soz2Q" anchor="_jKDFMMrGEeWCOYB84Soz2Q _zWXNsMrEEeWCOYB84Soz2Q">
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_jKDFMsrGEeWCOYB84Soz2Q" presentation="default">
+            <element href="Hospital.uml#_jKDFO8rGEeWCOYB84Soz2Q"/>
+          </semanticModel>
+          <contained xsi:type="di:EdgeObjectUV" xmi:id="_jKDFM8rGEeWCOYB84Soz2Q" visible="false" id="srcNameEdgeObject" uDistance="10" vDistance="10"/>
+          <contained xsi:type="di:EdgeObjectUV" xmi:id="_jKDFNMrGEeWCOYB84Soz2Q" visible="false" id="srcPropertiesEdgeObject" uDistance="25" vDistance="10"/>
+          <contained xsi:type="di:EdgeObjectUV" xmi:id="_jKDFNcrGEeWCOYB84Soz2Q" visible="false" id="srcCountEdgeObject" uDistance="10" vDistance="-10"/>
+          <contained xsi:type="di:EdgeObjectUV" xmi:id="_jKDFNsrGEeWCOYB84Soz2Q" visible="false" id="targetNameEdgeObject" uDistance="10" vDistance="10"/>
+          <contained xsi:type="di:EdgeObjectUV" xmi:id="_jKDFN8rGEeWCOYB84Soz2Q" id="targetPropertiesEdgeObject" uDistance="25" vDistance="10"/>
+          <contained xsi:type="di:EdgeObjectUV" xmi:id="_jKDFOMrGEeWCOYB84Soz2Q" visible="false" id="targetCountEdgeObject" uDistance="10" vDistance="-10"/>
+          <contained xsi:type="di:EdgeObjectOffset" xmi:id="_jKDFOcrGEeWCOYB84Soz2Q" visible="false" id="middleNameEdgeObject" offset="0,10"/>
+          <contained xsi:type="di:EdgeObjectOffset" xmi:id="_jKDFOsrGEeWCOYB84Soz2Q" visible="false" id="stereotypeEdgeObject" offset="0,-10"/>
+        </contained>
+      </diagrams>
+    </subdiagrams>
+  </subdiagrams>
+  <subdiagrams xmi:id="_0UKN0MvkEeWHCL1R0LEiVg">
+    <model href="Hospital.uml#_zSc5MMvkEeWHCL1R0LEiVg"/>
+    <diagrams xmi:id="_lpBuwMvnEeWHCL1R0LEiVg" position="0,0" size="100,100" name="rule4" zoom="0.75" viewport="0,0">
+      <property xmi:id="_lpmWgMvnEeWHCL1R0LEiVg" key="pageFormatName" value="A4"/>
+      <property xmi:id="_lpsdIMvnEeWHCL1R0LEiVg" key="diagramWidth" value="840"/>
+      <property xmi:id="_lp4qYMvnEeWHCL1R0LEiVg" key="diagramHeight" value="1188"/>
+      <property xmi:id="_lqE3oMvnEeWHCL1R0LEiVg" key="pageMarginName" value="Small Margin"/>
+      <property xmi:id="_lqK-QMvnEeWHCL1R0LEiVg" key="diagramTopMargin" value="20"/>
+      <property xmi:id="_lqRE4MvnEeWHCL1R0LEiVg" key="diagramBottomMargin" value="20"/>
+      <property xmi:id="_lqXLgMvnEeWHCL1R0LEiVg" key="diagramLeftMargin" value="20"/>
+      <property xmi:id="_lqdSIMvnEeWHCL1R0LEiVg" key="diagramRightMargin" value="20"/>
+      <property xmi:id="_lqpfYMvnEeWHCL1R0LEiVg" key="orientation" value="portrait"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_lpBuwcvnEeWHCL1R0LEiVg" presentation="org.topcased.modeler.uml.activitydiagram">
+        <element href="Hospital.uml#_zSc5MMvkEeWHCL1R0LEiVg"/>
+      </semanticModel>
+      <contained xsi:type="di:GraphNode" xmi:id="_r8Xn4M_TEeW96vDus6u-jw" position="140,94" size="372,223">
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_r8Xn4c_TEeW96vDus6u-jw" presentation="default">
+          <element href="Hospital.uml#_r8j1IM_TEeW96vDus6u-jw"/>
+        </semanticModel>
+      </contained>
+      <contained xsi:type="di:GraphNode" xmi:id="_Oq-CIMvoEeWHCL1R0LEiVg" position="6,10" size="168,89">
+        <anchorage xmi:id="_uIVLcMvpEeWHCL1R0LEiVg" graphEdge="_uIVLcsvpEeWHCL1R0LEiVg"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_Oq-CIcvoEeWHCL1R0LEiVg" presentation="default">
+          <element href="Hospital.uml#_OrGlAMvoEeWHCL1R0LEiVg"/>
+        </semanticModel>
+      </contained>
+      <contained xsi:type="di:GraphNode" xmi:id="_WdgxYMvoEeWHCL1R0LEiVg" position="331,126" size="169,95">
+        <anchorage xmi:id="_w8eHAMvpEeWHCL1R0LEiVg" graphEdge="_w8kNoMvpEeWHCL1R0LEiVg _zSgKQMvpEeWHCL1R0LEiVg"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_WdgxYcvoEeWHCL1R0LEiVg" presentation="default">
+          <element href="Hospital.uml#_WdzFQMvoEeWHCL1R0LEiVg"/>
+        </semanticModel>
+      </contained>
+      <contained xsi:type="di:GraphNode" xmi:id="_hKTrQMvoEeWHCL1R0LEiVg" position="155,132" size="164,93">
+        <anchorage xmi:id="_uIVLccvpEeWHCL1R0LEiVg" graphEdge="_w8kNoMvpEeWHCL1R0LEiVg _uIVLcsvpEeWHCL1R0LEiVg"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_hKTrQcvoEeWHCL1R0LEiVg" presentation="default">
+          <element href="Hospital.uml#_hKl_IMvoEeWHCL1R0LEiVg"/>
+        </semanticModel>
+      </contained>
+      <contained xsi:type="di:GraphNode" xmi:id="_qeCgcMvoEeWHCL1R0LEiVg" position="581,132" size="156,88">
+        <anchorage xmi:id="_zSaDoMvpEeWHCL1R0LEiVg" graphEdge="_zSgKQMvpEeWHCL1R0LEiVg"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_qeCgccvoEeWHCL1R0LEiVg" presentation="default">
+          <element href="Hospital.uml#_qeU0UMvoEeWHCL1R0LEiVg"/>
+        </semanticModel>
+      </contained>
+      <contained xsi:type="di:GraphEdge" xmi:id="_uIVLcsvpEeWHCL1R0LEiVg" anchor="_uIVLcMvpEeWHCL1R0LEiVg _uIVLccvpEeWHCL1R0LEiVg">
+        <property xmi:id="_7zmooMvpEeWHCL1R0LEiVg" key="router" value="Rectilinear"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_uIVLc8vpEeWHCL1R0LEiVg" presentation="default">
+          <element href="Hospital.uml#_uInfUMvpEeWHCL1R0LEiVg"/>
+        </semanticModel>
+        <contained xsi:type="di:EdgeObjectOffset" xmi:id="_uIVLdMvpEeWHCL1R0LEiVg" id="stereotypeEdgeObject"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_uIVLdcvpEeWHCL1R0LEiVg" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_uIVLdsvpEeWHCL1R0LEiVg" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_uIVLd8vpEeWHCL1R0LEiVg" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+        <contained xsi:type="di:EdgeObjectOffset" xmi:id="_uIVLeMvpEeWHCL1R0LEiVg" visible="false" id="interruptibleEdgeObject"/>
+        <contained xsi:type="di:EdgeObjectOffset" xmi:id="_uIVLecvpEeWHCL1R0LEiVg" visible="false" id="interruptibleIconEdgeObject" offset="4,-13"/>
+        <waypoints>[-1, 96, -115, -2]</waypoints>
+      </contained>
+      <contained xsi:type="di:GraphEdge" xmi:id="_w8kNoMvpEeWHCL1R0LEiVg" anchor="_uIVLccvpEeWHCL1R0LEiVg _w8eHAMvpEeWHCL1R0LEiVg">
+        <property xmi:id="_xkz5YMvpEeWHCL1R0LEiVg" key="router" value="Rectilinear"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_w8kNocvpEeWHCL1R0LEiVg" presentation="default">
+          <element href="Hospital.uml#_w82hgMvpEeWHCL1R0LEiVg"/>
+        </semanticModel>
+        <contained xsi:type="di:EdgeObjectOffset" xmi:id="_w8kNosvpEeWHCL1R0LEiVg" id="stereotypeEdgeObject"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_w8kNo8vpEeWHCL1R0LEiVg" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_w8kNpMvpEeWHCL1R0LEiVg" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_w8kNpcvpEeWHCL1R0LEiVg" visible="false" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+        <contained xsi:type="di:EdgeObjectOffset" xmi:id="_w8kNpsvpEeWHCL1R0LEiVg" visible="false" id="interruptibleEdgeObject"/>
+        <contained xsi:type="di:EdgeObjectOffset" xmi:id="_w8kNp8vpEeWHCL1R0LEiVg" visible="false" id="interruptibleIconEdgeObject" offset="-46,73"/>
+      </contained>
+      <contained xsi:type="di:GraphEdge" xmi:id="_zSgKQMvpEeWHCL1R0LEiVg" anchor="_w8eHAMvpEeWHCL1R0LEiVg _zSaDoMvpEeWHCL1R0LEiVg">
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_zSgKQcvpEeWHCL1R0LEiVg" presentation="default">
+          <element href="Hospital.uml#_zSsXgMvpEeWHCL1R0LEiVg"/>
+        </semanticModel>
+        <contained xsi:type="di:EdgeObjectOffset" xmi:id="_zSgKQsvpEeWHCL1R0LEiVg" id="stereotypeEdgeObject"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_zSgKQ8vpEeWHCL1R0LEiVg" visible="false" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_zSgKRMvpEeWHCL1R0LEiVg" visible="false" id="weightEdgeObject" uDistance="25" vDistance="89"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_zSgKRcvpEeWHCL1R0LEiVg" visible="false" id="nameEdgeObject" uDistance="-146" vDistance="117"/>
+        <contained xsi:type="di:EdgeObjectOffset" xmi:id="_zSgKRsvpEeWHCL1R0LEiVg" visible="false" id="interruptibleEdgeObject"/>
+        <contained xsi:type="di:EdgeObjectOffset" xmi:id="_zSgKR8vpEeWHCL1R0LEiVg" visible="false" id="interruptibleIconEdgeObject" offset="-96,-24"/>
+      </contained>
+    </diagrams>
+  </subdiagrams>
+  <subdiagrams xmi:id="_MRFEgNDIEeW4lKziKd3Hrg">
+    <model href="Hospital.uml#_JngaMNDIEeW4lKziKd3Hrg"/>
+    <diagrams xmi:id="_MRFEgdDIEeW4lKziKd3Hrg" position="0,0" size="100,100" name="rule4" zoom="0.75" viewport="0,0">
+      <property xmi:id="_MRpsQNDIEeW4lKziKd3Hrg" key="pageFormatName" value="A4"/>
+      <property xmi:id="_MRpsQdDIEeW4lKziKd3Hrg" key="diagramWidth" value="840"/>
+      <property xmi:id="_MRpsQtDIEeW4lKziKd3Hrg" key="diagramHeight" value="1188"/>
+      <property xmi:id="_MRpsQ9DIEeW4lKziKd3Hrg" key="pageMarginName" value="Small Margin"/>
+      <property xmi:id="_MRpsRNDIEeW4lKziKd3Hrg" key="diagramTopMargin" value="20"/>
+      <property xmi:id="_MRpsRdDIEeW4lKziKd3Hrg" key="diagramBottomMargin" value="20"/>
+      <property xmi:id="_MRpsRtDIEeW4lKziKd3Hrg" key="diagramLeftMargin" value="20"/>
+      <property xmi:id="_MRpsR9DIEeW4lKziKd3Hrg" key="diagramRightMargin" value="20"/>
+      <property xmi:id="_MRpsSNDIEeW4lKziKd3Hrg" key="orientation" value="portrait"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_MRFEgtDIEeW4lKziKd3Hrg" presentation="org.topcased.modeler.uml.activitydiagram">
+        <element href="Hospital.uml#_JngaMNDIEeW4lKziKd3Hrg"/>
+      </semanticModel>
+      <contained xsi:type="di:GraphNode" xmi:id="_fs3DkNDPEeW4lKziKd3Hrg" position="30,46" size="194,93">
+        <anchorage xmi:id="_s6dtUNDPEeW4lKziKd3Hrg" graphEdge="_s6jz8NDPEeW4lKziKd3Hrg"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_fs3DkdDPEeW4lKziKd3Hrg" presentation="default">
+          <element href="Hospital.uml#_ftJXcNDPEeW4lKziKd3Hrg"/>
+        </semanticModel>
+      </contained>
+      <contained xsi:type="di:GraphNode" xmi:id="_oHEPwNDPEeW4lKziKd3Hrg" position="359,107" size="195,108">
+        <anchorage xmi:id="_s6dtUdDPEeW4lKziKd3Hrg" graphEdge="_s6jz8NDPEeW4lKziKd3Hrg _-hogUPA0EeW4vcV3e24oLg"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_oHEPwdDPEeW4lKziKd3Hrg" presentation="default">
+          <element href="Hospital.uml#_oHWjoNDPEeW4lKziKd3Hrg"/>
+        </semanticModel>
+      </contained>
+      <contained xsi:type="di:GraphEdge" xmi:id="_s6jz8NDPEeW4lKziKd3Hrg" anchor="_s6dtUNDPEeW4lKziKd3Hrg _s6dtUdDPEeW4lKziKd3Hrg">
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_s6jz8dDPEeW4lKziKd3Hrg" presentation="default">
+          <element href="Hospital.uml#_s62H0NDPEeW4lKziKd3Hrg"/>
+        </semanticModel>
+        <contained xsi:type="di:EdgeObjectOffset" xmi:id="_s6jz8tDPEeW4lKziKd3Hrg" id="stereotypeEdgeObject"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_s6jz89DPEeW4lKziKd3Hrg" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_s6jz9NDPEeW4lKziKd3Hrg" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_s6jz9dDPEeW4lKziKd3Hrg" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+        <contained xsi:type="di:EdgeObjectOffset" xmi:id="_s6jz9tDPEeW4lKziKd3Hrg" visible="false" id="interruptibleEdgeObject"/>
+        <contained xsi:type="di:EdgeObjectOffset" xmi:id="_s6jz99DPEeW4lKziKd3Hrg" visible="false" id="interruptibleIconEdgeObject"/>
+      </contained>
+      <contained xsi:type="di:GraphNode" xmi:id="_5yLuoPA0EeW4vcV3e24oLg" position="43,233" size="177,111">
+        <anchorage xmi:id="_-hmrIPA0EeW4vcV3e24oLg" graphEdge="_-hogUPA0EeW4vcV3e24oLg"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_5yLuofA0EeW4vcV3e24oLg" presentation="default">
+          <element href="Hospital.uml#_5yhs4PA0EeW4vcV3e24oLg"/>
+        </semanticModel>
+      </contained>
+      <contained xsi:type="di:GraphEdge" xmi:id="_-hogUPA0EeW4vcV3e24oLg" anchor="_-hmrIPA0EeW4vcV3e24oLg _s6dtUdDPEeW4lKziKd3Hrg">
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_-hogUfA0EeW4vcV3e24oLg" presentation="default">
+          <element href="Hospital.uml#_-h4_APA0EeW4vcV3e24oLg"/>
+        </semanticModel>
+        <contained xsi:type="di:EdgeObjectOffset" xmi:id="_-hogUvA0EeW4vcV3e24oLg" id="stereotypeEdgeObject"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_-hogU_A0EeW4vcV3e24oLg" id="guardEdgeObject" uDistance="6" vDistance="6"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_-hogVPA0EeW4vcV3e24oLg" visible="false" id="weightEdgeObject" uDistance="6" vDistance="-6"/>
+        <contained xsi:type="di:EdgeObjectUV" xmi:id="_-hogVfA0EeW4vcV3e24oLg" id="nameEdgeObject" uDistance="6" vDistance="6"/>
+        <contained xsi:type="di:EdgeObjectOffset" xmi:id="_-hogVvA0EeW4vcV3e24oLg" visible="false" id="interruptibleEdgeObject"/>
+        <contained xsi:type="di:EdgeObjectOffset" xmi:id="_-hogV_A0EeW4vcV3e24oLg" visible="false" id="interruptibleIconEdgeObject"/>
+      </contained>
+    </diagrams>
+  </subdiagrams>
+</diagrams:Diagrams>
