@@ -1,0 +1,146 @@
+«IMPORT b»
+«IMPORT adsec»
+«EXTENSION ADsecHelper»
+
+«REM»Define a B Machine file for an DynamicPolicy«ENDREM»
+«DEFINE file FOR DynamicPolicy»
+	«FILE  "SecureFilter.mch"-»«EXPAND abstractFilter FOR this-» «ENDFILE-»
+	«FILE  "SecureFilter_r.ref"-»«EXPAND refinedFilter FOR this-» «ENDFILE-»
+«ENDDEFINE»
+
+
+«REM»Generate___________Filter machine________ «ENDREM»
+«DEFINE abstractFilter FOR DynamicPolicy»
+MACHINE
+    SecureFilter    
+SEES  
+  Context, SecureUMLContext, SecureUMLTranslation  
+INCLUDES 
+  FunctionalRequirement  
+OPERATIONS
+	«FOREACH this.operations AS secOP SEPARATOR ';'»«EXPAND aFilterOp FOR secOP»«ENDFOREACH»
+END
+«ENDDEFINE»
+
+
+
+«DEFINE aFilterOp FOR SecOperation»
+«LET {} AS parList»«LET {} AS parTypeList»
+		«FOREACH eRootContainer.eAllContents.typeSelect(SecOperation) AS secOp» «FOREACH secOp.parameters AS p-» 
+			«IF !parList.contains(p.name)» «parList.add(p.name)->""»«parTypeList.add(p)->""»«ENDIF»«ENDFOREACH»«ENDFOREACH-»
+		«FOREACH eRootContainer.eAllContents.typeSelect(PreOperation) AS preOp» «FOREACH preOp.parameters AS p-» 
+			«IF !parList.contains(p.name)» «parList.add(p.name)->""»«parTypeList.add(p)->""»«ENDIF»«ENDFOREACH»«ENDFOREACH-»
+		«FOREACH eRootContainer.eAllContents.typeSelect(PostOperation) AS pstOp» «FOREACH pstOp.parameters AS p-» 
+			«IF !parList.contains(p.name)» «parList.add(p.name)->""»«parTypeList.add(p)->""»«ENDIF»«ENDFOREACH»«ENDFOREACH-»					
+result,access<--Filter«this.name»(«FOREACH parList AS p SEPARATOR ', '»«p»«ENDFOREACH», usr)=
+PRE
+	«FOREACH parTypeList AS p SEPARATOR '& '»«p.name»:«FOREACH getBVariables() AS e-»«IF p.type.matches(e.name)-» «e.type.name-»«ENDIF-»«ENDFOREACH-»«ENDFOREACH»&«ENDLET»«ENDLET»
+	usr : Users 
+THEN
+	CHOICE
+		access := granted ||
+		result<--«this.name»(«FOREACH this.parameters AS p SEPARATOR ', '»«p.name»«ENDFOREACH»)
+    OR
+        access := denied || result := Ko
+    END
+END
+«ENDDEFINE»
+
+	
+
+
+
+«REM»Generate___________Filter refinement___________«ENDREM»
+
+«DEFINE refinedFilter  FOR DynamicPolicy-»
+REFINEMENT SecureFilter_r
+REFINES SecureFilter
+SEES 
+   Context, ADTranslation, SecureUMLTranslation, SecureUMLContext  
+INCLUDES
+    FunctionalRequirement,
+    ActionsHistory    
+OPERATIONS
+	«FOREACH this.operations AS secOP SEPARATOR ';'»«EXPAND secureOperation FOR secOP»«ENDFOREACH»
+END
+«ENDDEFINE»
+
+
+
+«DEFINE secureOperation FOR SecOperation»
+«LET {} AS parList-»
+		«FOREACH eRootContainer.eAllContents.typeSelect(SecOperation) AS secOp» «FOREACH secOp.parameters AS p-» 
+			«IF !parList.contains(p.name)» «parList.add(p.name)->""»«ENDIF»«ENDFOREACH»«ENDFOREACH-»
+		«FOREACH eRootContainer.eAllContents.typeSelect(PreOperation) AS preOp» «FOREACH preOp.parameters AS p-» 
+			«IF !parList.contains(p.name)» «parList.add(p.name)->""»«ENDIF»«ENDFOREACH»«ENDFOREACH-»
+		«FOREACH eRootContainer.eAllContents.typeSelect(PostOperation) AS pstOp» «FOREACH pstOp.parameters AS p-» 
+			«IF !parList.contains(p.name)» «parList.add(p.name)->""»«ENDIF»«ENDFOREACH»«ENDFOREACH-»					
+result,access<--Filter«this.name»(«FOREACH parList AS p SEPARATOR ', '»«p»«ENDFOREACH», usr)=
+ VAR staticRight IN
+	staticRight<--check_user_permission(usr,«this.name»_Label);
+	IF staticRight = granted THEN
+		VAR dynamicRight IN
+			dynamicRight<--AD«this.name»(«FOREACH parList AS p SEPARATOR ', '»«p»«ENDFOREACH», usr);
+			IF dynamicRight = granted THEN
+				result<--«this.name»(«FOREACH this.parameters AS p SEPARATOR ', '»«p.name»«ENDFOREACH»);
+				IF result = Ok THEN
+					Log«this.name»(«FOREACH this.parameters AS p SEPARATOR ', '»«p.name»«ENDFOREACH», usr)
+				END
+			END;
+			access := dynamicRight
+		END
+	ELSE
+		access := denied; result := Ko
+	END
+ END«ENDLET»
+«ENDDEFINE»
+
+
+
+
+
+
+
+«REM»___________B Naming System____________________«ENDREM»
+
+«DEFINE getLabel FOR BOperation» op_«name» «ENDDEFINE»
+
+
+«DEFINE getLabel  FOR b::TypingOperator-»
+«IF this.toString()=="In"»:«ENDIF-»
+«IF this.toString()=="Equal"»=«ENDIF-»
+«IF this.toString()=="SubSet"»<<:«ENDIF-»
+«IF this.toString()=="SubSetEqual"»<:«ENDIF-»
+«ENDDEFINE»
+
+
+«DEFINE getLabel FOR In»:«ENDDEFINE»
+«DEFINE getLabel FOR Equal»=«ENDDEFINE»
+«DEFINE getLabel FOR SubSet»<<:«ENDDEFINE»
+«DEFINE getLabel FOR SubSetEqual»<:«ENDDEFINE»
+
+«DEFINE getLabel FOR b::BNamedElement»«this.name.replaceFirst("fromRole","")»«ENDDEFINE»
+«DEFINE getLabel FOR b::BPowType»POW(«EXPAND getLabel FOR this.pow»)«ENDDEFINE»
+
+«DEFINE getLabel FOR b::String»String«ENDDEFINE»
+«DEFINE getLabel FOR b::Z»NAT«ENDDEFINE»
+«DEFINE getLabel FOR b::Bool»BOOL«ENDDEFINE»
+
+
+
+
+«DEFINE getLabel  FOR b::ComposedTypeExp-»
+«IF this.toString()=="Relation"»<->«ENDIF-»
+«IF this.toString()=="TotalFunction"»-->«ENDIF-»
+«IF this.toString()=="PartialFunction"»+->«ENDIF-»
+«IF this.toString()=="TotalInjection"»>->«ENDIF-»
+«IF this.toString()=="PartialInjection"»>+>«ENDIF-»
+«IF this.toString()=="TotalSurjection"»-->>«ENDIF-»
+«IF this.toString()=="PartialSurjection"»+->>«ENDIF-»
+«IF this.toString()=="TotalBijection"»>->>«ENDIF-»
+«IF this.toString()=="PartialBijection"»>+>>«ENDIF-»
+«ENDDEFINE»
+
+«DEFINE getLabel  FOR b::BComposedType»«EXPAND getLabel FOR this.dom» «EXPAND getLabel FOR this.expression» «EXPAND getLabel FOR this.ran»«ENDDEFINE»
+
+«DEFINE getLabel  FOR b::TypingPredicate»«IF name!=null && name!=""»«name»«ELSE»«EXPAND getLabel FOR eContainer» «EXPAND getLabel FOR operator» «EXPAND getLabel FOR type»«ENDIF» «ENDDEFINE»

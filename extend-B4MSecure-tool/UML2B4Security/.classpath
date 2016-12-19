@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/org.eclipse.emf.mwe.utils_0.7.0.v200906160748.jar">
+		<accessrules>
+			<accessrule kind="accessible" pattern="org/eclipse/emf/mwe/utils/*"/>
+		</accessrules>
+	</classpathentry>
+	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/org.eclipse.emf.ecore_2.5.0.v200906151043.jar">
+		<accessrules>
+			<accessrule kind="accessible" pattern="org/eclipse/emf/ecore/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/emf/ecore/impl/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/emf/ecore/plugin/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/emf/ecore/resource/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/emf/ecore/resource/impl/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/emf/ecore/util/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/emf/ecore/xml/namespace/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/emf/ecore/xml/namespace/impl/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/emf/ecore/xml/namespace/util/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/emf/ecore/xml/type/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/emf/ecore/xml/type/impl/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/emf/ecore/xml/type/internal/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/emf/ecore/xml/type/util/*"/>
+			<accessrule ignoreifbetter="true" kind="nonaccessible" pattern="**/*"/>
+		</accessrules>
+	</classpathentry>
+	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/org.eclipse.emf.mwe.core_0.7.0.v200906160748.jar">
+		<accessrules>
+			<accessrule kind="accessible" pattern="org/eclipse/emf/mwe/core/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/emf/mwe/core/ant/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/emf/mwe/core/ao/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/emf/mwe/core/config/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/emf/mwe/core/container/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/emf/mwe/core/customizer/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/emf/mwe/core/debug/model/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/emf/mwe/core/debug/processing/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/emf/mwe/core/issues/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/emf/mwe/core/var/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/emf/mwe/core/monitor/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/emf/mwe/core/resources/*"/>
+			<accessrule kind="discouraged" pattern="org/eclipse/emf/mwe/internal/core/*"/>
+			<accessrule kind="discouraged" pattern="org/eclipse/emf/mwe/internal/core/ast/*"/>
+			<accessrule kind="discouraged" pattern="org/eclipse/emf/mwe/internal/core/ast/parser/*"/>
+			<accessrule kind="discouraged" pattern="org/eclipse/emf/mwe/internal/core/ast/util/*"/>
+			<accessrule kind="discouraged" pattern="org/eclipse/emf/mwe/internal/core/ast/util/converter/*"/>
+			<accessrule kind="discouraged" pattern="org/eclipse/emf/mwe/internal/core/debug/communication/*"/>
+			<accessrule kind="discouraged" pattern="org/eclipse/emf/mwe/internal/core/debug/communication/packages/*"/>
+			<accessrule kind="discouraged" pattern="org/eclipse/emf/mwe/internal/core/debug/model/*"/>
+			<accessrule kind="discouraged" pattern="org/eclipse/emf/mwe/internal/core/debug/mwe/*"/>
+			<accessrule kind="discouraged" pattern="org/eclipse/emf/mwe/internal/core/debug/processing/*"/>
+			<accessrule kind="discouraged" pattern="org/eclipse/emf/mwe/internal/core/debug/processing/handlers/*"/>
+			<accessrule kind="discouraged" pattern="org/eclipse/emf/mwe/internal/core/util/*"/>
+			<accessrule ignoreifbetter="true" kind="nonaccessible" pattern="**/*"/>
+		</accessrules>
+	</classpathentry>
+	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/org.apache.commons.cli_1.0.0.v20080604-1500.jar"/>
+	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/org.eclipse.emf.common_2.5.0.v200906151043.jar"/>
+	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/org.apache.commons.logging_1.0.4.v200904062259.jar"/>
+	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/org.eclipse.xtend.typesystem.emf_0.7.0.v200906160952.jar"/>
+	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/org.eclipse.xpand_0.7.0.v200906160952.jar"/>
+	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/org.eclipse.xtend_0.7.0.v200906160952.jar"/>
+	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/org.eclipse.xtend.typesystem.uml2_0.7.0.v200906160952.jar"/>
+	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/org.eclipse.uml2.uml_3.0.1.v200908281330.jar" sourcepath="ECLIPSE_HOME/plugins/org.eclipse.uml2.uml_3.0.1.v200908281330.jar"/>
+	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/org.eclipse.emf.ecore.xmi_2.5.0.v200906151043.jar"/>
+	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/fr.lig.vasco.models.b_1.0.0.jar"/>
+	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/fr.lig.vasco.selkis.security.model.AC_Model_ORBAC2_1.0.0.jar"/>
+	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/fr.lig.vasco.selkis.ConfigurableTransformationModel.Trace.MetaModel_1.0.0.jar"/>
+	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/org.antlr.runtime_3.0.0.v200803061811.jar"/>
+	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/org.eclipse.uml2.common_1.5.0.v200905041045.jar"/>
+	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/com.ibm.icu_4.0.1.v20090822.jar"/>
+	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/fr.lig.vasco.selkis.ConfigurableTransformationModel.Engine_1.0.0.jar" sourcepath="ECLIPSE_HOME/plugins/fr.lig.vasco.selkis.ConfigurableTransformationModel.Engine.source_1.0.0.jar">
+		<accessrules>
+			<accessrule kind="accessible" pattern="fr/lig/vasco/selkis/ctm/*"/>
+			<accessrule kind="accessible" pattern="fr/lig/vasco/selkis/ctm/UML/util/*"/>
+			<accessrule kind="accessible" pattern="fr/lig/vasco/selkis/ctm/context/*"/>
+			<accessrule kind="accessible" pattern="fr/lig/vasco/selkis/ctm/emf/util/*"/>
+			<accessrule kind="accessible" pattern="fr/lig/vasco/selkis/ctm/engine/*"/>
+			<accessrule kind="accessible" pattern="fr/lig/vasco/selkis/ctm/impl/*"/>
+			<accessrule kind="accessible" pattern="fr/lig/vasco/selkis/ctm/invoker/*"/>
+			<accessrule kind="accessible" pattern="fr/lig/vasco/selkis/ctm/invoker/impl/*"/>
+			<accessrule kind="accessible" pattern="fr/lig/vasco/selkis/ctm/rule/*"/>
+			<accessrule kind="accessible" pattern="fr/lig/vasco/selkis/ctm/trace/util/*"/>
+			<accessrule ignoreifbetter="true" kind="nonaccessible" pattern="**/*"/>
+		</accessrules>
+	</classpathentry>
+	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/fr.lig.vasco.selkis.ConfigurableTransformationModel.MetaModel_1.0.0.jar"/>
+	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/org.eclipse.m2m.qvt.oml_2.0.1.v20090901-1357.jar"/>
+	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/org.eclipse.ocl_1.3.0.v200905271400.jar"/>
+	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/org.eclipse.m2m.qvt.oml.common_2.0.0.v20090608-1830.jar"/>
+	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/org.eclipse.equinox.common_3.5.1.R35x_v20090807-1100.jar"/>
+	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/org.eclipse.core.runtime_3.5.0.v20090525.jar"/>
+	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/org.eclipse.core.jobs_3.4.100.v20090429-1800.jar"/>
+	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/org.eclipse.core.runtime.compatibility_3.2.0.v20090413.jar"/>
+	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/org.eclipse.core.resources_3.5.2.R35x_v20091203-1235.jar"/>
+	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/org.eclipse.osgi_3.5.2.R35x_v20100126.jar"/>
+	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/org.eclipse.equinox.registry_3.4.100.v20090520-1800.jar"/>
+	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/org.eclipse.uml2_3.0.0.v200905041045.jar"/>
+	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/org.eclipse.m2m.qvt.oml.runtime_2.0.0.v20090608-1830.jar"/>
+	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/org.eclipse.m2m.qvt.oml.emf.util_2.0.1.v20090722-1630.jar"/>
+	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/org.eclipse.debug.core_3.5.1.v20091103_r352.jar"/>
+	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/org.eclipse.jface_3.5.2.M20100120-0800.jar"/>
+	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/org.eclipse.swt.win32.win32.x86_3.5.2.v3557f.jar">
+		<accessrules>
+			<accessrule kind="accessible" pattern="org/eclipse/swt/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/swt/accessibility/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/swt/awt/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/swt/browser/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/swt/custom/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/swt/dnd/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/swt/events/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/swt/graphics/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/swt/layout/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/swt/opengl/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/swt/printing/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/swt/program/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/swt/widgets/*"/>
+			<accessrule kind="discouraged" pattern="org/eclipse/swt/internal/*"/>
+			<accessrule kind="discouraged" pattern="org/eclipse/swt/internal/image/*"/>
+			<accessrule kind="discouraged" pattern="org/eclipse/swt/internal/theme/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/swt/ole/win32/*"/>
+			<accessrule kind="discouraged" pattern="org/eclipse/swt/internal/gdip/*"/>
+			<accessrule kind="discouraged" pattern="org/eclipse/swt/internal/ole/win32/*"/>
+			<accessrule kind="discouraged" pattern="org/eclipse/swt/internal/win32/*"/>
+			<accessrule kind="discouraged" pattern="org/eclipse/swt/internal/opengl/win32/*"/>
+			<accessrule ignoreifbetter="true" kind="nonaccessible" pattern="**/*"/>
+		</accessrules>
+	</classpathentry>
+	<classpathentry kind="var" path="JRE_LIB"/>
+	<classpathentry kind="lib" path="libs/security.model.adsec_1.0.0.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/fr.lig.vasco.selkis.ctm.example.uml2b.extended"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

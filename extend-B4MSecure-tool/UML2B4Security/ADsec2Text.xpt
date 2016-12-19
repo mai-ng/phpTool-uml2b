@@ -1,0 +1,287 @@
+«IMPORT b»
+«IMPORT adsec»
+«EXTENSION ADsecHelper»
+
+
+
+«REM»Define a B Machine file for an DynamicPolicy«ENDREM»
+«DEFINE file FOR DynamicPolicy»
+	«FILE  "ActionsHistory.mch"-»«EXPAND machineHistory FOR this-» «ENDFILE-»
+	«FILE  "ADTranslation.mch"-»«EXPAND ADTranslation FOR this-» «ENDFILE-»
+«ENDDEFINE»
+
+
+
+
+«REM»__________________________ADTranslation machine_____________________________«ENDREM»
+
+«DEFINE ADTranslation  FOR DynamicPolicy-»
+MACHINE
+    ADTranslation      
+SEES
+ 	Context, SecureUMLContext, ActionsHistory   		
+OPERATIONS
+	«FOREACH this.operations AS secOP»«EXPAND secureOperation FOR secOP»«ENDFOREACH»
+END
+«ENDDEFINE»
+
+«REM»____________end_______main_______________ADTranslation_____________________________«ENDREM»
+«REM»____________start_____supporting________DEFINE______________________«ENDREM»
+
+«REM»Generate____________SecOperation«ENDREM»
+«DEFINE secureOperation FOR SecOperation»
+«LET {} AS parList»«LET {} AS parTypeList»
+		«FOREACH eRootContainer.eAllContents.typeSelect(SecOperation) AS secOp» «FOREACH secOp.parameters AS p-» 
+			«IF !parList.contains(p.name)» «parList.add(p.name)->""»«parTypeList.add(p)->""»«ENDIF»«ENDFOREACH»«ENDFOREACH-»
+		«FOREACH eRootContainer.eAllContents.typeSelect(PreOperation) AS preOp» «FOREACH preOp.parameters AS p-» 
+			«IF !parList.contains(p.name)» «parList.add(p.name)->""»«parTypeList.add(p)->""»«ENDIF»«ENDFOREACH»«ENDFOREACH-»
+		«FOREACH eRootContainer.eAllContents.typeSelect(PostOperation) AS pstOp» «FOREACH pstOp.parameters AS p-» 
+			«IF !parList.contains(p.name)» «parList.add(p.name)->""»«parTypeList.add(p)->""»«ENDIF»«ENDFOREACH»«ENDFOREACH-»					
+access<--AD«this.name»(«FOREACH parList AS p SEPARATOR ', '»«p»«ENDFOREACH», usr)=
+PRE
+	«FOREACH parTypeList AS p SEPARATOR ' & '»«p.name»:«FOREACH getBVariables() AS e-»«IF p.type.matches(e.name)-» «e.type.name-»«ENDIF-»«ENDFOREACH-»«ENDFOREACH» &
+	«ENDLET»«ENDLET»usr : Users
+THEN
+	IF
+«IF this.preOperation.name.length >0»«EXPAND preOperationXpand FOR this.preOperation-»«ENDIF-»«IF this.actor.name.length >0-»«IF this.preOperation.actor.name.length > 0-»&«ENDIF»
+«EXPAND compareActorWithSecOp FOR this.preOperation-»«ENDIF-»
+		«IF this.preOperation.preOperation.name.length >0-»&«EXPAND preOperationOrderXpand FOR this.preOperation»«ENDIF-»
+«IF this.postOperation.name.length >0-»«IF this.preOperation.name.length >0»&«ENDIF»«EXPAND pstOperationXpand FOR this.postOperation-»«ENDIF»
+	THEN
+		access := granted
+    ELSE
+        access := denied
+    END
+END
+«ENDDEFINE»
+
+«DEFINE compareActorWithSecOp FOR PreOperation-»
+ 	«IF this.actor.name.length > 0-»
+		«FOREACH eRootContainer.eAllContents.typeSelect(SecOperation) AS secOP-»
+			«IF secOP.name.contains(this.operationToSecure)-»
+			«IF secOP.actor.name.matches(this.actor.name)-»
+		usr = userExecuted«this.name»(«FOREACH this.parameters AS par SEPARATOR ', '-»«par.name»«ENDFOREACH-»)
+			«ELSE-»
+		usr /= userExecuted«this.name»(«FOREACH this.parameters AS par SEPARATOR ', '»«par.name»«ENDFOREACH»)«ENDIF-»«ENDIF-»«ENDFOREACH-»«ENDIF-»
+	«IF (this.preOperation.name.length >0) && (this.preOperation.actor.name.length > 0)-»&
+	«EXPAND compareActorWithSecOp FOR this.preOperation-»«ENDIF-»
+«ENDDEFINE»
+
+«REM»Condition: exist in the history for____________PreOperation«ENDREM»
+«DEFINE preOperationXpand FOR PreOperation-»
+		«FOREACH this.parameters AS preParams SEPARATOR '|->'»«preParams.name»«ENDFOREACH» : dom(userExecuted«this.name»)&
+		«FOREACH this.parameters AS p SEPARATOR '|->'»«p.name»«ENDFOREACH» : dom(orderExecution«this.name»)«IF this.preOperation.name.length > 0»&
+		«EXPAND preOperationXpand FOR this.preOperation-»«ENDIF-»
+«ENDDEFINE»
+
+«REM»Condition: exist in the history for____________PostOperation«ENDREM»
+«DEFINE pstOperationXpand FOR PostOperation-»
+		«FOREACH this.parameters AS p SEPARATOR '|->'»«p.name»«ENDFOREACH» /: dom(userExecuted«this.name») 
+		«IF this.postOperation.name.length > 0»&«EXPAND pstOperationXpand FOR this.postOperation-»«ENDIF-»
+«ENDDEFINE»
+
+«REM»Condition: ordering execution for____________2 PreOperation«ENDREM»
+«DEFINE preOperationOrderXpand FOR PreOperation»
+		orderExecution«this.name»(«FOREACH this.parameters AS p SEPARATOR ", "»«p.name-»«ENDFOREACH»)
+			<= orderExecution«this.preOperation.name»(«FOREACH this.preOperation.parameters AS p2 SEPARATOR ", "»«p2.name-»«ENDFOREACH»)
+		«IF this.preOperation.preOperation.name.length >0»&«EXPAND preOperationOrderXpand FOR this.preOperation-»«ENDIF-»
+«ENDDEFINE»
+
+
+
+
+
+«REM»__________________________ActionsHistory machine_____________________________«ENDREM»
+
+
+
+«DEFINE machineHistory FOR DynamicPolicy»
+MACHINE
+    ActionsHistory    
+SEES
+ 	Context, SecureUMLContext	
+VARIABLES
+	currentOrder,
+«FOREACH this.operations AS secOp-»
+	userExecuted«secOp.name», orderExecution«secOp.name-»
+	«IF secOp.preOperation.name.length > 0»,«EXPAND varHistory4pre FOR secOp.preOperation-» «ENDIF-»
+	«IF secOp.postOperation.name.length > 0»,«EXPAND varHistory4post FOR secOp.postOperation-» «ENDIF-»
+«ENDFOREACH»
+
+INVARIANT
+	currentOrder : NAT &
+«FOREACH this.operations AS secOp-»«FOREACH getBOperations().select(e|e.name.matches(secOp.name)) AS op -»
+ 	userExecuted«op.name-» : «IF !op.param.isEmpty-»«FOREACH op.param.type AS par SEPARATOR '*'-»«EXPAND getLabel FOR par-»«ENDFOREACH-»«ELSE-»«op.getEntityOfBOp().name-»«ENDIF-» +-> Users	 & 	 
+	orderExecution«op.name-»: «IF !op.param.isEmpty-»«FOREACH op.param.type AS par SEPARATOR '*'-» «EXPAND getLabel FOR par-»«ENDFOREACH-»«ELSE-» «op.getEntityOfBOp().name-»«ENDIF-» +-> NAT
+	«ENDFOREACH-»
+	«IF secOp.preOperation.name.length > 0»&«EXPAND invHistory4pre FOR secOp.preOperation-» «ENDIF-»
+	«IF secOp.postOperation.name.length > 0»&«EXPAND invHistory4pst FOR secOp.postOperation-» «ENDIF-»
+«ENDFOREACH»
+INITIALISATION
+	currentOrder := 0 ||
+«FOREACH this.operations AS secOp-»
+	userExecuted«secOp.name» := {} || 
+	orderExecution«secOp.name-» := {}
+	«IF secOp.preOperation.name.length > 0»||«EXPAND initHistory4pre FOR secOp.preOperation-» «ENDIF-»
+	«IF secOp.postOperation.name.length > 0»||«EXPAND initHistory4post FOR secOp.postOperation-» «ENDIF-»
+«ENDFOREACH-»
+OPERATIONS
+«FOREACH this.operations AS secOp-»«FOREACH getBOperations().select(e|e.name.matches(secOp.name)) AS op -»
+Log«op.name»(«FOREACH op.param AS par SEPARATOR ', '»«par.name»«ENDFOREACH», usr)=
+PRE 
+	«FOREACH op.param AS par SEPARATOR ' & '»«par.name»: «EXPAND getLabel FOR par.type»«ENDFOREACH » &
+	currentOrder+1: NAT &
+	usr : Users
+THEN
+	userExecuted«op.name»(«FOREACH op.param AS par SEPARATOR ', '»«par.name»«ENDFOREACH») := usr || 
+  	orderExecution«op.name»(«FOREACH op.param AS par SEPARATOR ', '»«par.name»«ENDFOREACH») := currentOrder ||
+  	currentOrder := currentOrder + 1
+END«ENDFOREACH-»
+«IF secOp.preOperation.name.length > 0»;«EXPAND opHistory4pre FOR secOp.preOperation-» «ENDIF-»
+«IF secOp.postOperation.name.length > 0»;«EXPAND opHistory4pst FOR secOp.postOperation-» «ENDIF-»
+«ENDFOREACH»
+END
+«ENDDEFINE»
+
+
+«REM»____________end_______main_______________ActionsHistory_____________________________«ENDREM»
+«REM»____________start_____supporting________DEFINE______________________«ENDREM»
+
+
+
+«REM»Generate B history operation for_______ PreOperation«ENDREM»
+«DEFINE opHistory4pre FOR PreOperation»
+«FOREACH getBOperations().select(e|e.name.matches(this.name)) AS op -»
+Log«op.name»(«FOREACH op.param AS par SEPARATOR ', '»«par.name»«ENDFOREACH», usr)=
+PRE 
+	«FOREACH op.param AS par SEPARATOR ' & '»«par.name»: «EXPAND getLabel FOR par.type»«ENDFOREACH » &
+	currentOrder+1: NAT &
+	usr : Users
+THEN
+	userExecuted«op.name»(«FOREACH op.param AS par SEPARATOR ', '»«par.name»«ENDFOREACH») := usr || 
+  	orderExecution«op.name»(«FOREACH op.param AS par SEPARATOR ', '»«par.name»«ENDFOREACH») := currentOrder ||
+  	currentOrder := currentOrder + 1
+END«ENDFOREACH-»
+«IF this.preOperation.name.length > 0»;«EXPAND opHistory4pre FOR this.preOperation-» «ENDIF-»
+«ENDDEFINE»
+
+
+«REM»Generate B history operation for_____________ PostOperation«ENDREM»
+«DEFINE opHistory4pst FOR PostOperation»
+«FOREACH getBOperations().select(e|e.name.matches(this.name)) AS op -»
+Log«op.name»(«FOREACH op.param AS par SEPARATOR ', '»«par.name»«ENDFOREACH», usr)=
+PRE 
+	«FOREACH op.param AS par SEPARATOR ' & '»«par.name»: «EXPAND getLabel FOR par.type»«ENDFOREACH » &
+	currentOrder+1: NAT &
+	usr : Users
+THEN
+	userExecuted«op.name»(«FOREACH op.param AS par SEPARATOR ', '»«par.name»«ENDFOREACH») := usr || 
+	orderExecution«op.name»(«FOREACH op.param AS par SEPARATOR ', '»«par.name»«ENDFOREACH») := currentOrder ||
+	currentOrder := currentOrder + 1
+END«ENDFOREACH-»
+«IF this.postOperation.name.length > 0»;«EXPAND opHistory4pst FOR this.postOperation-» «ENDIF-»
+«ENDDEFINE»
+
+
+
+«REM»Generate B history variables for_____________ PreOperation«ENDREM»
+«DEFINE varHistory4pre FOR PreOperation»
+	userExecuted«this.name», orderExecution«this.name-»
+	«IF this.preOperation.name.length > 0», «EXPAND varHistory4pre FOR this.preOperation-» «ENDIF-»
+«ENDDEFINE»
+
+
+«REM»Generate B history variables for________ PostOperation«ENDREM»
+«DEFINE varHistory4post FOR PostOperation»
+	userExecuted«this.name», orderExecution«this.name-»
+	«IF this.postOperation.name.length > 0», «EXPAND varHistory4post FOR this.postOperation-» «ENDIF-»
+«ENDDEFINE»
+
+
+
+«REM»Generate invariant for B history variables for__________ PreOperation«ENDREM»
+«DEFINE invHistory4pre FOR PreOperation»
+	«FOREACH getBOperations().select(e|e.name.matches(this.name)) AS op -»
+ 	userExecuted«op.name-» : «IF !op.param.isEmpty-»«FOREACH op.param.type AS par SEPARATOR '*'-»«EXPAND getLabel FOR par-»«ENDFOREACH-»«ELSE-»«op.getEntityOfBOp().name-»«ENDIF-» +-> Users	 & 	 
+	orderExecution«op.name-»: «IF !op.param.isEmpty-»«FOREACH op.param.type AS par SEPARATOR '*'-» «EXPAND getLabel FOR par-»«ENDFOREACH-»«ELSE-» «op.getEntityOfBOp().name-»«ENDIF-» +-> NAT
+	«ENDFOREACH-»
+	«IF this.preOperation.name.length > 0»&«EXPAND invHistory4pre FOR this.preOperation-» «ENDIF-»
+«ENDDEFINE» 
+
+
+
+«REM»Generate invariant for B history variables for________ PostOperation«ENDREM»
+«DEFINE invHistory4pst FOR PostOperation»
+	«FOREACH getBOperations().select(e|e.name.matches(this.name)) AS op -»
+ 	userExecuted«op.name-» : «IF !op.param.isEmpty-»«FOREACH op.param.type AS par SEPARATOR '*'-»«EXPAND getLabel FOR par-»«ENDFOREACH-»«ELSE-»«op.getEntityOfBOp().name-»«ENDIF-» +-> Users	 & 	 
+	orderExecution«op.name-»: «IF !op.param.isEmpty-»«FOREACH op.param.type AS par SEPARATOR '*'-» «EXPAND getLabel FOR par-»«ENDFOREACH-»«ELSE-» «op.getEntityOfBOp().name-»«ENDIF-» +-> NAT
+	«ENDFOREACH-»
+	«IF this.postOperation.name.length > 0»&«EXPAND invHistory4pst FOR this.postOperation-» «ENDIF-»
+«ENDDEFINE»
+
+
+
+«REM»Generate the initialisation for B history variables for_______ PreOperation«ENDREM»
+«DEFINE initHistory4pre FOR PreOperation»
+	userExecuted«this.name» := {} ||
+	orderExecution«this.name-» := {}
+	«IF this.preOperation.name.length > 0»||«EXPAND initHistory4pre FOR this.preOperation-» «ENDIF-»
+«ENDDEFINE»
+
+
+
+«REM»Generate the initialisation for B history variables for________ PostOperation«ENDREM»
+«DEFINE initHistory4post FOR PostOperation»
+	userExecuted«this.name» := {} ||
+	orderExecution«this.name-» := {}
+	«IF this.postOperation.name.length > 0»||«EXPAND initHistory4post FOR this.postOperation-» «ENDIF-»
+«ENDDEFINE»
+
+
+
+
+
+
+«REM»___________B Naming System____________________«ENDREM»
+
+«DEFINE getLabel FOR BOperation» op_«name» «ENDDEFINE»
+
+
+«DEFINE getLabel  FOR b::TypingOperator-»
+«IF this.toString()=="In"»:«ENDIF-»
+«IF this.toString()=="Equal"»=«ENDIF-»
+«IF this.toString()=="SubSet"»<<:«ENDIF-»
+«IF this.toString()=="SubSetEqual"»<:«ENDIF-»
+«ENDDEFINE»
+
+
+«DEFINE getLabel FOR In»:«ENDDEFINE»
+«DEFINE getLabel FOR Equal»=«ENDDEFINE»
+«DEFINE getLabel FOR SubSet»<<:«ENDDEFINE»
+«DEFINE getLabel FOR SubSetEqual»<:«ENDDEFINE»
+
+«DEFINE getLabel FOR b::BNamedElement»«this.name.replaceFirst("fromRole","")»«ENDDEFINE»
+«DEFINE getLabel FOR b::BPowType»POW(«EXPAND getLabel FOR this.pow»)«ENDDEFINE»
+
+«DEFINE getLabel FOR b::String»String«ENDDEFINE»
+«DEFINE getLabel FOR b::Z»NAT«ENDDEFINE»
+«DEFINE getLabel FOR b::Bool»BOOL«ENDDEFINE»
+
+
+
+
+«DEFINE getLabel  FOR b::ComposedTypeExp-»
+«IF this.toString()=="Relation"»<->«ENDIF-»
+«IF this.toString()=="TotalFunction"»-->«ENDIF-»
+«IF this.toString()=="PartialFunction"»+->«ENDIF-»
+«IF this.toString()=="TotalInjection"»>->«ENDIF-»
+«IF this.toString()=="PartialInjection"»>+>«ENDIF-»
+«IF this.toString()=="TotalSurjection"»-->>«ENDIF-»
+«IF this.toString()=="PartialSurjection"»+->>«ENDIF-»
+«IF this.toString()=="TotalBijection"»>->>«ENDIF-»
+«IF this.toString()=="PartialBijection"»>+>>«ENDIF-»
+«ENDDEFINE»
+
+«DEFINE getLabel  FOR b::BComposedType»«EXPAND getLabel FOR this.dom» «EXPAND getLabel FOR this.expression» «EXPAND getLabel FOR this.ran»«ENDDEFINE»
+
+«DEFINE getLabel  FOR b::TypingPredicate»«IF name!=null && name!=""»«name»«ELSE»«EXPAND getLabel FOR eContainer» «EXPAND getLabel FOR operator» «EXPAND getLabel FOR type»«ENDIF» «ENDDEFINE»

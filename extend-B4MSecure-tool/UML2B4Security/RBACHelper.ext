@@ -1,0 +1,14 @@
+import b;
+import adsec;
+
+b::BSpec BSPEC(): GLOBALVAR BSPEC;
+b::BMachine getMachine():BSPEC().systemMachine;
+
+
+List[BOperation] getBOperations():getMachine().operations;
+List[BData] getBData():getMachine().data;
+List[BVariable] getBVariables():getMachine().data.typeSelect(BVariable);
+
+
+//List[SecOperation] getSecureOperation(DynamicPolicy dp) : dp.operations;
+//PreOperation getPreOperation(SecOperation adsec):adsec.preOperations;

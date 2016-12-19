@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Profile xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_XkGiwB07Ed-QQ4mYkrb7Gg" name="SecureAD">
+  <eAnnotations xmi:id="_ZfGQkfkuEeWEL5sJNF3PMw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <contents xmi:type="ecore:EPackage" xmi:id="_d-PVYfkuEeWEL5sJNF3PMw" name="SecureAD" nsURI="http:///schemas/SecureAD/_d-PVYPkuEeWEL5sJNF3PMw/4" nsPrefix="SecureAD">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_d-PVYvkuEeWEL5sJNF3PMw" name="Secure">
+        <eAnnotations xmi:id="_d-PVY_kuEeWEL5sJNF3PMw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_VUqQcPkuEeWEL5sJNF3PMw"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_d-PVZPkuEeWEL5sJNF3PMw" name="base_CallOperationAction" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//CallOperationAction"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_ddTykfkuEeWEL5sJNF3PMw" name="SecureAD" nsURI="http:///schemas/SecureAD/_ddTykPkuEeWEL5sJNF3PMw/3" nsPrefix="SecureAD">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_ddTykvkuEeWEL5sJNF3PMw" name="Secure">
+        <eAnnotations xmi:id="_ddTyk_kuEeWEL5sJNF3PMw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_VUqQcPkuEeWEL5sJNF3PMw"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_ddTylPkuEeWEL5sJNF3PMw" name="base_CallOperationAction" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//CallOperationAction"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_cuEuAfkuEeWEL5sJNF3PMw" name="SecureAD" nsURI="http:///schemas/SecureAD/_cuEuAPkuEeWEL5sJNF3PMw/2" nsPrefix="SecureAD">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_cuEuAvkuEeWEL5sJNF3PMw" name="Secure">
+        <eAnnotations xmi:id="_cuEuA_kuEeWEL5sJNF3PMw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_VUqQcPkuEeWEL5sJNF3PMw"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_cuEuBPkuEeWEL5sJNF3PMw" name="base_CallOperationAction" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//CallOperationAction"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_bCVk8fkuEeWEL5sJNF3PMw" name="SecureAD" nsURI="http:///schemas/SecureAD/_bCVk8PkuEeWEL5sJNF3PMw/1" nsPrefix="SecureAD">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_bCVk8vkuEeWEL5sJNF3PMw" name="Secure">
+        <eAnnotations xmi:id="_bCVk8_kuEeWEL5sJNF3PMw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_VUqQcPkuEeWEL5sJNF3PMw"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_bCVk9PkuEeWEL5sJNF3PMw" name="base_CallOperationAction" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//CallOperationAction"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_ZfGQkvkuEeWEL5sJNF3PMw" name="SecureAD" nsURI="http:///schemas/SecureAD/_ZfGQkPkuEeWEL5sJNF3PMw/0" nsPrefix="SecureAD">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_ZfGQk_kuEeWEL5sJNF3PMw" name="Secure">
+        <eAnnotations xmi:id="_ZfGQlPkuEeWEL5sJNF3PMw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_VUqQcPkuEeWEL5sJNF3PMw"/>
+      </eClassifiers>
+    </contents>
+  </eAnnotations>
+  <elementImport xmi:id="_W2kIEPkuEeWEL5sJNF3PMw">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#CallOperationAction"/>
+  </elementImport>
+  <packageImport xmi:id="_b3qnYCWuEd62NaW46C6lHg">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packageImport xmi:id="_YlKXIB07Ed-QQ4mYkrb7Gg">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_METAMODELS/UML.metamodel.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_VUqQcPkuEeWEL5sJNF3PMw" name="Secure">
+    <ownedAttribute xmi:id="_aos88vkuEeWEL5sJNF3PMw" name="base_CallOperationAction" association="_aos88PkuEeWEL5sJNF3PMw">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#CallOperationAction"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_aos88PkuEeWEL5sJNF3PMw" name="CallOperationAction_Secure" memberEnd="_aos88fkuEeWEL5sJNF3PMw _aos88vkuEeWEL5sJNF3PMw">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_aos88fkuEeWEL5sJNF3PMw" name="extension_Secure" type="_VUqQcPkuEeWEL5sJNF3PMw" aggregation="composite" association="_aos88PkuEeWEL5sJNF3PMw"/>
+  </packagedElement>
+</uml:Profile>

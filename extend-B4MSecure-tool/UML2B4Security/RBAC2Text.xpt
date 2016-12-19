@@ -1,0 +1,177 @@
+«IMPORT b»
+«IMPORT uml»
+«IMPORT ORBAC2»
+«IMPORT trace»
+«EXTENSION RBACHelper»
+
+«DEFINE file FOR Policy»
+	«FILE   "SecureUMLTranslation.mch"-»«EXPAND rbacMachine FOR this-»«ENDFILE»	
+	«FILE   "SecureUMLContext.mch"-»«EXPAND SecureUMLContext FOR this-»«ENDFILE»
+«ENDDEFINE»
+
+
+«DEFINE rbacMachine  FOR Policy»
+MACHINE
+    SecureUMLTranslation
+SEES
+    SecureUMLContext
+VARIABLES
+    Session
+INVARIANT
+    Session : Users +-> Roles &
+    Session <: PermittedUsersRoles    
+INITIALISATION
+    Session :={}
+OPERATIONS    
+    access<--check_user_permission(usr, op)=
+    PRE	usr : Users & op : Operations THEN	
+        IF usr : dom(Session) THEN
+            IF	Session(usr)|-> op : Permissions THEN
+                access:=granted
+            ELSE
+                access:=denied
+            END
+        ELSE
+            access:=denied 	
+        END
+    END;		
+    
+    ConnectUser(usr, rol)=
+    PRE 
+        usr : Users & rol : Roles &
+        usr /: dom(Session) &
+        usr|->rol : PermittedUsersRoles
+    THEN
+        Session(usr):=rol
+    END
+END
+«ENDDEFINE»
+
+
+
+
+«DEFINE SecureUMLContext  FOR Policy »
+	
+MACHINE 
+	SecureUMLContext 
+SETS
+     Users = {«FOREACH this.users  AS u SEPARATOR ', '»«u.name»«ENDFOREACH»«IF ! this.users.isEmpty »,«ENDIF » none};
+     Roles = {«FOREACH this.roles  AS r SEPARATOR ', '-»«r.name»«ENDFOREACH-»};
+     Operations = {«LET {} AS temp» «FOREACH this.permissions AS perm»«LET perm.eAllContents.select(e|e.metaType.name.contains("MethodAction")) AS methodActionsList-»	
+«FOREACH methodActionsList AS mAction-»«IF temp.contains(perm.entity.name+"__"+mAction.operation.name)-»«ELSE-»«temp.add(perm.entity.name+"__"+mAction.operation.name)->""»«ENDIF-»«ENDFOREACH-»«ENDLET-»«ENDFOREACH-»
+	«FOREACH temp AS sortedAction SEPARATOR ','»«FOREACH getBOperations().select(e|e.name.contains(sortedAction)) AS op»
+		«EXPAND getLabel FOR op-»«ENDFOREACH-»«ENDFOREACH-»
+«ENDLET-»«FOREACH this.permissions AS perm-»«LET perm.eAllContents.select(e|e.metaType.name.contains("EntityAction")) AS entityActionsList-»	
+		«IF !entityActionsList.isEmpty»,«ENDIF-»«ENDLET-»«ENDFOREACH-»
+		
+«LET {} AS temp» «FOREACH this.permissions AS perm»«LET perm.eAllContents.select(e|e.metaType.name.contains("EntityAction")) AS entityActionsList-»	
+«FOREACH entityActionsList AS eAction-»
+	«IF temp.contains(eAction.type)-»«ELSE-»«temp.add(perm.entity.name+"__"+eAction.type)->""»«ENDIF-»«ENDFOREACH-»«ENDLET-»«ENDFOREACH-»
+		«FOREACH temp AS sortedAction SEPARATOR ','» «sortedAction»_Label«ENDFOREACH»
+«ENDLET-»
+	 };
+     Access = {granted, denied}
+CONSTANTS
+    Permissions,  PermittedUsersRoles
+PROPERTIES
+     Permissions ={ «FOREACH this.permissions AS perm SEPARATOR ','-»«FOREACH perm.eAllContents.select(e|e.metaType.name.contains("MethodAction")) AS mop SEPARATOR ','»      	
+     «FOREACH getBOperations().select(e|e.name.contains(perm.entity.name+"__"+ mop.operation.name)) AS bop SEPARATOR ','-» 
+     		«perm.role.name»|->«EXPAND getLabel FOR bop-»«ENDFOREACH-»
+	 «IF !perm.eAllContents.select(e|e.metaType.name.contains("EntityAction")).isEmpty-»,«ENDIF»
+     «FOREACH perm.eAllContents.select(e|e.metaType.name.contains("EntityAction")) AS eop SEPARATOR ','-» 
+     	«IF !getBOperations().select(e|e.name.contains(perm.entity.name+"__"+ eop.type)).isEmpty-»«FOREACH getBOperations().select(e|e.name.contains(perm.entity.name+"__"+ eop.type)) AS bop-» 
+     		«perm.role.name»|->«EXPAND getLabel FOR bop-»«ENDFOREACH-»«ELSE-»	
+     	«IF eop.type.toString()=="create"-»«FOREACH getBOperations().select(e|e.name.contains(perm.entity.name+"_NEW")) AS bop-»,
+     	 	«perm.role.name»|->«EXPAND getLabel FOR bop-»«ENDFOREACH-»«ENDIF-»
+     	«IF eop.type.toString()=="delete"-»«FOREACH getBOperations().select(e|e.name.contains(perm.entity.name+"_Free")) AS bop-»,
+     	 	«perm.role.name»|->«EXPAND getLabel FOR bop-»«ENDFOREACH-»«ENDIF-»«ENDIF-»«ENDFOREACH-»«ENDFOREACH-»
+ «ENDFOREACH-»} & 
+     PermittedUsersRoles ={«FOREACH this.users  AS u SEPARATOR ', '»«u.name»|->«FOREACH u.assignments.role AS r SEPARATOR ', '»«r.name»«ENDFOREACH»«ENDFOREACH-»}
+ END
+«ENDDEFINE»
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+«REM»___________ORBAC2 Naming System____________________«ENDREM»
+«DEFINE getLabel  FOR Permission»«this.name»«ENDDEFINE»
+«DEFINE getLabel  FOR Role»«this.name»«ENDDEFINE»
+
+«DEFINE getLabel  FOR MethodAction»«EXPAND getLabel FOR this.operation»«ENDDEFINE»
+«DEFINE getLabel  FOR EntityAction»«this.name»«ENDDEFINE»
+
+«DEFINE getLabel  FOR ActionTypeName»«this»«ENDDEFINE»
+
+
+«REM»___________UML Naming System____________________«ENDREM»
+«DEFINE getLabel  FOR uml::Class»«name»_Label«ENDDEFINE»
+«DEFINE getLabel  FOR uml::Association»«name»_Label«ENDDEFINE»
+«DEFINE getLabel  FOR uml::Operation»«class.name»__«this.name»_Label«ENDDEFINE»
+«DEFINE getLabel  FOR  VisibilityKind»«this.toString()»«ENDDEFINE»
+«DEFINE getLabel FOR uml::Property-»
+«IF this.class!=null»«class.name»_«name»_Label«ELSEIF this.association!=null -»
+«association.name»_«name»_Label«ENDIF»«ENDDEFINE»
+
+«DEFINE getLabelOfOperationType FOR uml::Operation»«IF this.isQuery==null »null«ELSE»«IF this.isQuery »readOp«ELSE»modifyOp«ENDIF»«ENDIF»«ENDDEFINE»
+ 
+
+
+
+«REM»___________B Naming System____________________«ENDREM»
+
+«DEFINE getLabel FOR BOperation» «name»_Label «ENDDEFINE»
+
+
+«DEFINE getLabel  FOR b::TypingOperator-»
+«IF this.toString()=="In"»:«ENDIF-»
+«IF this.toString()=="Equal"»=«ENDIF-»
+«IF this.toString()=="SubSet"»<<:«ENDIF-»
+«IF this.toString()=="SubSetEqual"»<:«ENDIF-»
+«ENDDEFINE»
+
+
+«DEFINE getLabel FOR In»:«ENDDEFINE»
+«DEFINE getLabel FOR Equal»=«ENDDEFINE»
+«DEFINE getLabel FOR SubSet»<<:«ENDDEFINE»
+«DEFINE getLabel FOR SubSetEqual»<:«ENDDEFINE»
+
+«DEFINE getLabel FOR b::BNamedElement»«this.name.replaceFirst("fromRole","")»«ENDDEFINE»
+«DEFINE getLabel FOR b::BPowType»POW(«EXPAND getLabel FOR this.pow»)«ENDDEFINE»
+
+«DEFINE getLabel FOR b::String»String«ENDDEFINE»
+«DEFINE getLabel FOR b::Z»NAT«ENDDEFINE»
+«DEFINE getLabel FOR b::Bool»BOOL«ENDDEFINE»
+
+
+
+
+«DEFINE getLabel  FOR b::ComposedTypeExp-»
+«IF this.toString()=="Relation"»<->«ENDIF-»
+«IF this.toString()=="TotalFunction"»-->«ENDIF-»
+«IF this.toString()=="PartialFunction"»+->«ENDIF-»
+«IF this.toString()=="TotalInjection"»>->«ENDIF-»
+«IF this.toString()=="PartialInjection"»>+>«ENDIF-»
+«IF this.toString()=="TotalSurjection"»-->>«ENDIF-»
+«IF this.toString()=="PartialSurjection"»+->>«ENDIF-»
+«IF this.toString()=="TotalBijection"»>->>«ENDIF-»
+«IF this.toString()=="PartialBijection"»>+>>«ENDIF-»
+«ENDDEFINE»
+
+«DEFINE getLabel  FOR b::BComposedType»«EXPAND getLabel FOR this.dom» «EXPAND getLabel FOR this.expression» «EXPAND getLabel FOR this.ran»«ENDDEFINE»
+
+«DEFINE getLabel  FOR b::TypingPredicate»«IF name!=null && name!=""»«name»«ELSE»«EXPAND getLabel FOR eContainer» «EXPAND getLabel FOR operator» «EXPAND getLabel FOR type»«ENDIF» «ENDDEFINE»
+

@@ -1,0 +1,55 @@
+<workflow>	
+	<property file="workflow.properties"/>
+	<component class="org.eclipse.xtend.typesystem.emf.XmiReader">
+		<modelFile value="${BModel}"/>
+		<outputSlot value="bSlot"/>
+	</component>
+	
+	<component class="org.eclipse.xtend.typesystem.emf.XmiReader">
+		<modelFile value="${UMLModel}"/>
+		<outputSlot value="umlSlot"/>
+	</component>
+	
+	<component class="org.eclipse.xtend.typesystem.emf.XmiReader">
+		<modelFile value="${TraceModel}"/>
+		<outputSlot value="traceSlot"/>
+	</component>
+
+	<component class="org.eclipse.xtend.typesystem.emf.XmiReader">
+		<modelFile value="${ORBAC2Model}"/>
+		<outputSlot value="orbac2Slot"/>
+	</component>
+	
+
+	<!-- This is the oAW Xpand Generator engine -->
+	<!-- ' org.eclipse.xtend.typesystem.xpand2.Generator ' -->
+	<component id="generator" class="org.eclipse.xpand2.Generator" skipOnErrors="true">
+			
+		<metaModel class="org.eclipse.xtend.typesystem.uml2.UML2MetaModel"/>
+			
+		<metaModel id="b" class="org.eclipse.xtend.typesystem.emf.EmfMetaModel">
+			<metaModelPackage value="fr.lig.vasco.models.b.BPackage"/>         
+    	</metaModel>
+    	
+    	<metaModel id="ORBAC2" class="org.eclipse.xtend.typesystem.emf.EmfMetaModel">
+			<metaModelPackage value="fr.lig.vasco.selkis.security.model.ORBAC2.ORBAC2Package"/>         
+    	</metaModel>
+    	
+    	<metaModel id="trace" class="org.eclipse.xtend.typesystem.emf.EmfMetaModel">
+			<metaModelPackage value="fr.lig.vasco.selkis.ctm.trace.TracePackage"/>         
+    	</metaModel>    	
+    	
+    	<globalVarDef name="TRACE" value="traceSlot"/>
+    	<globalVarDef name="BSPEC" value="bSlot"/>
+    	<globalVarDef name="UML" value="umlSlot"/>
+    	
+    	
+    	
+        <!-- Start text/code generation with the following template for the object  -->
+		<expand value="RBAC2Text::file FOR orbac2Slot"/>
+		
+		<!-- Configure default outlet -->
+   		<outlet path="${BModelPath}/b"></outlet>	   
+	    <!--fileEncoding value="ISO-8859-1"/--> 
+	 </component>
+</workflow>
