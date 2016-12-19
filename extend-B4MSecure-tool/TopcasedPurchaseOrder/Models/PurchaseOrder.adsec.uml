@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adsec:DynamicPolicy xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:adsec="http://adsec/1.0" xmi:id="_It-8gP_AEeWF_f2u8ITxmQ">
+  <operations xmi:id="_It-8gf_AEeWF_f2u8ITxmQ" name="PurchaseOrder__receive">
+    <preOperation xmi:id="_It-8gv_AEeWF_f2u8ITxmQ" operationToSecure="PurchaseOrder__receive" orderExecution="1" name="PurchaseOrder__approve">
+      <parameters xmi:id="_It-8g__AEeWF_f2u8ITxmQ" operationToSecure="PurchaseOrder__receive" type="PurchaseOrder" name="po"/>
+      <preOperation xmi:id="_It-8hP_AEeWF_f2u8ITxmQ" operationToSecure="PurchaseOrder__receive" orderExecution="2" name="PurchaseOrder__create">
+        <actor xmi:id="_It-8hf_AEeWF_f2u8ITxmQ" operationToSecure="PurchaseOrder__receive" actOn="PurchaseOrder__create" name="usr1"/>
+        <parameters xmi:id="_It-8hv_AEeWF_f2u8ITxmQ" operationToSecure="PurchaseOrder__receive" type="PurchaseOrder" name="po"/>
+      </preOperation>
+    </preOperation>
+    <actor xmi:id="_It-8h__AEeWF_f2u8ITxmQ" operationToSecure="PurchaseOrder__receive" actOn="PurchaseOrder__receive" name="usr2"/>
+    <parameters xmi:id="_It-8iP_AEeWF_f2u8ITxmQ" operationToSecure="PurchaseOrder__receive" type="PurchaseOrder" name="po"/>
+  </operations>
+</adsec:DynamicPolicy>

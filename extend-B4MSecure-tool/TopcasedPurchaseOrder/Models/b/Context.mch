@@ -1,0 +1,10 @@
+
+MACHINE 
+	Context
+SETS
+	STR
+	;	PURCHASEORDER
+	;	SUPPLIER
+	; 	EXECUTION ={Ok, Ko}
+END
+ 

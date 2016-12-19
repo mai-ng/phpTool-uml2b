@@ -1,0 +1,30 @@
+REFINEMENT SecureFilter_r
+REFINES SecureFilter
+SEES 
+   Context, ADTranslation, SecureUMLTranslation, SecureUMLContext  
+INCLUDES
+    FunctionalRequirement,
+    ActionsHistory    
+OPERATIONS
+	
+result,access<--FilterPurchaseOrder__receive(po, usr)=
+ VAR staticRight IN
+	staticRight<--check_user_permission(usr,PurchaseOrder__receive_Label);
+	IF staticRight = granted THEN
+		VAR dynamicRight IN
+			dynamicRight<--ADPurchaseOrder__receive(po, usr);
+			IF dynamicRight = granted THEN
+				result<--PurchaseOrder__receive(po);
+				IF result = Ok THEN
+					LogPurchaseOrder__receive(po, usr)
+				END
+			END;
+			access := dynamicRight
+		END
+	ELSE
+		access := denied; result :: EXECUTION
+	END
+ END
+
+END
+ 
