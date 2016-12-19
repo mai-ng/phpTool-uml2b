@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="ASCII"?>
+<trace:TransformationTrace xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:trace="http://www.liglab.fr/vasco/ctm/trace/1.0">
+  <maps dest="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0" rule="UML2B.Transfo.UML2B_Selkis.createSysMachine" src="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#_w8IxIM37EdqwVrslYOdUDA"/>
+  <maps dest="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@sharedTypes/@sharedTypes.0" rule="UML2B.Transfo.UML2B_Selkis.GeneratePrimitiveTypes" src="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#_Ug7WoNYMEd-ed8tBE7Q04Q"/>
+  <maps dest="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@sharedTypes/@sharedTypes.1" rule="UML2B.Transfo.UML2B_Selkis.GeneratePrimitiveTypes" src="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#_Ug7WodYMEd-ed8tBE7Q04Q"/>
+  <maps dest="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@data.0" rule="UML2B.Transfo.UML2B_Selkis.GenerateClassBVariableInSystemMachine" src="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#_8ul_WNYKEd-ed8tBE7Q04Q"/>
+  <maps dest="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@data.2" rule="UML2B.Transfo.UML2B_Selkis.GenerateClassBVariableInSystemMachine" src="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#_9kFc6NYKEd-ed8tBE7Q04Q"/>
+  <maps dest="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@data.4" rule="UML2B.Transfo.UML2B_Selkis.GenerateClassBVariableInSystemMachine" src="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#__CacGNYKEd-ed8tBE7Q04Q"/>
+  <maps dest="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.0" rule="UML2B.Transfo.UML2B_Selkis.GenerateOperationSkeleton" src="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#_qj8scNYNEd-ed8tBE7Q04Q"/>
+  <maps dest="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.1" rule="UML2B.Transfo.UML2B_Selkis.GenerateConstructor" src="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#_8ul_WNYKEd-ed8tBE7Q04Q"/>
+  <maps dest="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.2" rule="UML2B.Transfo.UML2B_Selkis.GenerateConstructor" src="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#_9kFc6NYKEd-ed8tBE7Q04Q"/>
+  <maps dest="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.3" rule="UML2B.Transfo.UML2B_Selkis.GenerateConstructor" src="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#__CacGNYKEd-ed8tBE7Q04Q"/>
+  <maps dest="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.4" rule="UML2B.Transfo.UML2B_Selkis.GenerateDestructor_Internal" src="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#//Sample/Patient/Patient_Free"/>
+  <maps dest="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.4" rule="UML2B.Transfo.UML2B_Selkis.GenerateDestructor" src="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#_8ul_WNYKEd-ed8tBE7Q04Q"/>
+  <maps dest="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.5" rule="UML2B.Transfo.UML2B_Selkis.GenerateDestructor_Internal" src="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#//Sample/ManagmentAct/ManagmentAct_Free"/>
+  <maps dest="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.5" rule="UML2B.Transfo.UML2B_Selkis.GenerateDestructor" src="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#_9kFc6NYKEd-ed8tBE7Q04Q"/>
+  <maps dest="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.6" rule="UML2B.Transfo.UML2B_Selkis.GenerateDestructor_Internal" src="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#//Sample/Owner/Owner_Free"/>
+  <maps dest="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.6" rule="UML2B.Transfo.UML2B_Selkis.GenerateDestructor" src="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#__CacGNYKEd-ed8tBE7Q04Q"/>
+  <maps dest="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@data.6" rule="UML2B.Transfo.UML2B_Selkis.GenerateEnumerationSet" src="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#_iVkfVdYZEd-ed8tBE7Q04Q"/>
+  <maps dest="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@data.7" rule="UML2B.Transfo.UML2B_Selkis.GenerateAssociationBVariable" src="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#_BTZnT9YLEd-ed8tBE7Q04Q"/>
+  <maps dest="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@data.8" rule="UML2B.Transfo.UML2B_Selkis.GenerateAssociationBVariable" src="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#_Gwh-W9YLEd-ed8tBE7Q04Q"/>
+  <maps dest="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.2" rule="UML2B.Transfo.UML2B_Selkis.Role_UpdateConstructor" src="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#_BTZnUNYLEd-ed8tBE7Q04Q"/>
+  <maps dest="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.2" rule="UML2B.Transfo.UML2B_Selkis.Role_UpdateConstructor" src="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#_Gwh-X9YLEd-ed8tBE7Q04Q"/>
+  <maps dest="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.4" rule="UML2B.Transfo.UML2B_Selkis.Role_UpdateDestructor" src="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#_BTZnUNYLEd-ed8tBE7Q04Q"/>
+  <maps dest="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.5" rule="UML2B.Transfo.UML2B_Selkis.Role_UpdateDestructor" src="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#_BTZnQNYLEd-ed8tBE7Q04Q"/>
+  <maps dest="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.5" rule="UML2B.Transfo.UML2B_Selkis.Role_UpdateDestructor" src="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#_Gwh-XNYLEd-ed8tBE7Q04Q"/>
+  <maps dest="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.6" rule="UML2B.Transfo.UML2B_Selkis.Role_UpdateDestructor" src="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#_Gwh-X9YLEd-ed8tBE7Q04Q"/>
+  <maps dest="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.7" rule="UML2B.Transfo.UML2B_Selkis.NavigableRole_GenerateAccessor" src="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#_BTZnUNYLEd-ed8tBE7Q04Q"/>
+  <maps dest="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.8" rule="UML2B.Transfo.UML2B_Selkis.NavigableRole_GenerateAccessor" src="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#_BTZnQNYLEd-ed8tBE7Q04Q"/>
+  <maps dest="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.9" rule="UML2B.Transfo.UML2B_Selkis.NavigableRole_GenerateAccessor" src="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#_Gwh-X9YLEd-ed8tBE7Q04Q"/>
+  <maps dest="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.10" rule="UML2B.Transfo.UML2B_Selkis.NavigableRole_GenerateMutator_multivaluedAdder" src="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#_BTZnQNYLEd-ed8tBE7Q04Q"/>
+  <maps dest="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.11" rule="UML2B.Transfo.UML2B_Selkis.NavigableRole_GenerateMutator_multivaluedRemover" src="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#_BTZnQNYLEd-ed8tBE7Q04Q"/>
+  <maps dest="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@data.9" rule="UML2B.Transfo.UML2B_Selkis.GenerateAttributeBVariable" src="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#_RQT6ctYMEd-ed8tBE7Q04Q"/>
+  <maps dest="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@data.10" rule="UML2B.Transfo.UML2B_Selkis.GenerateAttributeBVariable" src="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#_mCpOAtYZEd-ed8tBE7Q04Q"/>
+  <maps dest="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@data.11" rule="UML2B.Transfo.UML2B_Selkis.GenerateUniqueMonovaluedAttributeBVariable" src="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#_who8ctYZEd-ed8tBE7Q04Q"/>
+  <maps dest="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.5" rule="UML2B.Transfo.UML2B_Selkis.Attr_UpdateDestructor" src="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#_RQT6ctYMEd-ed8tBE7Q04Q"/>
+  <maps dest="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.5" rule="UML2B.Transfo.UML2B_Selkis.Attr_UpdateDestructor" src="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#_mCpOAtYZEd-ed8tBE7Q04Q"/>
+  <maps dest="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.5" rule="UML2B.Transfo.UML2B_Selkis.Attr_UpdateDestructor" src="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#_who8ctYZEd-ed8tBE7Q04Q"/>
+  <maps dest="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.2" rule="UML2B.Transfo.UML2B_Selkis.Attr_UpdateConstructor_DefaultSupport" src="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#_RQT6ctYMEd-ed8tBE7Q04Q"/>
+  <maps dest="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.2" rule="UML2B.Transfo.UML2B_Selkis.UniqueAttr_UpdateConstructor" src="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#_who8ctYZEd-ed8tBE7Q04Q"/>
+  <maps dest="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.12" rule="UML2B.Transfo.UML2B_Selkis.Attr_GenerateAccessor" src="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#_RQT6ctYMEd-ed8tBE7Q04Q"/>
+  <maps dest="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.13" rule="UML2B.Transfo.UML2B_Selkis.Attr_GenerateAccessor" src="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#_mCpOAtYZEd-ed8tBE7Q04Q"/>
+  <maps dest="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.14" rule="UML2B.Transfo.UML2B_Selkis.Attr_GenerateAccessor" src="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#_who8ctYZEd-ed8tBE7Q04Q"/>
+  <maps dest="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.15" rule="UML2B.Transfo.UML2B_Selkis.Attr_GenerateSetter" src="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#_mCpOAtYZEd-ed8tBE7Q04Q"/>
+  <maps dest="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.16" rule="UML2B.Transfo.UML2B_Selkis.UniqueAttr_GenerateSetter" src="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#_who8ctYZEd-ed8tBE7Q04Q"/>
+  <srcElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#_w8IxIM37EdqwVrslYOdUDA" mapping="//@maps.0"/>
+  <srcElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#_Ug7WoNYMEd-ed8tBE7Q04Q" mapping="//@maps.1"/>
+  <srcElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#_Ug7WodYMEd-ed8tBE7Q04Q" mapping="//@maps.2"/>
+  <srcElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#_8ul_WNYKEd-ed8tBE7Q04Q" mapping="//@maps.3 //@maps.7 //@maps.11"/>
+  <srcElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#_9kFc6NYKEd-ed8tBE7Q04Q" mapping="//@maps.4 //@maps.8 //@maps.13"/>
+  <srcElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#__CacGNYKEd-ed8tBE7Q04Q" mapping="//@maps.5 //@maps.9 //@maps.15"/>
+  <srcElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#_qj8scNYNEd-ed8tBE7Q04Q" mapping="//@maps.6"/>
+  <srcElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#//Sample/Patient/Patient_Free" mapping="//@maps.10"/>
+  <srcElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#//Sample/ManagmentAct/ManagmentAct_Free" mapping="//@maps.12"/>
+  <srcElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#//Sample/Owner/Owner_Free" mapping="//@maps.14"/>
+  <srcElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#_iVkfVdYZEd-ed8tBE7Q04Q" mapping="//@maps.16"/>
+  <srcElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#_BTZnT9YLEd-ed8tBE7Q04Q" mapping="//@maps.17"/>
+  <srcElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#_Gwh-W9YLEd-ed8tBE7Q04Q" mapping="//@maps.18"/>
+  <srcElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#_BTZnUNYLEd-ed8tBE7Q04Q" mapping="//@maps.19 //@maps.21 //@maps.25"/>
+  <srcElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#_Gwh-X9YLEd-ed8tBE7Q04Q" mapping="//@maps.20 //@maps.24 //@maps.27"/>
+  <srcElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#_BTZnQNYLEd-ed8tBE7Q04Q" mapping="//@maps.22 //@maps.26 //@maps.28 //@maps.29"/>
+  <srcElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#_Gwh-XNYLEd-ed8tBE7Q04Q" mapping="//@maps.23"/>
+  <srcElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#_RQT6ctYMEd-ed8tBE7Q04Q" mapping="//@maps.30 //@maps.33 //@maps.36 //@maps.38"/>
+  <srcElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#_mCpOAtYZEd-ed8tBE7Q04Q" mapping="//@maps.31 //@maps.34 //@maps.39 //@maps.41"/>
+  <srcElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/UML/sample.uml#_who8ctYZEd-ed8tBE7Q04Q" mapping="//@maps.32 //@maps.35 //@maps.37 //@maps.40 //@maps.42"/>
+  <rules ref="UML2B.Transfo.UML2B_Selkis.createSysMachine"/>
+  <rules ref="UML2B.Transfo.UML2B_Selkis.GeneratePrimitiveTypes"/>
+  <rules ref="UML2B.Transfo.UML2B_Selkis.GenerateClassBVariableInSystemMachine"/>
+  <rules ref="UML2B.Transfo.UML2B_Selkis.GenerateOperationSkeleton"/>
+  <rules ref="UML2B.Transfo.UML2B_Selkis.GenerateConstructor"/>
+  <rules ref="UML2B.Transfo.UML2B_Selkis.GenerateDestructor_Internal"/>
+  <rules ref="UML2B.Transfo.UML2B_Selkis.GenerateDestructor"/>
+  <rules ref="UML2B.Transfo.UML2B_Selkis.GenerateEnumerationSet"/>
+  <rules ref="UML2B.Transfo.UML2B_Selkis.GenerateAssociationBVariable"/>
+  <rules ref="UML2B.Transfo.UML2B_Selkis.Role_UpdateConstructor"/>
+  <rules ref="UML2B.Transfo.UML2B_Selkis.Role_UpdateDestructor"/>
+  <rules ref="UML2B.Transfo.UML2B_Selkis.NavigableRole_GenerateAccessor"/>
+  <rules ref="UML2B.Transfo.UML2B_Selkis.NavigableRole_GenerateMutator_multivaluedAdder"/>
+  <rules ref="UML2B.Transfo.UML2B_Selkis.NavigableRole_GenerateMutator_multivaluedRemover"/>
+  <rules ref="UML2B.Transfo.UML2B_Selkis.GenerateAttributeBVariable"/>
+  <rules ref="UML2B.Transfo.UML2B_Selkis.GenerateUniqueMonovaluedAttributeBVariable"/>
+  <rules ref="UML2B.Transfo.UML2B_Selkis.Attr_UpdateDestructor"/>
+  <rules ref="UML2B.Transfo.UML2B_Selkis.Attr_UpdateConstructor_DefaultSupport"/>
+  <rules ref="UML2B.Transfo.UML2B_Selkis.UniqueAttr_UpdateConstructor"/>
+  <rules ref="UML2B.Transfo.UML2B_Selkis.Attr_GenerateAccessor"/>
+  <rules ref="UML2B.Transfo.UML2B_Selkis.Attr_GenerateSetter"/>
+  <rules ref="UML2B.Transfo.UML2B_Selkis.UniqueAttr_GenerateSetter"/>
+  <destElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0"/>
+  <destElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@sharedTypes/@sharedTypes.0"/>
+  <destElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@sharedTypes/@sharedTypes.1"/>
+  <destElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@data.0"/>
+  <destElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@data.2"/>
+  <destElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@data.4"/>
+  <destElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.0"/>
+  <destElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.1"/>
+  <destElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.2"/>
+  <destElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.3"/>
+  <destElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.4"/>
+  <destElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.4"/>
+  <destElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.5"/>
+  <destElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.5"/>
+  <destElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.6"/>
+  <destElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.6"/>
+  <destElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@data.6"/>
+  <destElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@data.7"/>
+  <destElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@data.8"/>
+  <destElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.2"/>
+  <destElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.2"/>
+  <destElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.4"/>
+  <destElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.5"/>
+  <destElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.5"/>
+  <destElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.6"/>
+  <destElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.7"/>
+  <destElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.8"/>
+  <destElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.9"/>
+  <destElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.10"/>
+  <destElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.11"/>
+  <destElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@data.9"/>
+  <destElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@data.10"/>
+  <destElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@data.11"/>
+  <destElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.5"/>
+  <destElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.5"/>
+  <destElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.5"/>
+  <destElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.2"/>
+  <destElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.2"/>
+  <destElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.12"/>
+  <destElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.13"/>
+  <destElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.14"/>
+  <destElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.15"/>
+  <destElements ref="file:/C:/DevTools/Topcased-3.4.1/WS/fr.lig.vasco.selkis.ctm.example.uml2b/B/sample__Sample.b#//@machines.0/@operations.16"/>
+</trace:TransformationTrace>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_qb8akM37EdqwVrslYOdUDA" name="sample">
+  <packagedElement xmi:type="uml:Package" xmi:id="_w8IxIM37EdqwVrslYOdUDA" name="Sample">
+    <packagedElement xmi:type="uml:Class" xmi:id="_8ul_WNYKEd-ed8tBE7Q04Q" name="Patient"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_9kFc6NYKEd-ed8tBE7Q04Q" name="ManagmentAct">
+      <ownedAttribute xmi:id="_RQT6ctYMEd-ed8tBE7Q04Q" name="validated" visibility="private" type="_Ug7WoNYMEd-ed8tBE7Q04Q" isUnique="false" isReadOnly="true">
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_prBgYNYNEd-ed8tBE7Q04Q" value="false"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_mCpOAtYZEd-ed8tBE7Q04Q" name="type" type="_iVkfVdYZEd-ed8tBE7Q04Q" isUnique="false">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_kXtrUNYbEd-ed8tBE7Q04Q"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_who8ctYZEd-ed8tBE7Q04Q" name="id" type="_Ug7WodYMEd-ed8tBE7Q04Q">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_HEMmkNYeEd-ed8tBE7Q04Q" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_j85XkNYbEd-ed8tBE7Q04Q" value="1"/>
+      </ownedAttribute>
+      <ownedOperation xmi:id="_qj8scNYNEd-ed8tBE7Q04Q" name="validate">
+        <eAnnotations xmi:id="_1eaN4NYYEd-ed8tBE7Q04Q" source="uml2b" references="_qj8scNYNEd-ed8tBE7Q04Q">
+          <details xmi:id="_bZjp0NalEd-AdIEt7LkWHg" key="Body" value="ManagmentAct__validated:= ({Instance}&lt;&lt;|ManagmentAct__validated)\/{(Instance|->TRUE)}"/>
+        </eAnnotations>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="__CacGNYKEd-ed8tBE7Q04Q" name="Owner"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_BTZnT9YLEd-ed8tBE7Q04Q" name="patientManagmentActs" memberEnd="_BTZnUNYLEd-ed8tBE7Q04Q _BTZnQNYLEd-ed8tBE7Q04Q" navigableOwnedEnd="_BTZnUNYLEd-ed8tBE7Q04Q _BTZnQNYLEd-ed8tBE7Q04Q">
+      <ownedEnd xmi:id="_BTZnUNYLEd-ed8tBE7Q04Q" name="patient" visibility="private" type="_8ul_WNYKEd-ed8tBE7Q04Q" isReadOnly="true" association="_BTZnT9YLEd-ed8tBE7Q04Q">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BTZnUdYLEd-ed8tBE7Q04Q" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BTZnUtYLEd-ed8tBE7Q04Q" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_BTZnQNYLEd-ed8tBE7Q04Q" name="managmentAct" type="_9kFc6NYKEd-ed8tBE7Q04Q" aggregation="composite" association="_BTZnT9YLEd-ed8tBE7Q04Q">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BTZnQdYLEd-ed8tBE7Q04Q" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BTZnQtYLEd-ed8tBE7Q04Q"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_Gwh-W9YLEd-ed8tBE7Q04Q" name="OwnedBy" memberEnd="_Gwh-XNYLEd-ed8tBE7Q04Q _Gwh-X9YLEd-ed8tBE7Q04Q" navigableOwnedEnd="_Gwh-X9YLEd-ed8tBE7Q04Q">
+      <ownedEnd xmi:id="_Gwh-XNYLEd-ed8tBE7Q04Q" name="managmentAct" type="_9kFc6NYKEd-ed8tBE7Q04Q" association="_Gwh-W9YLEd-ed8tBE7Q04Q">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Gwh-XdYLEd-ed8tBE7Q04Q" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Gwh-XtYLEd-ed8tBE7Q04Q"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_Gwh-X9YLEd-ed8tBE7Q04Q" name="owner" visibility="private" type="__CacGNYKEd-ed8tBE7Q04Q" isReadOnly="true" association="_Gwh-W9YLEd-ed8tBE7Q04Q">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Gwh-YNYLEd-ed8tBE7Q04Q" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Gwh-YdYLEd-ed8tBE7Q04Q" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="_iVkfVdYZEd-ed8tBE7Q04Q" name="Type">
+      <ownedLiteral xmi:id="_j9354tYZEd-ed8tBE7Q04Q" name="T1"/>
+      <ownedLiteral xmi:id="_k1KHMtYZEd-ed8tBE7Q04Q" name="T2"/>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_Ug7WoNYMEd-ed8tBE7Q04Q" name="Boolean"/>
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_Ug7WodYMEd-ed8tBE7Q04Q" name="Integer"/>
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_Ug7WotYMEd-ed8tBE7Q04Q" name="String"/>
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_Ug7Wo9YMEd-ed8tBE7Q04Q" name="UnlimitedNatural"/>
+</uml:Model>

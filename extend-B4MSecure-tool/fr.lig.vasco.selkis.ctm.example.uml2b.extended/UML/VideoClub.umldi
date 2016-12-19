@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<diagrams:Diagrams xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.topcased.org/DI/1.0" xmlns:diagrams="http://www.topcased.org/Diagrams/1.0" xmi:id="_zd19oMqMEd27wYLqDoWrkQ" activeDiagram="_zd19ocqMEd27wYLqDoWrkQ">
+  <model href="VideoClub.uml#_qiOtgMqMEd27wYLqDoWrkQ"/>
+  <diagrams xmi:id="_zd19ocqMEd27wYLqDoWrkQ" position="0,0" size="100,100" name="No name" viewport="0,0">
+    <property xmi:id="_zfx3UMqMEd27wYLqDoWrkQ" key="pageFormatName" value=""/>
+    <property xmi:id="_zfx3UcqMEd27wYLqDoWrkQ" key="diagramWidth" value="452"/>
+    <property xmi:id="_zfx3UsqMEd27wYLqDoWrkQ" key="diagramHeight" value="894"/>
+    <property xmi:id="_zfx3U8qMEd27wYLqDoWrkQ" key="pageMarginName" value="A4"/>
+    <property xmi:id="_zfx3VMqMEd27wYLqDoWrkQ" key="diagramTopMargin" value="20"/>
+    <property xmi:id="_zfx3VcqMEd27wYLqDoWrkQ" key="diagramBottomMargin" value="20"/>
+    <property xmi:id="_zfx3VsqMEd27wYLqDoWrkQ" key="diagramLeftMargin" value="20"/>
+    <property xmi:id="_zfx3V8qMEd27wYLqDoWrkQ" key="diagramRightMargin" value="20"/>
+    <property xmi:id="_zfx3WMqMEd27wYLqDoWrkQ" key="orientation" value="landscape"/>
+    <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_zd19osqMEd27wYLqDoWrkQ" presentation="org.topcased.modeler.uml.classdiagram">
+      <element href="VideoClub.uml#_qiOtgMqMEd27wYLqDoWrkQ"/>
+    </semanticModel>
+    <contained xsi:type="di:GraphNode" xmi:id="_6fHA8MqMEd27wYLqDoWrkQ" position="4,21" size="194,-1">
+      <anchorage xmi:id="_EWLMscqNEd27wYLqDoWrkQ" graphEdge="_EWU9sMqNEd27wYLqDoWrkQ"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_6fHA8cqMEd27wYLqDoWrkQ" presentation="default">
+        <element href="VideoClub.uml#_6fjs4MqMEd27wYLqDoWrkQ"/>
+      </semanticModel>
+      <contained xsi:type="di:GraphNode" xmi:id="_6fHA8sqMEd27wYLqDoWrkQ">
+        <property xmi:id="_6fHA88qMEd27wYLqDoWrkQ" key="eStructuralFeatureID" value="37"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_6fHA9MqMEd27wYLqDoWrkQ" presentation="default">
+          <element href="VideoClub.uml#_6fjs4MqMEd27wYLqDoWrkQ"/>
+        </semanticModel>
+        <contained xsi:type="di:GraphNode" xmi:id="_HFmK4MqOEd27wYLqDoWrkQ" position="0,0" size="-1,-1">
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_HFmK4cqOEd27wYLqDoWrkQ" presentation="default">
+            <element href="VideoClub.uml#_HFvU0MqOEd27wYLqDoWrkQ"/>
+          </semanticModel>
+        </contained>
+        <contained xsi:type="di:GraphNode" xmi:id="_r4kjcMqOEd27wYLqDoWrkQ" position="0,0" size="-1,-1">
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_r4kjccqOEd27wYLqDoWrkQ" presentation="default">
+            <element href="VideoClub.uml#_r4kjcsqOEd27wYLqDoWrkQ"/>
+          </semanticModel>
+        </contained>
+      </contained>
+      <contained xsi:type="di:GraphNode" xmi:id="_6fHA9cqMEd27wYLqDoWrkQ">
+        <property xmi:id="_6fHA9sqMEd27wYLqDoWrkQ" key="eStructuralFeatureID" value="47"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_6fHA98qMEd27wYLqDoWrkQ" presentation="default">
+          <element href="VideoClub.uml#_6fjs4MqMEd27wYLqDoWrkQ"/>
+        </semanticModel>
+        <contained xsi:type="di:GraphNode" xmi:id="_RxNMQFhxEd-Z0pb_TBmyHQ" position="0,0" size="-1,-1">
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_RxNMQVhxEd-Z0pb_TBmyHQ" presentation="default">
+            <element href="VideoClub.uml#_RxNMQlhxEd-Z0pb_TBmyHQ"/>
+          </semanticModel>
+        </contained>
+      </contained>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_7x9v8MqMEd27wYLqDoWrkQ" position="280,39" size="100,-1">
+      <anchorage xmi:id="_EWLMsMqNEd27wYLqDoWrkQ" graphEdge="_EWU9sMqNEd27wYLqDoWrkQ _E0bO8cqNEd27wYLqDoWrkQ"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_7x9v8cqMEd27wYLqDoWrkQ" presentation="default">
+        <element href="VideoClub.uml#_7x9v-MqMEd27wYLqDoWrkQ"/>
+      </semanticModel>
+      <contained xsi:type="di:GraphNode" xmi:id="_7x9v8sqMEd27wYLqDoWrkQ">
+        <property xmi:id="_7x9v88qMEd27wYLqDoWrkQ" key="eStructuralFeatureID" value="37"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_7x9v9MqMEd27wYLqDoWrkQ" presentation="default">
+          <element href="VideoClub.uml#_7x9v-MqMEd27wYLqDoWrkQ"/>
+        </semanticModel>
+        <contained xsi:type="di:GraphNode" xmi:id="_23nD4MqOEd27wYLqDoWrkQ" position="0,0" size="-1,-1">
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_23nD4cqOEd27wYLqDoWrkQ" presentation="default">
+            <element href="VideoClub.uml#_23nD4sqOEd27wYLqDoWrkQ"/>
+          </semanticModel>
+        </contained>
+      </contained>
+      <contained xsi:type="di:GraphNode" xmi:id="_7x9v9cqMEd27wYLqDoWrkQ">
+        <property xmi:id="_7x9v9sqMEd27wYLqDoWrkQ" key="eStructuralFeatureID" value="47"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_7x9v98qMEd27wYLqDoWrkQ" presentation="default">
+          <element href="VideoClub.uml#_7x9v-MqMEd27wYLqDoWrkQ"/>
+        </semanticModel>
+      </contained>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_9ffBsMqMEd27wYLqDoWrkQ" position="491,30" size="116,-1">
+      <anchorage xmi:id="_E0bO8MqNEd27wYLqDoWrkQ" graphEdge="_E0bO8cqNEd27wYLqDoWrkQ _Zsd00cqNEd27wYLqDoWrkQ _p5byscqNEd27wYLqDoWrkQ _qVv7QcqNEd27wYLqDoWrkQ"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_9ffBscqMEd27wYLqDoWrkQ" presentation="default">
+        <element href="VideoClub.uml#_9foysMqMEd27wYLqDoWrkQ"/>
+      </semanticModel>
+      <contained xsi:type="di:GraphNode" xmi:id="_9ffBssqMEd27wYLqDoWrkQ">
+        <property xmi:id="_9ffBs8qMEd27wYLqDoWrkQ" key="eStructuralFeatureID" value="37"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_9ffBtMqMEd27wYLqDoWrkQ" presentation="default">
+          <element href="VideoClub.uml#_9foysMqMEd27wYLqDoWrkQ"/>
+        </semanticModel>
+        <contained xsi:type="di:GraphNode" xmi:id="_5oMVIMqOEd27wYLqDoWrkQ" position="0,0" size="-1,-1">
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_5oMVIcqOEd27wYLqDoWrkQ" presentation="default">
+            <element href="VideoClub.uml#_5oMVIsqOEd27wYLqDoWrkQ"/>
+          </semanticModel>
+        </contained>
+        <contained xsi:type="di:GraphNode" xmi:id="_9iOhwMqOEd27wYLqDoWrkQ" position="0,0" size="-1,-1">
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_9iOhwcqOEd27wYLqDoWrkQ" presentation="default">
+            <element href="VideoClub.uml#_9iOhwsqOEd27wYLqDoWrkQ"/>
+          </semanticModel>
+        </contained>
+      </contained>
+      <contained xsi:type="di:GraphNode" xmi:id="_9ffBtcqMEd27wYLqDoWrkQ">
+        <property xmi:id="_9ffBtsqMEd27wYLqDoWrkQ" key="eStructuralFeatureID" value="47"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_9ffBt8qMEd27wYLqDoWrkQ" presentation="default">
+          <element href="VideoClub.uml#_9foysMqMEd27wYLqDoWrkQ"/>
+        </semanticModel>
+      </contained>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_AQz50MqNEd27wYLqDoWrkQ" position="743,39" size="100,-1">
+      <anchorage xmi:id="_Zsd00MqNEd27wYLqDoWrkQ" graphEdge="_Zsd00cqNEd27wYLqDoWrkQ"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_AQz50cqNEd27wYLqDoWrkQ" presentation="default">
+        <element href="VideoClub.uml#_AQz52MqNEd27wYLqDoWrkQ"/>
+      </semanticModel>
+      <contained xsi:type="di:GraphNode" xmi:id="_AQz50sqNEd27wYLqDoWrkQ">
+        <property xmi:id="_AQz508qNEd27wYLqDoWrkQ" key="eStructuralFeatureID" value="37"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_AQz51MqNEd27wYLqDoWrkQ" presentation="default">
+          <element href="VideoClub.uml#_AQz52MqNEd27wYLqDoWrkQ"/>
+        </semanticModel>
+        <contained xsi:type="di:GraphNode" xmi:id="_YgYKQMqPEd27wYLqDoWrkQ" position="0,0" size="-1,-1">
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_YgYKQcqPEd27wYLqDoWrkQ" presentation="default">
+            <element href="VideoClub.uml#_YgYKQsqPEd27wYLqDoWrkQ"/>
+          </semanticModel>
+        </contained>
+      </contained>
+      <contained xsi:type="di:GraphNode" xmi:id="_AQz51cqNEd27wYLqDoWrkQ">
+        <property xmi:id="_AQz51sqNEd27wYLqDoWrkQ" key="eStructuralFeatureID" value="47"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_AQz518qNEd27wYLqDoWrkQ" presentation="default">
+          <element href="VideoClub.uml#_AQz52MqNEd27wYLqDoWrkQ"/>
+        </semanticModel>
+      </contained>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_EWU9sMqNEd27wYLqDoWrkQ" anchor="_EWLMsMqNEd27wYLqDoWrkQ _EWLMscqNEd27wYLqDoWrkQ">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_EWU9scqNEd27wYLqDoWrkQ" presentation="default">
+        <element href="VideoClub.uml#_EWn4osqNEd27wYLqDoWrkQ"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_EWU9ssqNEd27wYLqDoWrkQ" id="srcNameEdgeObject" uDistance="10" vDistance="10"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_EWU9s8qNEd27wYLqDoWrkQ" id="srcPropertiesEdgeObject" uDistance="25" vDistance="10"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_EWU9tMqNEd27wYLqDoWrkQ" id="srcCountEdgeObject" uDistance="10" vDistance="-10"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_EWU9tcqNEd27wYLqDoWrkQ" id="targetNameEdgeObject" uDistance="10" vDistance="10"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_EWU9tsqNEd27wYLqDoWrkQ" id="targetPropertiesEdgeObject" uDistance="25" vDistance="10"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_EWU9t8qNEd27wYLqDoWrkQ" id="targetCountEdgeObject" uDistance="10" vDistance="-10"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_EWn4oMqNEd27wYLqDoWrkQ" visible="false" id="middleNameEdgeObject" offset="0,10"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_EWn4ocqNEd27wYLqDoWrkQ" id="stereotypeEdgeObject" offset="0,-10"/>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_E0bO8cqNEd27wYLqDoWrkQ" anchor="_EWLMsMqNEd27wYLqDoWrkQ _E0bO8MqNEd27wYLqDoWrkQ">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_E0bO8sqNEd27wYLqDoWrkQ" presentation="default">
+        <element href="VideoClub.uml#_E0bO-8qNEd27wYLqDoWrkQ"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_E0bO88qNEd27wYLqDoWrkQ" id="srcNameEdgeObject" uDistance="10" vDistance="10"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_E0bO9MqNEd27wYLqDoWrkQ" id="srcPropertiesEdgeObject" uDistance="25" vDistance="10"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_E0bO9cqNEd27wYLqDoWrkQ" id="srcCountEdgeObject" uDistance="10" vDistance="-10"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_E0bO9sqNEd27wYLqDoWrkQ" id="targetNameEdgeObject" uDistance="10" vDistance="10"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_E0bO98qNEd27wYLqDoWrkQ" id="targetPropertiesEdgeObject" uDistance="25" vDistance="10"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_E0bO-MqNEd27wYLqDoWrkQ" id="targetCountEdgeObject" uDistance="10" vDistance="-10"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_E0bO-cqNEd27wYLqDoWrkQ" visible="false" id="middleNameEdgeObject" offset="0,10"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_E0bO-sqNEd27wYLqDoWrkQ" id="stereotypeEdgeObject" offset="0,-10"/>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_Zsd00cqNEd27wYLqDoWrkQ" anchor="_E0bO8MqNEd27wYLqDoWrkQ _Zsd00MqNEd27wYLqDoWrkQ">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_Zsd00sqNEd27wYLqDoWrkQ" presentation="default">
+        <element href="VideoClub.uml#_Zsd028qNEd27wYLqDoWrkQ"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_Zsd008qNEd27wYLqDoWrkQ" id="srcNameEdgeObject" uDistance="10" vDistance="10"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_Zsd01MqNEd27wYLqDoWrkQ" id="srcPropertiesEdgeObject" uDistance="25" vDistance="10"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_Zsd01cqNEd27wYLqDoWrkQ" id="srcCountEdgeObject" uDistance="10" vDistance="-10"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_Zsd01sqNEd27wYLqDoWrkQ" id="targetNameEdgeObject" uDistance="10" vDistance="10"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_Zsd018qNEd27wYLqDoWrkQ" id="targetPropertiesEdgeObject" uDistance="25" vDistance="10"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_Zsd02MqNEd27wYLqDoWrkQ" id="targetCountEdgeObject" uDistance="10" vDistance="-10"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_Zsd02cqNEd27wYLqDoWrkQ" visible="false" id="middleNameEdgeObject" offset="0,10"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_Zsd02sqNEd27wYLqDoWrkQ" id="stereotypeEdgeObject" offset="0,-10"/>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_mTXD4MqNEd27wYLqDoWrkQ" position="415,172" size="123,-1">
+      <anchorage xmi:id="_p5bysMqNEd27wYLqDoWrkQ" graphEdge="_p5byscqNEd27wYLqDoWrkQ _I3HtIMrjEd-0zYFPi-ciUg"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_mTXD4cqNEd27wYLqDoWrkQ" presentation="default">
+        <element href="VideoClub.uml#_mTXD6MqNEd27wYLqDoWrkQ"/>
+      </semanticModel>
+      <contained xsi:type="di:GraphNode" xmi:id="_mTXD4sqNEd27wYLqDoWrkQ">
+        <property xmi:id="_mTXD48qNEd27wYLqDoWrkQ" key="eStructuralFeatureID" value="37"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_mTXD5MqNEd27wYLqDoWrkQ" presentation="default">
+          <element href="VideoClub.uml#_mTXD6MqNEd27wYLqDoWrkQ"/>
+        </semanticModel>
+        <contained xsi:type="di:GraphNode" xmi:id="_JJNL8MqPEd27wYLqDoWrkQ" position="0,0" size="-1,-1">
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_JJNL8cqPEd27wYLqDoWrkQ" presentation="default">
+            <element href="VideoClub.uml#_JJNL8sqPEd27wYLqDoWrkQ"/>
+          </semanticModel>
+        </contained>
+      </contained>
+      <contained xsi:type="di:GraphNode" xmi:id="_mTXD5cqNEd27wYLqDoWrkQ">
+        <property xmi:id="_mTXD5sqNEd27wYLqDoWrkQ" key="eStructuralFeatureID" value="47"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_mTXD58qNEd27wYLqDoWrkQ" presentation="default">
+          <element href="VideoClub.uml#_mTXD6MqNEd27wYLqDoWrkQ"/>
+        </semanticModel>
+      </contained>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_n4iR8MqNEd27wYLqDoWrkQ" position="553,172" size="147,-1">
+      <anchorage xmi:id="_qVv7QMqNEd27wYLqDoWrkQ" graphEdge="_qVv7QcqNEd27wYLqDoWrkQ _NypjgcfkEd-9S6iWlU3cyw"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_n4iR8cqNEd27wYLqDoWrkQ" presentation="default">
+        <element href="VideoClub.uml#_n4iR-MqNEd27wYLqDoWrkQ"/>
+      </semanticModel>
+      <contained xsi:type="di:GraphNode" xmi:id="_n4iR8sqNEd27wYLqDoWrkQ">
+        <property xmi:id="_n4iR88qNEd27wYLqDoWrkQ" key="eStructuralFeatureID" value="37"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_n4iR9MqNEd27wYLqDoWrkQ" presentation="default">
+          <element href="VideoClub.uml#_n4iR-MqNEd27wYLqDoWrkQ"/>
+        </semanticModel>
+        <contained xsi:type="di:GraphNode" xmi:id="_MfekMMqPEd27wYLqDoWrkQ" position="0,0" size="-1,-1">
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_MfekMcqPEd27wYLqDoWrkQ" presentation="default">
+            <element href="VideoClub.uml#_MfekMsqPEd27wYLqDoWrkQ"/>
+          </semanticModel>
+        </contained>
+      </contained>
+      <contained xsi:type="di:GraphNode" xmi:id="_n4iR9cqNEd27wYLqDoWrkQ">
+        <property xmi:id="_n4iR9sqNEd27wYLqDoWrkQ" key="eStructuralFeatureID" value="47"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_n4iR98qNEd27wYLqDoWrkQ" presentation="default">
+          <element href="VideoClub.uml#_n4iR-MqNEd27wYLqDoWrkQ"/>
+        </semanticModel>
+      </contained>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_p5byscqNEd27wYLqDoWrkQ" anchor="_p5bysMqNEd27wYLqDoWrkQ _E0bO8MqNEd27wYLqDoWrkQ">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_p5byssqNEd27wYLqDoWrkQ" presentation="default">
+        <element href="VideoClub.uml#_p5bytMqNEd27wYLqDoWrkQ"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_p5bys8qNEd27wYLqDoWrkQ" id="stereotypeEdgeObject"/>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_qVv7QcqNEd27wYLqDoWrkQ" anchor="_qVv7QMqNEd27wYLqDoWrkQ _E0bO8MqNEd27wYLqDoWrkQ">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_qVv7QsqNEd27wYLqDoWrkQ" presentation="default">
+        <element href="VideoClub.uml#_qVv7RMqNEd27wYLqDoWrkQ"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_qVv7Q8qNEd27wYLqDoWrkQ" id="stereotypeEdgeObject"/>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_wLK2gMqNEd27wYLqDoWrkQ" position="43,242" size="100,-1">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_wLK2gcqNEd27wYLqDoWrkQ" presentation="default">
+        <element href="VideoClub.uml#_wLUngMqNEd27wYLqDoWrkQ"/>
+      </semanticModel>
+      <contained xsi:type="di:GraphNode" xmi:id="_wLK2gsqNEd27wYLqDoWrkQ">
+        <property xmi:id="_wLK2g8qNEd27wYLqDoWrkQ" key="eStructuralFeatureID" value="39"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_wLK2hMqNEd27wYLqDoWrkQ" presentation="default">
+          <element href="VideoClub.uml#_wLUngMqNEd27wYLqDoWrkQ"/>
+        </semanticModel>
+        <contained xsi:type="di:GraphNode" xmi:id="_xbVd4MqNEd27wYLqDoWrkQ" position="0,0" size="-1,-1">
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_xbVd4cqNEd27wYLqDoWrkQ" presentation="default">
+            <element href="VideoClub.uml#_xbVd4sqNEd27wYLqDoWrkQ"/>
+          </semanticModel>
+        </contained>
+        <contained xsi:type="di:GraphNode" xmi:id="_zhTE0MqNEd27wYLqDoWrkQ" position="0,0" size="-1,-1">
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_zhTE0cqNEd27wYLqDoWrkQ" presentation="default">
+            <element href="VideoClub.uml#_zhTE0sqNEd27wYLqDoWrkQ"/>
+          </semanticModel>
+        </contained>
+      </contained>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_XyfawLtBEd-QfbDl-Re21g" position="74,151" size="100,-1">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_XyfawbtBEd-QfbDl-Re21g" presentation="default">
+        <element href="VideoClub.uml#_XypLwLtBEd-QfbDl-Re21g"/>
+      </semanticModel>
+      <contained xsi:type="di:GraphNode" xmi:id="_XyfawrtBEd-QfbDl-Re21g">
+        <property xmi:id="_Xyfaw7tBEd-QfbDl-Re21g" key="eStructuralFeatureID" value="37"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_XyfaxLtBEd-QfbDl-Re21g" presentation="default">
+          <element href="VideoClub.uml#_XypLwLtBEd-QfbDl-Re21g"/>
+        </semanticModel>
+      </contained>
+      <contained xsi:type="di:GraphNode" xmi:id="_XyfaxbtBEd-QfbDl-Re21g">
+        <property xmi:id="_XyfaxrtBEd-QfbDl-Re21g" key="eStructuralFeatureID" value="38"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_Xyfax7tBEd-QfbDl-Re21g" presentation="default">
+          <element href="VideoClub.uml#_XypLwLtBEd-QfbDl-Re21g"/>
+        </semanticModel>
+      </contained>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_MnQHYMfkEd-9S6iWlU3cyw" position="577,269" size="100,-1">
+      <anchorage xmi:id="_NypjgMfkEd-9S6iWlU3cyw" graphEdge="_NypjgcfkEd-9S6iWlU3cyw _IPMKccrjEd-0zYFPi-ciUg"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_MnQHYcfkEd-9S6iWlU3cyw" presentation="default">
+        <element href="VideoClub.uml#_MnZ4YMfkEd-9S6iWlU3cyw"/>
+      </semanticModel>
+      <contained xsi:type="di:GraphNode" xmi:id="_MnQHYsfkEd-9S6iWlU3cyw">
+        <property xmi:id="_MnQHY8fkEd-9S6iWlU3cyw" key="eStructuralFeatureID" value="37"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_MnQHZMfkEd-9S6iWlU3cyw" presentation="default">
+          <element href="VideoClub.uml#_MnZ4YMfkEd-9S6iWlU3cyw"/>
+        </semanticModel>
+      </contained>
+      <contained xsi:type="di:GraphNode" xmi:id="_MnQHZcfkEd-9S6iWlU3cyw">
+        <property xmi:id="_MnQHZsfkEd-9S6iWlU3cyw" key="eStructuralFeatureID" value="47 50 "/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_MnQHZ8fkEd-9S6iWlU3cyw" presentation="default">
+          <element href="VideoClub.uml#_MnZ4YMfkEd-9S6iWlU3cyw"/>
+        </semanticModel>
+      </contained>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_NypjgcfkEd-9S6iWlU3cyw" anchor="_NypjgMfkEd-9S6iWlU3cyw _qVv7QMqNEd27wYLqDoWrkQ">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_NypjgsfkEd-9S6iWlU3cyw" presentation="default">
+        <element href="VideoClub.uml#_NypjhMfkEd-9S6iWlU3cyw"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_Nypjg8fkEd-9S6iWlU3cyw" id="stereotypeEdgeObject"/>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_G7S5oMrjEd-0zYFPi-ciUg" position="464,332" size="100,-1">
+      <anchorage xmi:id="_IPMKcMrjEd-0zYFPi-ciUg" graphEdge="_IPMKccrjEd-0zYFPi-ciUg _I3HtIMrjEd-0zYFPi-ciUg"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_G7S5ocrjEd-0zYFPi-ciUg" presentation="default">
+        <element href="VideoClub.uml#_G7cqoMrjEd-0zYFPi-ciUg"/>
+      </semanticModel>
+      <contained xsi:type="di:GraphNode" xmi:id="_G7S5osrjEd-0zYFPi-ciUg">
+        <property xmi:id="_G7S5o8rjEd-0zYFPi-ciUg" key="eStructuralFeatureID" value="37"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_G7S5pMrjEd-0zYFPi-ciUg" presentation="default">
+          <element href="VideoClub.uml#_G7cqoMrjEd-0zYFPi-ciUg"/>
+        </semanticModel>
+      </contained>
+      <contained xsi:type="di:GraphNode" xmi:id="_G7S5pcrjEd-0zYFPi-ciUg">
+        <property xmi:id="_G7S5psrjEd-0zYFPi-ciUg" key="eStructuralFeatureID" value="47 50 "/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_G7S5p8rjEd-0zYFPi-ciUg" presentation="default">
+          <element href="VideoClub.uml#_G7cqoMrjEd-0zYFPi-ciUg"/>
+        </semanticModel>
+      </contained>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_IPMKccrjEd-0zYFPi-ciUg" anchor="_IPMKcMrjEd-0zYFPi-ciUg _NypjgMfkEd-9S6iWlU3cyw">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_IPMKcsrjEd-0zYFPi-ciUg" presentation="default">
+        <element href="VideoClub.uml#_IPMKdMrjEd-0zYFPi-ciUg"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_IPMKc8rjEd-0zYFPi-ciUg" id="stereotypeEdgeObject"/>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_I3HtIMrjEd-0zYFPi-ciUg" anchor="_IPMKcMrjEd-0zYFPi-ciUg _p5bysMqNEd27wYLqDoWrkQ">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_I3HtIcrjEd-0zYFPi-ciUg" presentation="default">
+        <element href="VideoClub.uml#_I3HtI8rjEd-0zYFPi-ciUg"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_I3HtIsrjEd-0zYFPi-ciUg" id="stereotypeEdgeObject"/>
+    </contained>
+  </diagrams>
+</diagrams:Diagrams>

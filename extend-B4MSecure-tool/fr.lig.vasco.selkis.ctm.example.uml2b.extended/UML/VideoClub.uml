@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Standard="http://www.eclipse.org/uml2/schemas/Standard/1" xmlns:UML2B_Profile="http:///schemas/UML2B_Profile/_QSiYAABPEd-BJIgynnE8cg/2" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Standard/1 ../profiles/Standard.profile.uml#_bHf8wbwHEd-DGpQdvMqqbA http:///schemas/UML2B_Profile/_QSiYAABPEd-BJIgynnE8cg/2 ../profiles/UML2B_Profile.uml#_QSrh8ABPEd-BJIgynnE8cg">
+  <uml:Model xmi:id="_qiOtgMqMEd27wYLqDoWrkQ" name="VideoClub">
+    <packagedElement xmi:type="uml:Class" xmi:id="_6fjs4MqMEd27wYLqDoWrkQ" name="Client">
+      <ownedAttribute xmi:id="_HFvU0MqOEd27wYLqDoWrkQ" name="num_Client">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_r4kjcsqOEd27wYLqDoWrkQ" name="suspendu">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_R4rY0MoVEd-DYIpy0wP2lA"/>
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_8dx60MqREd27wYLqDoWrkQ" value="false"/>
+      </ownedAttribute>
+      <ownedOperation xmi:id="_RxNMQlhxEd-Z0pb_TBmyHQ" name="emprunter">
+        <ownedParameter xmi:id="_VDA7QFhxEd-Z0pb_TBmyHQ" name="casette" type="_9foysMqMEd27wYLqDoWrkQ"/>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_7x9v-MqMEd27wYLqDoWrkQ" name="Emprunt">
+      <ownedAttribute xmi:id="_23nD4sqOEd27wYLqDoWrkQ" name="date" type="_XypLwLtBEd-QfbDl-Re21g"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_9foysMqMEd27wYLqDoWrkQ" name="Cassette">
+      <ownedAttribute xmi:id="_5oMVIsqOEd27wYLqDoWrkQ" name="titre">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_9iOhwsqOEd27wYLqDoWrkQ" name="nbLibre">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_AQz52MqNEd27wYLqDoWrkQ" name="Acteur">
+      <ownedAttribute xmi:id="_YgYKQsqPEd27wYLqDoWrkQ" name="nom">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_EWn4osqNEd27wYLqDoWrkQ" name="ClientEmprunt" memberEnd="_EWn4o8qNEd27wYLqDoWrkQ _EWn4psqNEd27wYLqDoWrkQ" navigableOwnedEnd="_EWn4o8qNEd27wYLqDoWrkQ _EWn4psqNEd27wYLqDoWrkQ">
+      <ownedEnd xmi:id="_EWn4o8qNEd27wYLqDoWrkQ" name="source" type="_7x9v-MqMEd27wYLqDoWrkQ" association="_EWn4osqNEd27wYLqDoWrkQ">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_EWn4pMqNEd27wYLqDoWrkQ" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_EWn4pcqNEd27wYLqDoWrkQ"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_EWn4psqNEd27wYLqDoWrkQ" name="target" type="_6fjs4MqMEd27wYLqDoWrkQ" association="_EWn4osqNEd27wYLqDoWrkQ">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_EWn4p8qNEd27wYLqDoWrkQ" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_EWn4qMqNEd27wYLqDoWrkQ" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_E0bO-8qNEd27wYLqDoWrkQ" name="CassetteEmprunt" memberEnd="_E0bO_MqNEd27wYLqDoWrkQ _E0bO_8qNEd27wYLqDoWrkQ" navigableOwnedEnd="_E0bO_8qNEd27wYLqDoWrkQ _E0bO_MqNEd27wYLqDoWrkQ">
+      <ownedEnd xmi:id="_E0bO_MqNEd27wYLqDoWrkQ" name="source" type="_7x9v-MqMEd27wYLqDoWrkQ" association="_E0bO-8qNEd27wYLqDoWrkQ">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_E0bO_cqNEd27wYLqDoWrkQ" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_E0bO_sqNEd27wYLqDoWrkQ"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_E0bO_8qNEd27wYLqDoWrkQ" name="target" type="_9foysMqMEd27wYLqDoWrkQ" association="_E0bO-8qNEd27wYLqDoWrkQ">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_E0bPAMqNEd27wYLqDoWrkQ" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_E0bPAcqNEd27wYLqDoWrkQ" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_Zsd028qNEd27wYLqDoWrkQ" name="ActeurCassette" memberEnd="_Zsd03MqNEd27wYLqDoWrkQ _Zsd038qNEd27wYLqDoWrkQ" navigableOwnedEnd="_Zsd03MqNEd27wYLqDoWrkQ _Zsd038qNEd27wYLqDoWrkQ">
+      <ownedEnd xmi:id="_Zsd03MqNEd27wYLqDoWrkQ" name="source" type="_9foysMqMEd27wYLqDoWrkQ" association="_Zsd028qNEd27wYLqDoWrkQ">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Zsd03cqNEd27wYLqDoWrkQ" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Zsd03sqNEd27wYLqDoWrkQ"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_Zsd038qNEd27wYLqDoWrkQ" name="target" type="_AQz52MqNEd27wYLqDoWrkQ" association="_Zsd028qNEd27wYLqDoWrkQ">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Zsd04MqNEd27wYLqDoWrkQ" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Zsd04cqNEd27wYLqDoWrkQ" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_mTXD6MqNEd27wYLqDoWrkQ" name="Film">
+      <generalization xmi:id="_p5bytMqNEd27wYLqDoWrkQ" general="_9foysMqMEd27wYLqDoWrkQ"/>
+      <ownedAttribute xmi:id="_JJNL8sqPEd27wYLqDoWrkQ" name="genre" type="_wLUngMqNEd27wYLqDoWrkQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_n4iR-MqNEd27wYLqDoWrkQ" name="Serie">
+      <generalization xmi:id="_qVv7RMqNEd27wYLqDoWrkQ" general="_9foysMqMEd27wYLqDoWrkQ"/>
+      <ownedAttribute xmi:id="_MfekMsqPEd27wYLqDoWrkQ" name="num_Serie">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="_wLUngMqNEd27wYLqDoWrkQ" name="GENRE">
+      <ownedLiteral xmi:id="_xbVd4sqNEd27wYLqDoWrkQ" name="ACTION"/>
+      <ownedLiteral xmi:id="_zhTE0sqNEd27wYLqDoWrkQ" name="COMEDIE"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_XypLwLtBEd-QfbDl-Re21g" name="DATE"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_MnZ4YMfkEd-9S6iWlU3cyw" name="Anime">
+      <generalization xmi:id="_NypjhMfkEd-9S6iWlU3cyw" general="_n4iR-MqNEd27wYLqDoWrkQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_G7cqoMrjEd-0zYFPi-ciUg" name="OAV">
+      <generalization xmi:id="_IPMKdMrjEd-0zYFPi-ciUg" general="_MnZ4YMfkEd-9S6iWlU3cyw"/>
+      <generalization xmi:id="_I3HtI8rjEd-0zYFPi-ciUg" general="_mTXD6MqNEd27wYLqDoWrkQ"/>
+    </packagedElement>
+    <profileApplication xmi:id="_VbjgQABPEd-BJIgynnE8cg">
+      <eAnnotations xmi:id="_VbjgQQBPEd-BJIgynnE8cg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="../profiles/UML2B_Profile.uml#_QSrh8ABPEd-BJIgynnE8cg"/>
+      </eAnnotations>
+      <appliedProfile href="../profiles/UML2B_Profile.uml#_x54YA7CXEd2YDLNwl5IuIQ"/>
+    </profileApplication>
+  </uml:Model>
+  <UML2B_Profile:UML2B_Rule xmi:id="_WPQOEABPEd-BJIgynnE8cg" base_Element="_6fjs4MqMEd27wYLqDoWrkQ" rule="_ClassToMachine_Inh"/>
+  <Standard:Create xmi:id="_tLhi4LwHEd-DGpQdvMqqbA"/>
+</xmi:XMI>

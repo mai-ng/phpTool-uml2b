@@ -1,0 +1,301 @@
+		
+
+
+MACHINE 
+	Selkis_VASCO_ORBAC
+
+SETS
+ USER
+; ORG
+; ROLE
+; SESSION
+; ACTION
+
+
+ABSTRACT_VARIABLES
+ User
+, Org
+, Role
+, Session
+, Action
+, Position
+, UserAssignment
+, SessionUser
+, SessionActivePositions
+, PermissionAssignment
+, SubActions
+, RoleInheritance
+
+INVARIANT
+User <: USER 
+&Org <: ORG 
+&Role <: ROLE 
+&Session <: SESSION 
+&Action <: ACTION 
+&Position : Org +-> Role 
+&UserAssignment : User <-> Position 
+&SessionUser : Session --> User 
+&SessionActivePositions : Session <-> Position & dom(SessionActivePositions)=Session 
+&PermissionAssignment : Position <-> Action 
+&SubActions : Action +-> Action 
+&RoleInheritance : Role +-> Role 
+
+
+INITIALISATION
+	User:={}
+||	Org:={}
+||	Role:={}
+||	Session:={}
+||	Action:={}
+||	Position:={}
+||	UserAssignment:={}
+||	SessionUser:={}
+||	SessionActivePositions:={}
+||	PermissionAssignment:={}
+||	SubActions:={}
+||	RoleInheritance:={}
+ 
+OPERATIONS
+
+
+User_NEW(Instance)=
+	PRE
+	Instance : USER 	&	Instance /: User 	
+	THEN 		User := User \/ {Instance}
+	END;
+
+Org_NEW(Instance)=
+	PRE
+	Instance : ORG 	&	Instance /: Org 	
+	THEN 		Org := Org \/ {Instance}
+	END;
+
+Role_NEW(Instance)=
+	PRE
+	Instance : ROLE 	&	Instance /: Role 	
+	THEN 		Role := Role \/ {Instance}
+	END;
+
+Session_NEW(Instance,SessionUser__userValue,SessionActivePositions__activePositionsValues)=
+	PRE
+	Instance : SESSION 	&	Instance /: Session 	&	SessionUser__userValue : User 	&	SessionActivePositions__activePositionsValues : POW(Position) 	&	SessionActivePositions__activePositionsValues/={} 	
+	THEN 		Session := Session \/ {Instance} 
+ || SessionUser:= SessionUser \/ {(Instance|->SessionUser__userValue)} 
+ || SessionActivePositions:= SessionActivePositions \/ ({Instance}*SessionActivePositions__activePositionsValues)
+	END;
+
+Action_NEW(Instance)=
+	PRE
+	Instance : ACTION 	&	Instance /: Action 	
+	THEN 		Action := Action \/ {Instance}
+	END;
+
+User_Free(Instance)=
+	PRE
+	Instance : USER 	&	Instance : User 	&	SessionUser~[{Instance}]={} 	
+	THEN 		User := User - {Instance}
+ || UserAssignment:= {Instance}<<|UserAssignment
+ || SessionUser:= SessionUser|>> {Instance}
+	END;
+
+Org_Free(Instance)=
+	PRE
+	Instance : ORG 	&	Instance : Org 	
+	THEN 		Org := Org - {Instance}
+ || Position:= {Instance}<<|Position
+	END;
+
+Role_Free(Instance)=
+	PRE
+	Instance : ROLE 	&	Instance : Role 	
+	THEN 		Role := Role - {Instance}
+ || Position:= Position|>> {Instance}
+ || RoleInheritance:= {Instance}<<|RoleInheritance
+ || RoleInheritance:= {Instance}<<|RoleInheritance
+	END;
+
+Session_Free(Instance)=
+	PRE
+	Instance : SESSION 	&	Instance : Session 	
+	THEN 		Session := Session - {Instance}
+ || SessionUser:= {Instance}<<|SessionUser
+ || SessionActivePositions:= {Instance}<<|SessionActivePositions
+	END;
+
+Action_Free(Instance)=
+	PRE
+	Instance : ACTION 	&	Instance : Action 	
+	THEN 		Action := Action - {Instance}
+ || PermissionAssignment:= PermissionAssignment|>> {Instance}
+ || SubActions:= {Instance}<<|SubActions
+ || SubActions:= {Instance}<<|SubActions
+	END;
+
+Position_NEW(Instance,OrgInstance,RoleInstance)=
+	PRE
+	Instance : Org*Role 	&	Instance /: Position 	&	OrgInstance : Org 	&	OrgInstance /: dom(Position) 	&	RoleInstance : Role 	&	( OrgInstance|->RoleInstance )= Instance 	
+	THEN 		Position := Position \/ {Instance}
+	END;
+
+Position_Free=
+ 		
+	END;
+
+result <-- Role__GetPosition(Instance)=
+	PRE
+	Instance : Role 	
+	THEN 		result := Position~(Instance)
+	END;
+
+result <-- Org__GetPosition(Instance)=
+	PRE
+	Instance : Org 	
+	THEN 		result := Position(Instance)
+	END;
+
+result <-- User__GetUserAssignment(Instance)=
+	PRE
+	Instance : User 	
+	THEN 		result := UserAssignment(Instance)
+	END;
+
+result <-- Session__GetSessionUser(Instance)=
+	PRE
+	Instance : Session 	
+	THEN 		result := SessionUser(Instance)
+	END;
+
+result <-- User__GetSessionUser(Instance)=
+	PRE
+	Instance : User 	
+	THEN 		result := SessionUser~(Instance)
+	END;
+
+result <-- Session__GetSessionActivePositions(Instance)=
+	PRE
+	Instance : Session 	
+	THEN 		result := SessionActivePositions(Instance)
+	END;
+
+result <-- Position__GetPermissionAssignment(Instance)=
+	PRE
+	Instance : Position 	
+	THEN 		result := PermissionAssignment(Instance)
+	END;
+
+result <-- Action__GetSubActions(Instance)=
+	PRE
+	Instance : Action 	
+	THEN 		result := SubActions(Instance)
+	END;
+
+result <-- Role__GetRoleInheritance(Instance)=
+	PRE
+	Instance : Role 	
+	THEN 		result := RoleInheritance(Instance)
+	END;
+
+result <-- Role__GetRoleInheritance(Instance)=
+	PRE
+	Instance : Role 	
+	THEN 		result := RoleInheritance(Instance)
+	END;
+
+Org__SetPosition(Instance,Position__roleValue)=
+	PRE
+	Instance : Org 	&	Position__roleValue : Role 	&	(Instance|-> Position__roleValue) /: Position 	
+	THEN 		Position:= ({Instance}<<|Position)\/ {(Instance|-> Position__roleValue)}
+	END;
+
+Role__SetRoleInheritance(Instance,RoleInheritance__parentRoleValue)=
+	PRE
+	Instance : Role 	&	RoleInheritance__parentRoleValue : Role 	&	(Instance|-> RoleInheritance__parentRoleValue) /: RoleInheritance 	&	RoleInheritance__parentRoleValue/:ran(RoleInheritance) 	
+	THEN 		RoleInheritance:= ({Instance}<<|RoleInheritance)\/ {(Instance|-> RoleInheritance__parentRoleValue)}
+	END;
+
+Role__AddPosition(Instance,Position__orgValues)=
+	PRE
+	Instance : Role 	&	Position__orgValues : Org 	&	(Position__orgValues|-> Instance) /:Position 	&	Position__orgValues/:dom(Position) 	
+	THEN 		Position:= Position\/{(Position__orgValues|-> Instance)}
+	END;
+
+User__AddUserAssignment(Instance,UserAssignment__positionsValues)=
+	PRE
+	Instance : User 	&	UserAssignment__positionsValues : Position 	&	(Instance|-> UserAssignment__positionsValues) /:UserAssignment 	
+	THEN 		UserAssignment:= UserAssignment\/ {(Instance|-> UserAssignment__positionsValues)}
+	END;
+
+User__AddSessionUser(Instance,SessionUser__sessionValues)=
+	PRE
+	Instance : User 	&	SessionUser__sessionValues : Session 	&	(SessionUser__sessionValues|-> Instance) /:SessionUser 	&	SessionUser__sessionValues/:dom(SessionUser) 	
+	THEN 		SessionUser:= SessionUser\/{(SessionUser__sessionValues|-> Instance)}
+	END;
+
+Session__AddSessionActivePositions(Instance,SessionActivePositions__activePositionsValues)=
+	PRE
+	Instance : Session 	&	SessionActivePositions__activePositionsValues : Position 	&	(Instance|-> SessionActivePositions__activePositionsValues) /:SessionActivePositions 	
+	THEN 		SessionActivePositions:= SessionActivePositions\/ {(Instance|-> SessionActivePositions__activePositionsValues)}
+	END;
+
+Position__AddPermissionAssignment(Instance,PermissionAssignment__actionValues)=
+	PRE
+	Instance : Position 	&	PermissionAssignment__actionValues : Action 	&	(Instance|-> PermissionAssignment__actionValues) /:PermissionAssignment 	
+	THEN 		PermissionAssignment:= PermissionAssignment\/ {(Instance|-> PermissionAssignment__actionValues)}
+	END;
+
+Action__AddSubActions(Instance,SubActions__subActionsValues)=
+	PRE
+	Instance : Action 	&	SubActions__subActionsValues : Action 	&	(Instance|-> SubActions__subActionsValues) /:SubActions 	&	SubActions__subActionsValues/:ran(SubActions) 	
+	THEN 		SubActions:= SubActions\/ {(Instance|-> SubActions__subActionsValues)}
+	END;
+
+Role__AddRoleInheritance(Instance,RoleInheritance__subRolesValues)=
+	PRE
+	Instance : Role 	&	RoleInheritance__subRolesValues : Role 	&	(Instance|-> RoleInheritance__subRolesValues) /:RoleInheritance 	&	RoleInheritance__subRolesValues/:ran(RoleInheritance) 	
+	THEN 		RoleInheritance:= RoleInheritance\/ {(Instance|-> RoleInheritance__subRolesValues)}
+	END;
+
+Role__RemovePosition(Instance,Position__orgValues)=
+	PRE
+	Instance : Role 	&	Position__orgValues : Org 	&	(Position__orgValues|-> Instance) :Position 	
+	THEN 		Position:= Position-{(Position__orgValues|-> Instance)}
+	END;
+
+User__RemoveUserAssignment(Instance,UserAssignment__positionsValues)=
+	PRE
+	Instance : User 	&	UserAssignment__positionsValues : Position 	&	(Instance|-> UserAssignment__positionsValues) :UserAssignment 	
+	THEN 		UserAssignment:= UserAssignment-{(Instance|-> UserAssignment__positionsValues)}
+	END;
+
+User__RemoveSessionUser(Instance,SessionUser__sessionValues)=
+	PRE
+	Instance : User 	&	SessionUser__sessionValues : Session 	&	(SessionUser__sessionValues|-> Instance) :SessionUser 	&	#cc.(cc: User & cc/=Instance & cc: SessionUser[{SessionUser__sessionValues}]) 	
+	THEN 		SessionUser:= SessionUser-{(SessionUser__sessionValues|-> Instance)}
+	END;
+
+Session__RemoveSessionActivePositions(Instance,SessionActivePositions__activePositionsValues)=
+	PRE
+	Instance : Session 	&	SessionActivePositions__activePositionsValues : Position 	&	(Instance|-> SessionActivePositions__activePositionsValues) :SessionActivePositions 	&	#cc.(cc: Position& cc/=SessionActivePositions__activePositionsValues & (Instance|-> SessionActivePositions__activePositionsValues):SessionActivePositions ) 	
+	THEN 		SessionActivePositions:= SessionActivePositions-{(Instance|-> SessionActivePositions__activePositionsValues)}
+	END;
+
+Position__RemovePermissionAssignment(Instance,PermissionAssignment__actionValues)=
+	PRE
+	Instance : Position 	&	PermissionAssignment__actionValues : Action 	&	(Instance|-> PermissionAssignment__actionValues) :PermissionAssignment 	
+	THEN 		PermissionAssignment:= PermissionAssignment-{(Instance|-> PermissionAssignment__actionValues)}
+	END;
+
+Action__RemoveSubActions(Instance,SubActions__subActionsValues)=
+	PRE
+	Instance : Action 	&	SubActions__subActionsValues : Action 	&	(Instance|-> SubActions__subActionsValues) :SubActions 	
+	THEN 		SubActions:= SubActions-{(Instance|-> SubActions__subActionsValues)}
+	END;
+
+Role__RemoveRoleInheritance(Instance,RoleInheritance__subRolesValues)=
+	PRE
+	Instance : Role 	&	RoleInheritance__subRolesValues : Role 	&	(Instance|-> RoleInheritance__subRolesValues) :RoleInheritance 	
+	THEN 		RoleInheritance:= RoleInheritance-{(Instance|-> RoleInheritance__subRolesValues)}
+	END
+ END
+ 
+	

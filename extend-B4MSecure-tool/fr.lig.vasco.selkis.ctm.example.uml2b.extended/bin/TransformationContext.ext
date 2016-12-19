@@ -1,0 +1,18 @@
+import uml;
+import b;
+import trace;
+import ecore;
+import transformationconfig;
+
+
+b::BSpec BSPEC(): GLOBALVAR OUTPUT;
+
+uml::Package PACKAGE(): GLOBALVAR INPUT;
+
+trace::TransformationTrace TRACE(): GLOBALVAR TRACE;
+
+transformationconfig::Config CONFIG(): GLOBALVAR CONFIG;
+
+
+
+

@@ -1,0 +1,209 @@
+		
+
+
+MACHINE 
+	AC
+
+SETS
+ STR2
+; PATIENT
+; MANAGEMENTACT
+; USER
+; STR
+; Boolean
+; Integer
+; String
+; UnlimitedNatural
+; TimeStamp
+
+ ;GENDER={MALE,FEMALE,UNKNOWN}
+
+ABSTRACT_VARIABLES
+ Patient
+, ManagementAct
+, User
+, Owner
+, Patient__id
+, Patient__firstName
+, Patient__lastName
+, Patient__sex
+, Patient__weight
+, Patient__height
+, ManagementAct__dateTime
+, ManagementAct__validated
+
+INVARIANT
+Patient : POW(PATIENT) 
+&ManagementAct : POW(MANAGEMENTACT) 
+&User : POW(USER) 
+&Owner : ManagementAct --> User 
+&Patient__id : Patient --> INTEGER 
+&Patient__firstName : Patient --> STR2 
+&Patient__lastName : Patient --> STR2 
+&Patient__sex : Patient --> GENDER 
+&Patient__weight : Patient +-> INTEGER 
+&Patient__height : Patient --> INTEGER 
+&ManagementAct__dateTime : ManagementAct --> TimeStamp 
+&ManagementAct__validated : ManagementAct --> BOOL 
+
+
+INITIALISATION
+	Patient:={}
+||	ManagementAct:={}
+||	User:={}
+||	Owner:={}
+||	Patient__id:={}
+||	Patient__firstName:={}
+||	Patient__lastName:={}
+||	Patient__sex:={}
+||	Patient__weight:={}
+||	Patient__height:={}
+||	ManagementAct__dateTime:={}
+||	ManagementAct__validated:={}
+ 
+OPERATIONS
+
+
+Patient_NEW(	Instance,	Patient__idValue,	Patient__firstNameValue,	Patient__lastNameValue,	Patient__sexValue,	Patient__heightValue)=
+	PRE
+	Instance : PATIENT 	&	Instance /: Patient 	&	Patient__idValue : INTEGER 	&	Patient__firstNameValue : STR2 	&	Patient__lastNameValue : STR2 	&	Patient__sexValue : GENDER 	&	Patient__heightValue : INTEGER 	
+	THEN 		Patient := Patient \/ {Instance}
+ || Patient__id:= Patient__id \/ {(Instance|->Patient__idValue)}
+ || Patient__firstName:= Patient__firstName \/ {(Instance|->Patient__firstNameValue)}
+ || Patient__lastName:= Patient__lastName \/ {(Instance|->Patient__lastNameValue)}
+ || Patient__sex:= Patient__sex \/ {(Instance|->Patient__sexValue)}
+ || Patient__height:= Patient__height \/ {(Instance|->Patient__heightValue)}
+	END;
+
+ManagementAct_NEW(	Instance,	Owner__userValue,	ManagementAct__dateTimeValue,	ManagementAct__validatedValue)=
+	PRE
+	Instance : MANAGEMENTACT 	&	Instance /: ManagementAct 	&	Owner__userValue : User 	&	ManagementAct__dateTimeValue : TimeStamp 	&	ManagementAct__validatedValue : BOOL 	
+	THEN 		ManagementAct := ManagementAct \/ {Instance} || Owner:= Owner \/ {(Instance|->Owner__userValue)}
+ || ManagementAct__dateTime:= ManagementAct__dateTime \/ {(Instance|->ManagementAct__dateTimeValue)}
+ || ManagementAct__validated:= ManagementAct__validated \/ {(Instance|->ManagementAct__validatedValue)}
+	END;
+
+User_NEW(	Instance)=
+	PRE
+	Instance : USER 	&	Instance /: User 	
+	THEN 		User := User \/ {Instance}
+	END;
+
+Patient_Free(	Instance)=
+	PRE
+	Instance : PATIENT 	&	Instance : Patient 	
+	THEN 		Patient := Patient - {Instance} || Patient__id:= {Instance}<<|Patient__id || Patient__firstName:= {Instance}<<|Patient__firstName || Patient__lastName:= {Instance}<<|Patient__lastName || Patient__sex:= {Instance}<<|Patient__sex || Patient__weight:= {Instance}<<|Patient__weight || Patient__height:= {Instance}<<|Patient__height
+	END;
+
+ManagementAct_Free(	Instance)=
+	PRE
+	Instance : MANAGEMENTACT 	&	Instance : ManagementAct 	
+	THEN 		ManagementAct := ManagementAct - {Instance}
+ || Owner:= {Instance}<<|Owner || ManagementAct__dateTime:= {Instance}<<|ManagementAct__dateTime || ManagementAct__validated:= {Instance}<<|ManagementAct__validated
+	END;
+
+User_Free(	Instance)=
+	PRE
+	Instance : USER 	&	Instance : User 	&	 !c2.(c2:Owner~[{Instance}] => #cc.(cc:Owner[{c2}] & cc/=Instance) ) 	
+	THEN 		User := User - {Instance}
+ || Owner:= Owner|>> {Instance}
+	END;
+
+result <-- ManagementAct__GetOwner(	Instance)=
+	PRE
+	Instance : ManagementAct 	
+	THEN 		result := Owner(Instance)
+	END;
+
+result <-- Patient__GetId(	Instance)=
+	PRE
+	Instance : Patient 	
+	THEN 		result := Patient__id(Instance)
+	END;
+
+result <-- Patient__GetFirstName(	Instance)=
+	PRE
+	Instance : Patient 	
+	THEN 		result := Patient__firstName(Instance)
+	END;
+
+result <-- Patient__GetLastName(	Instance)=
+	PRE
+	Instance : Patient 	
+	THEN 		result := Patient__lastName(Instance)
+	END;
+
+result <-- Patient__GetSex(	Instance)=
+	PRE
+	Instance : Patient 	
+	THEN 		result := Patient__sex(Instance)
+	END;
+
+result <-- Patient__GetWeight(	Instance)=
+	PRE
+	Instance : Patient 	
+	THEN 		result := Patient__weight(Instance)
+	END;
+
+result <-- Patient__GetHeight(	Instance)=
+	PRE
+	Instance : Patient 	
+	THEN 		result := Patient__height(Instance)
+	END;
+
+result <-- ManagementAct__GetDateTime(	Instance)=
+	PRE
+	Instance : ManagementAct 	
+	THEN 		result := ManagementAct__dateTime(Instance)
+	END;
+
+result <-- ManagementAct__GetValidated(	Instance)=
+	PRE
+	Instance : ManagementAct 	
+	THEN 		result := ManagementAct__validated(Instance)
+	END;
+
+Patient__SetId(	Instance,	Patient__idValue)=
+	PRE
+	Instance : Patient 	&	Patient__idValue : INTEGER 	
+	THEN 		Patient__id:= ({Instance}<<|Patient__id)\/ {(Instance|-> Patient__idValue)}
+	END;
+
+Patient__SetFirstName(	Instance,	Patient__firstNameValue)=
+	PRE
+	Instance : Patient 	&	Patient__firstNameValue : STR2 	
+	THEN 		Patient__firstName:= ({Instance}<<|Patient__firstName)\/ {(Instance|-> Patient__firstNameValue)}
+	END;
+
+Patient__SetLastName(	Instance,	Patient__lastNameValue)=
+	PRE
+	Instance : Patient 	&	Patient__lastNameValue : STR2 	
+	THEN 		Patient__lastName:= ({Instance}<<|Patient__lastName)\/ {(Instance|-> Patient__lastNameValue)}
+	END;
+
+Patient__SetSex(	Instance,	Patient__sexValue)=
+	PRE
+	Instance : Patient 	&	Patient__sexValue : GENDER 	
+	THEN 		Patient__sex:= ({Instance}<<|Patient__sex)\/ {(Instance|-> Patient__sexValue)}
+	END;
+
+Patient__SetWeight(	Instance,	Patient__weightValue)=
+	PRE
+	Instance : Patient 	&	Patient__weightValue : INTEGER 	
+	THEN 		Patient__weight:= ({Instance}<<|Patient__weight)\/ {(Instance|-> Patient__weightValue)}
+	END;
+
+Patient__SetHeight(	Instance,	Patient__heightValue)=
+	PRE
+	Instance : Patient 	&	Patient__heightValue : INTEGER 	
+	THEN 		Patient__height:= ({Instance}<<|Patient__height)\/ {(Instance|-> Patient__heightValue)}
+	END;
+
+ManagementAct__SetDateTime(	Instance,	ManagementAct__dateTimeValue)=
+	PRE
+	Instance : ManagementAct 	&	ManagementAct__dateTimeValue : TimeStamp 	
+	THEN 		ManagementAct__dateTime:= ({Instance}<<|ManagementAct__dateTime)\/ {(Instance|-> ManagementAct__dateTimeValue)}
+	END
+ END
+ 
+	

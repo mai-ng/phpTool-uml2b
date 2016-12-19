@@ -1,0 +1,21 @@
+<workflow>	
+	<component class="org.eclipse.xtend.typesystem.emf.XmiReader">
+		<modelFile value="${BModel}"/>
+		<!--<modelFile value="B/VideoClub.b"/>-->
+		<outputSlot value="bSlot"/>
+	</component>
+	
+	<!-- This is the oAW Xpand Generator engine -->
+	<!-- ' org.eclipse.xtend.typesystem.xpand2.Generator ' -->
+	<component id="generator" class="org.eclipse.xpand2.Generator" skipOnErrors="true">
+		
+		<metaModel id="b" class="org.eclipse.xtend.typesystem.emf.EmfMetaModel">
+			<metaModelPackage value="fr.lig.vasco.models.b.BPackage"/>         
+    	</metaModel>
+        <!-- Start text/code generation with the following template for the object  -->
+		<expand value="B2Text_AB4_0__B1_8_5::file FOR bSlot"/>
+		<!-- Configure default outlet -->
+   		<outlet path="B"></outlet>	   
+	    <!--fileEncoding value="ISO-8859-1"/--> 
+	 </component>
+</workflow>

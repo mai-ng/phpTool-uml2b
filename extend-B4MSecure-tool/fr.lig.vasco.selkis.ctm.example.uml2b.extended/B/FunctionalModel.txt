@@ -1,0 +1,132 @@
+		
+
+
+MACHINE 
+	FunctionalModel
+
+SETS
+ OWNER
+; MANAGEMENTACT
+; PATIENT
+
+
+ABSTRACT_VARIABLES
+ Owner
+, ManagementAct
+, Patient
+, A_<patient>_<managementAct>
+, A_<owner>_<managementAct>
+, ManagementAct__validated
+, Patient__ssn
+
+INVARIANT
+Owner <: OWNER 
+&ManagementAct <: MANAGEMENTACT 
+&Patient <: PATIENT 
+&A_<patient>_<managementAct> : ManagementAct --> Patient 
+&A_<owner>_<managementAct> : ManagementAct --> Owner 
+&ManagementAct__validated : ManagementAct --> BOOL 
+&Patient__ssn : Patient >-> INTEGER 
+
+
+INITIALISATION
+	Owner:={}
+||	ManagementAct:={}
+||	Patient:={}
+||	A_<patient>_<managementAct>:={}
+||	A_<owner>_<managementAct>:={}
+||	ManagementAct__validated:={}
+||	Patient__ssn:={}
+ 
+OPERATIONS
+
+
+ManagementAct__validate(Instance)=
+	PRE
+	Instance : ManagementAct 	
+	THEN 		skip
+	END;
+
+Owner_NEW(Instance)=
+	PRE
+	Instance : OWNER 	&	Instance /: Owner 	
+	THEN 		Owner := Owner \/ {Instance}
+	END;
+
+ManagementAct_NEW(Instance,A_<patient>_<managementAct>__patientValue,A_<owner>_<managementAct>__ownerValue)=
+	PRE
+	Instance : MANAGEMENTACT 	&	Instance /: ManagementAct 	&	A_<patient>_<managementAct>__patientValue : Patient 	&	A_<owner>_<managementAct>__ownerValue : Owner 	
+	THEN 		ManagementAct := ManagementAct \/ {Instance} 
+ || A_<patient>_<managementAct>:= A_<patient>_<managementAct> \/ {(Instance|->A_<patient>_<managementAct>__patientValue)} 
+ || A_<owner>_<managementAct>:= A_<owner>_<managementAct> \/ {(Instance|->A_<owner>_<managementAct>__ownerValue)} || ManagementAct__validated:= ManagementAct__validated \/ {(Instance|->FALSE)}
+	END;
+
+Patient_NEW(Instance,Patient__ssnValue)=
+	PRE
+	Instance : PATIENT 	&	Instance /: Patient 	&	Patient__ssnValue : INTEGER 	&	Patient__ssnValue /:ran(Patient__ssn) 	
+	THEN 		Patient := Patient \/ {Instance}
+ || Patient__ssn:= Patient__ssn \/ {(Instance|->Patient__ssnValue)}
+	END;
+
+Owner_Free(Instance)=
+	PRE
+	Instance : OWNER 	&	Instance : Owner 	&	A_<owner>_<managementAct>~[{Instance}]={} 	
+	THEN 		Owner := Owner - {Instance}
+ || A_<owner>_<managementAct>:= A_<owner>_<managementAct>|>> {Instance}
+	END;
+
+ManagementAct_Free(Instance)=
+	PRE
+	Instance : MANAGEMENTACT 	&	Instance : ManagementAct 	
+	THEN 		ManagementAct := ManagementAct - {Instance}
+ || A_<owner>_<managementAct>:= {Instance}<<|A_<owner>_<managementAct>
+ || ManagementAct__validated:= {Instance}<<|ManagementAct__validated
+	END;
+
+Patient_Free(Instance)=
+	PRE
+	Instance : PATIENT 	&	Instance : Patient 	&	A_<patient>_<managementAct>~[{Instance}]={}
+ & A_<patient>_<managementAct>~[{Instance}]={} 	
+	THEN 		Patient := Patient - {Instance}
+ || A_<patient>_<managementAct>:= A_<patient>_<managementAct>|>> {Instance}
+ || Patient__ssn:= {Instance}<<|Patient__ssn
+	END;
+
+result <-- ManagementAct__GetA_<patient>_<managementAct>(Instance)=
+	PRE
+	Instance : ManagementAct 	
+	THEN 		result := A_<patient>_<managementAct>(Instance)
+	END;
+
+result <-- ManagementAct__GetA_<owner>_<managementAct>(Instance)=
+	PRE
+	Instance : ManagementAct 	
+	THEN 		result := A_<owner>_<managementAct>(Instance)
+	END;
+
+result <-- Owner__GetA_<owner>_<managementAct>(Instance)=
+	PRE
+	Instance : Owner 	
+	THEN 		result := A_<owner>_<managementAct>~(Instance)
+	END;
+
+result <-- ManagementAct__GetValidated(Instance)=
+	PRE
+	Instance : ManagementAct 	
+	THEN 		result := ManagementAct__validated(Instance)
+	END;
+
+result <-- Patient__GetSsn(Instance)=
+	PRE
+	Instance : Patient 	
+	THEN 		result := Patient__ssn(Instance)
+	END;
+
+Patient__SetSsn(Instance,Patient__ssnValue)=
+	PRE
+	Instance : Patient 	&	Patient__ssnValue : INTEGER 	&	Patient__ssnValue /: ran(Patient__ssn) 	
+	THEN 		Patient__ssn:= ({Instance}<<|Patient__ssn)\/ {(Instance|-> Patient__ssnValue)}
+	END
+ END
+ 
+	

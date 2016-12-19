@@ -1,0 +1,83 @@
+		
+
+
+MACHINE 
+	Assoc_0n_0n
+
+SETS
+ STR
+; CLASS1
+; CLASS2
+
+
+ABSTRACT_VARIABLES
+ Class1
+, Class2
+, AssociationClass1_Class2
+
+INVARIANT
+Class1 : POW(CLASS1) 
+&Class2 : POW(CLASS2) 
+&AssociationClass1_Class2 : Class1 <-> Class2 
+
+
+INITIALISATION
+	Class1:={}
+||	Class2:={}
+||	AssociationClass1_Class2:={}
+ 
+OPERATIONS
+
+
+Class1_NEW(	Instance)=
+	PRE
+	Instance : CLASS1 	&	Instance /: Class1 	
+	THEN 		Class1 := Class1 \/ {Instance}
+	END;
+
+Class2_NEW(	Instance)=
+	PRE
+	Instance : CLASS2 	&	Instance /: Class2 	
+	THEN 		Class2 := Class2 \/ {Instance}
+	END;
+
+Class1_Free(	Instance)=
+	PRE
+	Instance : CLASS1 	&	Instance : Class1 	
+	THEN 		Class1 := Class1 - {Instance}
+ || AssociationClass1_Class2:= {Instance}<<|AssociationClass1_Class2
+	END;
+
+Class2_Free(	Instance)=
+	PRE
+	Instance : CLASS2 	&	Instance : Class2 	
+	THEN 		Class2 := Class2 - {Instance}
+ || AssociationClass1_Class2:= AssociationClass1_Class2|>> {Instance}
+	END;
+
+result <-- Class2__GetAssociationClass1_Class2(	Instance)=
+	PRE
+	Instance : Class2 	
+	THEN 		result := AssociationClass1_Class2~(Instance)
+	END;
+
+result <-- Class1__GetAssociationClass1_Class2(	Instance)=
+	PRE
+	Instance : Class1 	
+	THEN 		result := AssociationClass1_Class2(Instance)
+	END;
+
+Class2__AddAssociationClass1_Class2(	Instance,	AssociationClass1_Class2__class1Values)=
+	PRE
+	Instance : Class2 	&	AssociationClass1_Class2__class1Values : Class1 	&	(AssociationClass1_Class2__class1Values|-> Instance) /:AssociationClass1_Class2 	
+	THEN 		AssociationClass1_Class2:= AssociationClass1_Class2\/{(AssociationClass1_Class2__class1Values|-> Instance)}
+	END;
+
+Class1__AddAssociationClass1_Class2(	Instance,	AssociationClass1_Class2__class2Values)=
+	PRE
+	Instance : Class1 	&	AssociationClass1_Class2__class2Values : Class2 	&	(Instance|-> AssociationClass1_Class2__class2Values) /:AssociationClass1_Class2 	
+	THEN 		AssociationClass1_Class2:= AssociationClass1_Class2\/ {(Instance|-> AssociationClass1_Class2__class2Values)}
+	END
+ END
+ 
+	

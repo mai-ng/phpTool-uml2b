@@ -1,0 +1,166 @@
+		
+
+
+MACHINE 
+	Sample
+
+SETS
+ PATIENT
+; MANAGMENTACT
+; OWNER
+
+ ;Type={T1,T2}
+
+ABSTRACT_VARIABLES
+ Patient
+, ManagmentAct
+, Owner
+, patientManagmentActs
+, OwnedBy
+, ManagmentAct__validated
+, ManagmentAct__type
+, ManagmentAct__id
+
+INVARIANT
+Patient <: PATIENT 
+&ManagmentAct <: MANAGMENTACT 
+&Owner <: OWNER 
+&patientManagmentActs : ManagmentAct --> Patient 
+&OwnedBy : ManagmentAct --> Owner 
+&ManagmentAct__validated : ManagmentAct --> BOOL 
+&ManagmentAct__type : ManagmentAct +-> Type 
+&ManagmentAct__id : ManagmentAct >-> INTEGER 
+
+
+INITIALISATION
+	Patient:={}
+||	ManagmentAct:={}
+||	Owner:={}
+||	patientManagmentActs:={}
+||	OwnedBy:={}
+||	ManagmentAct__validated:={}
+||	ManagmentAct__type:={}
+||	ManagmentAct__id:={}
+ 
+OPERATIONS
+
+
+ManagmentAct__validate(Instance)=
+	PRE
+	Instance : ManagmentAct 	
+	THEN 		
+/* Annoted Body BEGIN */
+ManagmentAct__validated:= ({Instance}<<|ManagmentAct__validated)\/{(Instance|->TRUE)}
+/* Annoted Body END */
+
+	END;
+
+Patient_NEW(Instance)=
+	PRE
+	Instance : PATIENT 	&	Instance /: Patient 	
+	THEN 		Patient := Patient \/ {Instance}
+	END;
+
+ManagmentAct_NEW(Instance,patientManagmentActs__patientValue,OwnedBy__ownerValue,ManagmentAct__idValue)=
+	PRE
+	Instance : MANAGMENTACT 	&	Instance /: ManagmentAct 	&	patientManagmentActs__patientValue : Patient 	&	OwnedBy__ownerValue : Owner 	&	ManagmentAct__idValue : INTEGER 	&	ManagmentAct__idValue /:ran(ManagmentAct__id) 	
+	THEN 		ManagmentAct := ManagmentAct \/ {Instance} 
+ || patientManagmentActs:= patientManagmentActs \/ {(Instance|->patientManagmentActs__patientValue)} 
+ || OwnedBy:= OwnedBy \/ {(Instance|->OwnedBy__ownerValue)} || ManagmentAct__validated:= ManagmentAct__validated \/ {(Instance|->FALSE)}
+ || ManagmentAct__id:= ManagmentAct__id \/ {(Instance|->ManagmentAct__idValue)}
+	END;
+
+Owner_NEW(Instance)=
+	PRE
+	Instance : OWNER 	&	Instance /: Owner 	
+	THEN 		Owner := Owner \/ {Instance}
+	END;
+
+Patient_Free(Instance)=
+	PRE
+	Instance : PATIENT 	&	Instance : Patient 	&	patientManagmentActs~[{Instance}]={}
+ & patientManagmentActs~[{Instance}]={} 	
+	THEN 		Patient := Patient - {Instance}
+ || patientManagmentActs:= patientManagmentActs|>> {Instance}
+	END;
+
+ManagmentAct_Free(Instance)=
+	PRE
+	Instance : MANAGMENTACT 	&	Instance : ManagmentAct 	
+	THEN 		ManagmentAct := ManagmentAct - {Instance}
+ || patientManagmentActs:= {Instance}<<|patientManagmentActs
+ || OwnedBy:= {Instance}<<|OwnedBy
+ || ManagmentAct__validated:= {Instance}<<|ManagmentAct__validated
+ || ManagmentAct__type:= {Instance}<<|ManagmentAct__type
+ || ManagmentAct__id:= {Instance}<<|ManagmentAct__id
+	END;
+
+Owner_Free(Instance)=
+	PRE
+	Instance : OWNER 	&	Instance : Owner 	&	OwnedBy~[{Instance}]={} 	
+	THEN 		Owner := Owner - {Instance}
+ || OwnedBy:= OwnedBy|>> {Instance}
+	END;
+
+result <-- ManagmentAct__GetPatientManagmentActs(Instance)=
+	PRE
+	Instance : ManagmentAct 	
+	THEN 		result := patientManagmentActs(Instance)
+	END;
+
+result <-- Patient__GetPatientManagmentActs(Instance)=
+	PRE
+	Instance : Patient 	
+	THEN 		result := patientManagmentActs~(Instance)
+	END;
+
+result <-- ManagmentAct__GetOwnedBy(Instance)=
+	PRE
+	Instance : ManagmentAct 	
+	THEN 		result := OwnedBy(Instance)
+	END;
+
+Patient__AddPatientManagmentActs(Instance,patientManagmentActs__managmentActValues)=
+	PRE
+	Instance : Patient 	&	patientManagmentActs__managmentActValues : ManagmentAct 	&	(patientManagmentActs__managmentActValues|-> Instance) /:patientManagmentActs 	&	patientManagmentActs__managmentActValues/:dom(patientManagmentActs) 	
+	THEN 		patientManagmentActs:= patientManagmentActs\/{(patientManagmentActs__managmentActValues|-> Instance)}
+	END;
+
+Patient__RemovePatientManagmentActs(Instance,patientManagmentActs__managmentActValues)=
+	PRE
+	Instance : Patient 	&	patientManagmentActs__managmentActValues : ManagmentAct 	&	(patientManagmentActs__managmentActValues|-> Instance) :patientManagmentActs 	&	#cc.(cc: Patient & cc/=Instance & cc: patientManagmentActs[{patientManagmentActs__managmentActValues}]) 	
+	THEN 		patientManagmentActs:= patientManagmentActs\/{(patientManagmentActs__managmentActValues|-> Instance)}
+	END;
+
+result <-- ManagmentAct__GetValidated(Instance)=
+	PRE
+	Instance : ManagmentAct 	
+	THEN 		result := ManagmentAct__validated(Instance)
+	END;
+
+result <-- ManagmentAct__GetType(Instance)=
+	PRE
+	Instance : ManagmentAct 	
+	THEN 		result := ManagmentAct__type(Instance)
+	END;
+
+result <-- ManagmentAct__GetId(Instance)=
+	PRE
+	Instance : ManagmentAct 	
+	THEN 		result := ManagmentAct__id(Instance)
+	END;
+
+ManagmentAct__SetType(Instance,ManagmentAct__typeValue)=
+	PRE
+	Instance : ManagmentAct 	&	ManagmentAct__typeValue : Type 	&	(Instance|-> ManagmentAct__typeValue) /: ManagmentAct__type 	
+	THEN 		ManagmentAct__type:= ({Instance}<<|ManagmentAct__type)\/ {(Instance|-> ManagmentAct__typeValue)}
+	END;
+
+ManagmentAct__SetId(Instance,ManagmentAct__idValue)=
+	PRE
+	Instance : ManagmentAct 	&	ManagmentAct__idValue : INTEGER 	&	ManagmentAct__idValue /: ran(ManagmentAct__id) 	
+	THEN 		ManagmentAct__id:= ({Instance}<<|ManagmentAct__id)\/ {(Instance|-> ManagmentAct__idValue)}
+	END
+ END
+ 
+	

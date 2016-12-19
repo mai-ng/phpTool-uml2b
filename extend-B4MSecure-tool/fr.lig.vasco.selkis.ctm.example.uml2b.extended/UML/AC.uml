@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_qb8akM37EdqwVrslYOdUDA" name="AC" viewpoint="">
+  <packagedElement xmi:type="uml:Class" xmi:id="_-BvCWHe8Ed-8nKfme2ahgA" name="Patient">
+    <ownedAttribute xmi:id="_E6AoEHfFEd-8nKfme2ahgA" name="id" visibility="private" type="_VP_GEXfHEd-8nKfme2ahgA"/>
+    <ownedAttribute xmi:id="_JNYhwnfFEd-8nKfme2ahgA" name="firstName" type="_VP_GEnfHEd-8nKfme2ahgA"/>
+    <ownedAttribute xmi:id="_Qg1hQnfFEd-8nKfme2ahgA" name="sex" type="_ZCbc8HfHEd-8nKfme2ahgA"/>
+    <ownedAttribute xmi:id="_UO9Y0nfFEd-8nKfme2ahgA" name="weight" type="_VP_GEXfHEd-8nKfme2ahgA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__10-YNX8Ed-ed8tBE7Q04Q"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_W_FXEHfFEd-8nKfme2ahgA" name="height" type="_VP_GEXfHEd-8nKfme2ahgA"/>
+    <ownedAttribute xmi:id="_Qt9gQdaZEd-AdIEt7LkWHg" name="managementAct" type="__0eLSHe8Ed-8nKfme2ahgA" aggregation="composite" association="_QuRCS9aZEd-AdIEt7LkWHg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Qt9gQtaZEd-AdIEt7LkWHg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Qt9gQ9aZEd-AdIEt7LkWHg" value="1"/>
+    </ownedAttribute>
+    <ownedOperation xmi:id="_CDrpQnfHEd-8nKfme2ahgA" name="getWeight" isQuery="true">
+      <ownedParameter xmi:id="_-vYKcHfHEd-8nKfme2ahgA" name="return" type="_VP_GEXfHEd-8nKfme2ahgA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_g6VfErv8Ed-DGpQdvMqqbA" name="patient"/>
+    <ownedOperation xmi:id="_iY0PQrv8Ed-DGpQdvMqqbA" name="patient">
+      <ownedParameter xmi:id="_kLQdQLv8Ed-DGpQdvMqqbA" name="name" visibility="public" type="_VP_GEnfHEd-8nKfme2ahgA"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="__0eLSHe8Ed-8nKfme2ahgA" name="ManagementAct">
+    <ownedAttribute xmi:id="_pSBi8nfFEd-8nKfme2ahgA" name="dateTime" type="_CmtKkNX9Ed-ed8tBE7Q04Q"/>
+    <ownedAttribute xmi:id="_uSGKknfFEd-8nKfme2ahgA" name="validated" visibility="private" type="_VP_GEHfHEd-8nKfme2ahgA" isReadOnly="true">
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_KgJzENX9Ed-ed8tBE7Q04Q" value="false"/>
+    </ownedAttribute>
+    <ownedOperation xmi:id="_5PpdQHfFEd-8nKfme2ahgA" name="isValidated" isQuery="true">
+      <ownedParameter xmi:id="_Ef4JcHfIEd-8nKfme2ahgA" name="return" type="_VP_GEHfHEd-8nKfme2ahgA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_8WbA8nfFEd-8nKfme2ahgA" name="validate"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_VP_GEHfHEd-8nKfme2ahgA" name="Boolean"/>
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_VP_GEXfHEd-8nKfme2ahgA" name="Integer"/>
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_VP_GEnfHEd-8nKfme2ahgA" name="String"/>
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_VP_GE3fHEd-8nKfme2ahgA" name="UnlimitedNatural"/>
+  <packagedElement xmi:type="uml:Enumeration" xmi:id="_ZCbc8HfHEd-8nKfme2ahgA" name="GENDER">
+    <ownedLiteral xmi:id="_inKikHfHEd-8nKfme2ahgA" name="MALE"/>
+    <ownedLiteral xmi:id="_qVuwwnfHEd-8nKfme2ahgA" name="FEMALE"/>
+    <ownedLiteral xmi:id="_wBLQonfHEd-8nKfme2ahgA" name="UNKNOWN"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:DataType" xmi:id="_CmtKkNX9Ed-ed8tBE7Q04Q" name="TimeStamp"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_ZlTNSNX9Ed-ed8tBE7Q04Q" name="User"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_dXcpOtX9Ed-ed8tBE7Q04Q" name="Owner" memberEnd="_dXcpO9X9Ed-ed8tBE7Q04Q _dXcpPtX9Ed-ed8tBE7Q04Q" navigableOwnedEnd="_dXcpPtX9Ed-ed8tBE7Q04Q">
+    <ownedEnd xmi:id="_dXcpO9X9Ed-ed8tBE7Q04Q" name="managementAct" type="__0eLSHe8Ed-8nKfme2ahgA" association="_dXcpOtX9Ed-ed8tBE7Q04Q">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_dXcpPNX9Ed-ed8tBE7Q04Q" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_dXcpPdX9Ed-ed8tBE7Q04Q"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_dXcpPtX9Ed-ed8tBE7Q04Q" name="user" type="_ZlTNSNX9Ed-ed8tBE7Q04Q" isReadOnly="true" association="_dXcpOtX9Ed-ed8tBE7Q04Q">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_dXcpP9X9Ed-ed8tBE7Q04Q" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_dXcpQNX9Ed-ed8tBE7Q04Q" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_QuRCS9aZEd-AdIEt7LkWHg" name="A_&lt;patient>_&lt;managementAct>" memberEnd="_QuRCTNaZEd-AdIEt7LkWHg _Qt9gQdaZEd-AdIEt7LkWHg">
+    <ownedEnd xmi:id="_QuRCTNaZEd-AdIEt7LkWHg" name="patient" type="_-BvCWHe8Ed-8nKfme2ahgA" association="_QuRCS9aZEd-AdIEt7LkWHg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_QuRCTdaZEd-AdIEt7LkWHg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_QuRCTtaZEd-AdIEt7LkWHg" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+</uml:Model>

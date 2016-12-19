@@ -1,0 +1,127 @@
+import transformationconfig;
+import uml;
+
+extension TransformationContext;
+
+Void debug(String s): JAVA Debugger.debug(java.lang.String);
+
+
+/*
+some static config element have to be managed on extensions
+
+*/
+
+
+hasUML2BStereotype(Element e):
+(e.getApplicableStereotype("UML2B_Profile::UML2B_StaticConfigElement")!=null);
+
+hasUML2BAnnotation(Element e):
+e.getEAnnotation("uml2b")!=null
+;
+
+
+getUML2B_StaticConfigElement(Element e,String key):
+(e.getAppliedStereotypes().size==0)?null:(
+//uml::Element.allOperations.toString().debug()->
+	(
+	// let s=e.getAppliedStereotypes().select( e| e.qualifiedName=="UML2B_Profile::UML2B_StaticConfigElement" ).first() :
+	let s = e.getAppliedStereotype("UML2B_Profile::UML2B_StaticConfigElement"):
+		(s!=null)
+		?(
+		debug("-UML2B_StaticConfigElement-"+s.qualifiedName)->
+			e.getValue(s,key)
+		):
+		(	
+			debug("-UML2B_StaticConfigElement- Null")->
+			null
+		)
+	)
+)
+;
+
+
+getUML2BAnnotDetails(Element e,String Key):
+
+(hasUML2BAnnotation(e))
+?(	//debug("getUML2BAnnotDetails "+e+" : "+e.getEAnnotation("uml2b").details.select(e|e.key==Key).first().value)->
+	e.getEAnnotation("uml2b").details.select(e|e.key==Key).first().value
+):(
+	//debug("getUML2BAnnotDetails "+e+" : NULL")->
+	null
+	)
+;
+
+
+
+
+/*
+getBoolConfigElement(Element e,String ref):
+	((CONFIG().level==ExecutionLevel::M1)&&(getUML2BAnnotDetails(e,ref)!=null))?
+	((getUML2BAnnotDetails(e,ref)=="true")?true:false):
+	CONFIG().staticConfigBloc.elements.select(e| e.ref==ref).first().value;
+*/
+/*
+boolean getBoolConfigElement(Element e,String ref):
+	(CONFIG().level==ExecutionLevel::M1)?(
+	let res=getUML2B_StaticConfigElement(e,ref):
+		(res!=null)? 
+		(
+		//	debug("found- : "+res)->
+			res
+		):(
+			let res=getUML2BAnnotDetails(e,ref):
+			(res!=null)?( 
+				(res=="true")?true:false
+			):(
+				//debug("-1-"+g)->
+				CONFIG().staticConfigBloc.elements.select(e| e.ref==ref).first().value
+			)
+		)
+	
+	):(
+		//debug("-2-"+CONFIG().staticConfigBloc.elements.select(e| e.ref==ref).first().value)->
+		CONFIG().staticConfigBloc.elements.select(e| e.ref==ref).first().value
+	
+);
+	*/
+
+boolean getBoolConfigElement(Element e,String ref):getStaticConfigValue(ref,e,CONFIG());
+
+boolean isPowerdClassType():
+	CONFIG().staticConfigBloc.elements.select(e| e.ref=="PowerdClassType").first().value
+;
+
+boolean isPowerdClassType(Element e):
+	getBoolConfigElement(e,"PowerdClassType");
+
+boolean getStaticConfigValue(String key,Element e,Config cfg): 
+JAVA fr.lig.vasco.selkis.ctm.UML.util.UMLNavigationHelper.getStaticConfigValue(java.lang.String , org.eclipse.uml2.uml.Element,fr.lig.vasco.selkis.ctm.transformationconfig.Config );
+
+uml::Stereotype getAppliedStereotype(uml::Element e,String qualifiedName):
+JAVA fr.lig.vasco.selkis.ctm.UML.util.UMLNavigationHelper.getAppliedStereotype(org.eclipse.uml2.uml.Element, java.lang.String );
+
+Object getValue(uml::Element e,uml::Stereotype s, String name):
+JAVA fr.lig.vasco.selkis.ctm.UML.util.UMLNavigationHelper.getValue( org.eclipse.uml2.uml.Element ,org.eclipse.uml2.uml.Stereotype, java.lang.String );
+
+
+
+
+List[String] getOperationMetaData(uml::Operation op):
+let s=op.getAppliedStereotype("UML2B_Profile::UML2B_OperationBody"):
+	(
+		(s!=null)?(
+		 	{	op.getValue(s,"precondition"),
+		 		op.getValue(s,"body")
+		 	}.toList()
+		):(
+			{	getUML2BAnnotDetails(op,"precondition"),
+				getUML2BAnnotDetails(op,"body") 
+			}.toList()
+		)
+	)
+;
+
+
+uml::Operation CreateSetter(uml::Property e):
+JAVA fr.lig.vasco.selkis.ctm.UML.util.UMLNavigationHelper.CreateSetter(org.eclipse.uml2.uml.Property);
+

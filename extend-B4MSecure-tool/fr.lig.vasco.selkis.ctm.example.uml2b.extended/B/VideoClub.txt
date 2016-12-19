@@ -1,0 +1,511 @@
+
+		
+
+
+MACHINE 
+	VideoClub
+
+SETS
+ STR
+; CLIENT
+; EMPRUNT
+; CASSETTE
+; ACTEUR
+; DATE
+
+ ;GENRE={ACTION,COMEDIE}
+
+ABSTRACT_VARIABLES
+ Client
+, Emprunt
+, Cassette
+, Acteur
+, Film
+, Serie
+, Anime
+, OAV
+, ClientEmprunt
+, CassetteEmprunt
+, ActeurCassette
+, Client__num_Client
+, Client__suspendu
+, Emprunt__date
+, Cassette__titre
+, Cassette__nbLibre
+, Acteur__nom
+, Film__genre
+, Serie__num_Serie
+
+INVARIANT
+Client <: CLIENT 
+&Emprunt <: EMPRUNT 
+&Cassette <: CASSETTE 
+&Acteur <: ACTEUR 
+&Film <: Cassette 
+&Serie <: Cassette 
+&Anime <: Serie 
+&OAV <: CASSETTE & OAV <: Anime & OAV <: Film 
+&ClientEmprunt : Emprunt --> Client 
+&CassetteEmprunt : Emprunt <-> Cassette & dom(CassetteEmprunt)=Emprunt 
+&ActeurCassette : Cassette <-> Acteur & dom(ActeurCassette)=Cassette 
+&Client__num_Client : Client >-> INTEGER 
+&Client__suspendu : Client >+> BOOL 
+&Emprunt__date : Emprunt >-> DATE 
+&Cassette__titre : Cassette >-> STR 
+&Cassette__nbLibre : Cassette >-> INTEGER 
+&Acteur__nom : Acteur >-> STR 
+&Film__genre : Film >-> GENRE 
+&Serie__num_Serie : Serie >-> INTEGER 
+&
+Film /\ Serie = OAV
+
+INITIALISATION
+	Client:={}
+||	Emprunt:={}
+||	Cassette:={}
+||	Acteur:={}
+||	Film:={}
+||	Serie:={}
+||	Anime:={}
+||	OAV:={}
+||	ClientEmprunt:={}
+||	CassetteEmprunt:={}
+||	ActeurCassette:={}
+||	Client__num_Client:={}
+||	Client__suspendu:={}
+||	Emprunt__date:={}
+||	Cassette__titre:={}
+||	Cassette__nbLibre:={}
+||	Acteur__nom:={}
+||	Film__genre:={}
+||	Serie__num_Serie:={}
+ 
+OPERATIONS
+
+
+Client__emprunter(Instance,casette)=
+	PRE
+	Instance : Client 	&	casette : Cassette 	
+
+	THEN 		skip
+	END;
+
+Client_NEW(Instance,Client__num_ClientValue)=
+	PRE
+	Instance : CLIENT 	&	Instance /: Client 	&	Client__num_ClientValue : INTEGER 	&	Client__num_ClientValue /:ran(Client__num_Client) 	
+
+	THEN 		Client := Client \/ {Instance}
+ || Client__num_Client:= Client__num_Client \/ {(Instance|->Client__num_ClientValue)}
+	END;
+
+Emprunt_NEW(Instance,ClientEmprunt__targetValue,CassetteEmprunt__targetValues,Emprunt__dateValue)=
+	PRE
+	Instance : EMPRUNT 	&	Instance /: Emprunt 	&	ClientEmprunt__targetValue : Client 	&	CassetteEmprunt__targetValues : POW(Cassette) 	&	CassetteEmprunt__targetValues/={} 	&	Emprunt__dateValue : DATE 	&	Emprunt__dateValue /:ran(Emprunt__date) 	
+
+	THEN 		Emprunt := Emprunt \/ {Instance} 
+ || ClientEmprunt:= ClientEmprunt \/ {(Instance|->ClientEmprunt__targetValue)} 
+ || CassetteEmprunt:= CassetteEmprunt \/ ({Instance}*CassetteEmprunt__targetValues)
+ || Emprunt__date:= Emprunt__date \/ {(Instance|->Emprunt__dateValue)}
+	END;
+
+Cassette_NEW(Instance,ActeurCassette__targetValues,Cassette__titreValue,Cassette__nbLibreValue)=
+	PRE
+	Instance : CASSETTE 	&	Instance /: Cassette 	&	ActeurCassette__targetValues : POW(Acteur) 	&	ActeurCassette__targetValues/={} 	&	Cassette__titreValue : STR 	&	Cassette__titreValue /:ran(Cassette__titre) 	&	Cassette__nbLibreValue : INTEGER 	&	Cassette__nbLibreValue /:ran(Cassette__nbLibre) 	
+
+	THEN 		Cassette := Cassette \/ {Instance} 
+ || ActeurCassette:= ActeurCassette \/ ({Instance}*ActeurCassette__targetValues)
+ || Cassette__titre:= Cassette__titre \/ {(Instance|->Cassette__titreValue)}
+ || Cassette__nbLibre:= Cassette__nbLibre \/ {(Instance|->Cassette__nbLibreValue)}
+	END;
+
+Acteur_NEW(Instance,Acteur__nomValue)=
+	PRE
+	Instance : ACTEUR 	&	Instance /: Acteur 	&	Acteur__nomValue : STR 	&	Acteur__nomValue /:ran(Acteur__nom) 	
+
+	THEN 		Acteur := Acteur \/ {Instance}
+ || Acteur__nom:= Acteur__nom \/ {(Instance|->Acteur__nomValue)}
+	END;
+
+Film_NEW(Instance,ActeurCassette__targetValues,Cassette__titreValue,Cassette__nbLibreValue,Film__genreValue)=
+	PRE
+	Instance : CASSETTE 	&	Instance /: Cassette 	&	ActeurCassette__targetValues : POW(Acteur) 	&	ActeurCassette__targetValues/={} 	&	Cassette__titreValue : STR 	&	Cassette__titreValue /:ran(Cassette__titre) 	&	Cassette__nbLibreValue : INTEGER 	&	Cassette__nbLibreValue /:ran(Cassette__nbLibre) 	&	Film__genreValue : GENRE 	&	Film__genreValue /:ran(Film__genre) 	
+
+	THEN 		Film := Film \/ {Instance} 
+ || Cassette := Cassette \/ {Instance} 
+ || ActeurCassette:= ActeurCassette \/ ({Instance}*ActeurCassette__targetValues)
+ || Cassette__titre:= Cassette__titre \/ {(Instance|->Cassette__titreValue)}
+ || Cassette__nbLibre:= Cassette__nbLibre \/ {(Instance|->Cassette__nbLibreValue)}
+ || Film__genre:= Film__genre \/ {(Instance|->Film__genreValue)}
+	END;
+
+Serie_NEW(Instance,ActeurCassette__targetValues,Cassette__titreValue,Cassette__nbLibreValue,Serie__num_SerieValue)=
+	PRE
+	Instance : CASSETTE 	&	Instance /: Cassette 	&	ActeurCassette__targetValues : POW(Acteur) 	&	ActeurCassette__targetValues/={} 	&	Cassette__titreValue : STR 	&	Cassette__titreValue /:ran(Cassette__titre) 	&	Cassette__nbLibreValue : INTEGER 	&	Cassette__nbLibreValue /:ran(Cassette__nbLibre) 	&	Serie__num_SerieValue : INTEGER 	&	Serie__num_SerieValue /:ran(Serie__num_Serie) 	
+
+	THEN 		Serie := Serie \/ {Instance} 
+ || Cassette := Cassette \/ {Instance} 
+ || ActeurCassette:= ActeurCassette \/ ({Instance}*ActeurCassette__targetValues)
+ || Cassette__titre:= Cassette__titre \/ {(Instance|->Cassette__titreValue)}
+ || Cassette__nbLibre:= Cassette__nbLibre \/ {(Instance|->Cassette__nbLibreValue)}
+ || Serie__num_Serie:= Serie__num_Serie \/ {(Instance|->Serie__num_SerieValue)}
+	END;
+
+Anime_NEW(Instance,ActeurCassette__targetValues,Cassette__titreValue,Cassette__nbLibreValue,Serie__num_SerieValue)=
+	PRE
+	Instance : CASSETTE 	&	Instance /: Cassette 	&	ActeurCassette__targetValues : POW(Acteur) 	&	ActeurCassette__targetValues/={} 	&	Cassette__titreValue : STR 	&	Cassette__titreValue /:ran(Cassette__titre) 	&	Cassette__nbLibreValue : INTEGER 	&	Cassette__nbLibreValue /:ran(Cassette__nbLibre) 	&	Serie__num_SerieValue : INTEGER 	&	Serie__num_SerieValue /:ran(Serie__num_Serie) 	
+
+	THEN 		Anime := Anime \/ {Instance} 
+ || Serie := Serie \/ {Instance} 
+ || Cassette := Cassette \/ {Instance} 
+ || ActeurCassette:= ActeurCassette \/ ({Instance}*ActeurCassette__targetValues)
+ || Cassette__titre:= Cassette__titre \/ {(Instance|->Cassette__titreValue)}
+ || Cassette__nbLibre:= Cassette__nbLibre \/ {(Instance|->Cassette__nbLibreValue)}
+ || Serie__num_Serie:= Serie__num_Serie \/ {(Instance|->Serie__num_SerieValue)}
+	END;
+
+OAV_NEW(Instance,ActeurCassette__targetValues,Cassette__titreValue,Cassette__nbLibreValue,Film__genreValue,Serie__num_SerieValue)=
+	PRE
+	Instance : CASSETTE 	&	Instance /: Cassette 	&	ActeurCassette__targetValues : POW(Acteur) 	&	ActeurCassette__targetValues/={} 	&	Cassette__titreValue : STR 	&	Cassette__titreValue /:ran(Cassette__titre) 	&	Cassette__nbLibreValue : INTEGER 	&	Cassette__nbLibreValue /:ran(Cassette__nbLibre) 	&	Film__genreValue : GENRE 	&	Film__genreValue /:ran(Film__genre) 	&	Serie__num_SerieValue : INTEGER 	&	Serie__num_SerieValue /:ran(Serie__num_Serie) 	
+
+	THEN 		OAV := OAV \/ {Instance} 
+ || Anime := Anime \/ {Instance} 
+ || Serie := Serie \/ {Instance} 
+ || Cassette := Cassette \/ {Instance} 
+ || Film := Film \/ {Instance} 
+ || ActeurCassette:= ActeurCassette \/ ({Instance}*ActeurCassette__targetValues)
+ || Cassette__titre:= Cassette__titre \/ {(Instance|->Cassette__titreValue)}
+ || Cassette__nbLibre:= Cassette__nbLibre \/ {(Instance|->Cassette__nbLibreValue)}
+ || Film__genre:= Film__genre \/ {(Instance|->Film__genreValue)}
+ || Serie__num_Serie:= Serie__num_Serie \/ {(Instance|->Serie__num_SerieValue)}
+	END;
+
+Client_Free(Instance)=
+	PRE
+	Instance : CLIENT 	&	Instance : Client 	&	ClientEmprunt~[{Instance}]={} 	
+
+	THEN 		Client := Client - {Instance}
+ || ClientEmprunt:= ClientEmprunt|>> {Instance}
+ || Client__num_Client:= {Instance}<<|Client__num_Client
+ || Client__suspendu:= {Instance}<<|Client__suspendu
+	END;
+
+Emprunt_Free(Instance)=
+	PRE
+	Instance : EMPRUNT 	&	Instance : Emprunt 	
+
+	THEN 		Emprunt := Emprunt - {Instance}
+ || ClientEmprunt:= {Instance}<<|ClientEmprunt
+ || CassetteEmprunt:= {Instance}<<|CassetteEmprunt
+ || Emprunt__date:= {Instance}<<|Emprunt__date
+	END;
+
+Cassette_Free(Instance)=
+	PRE
+	Instance : CASSETTE 	&	Instance : Cassette 	&	Instance /: (Film \/ Serie ) 	&	 !c2.(c2:CassetteEmprunt~[{Instance}] => #cc.(cc:CassetteEmprunt[{c2}] & cc/=Instance) ) 	
+
+	THEN 		Cassette := Cassette - {Instance}
+ || CassetteEmprunt:= CassetteEmprunt|>> {Instance}
+ || ActeurCassette:= {Instance}<<|ActeurCassette
+ || Cassette__titre:= {Instance}<<|Cassette__titre
+ || Cassette__nbLibre:= {Instance}<<|Cassette__nbLibre
+	END;
+
+Acteur_Free(Instance)=
+	PRE
+	Instance : ACTEUR 	&	Instance : Acteur 	&	 !c2.(c2:ActeurCassette~[{Instance}] => #cc.(cc:ActeurCassette[{c2}] & cc/=Instance) ) 	
+
+	THEN 		Acteur := Acteur - {Instance}
+ || ActeurCassette:= ActeurCassette|>> {Instance}
+ || Acteur__nom:= {Instance}<<|Acteur__nom
+	END;
+
+Film_Free(Instance)=
+	PRE
+	Instance : CASSETTE 	&	Instance : Film 	&	Instance /: (OAV ) 	&	 !c2.(c2:CassetteEmprunt~[{Instance}] => #cc.(cc:CassetteEmprunt[{c2}] & cc/=Instance) ) 	
+
+	THEN 		Film := Film - {Instance} 
+ || Cassette := Cassette - {Instance}
+ || CassetteEmprunt:= CassetteEmprunt|>> {Instance}
+ || ActeurCassette:= {Instance}<<|ActeurCassette
+ || Cassette__titre:= {Instance}<<|Cassette__titre
+ || Cassette__nbLibre:= {Instance}<<|Cassette__nbLibre
+ || Film__genre:= {Instance}<<|Film__genre
+	END;
+
+Serie_Free(Instance)=
+	PRE
+	Instance : CASSETTE 	&	Instance : Serie 	&	Instance /: (Anime ) 	&	 !c2.(c2:CassetteEmprunt~[{Instance}] => #cc.(cc:CassetteEmprunt[{c2}] & cc/=Instance) ) 	
+
+	THEN 		Serie := Serie - {Instance} 
+ || Cassette := Cassette - {Instance}
+ || CassetteEmprunt:= CassetteEmprunt|>> {Instance}
+ || ActeurCassette:= {Instance}<<|ActeurCassette
+ || Cassette__titre:= {Instance}<<|Cassette__titre
+ || Cassette__nbLibre:= {Instance}<<|Cassette__nbLibre
+ || Serie__num_Serie:= {Instance}<<|Serie__num_Serie
+	END;
+
+Anime_Free(Instance)=
+	PRE
+	Instance : CASSETTE 	&	Instance : Anime 	&	Instance /: (OAV ) 	&	 !c2.(c2:CassetteEmprunt~[{Instance}] => #cc.(cc:CassetteEmprunt[{c2}] & cc/=Instance) ) 	
+
+	THEN 		Anime := Anime - {Instance} 
+ || Serie := Serie - {Instance} 
+ || Cassette := Cassette - {Instance}
+ || CassetteEmprunt:= CassetteEmprunt|>> {Instance}
+ || ActeurCassette:= {Instance}<<|ActeurCassette
+ || Cassette__titre:= {Instance}<<|Cassette__titre
+ || Cassette__nbLibre:= {Instance}<<|Cassette__nbLibre
+ || Serie__num_Serie:= {Instance}<<|Serie__num_Serie
+	END;
+
+OAV_Free(Instance)=
+	PRE
+	Instance : CASSETTE 	&	Instance : OAV 	&	 !c2.(c2:CassetteEmprunt~[{Instance}] => #cc.(cc:CassetteEmprunt[{c2}] & cc/=Instance) ) 	
+
+	THEN 		OAV := OAV - {Instance} 
+ || Anime := Anime - {Instance} 
+ || Serie := Serie - {Instance} 
+ || Cassette := Cassette - {Instance} 
+ || Film := Film - {Instance}
+ || CassetteEmprunt:= CassetteEmprunt|>> {Instance}
+ || ActeurCassette:= {Instance}<<|ActeurCassette
+ || Cassette__titre:= {Instance}<<|Cassette__titre
+ || Cassette__nbLibre:= {Instance}<<|Cassette__nbLibre
+ || Film__genre:= {Instance}<<|Film__genre
+ || Serie__num_Serie:= {Instance}<<|Serie__num_Serie
+	END;
+
+result <-- Client__GetClientEmprunt(Instance)=
+	PRE
+	Instance : Client 	
+
+	THEN 		result := ClientEmprunt~(Instance)
+	END;
+
+result <-- Emprunt__GetClientEmprunt(Instance)=
+	PRE
+	Instance : Emprunt 	
+
+	THEN 		result := ClientEmprunt(Instance)
+	END;
+
+result <-- Cassette__GetCassetteEmprunt(Instance)=
+	PRE
+	Instance : Cassette 	
+
+	THEN 		result := CassetteEmprunt~(Instance)
+	END;
+
+result <-- Emprunt__GetCassetteEmprunt(Instance)=
+	PRE
+	Instance : Emprunt 	
+
+	THEN 		result := CassetteEmprunt(Instance)
+	END;
+
+result <-- Acteur__GetActeurCassette(Instance)=
+	PRE
+	Instance : Acteur 	
+
+	THEN 		result := ActeurCassette~(Instance)
+	END;
+
+result <-- Cassette__GetActeurCassette(Instance)=
+	PRE
+	Instance : Cassette 	
+
+	THEN 		result := ActeurCassette(Instance)
+	END;
+
+Emprunt__SetClientEmprunt(Instance,ClientEmprunt__targetValue)=
+	PRE
+	Instance : Emprunt 	&	ClientEmprunt__targetValue : Client 	&	(Instance|-> ClientEmprunt__targetValue) /: ClientEmprunt 	
+
+	THEN 		ClientEmprunt:= ({Instance}<<|ClientEmprunt)\/ {(Instance|-> ClientEmprunt__targetValue)}
+	END;
+
+Client__AddClientEmprunt(Instance,ClientEmprunt__sourceValues)=
+	PRE
+	Instance : Client 	&	ClientEmprunt__sourceValues : Emprunt 	&	(ClientEmprunt__sourceValues|-> Instance) /:ClientEmprunt 	&	ClientEmprunt__sourceValues/:dom(ClientEmprunt) 	
+
+	THEN 		ClientEmprunt:= ClientEmprunt\/{(ClientEmprunt__sourceValues|-> Instance)}
+	END;
+
+Cassette__AddCassetteEmprunt(Instance,CassetteEmprunt__sourceValues)=
+	PRE
+	Instance : Cassette 	&	CassetteEmprunt__sourceValues : Emprunt 	&	(CassetteEmprunt__sourceValues|-> Instance) /:CassetteEmprunt 	
+
+	THEN 		CassetteEmprunt:= CassetteEmprunt\/{(CassetteEmprunt__sourceValues|-> Instance)}
+	END;
+
+Emprunt__AddCassetteEmprunt(Instance,CassetteEmprunt__targetValues)=
+	PRE
+	Instance : Emprunt 	&	CassetteEmprunt__targetValues : Cassette 	&	(Instance|-> CassetteEmprunt__targetValues) /:CassetteEmprunt 	
+
+	THEN 		CassetteEmprunt:= CassetteEmprunt\/ {(Instance|-> CassetteEmprunt__targetValues)}
+	END;
+
+Acteur__AddActeurCassette(Instance,ActeurCassette__sourceValues)=
+	PRE
+	Instance : Acteur 	&	ActeurCassette__sourceValues : Cassette 	&	(ActeurCassette__sourceValues|-> Instance) /:ActeurCassette 	
+
+	THEN 		ActeurCassette:= ActeurCassette\/{(ActeurCassette__sourceValues|-> Instance)}
+	END;
+
+Cassette__AddActeurCassette(Instance,ActeurCassette__targetValues)=
+	PRE
+	Instance : Cassette 	&	ActeurCassette__targetValues : Acteur 	&	(Instance|-> ActeurCassette__targetValues) /:ActeurCassette 	
+
+	THEN 		ActeurCassette:= ActeurCassette\/ {(Instance|-> ActeurCassette__targetValues)}
+	END;
+
+Client__RemoveClientEmprunt(Instance,ClientEmprunt__sourceValues)=
+	PRE
+	Instance : Client 	&	ClientEmprunt__sourceValues : Emprunt 	&	(ClientEmprunt__sourceValues|-> Instance) :ClientEmprunt 	&	#cc.(cc: Client & cc/=Instance & cc: ClientEmprunt[{ClientEmprunt__sourceValues}]) 	
+
+	THEN 		ClientEmprunt:= ClientEmprunt-{(ClientEmprunt__sourceValues|-> Instance)}
+	END;
+
+Cassette__RemoveCassetteEmprunt(Instance,CassetteEmprunt__sourceValues)=
+	PRE
+	Instance : Cassette 	&	CassetteEmprunt__sourceValues : Emprunt 	&	(CassetteEmprunt__sourceValues|-> Instance) :CassetteEmprunt 	&	#cc.(cc: Cassette & cc/=Instance & cc: CassetteEmprunt[{CassetteEmprunt__sourceValues}]) 	
+
+	THEN 		CassetteEmprunt:= CassetteEmprunt-{(CassetteEmprunt__sourceValues|-> Instance)}
+	END;
+
+Emprunt__RemoveCassetteEmprunt(Instance,CassetteEmprunt__targetValues)=
+	PRE
+	Instance : Emprunt 	&	CassetteEmprunt__targetValues : Cassette 	&	(Instance|-> CassetteEmprunt__targetValues) :CassetteEmprunt 	&	#cc.(cc: Cassette& cc/=CassetteEmprunt__targetValues & (Instance|-> CassetteEmprunt__targetValues):CassetteEmprunt ) 	
+
+	THEN 		CassetteEmprunt:= CassetteEmprunt-{(Instance|-> CassetteEmprunt__targetValues)}
+	END;
+
+Acteur__RemoveActeurCassette(Instance,ActeurCassette__sourceValues)=
+	PRE
+	Instance : Acteur 	&	ActeurCassette__sourceValues : Cassette 	&	(ActeurCassette__sourceValues|-> Instance) :ActeurCassette 	&	#cc.(cc: Acteur & cc/=Instance & cc: ActeurCassette[{ActeurCassette__sourceValues}]) 	
+
+	THEN 		ActeurCassette:= ActeurCassette-{(ActeurCassette__sourceValues|-> Instance)}
+	END;
+
+Cassette__RemoveActeurCassette(Instance,ActeurCassette__targetValues)=
+	PRE
+	Instance : Cassette 	&	ActeurCassette__targetValues : Acteur 	&	(Instance|-> ActeurCassette__targetValues) :ActeurCassette 	&	#cc.(cc: Acteur& cc/=ActeurCassette__targetValues & (Instance|-> ActeurCassette__targetValues):ActeurCassette ) 	
+
+	THEN 		ActeurCassette:= ActeurCassette-{(Instance|-> ActeurCassette__targetValues)}
+	END;
+
+result <-- Client__GetNum_Client(Instance)=
+	PRE
+	Instance : Client 	
+
+	THEN 		result := Client__num_Client(Instance)
+	END;
+
+result <-- Client__GetSuspendu(Instance)=
+	PRE
+	Instance : Client 	
+
+	THEN 		result := Client__suspendu(Instance)
+	END;
+
+result <-- Emprunt__GetDate(Instance)=
+	PRE
+	Instance : Emprunt 	
+
+	THEN 		result := Emprunt__date(Instance)
+	END;
+
+result <-- Cassette__GetTitre(Instance)=
+	PRE
+	Instance : Cassette 	
+
+	THEN 		result := Cassette__titre(Instance)
+	END;
+
+result <-- Cassette__GetNbLibre(Instance)=
+	PRE
+	Instance : Cassette 	
+
+	THEN 		result := Cassette__nbLibre(Instance)
+	END;
+
+result <-- Acteur__GetNom(Instance)=
+	PRE
+	Instance : Acteur 	
+
+	THEN 		result := Acteur__nom(Instance)
+	END;
+
+result <-- Film__GetGenre(Instance)=
+	PRE
+	Instance : Film 	
+
+	THEN 		result := Film__genre(Instance)
+	END;
+
+result <-- Serie__GetNum_Serie(Instance)=
+	PRE
+	Instance : Serie 	
+
+	THEN 		result := Serie__num_Serie(Instance)
+	END;
+
+Client__SetNum_Client(Instance,Client__num_ClientValue)=
+	PRE
+	Instance : Client 	&	Client__num_ClientValue : INTEGER 	&	Client__num_ClientValue /: ran(Client__num_Client) 	
+
+	THEN 		Client__num_Client:= ({Instance}<<|Client__num_Client)\/ {(Instance|-> Client__num_ClientValue)}
+	END;
+
+Client__SetSuspendu(Instance,Client__suspenduValue)=
+	PRE
+	Instance : Client 	&	Client__suspenduValue : BOOL 	&	Client__suspenduValue /: ran(Client__suspendu) 	
+
+	THEN 		Client__suspendu:= ({Instance}<<|Client__suspendu)\/ {(Instance|-> Client__suspenduValue)}
+	END;
+
+Emprunt__SetDate(Instance,Emprunt__dateValue)=
+	PRE
+	Instance : Emprunt 	&	Emprunt__dateValue : DATE 	&	Emprunt__dateValue /: ran(Emprunt__date) 	
+
+	THEN 		Emprunt__date:= ({Instance}<<|Emprunt__date)\/ {(Instance|-> Emprunt__dateValue)}
+	END;
+
+Cassette__SetTitre(Instance,Cassette__titreValue)=
+	PRE
+	Instance : Cassette 	&	Cassette__titreValue : STR 	&	Cassette__titreValue /: ran(Cassette__titre) 	
+
+	THEN 		Cassette__titre:= ({Instance}<<|Cassette__titre)\/ {(Instance|-> Cassette__titreValue)}
+	END;
+
+Cassette__SetNbLibre(Instance,Cassette__nbLibreValue)=
+	PRE
+	Instance : Cassette 	&	Cassette__nbLibreValue : INTEGER 	&	Cassette__nbLibreValue /: ran(Cassette__nbLibre) 	
+
+	THEN 		Cassette__nbLibre:= ({Instance}<<|Cassette__nbLibre)\/ {(Instance|-> Cassette__nbLibreValue)}
+	END;
+
+Acteur__SetNom(Instance,Acteur__nomValue)=
+	PRE
+	Instance : Acteur 	&	Acteur__nomValue : STR 	&	Acteur__nomValue /: ran(Acteur__nom) 	
+
+	THEN 		Acteur__nom:= ({Instance}<<|Acteur__nom)\/ {(Instance|-> Acteur__nomValue)}
+	END;
+
+Film__SetGenre(Instance,Film__genreValue)=
+	PRE
+	Instance : Film 	&	Film__genreValue : GENRE 	&	Film__genreValue /: ran(Film__genre) 	
+
+	THEN 		Film__genre:= ({Instance}<<|Film__genre)\/ {(Instance|-> Film__genreValue)}
+	END;
+
+Serie__SetNum_Serie(Instance,Serie__num_SerieValue)=
+	PRE
+	Instance : Serie 	&	Serie__num_SerieValue : INTEGER 	&	Serie__num_SerieValue /: ran(Serie__num_Serie) 	
+
+	THEN 		Serie__num_Serie:= ({Instance}<<|Serie__num_Serie)\/ {(Instance|-> Serie__num_SerieValue)}
+	END
+ END
+ 
+	

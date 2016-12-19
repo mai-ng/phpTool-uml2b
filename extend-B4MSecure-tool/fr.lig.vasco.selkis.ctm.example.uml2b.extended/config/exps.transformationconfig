@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformationconfig:Config xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:transformationconfig="http://www.liglab.fr/vasco/ctm/transformationconfig/1.0" ref="MyConfig" defaultMethod="UniqueMachine">
+  <methods ref="UniqueMachine" complied="ClassToBVariableInSysMachine UML2B.Transfo.UML2B_Selkis.createSysMachine init UML2B.Transfo.UML2B_Selkis.GeneratePrimitiveTypes UML2B.Transfo.UML2B_Selkis.GenerateClassBVariableInSystemMachine"/>
+  <rules ref="CreateSystemMachine" active="true" src="This" AdvisedRule="UML2B.Transfo.UML2B_Selkis.createSysMachine">
+    <dependencies xsi:type="transformationconfig:StaticConfigDependency" staticConfigElement="SystemMachine"/>
+    <rules ref="UML2B.Transfo.UML2B_Selkis.createSysMachine" ComplyWith="UniqueMachine"/>
+  </rules>
+  <rules ref="Initialization" active="true" src="This" AdvisedRule="init">
+    <rules ref="UML2B.Transfo.UML2B_Selkis.GeneratePrimitiveTypes" ComplyWith="UniqueMachine"/>
+    <rules ref="init" ComplyWith="UniqueMachine"/>
+  </rules>
+  <rules ref="ClassTo" active="true" src="Class" AdvisedRule="ClassToBVariableInSysMachine">
+    <rules ref="UML2B.Transfo.UML2B_Selkis.GenerateClassBVariableInSystemMachine" ComplyWith="UniqueMachine"/>
+    <rules ref="ClassToBVariableInSysMachine" ComplyWith="UniqueMachine">
+      <dependencies xsi:type="transformationconfig:StaticConfigDependency" staticConfigElement="SystemMachine"/>
+    </rules>
+  </rules>
+  <srcModelElements ref="This" rule="CreateSystemMachine Initialization"/>
+  <srcModelElements ref="Class" rule="ClassTo"/>
+  <srcModelElements ref="DataType"/>
+  <srcModelElements ref="Attribute"/>
+  <srcModelElements ref="NonUniqueAttribute"/>
+  <srcModelElements ref="UniqueAttribute"/>
+  <srcModelElements ref="ATTRIBUTE_Mutable"/>
+  <srcModelElements ref="NonUniqueATTRIBUTE_Mutable"/>
+  <srcModelElements ref="UniqueATTRIBUTE_Mutable"/>
+  <srcModelElements ref="NonStaticAttribute"/>
+  <srcModelElements ref="Association"/>
+  <srcModelElements ref="Role"/>
+  <srcModelElements ref="Navigable_ROLE"/>
+  <srcModelElements ref="ROLE_Mutable_Navigable"/>
+  <srcModelElements ref="Operation"/>
+  <srcModelElements ref="Enumeration"/>
+  <staticConfigBloc>
+    <elements ref="InitSpec" value="true"/>
+    <elements ref="SystemMachine" value="true"/>
+    <elements ref="SubPackages" value="true"/>
+    <elements ref="PowerdClassType"/>
+  </staticConfigBloc>
+</transformationconfig:Config>

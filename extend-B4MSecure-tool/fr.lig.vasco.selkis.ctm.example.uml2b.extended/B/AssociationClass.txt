@@ -1,0 +1,262 @@
+		
+
+
+MACHINE 
+	AssociationClass
+
+SETS
+ ASSOC_CLASS_01_1N__CLASS1
+; ASSOC_CLASS_01_1N__CLASS2
+; ASSOC_CLASS_02_0N__CLASS1
+; ASSOC_CLASS_02_0N__CLASS2
+; ASSOC_CLASS_11_0N__CLASS1
+; ASSOC_CLASS_11_0N__CLASS2
+
+
+ABSTRACT_VARIABLES
+ Assoc_Class_01_1n__Class1
+, Assoc_Class_01_1n__Class2
+, Assoc_Class_02_0n__Class1
+, Assoc_Class_02_0n__Class2
+, Assoc_Class_11_0n__Class1
+, Assoc_Class_11_0n__Class2
+, Assoc_Class_01_1n__AssoClass
+, Assoc_Class_02_0n__AssoClass
+, Assoc_Class_11_0n__AssoClass
+
+INVARIANT
+Assoc_Class_01_1n__Class1 <: ASSOC_CLASS_01_1N__CLASS1 
+&Assoc_Class_01_1n__Class2 <: ASSOC_CLASS_01_1N__CLASS2 
+&Assoc_Class_02_0n__Class1 <: ASSOC_CLASS_02_0N__CLASS1 
+&Assoc_Class_02_0n__Class2 <: ASSOC_CLASS_02_0N__CLASS2 
+&Assoc_Class_11_0n__Class1 <: ASSOC_CLASS_11_0N__CLASS1 
+&Assoc_Class_11_0n__Class2 <: ASSOC_CLASS_11_0N__CLASS2 
+&Assoc_Class_01_1n__AssoClass : Assoc_Class_01_1n__Class2 +->> Assoc_Class_01_1n__Class1 
+&Assoc_Class_02_0n__AssoClass : Assoc_Class_02_0n__Class2 <-> Assoc_Class_02_0n__Class1 & !c2.( c2:ran(Assoc_Class_02_0n__AssoClass) => card(Assoc_Class_02_0n__AssoClass[{c2}])<=2) 
+&Assoc_Class_11_0n__AssoClass : Assoc_Class_11_0n__Class2 --> Assoc_Class_11_0n__Class1 
+
+
+INITIALISATION
+	Assoc_Class_01_1n__Class1:={}
+||	Assoc_Class_01_1n__Class2:={}
+||	Assoc_Class_02_0n__Class1:={}
+||	Assoc_Class_02_0n__Class2:={}
+||	Assoc_Class_11_0n__Class1:={}
+||	Assoc_Class_11_0n__Class2:={}
+||	Assoc_Class_01_1n__AssoClass:={}
+||	Assoc_Class_02_0n__AssoClass:={}
+||	Assoc_Class_11_0n__AssoClass:={}
+ 
+OPERATIONS
+
+
+Assoc_Class_01_1n__Class1_NEW(Instance,Assoc_Class_01_1n__AssoClass__class2Values)=
+	PRE
+	Instance : ASSOC_CLASS_01_1N__CLASS1 	&	Instance /: Assoc_Class_01_1n__Class1 	&	Assoc_Class_01_1n__AssoClass__class2Values : POW(Assoc_Class_01_1n__Class2) 	&	Assoc_Class_01_1n__AssoClass__class2Values/={}
+ & Assoc_Class_01_1n__AssoClass[Assoc_Class_01_1n__AssoClass__class2Values]={} 	
+	THEN 		Assoc_Class_01_1n__Class1 := Assoc_Class_01_1n__Class1 \/ {Instance} 
+ || Assoc_Class_01_1n__AssoClass:= Assoc_Class_01_1n__AssoClass \/ (Assoc_Class_01_1n__AssoClass__class2Values*{Instance})
+	END;
+
+Assoc_Class_01_1n__Class2_NEW(Instance)=
+	PRE
+	Instance : ASSOC_CLASS_01_1N__CLASS2 	&	Instance /: Assoc_Class_01_1n__Class2 	
+	THEN 		Assoc_Class_01_1n__Class2 := Assoc_Class_01_1n__Class2 \/ {Instance}
+	END;
+
+Assoc_Class_02_0n__Class1_NEW(Instance)=
+	PRE
+	Instance : ASSOC_CLASS_02_0N__CLASS1 	&	Instance /: Assoc_Class_02_0n__Class1 	
+	THEN 		Assoc_Class_02_0n__Class1 := Assoc_Class_02_0n__Class1 \/ {Instance}
+	END;
+
+Assoc_Class_02_0n__Class2_NEW(Instance)=
+	PRE
+	Instance : ASSOC_CLASS_02_0N__CLASS2 	&	Instance /: Assoc_Class_02_0n__Class2 	
+	THEN 		Assoc_Class_02_0n__Class2 := Assoc_Class_02_0n__Class2 \/ {Instance}
+	END;
+
+Assoc_Class_11_0n__Class1_NEW(Instance)=
+	PRE
+	Instance : ASSOC_CLASS_11_0N__CLASS1 	&	Instance /: Assoc_Class_11_0n__Class1 	
+	THEN 		Assoc_Class_11_0n__Class1 := Assoc_Class_11_0n__Class1 \/ {Instance}
+	END;
+
+Assoc_Class_11_0n__Class2_NEW(Instance,Assoc_Class_11_0n__AssoClass__class1Value)=
+	PRE
+	Instance : ASSOC_CLASS_11_0N__CLASS2 	&	Instance /: Assoc_Class_11_0n__Class2 	&	Assoc_Class_11_0n__AssoClass__class1Value : Assoc_Class_11_0n__Class1 	
+	THEN 		Assoc_Class_11_0n__Class2 := Assoc_Class_11_0n__Class2 \/ {Instance} 
+ || Assoc_Class_11_0n__AssoClass:= Assoc_Class_11_0n__AssoClass \/ {(Instance|->Assoc_Class_11_0n__AssoClass__class1Value)}
+	END;
+
+Assoc_Class_01_1n__Class1_Free(Instance)=
+	PRE
+	Instance : ASSOC_CLASS_01_1N__CLASS1 	&	Instance : Assoc_Class_01_1n__Class1 	
+	THEN 		Assoc_Class_01_1n__Class1 := Assoc_Class_01_1n__Class1 - {Instance}
+ || Assoc_Class_01_1n__AssoClass:= Assoc_Class_01_1n__AssoClass|>> {Instance}
+	END;
+
+Assoc_Class_01_1n__Class2_Free(Instance)=
+	PRE
+	Instance : ASSOC_CLASS_01_1N__CLASS2 	&	Instance : Assoc_Class_01_1n__Class2 	&	 !c2.(c2:Assoc_Class_01_1n__AssoClass[{Instance}] =>#cc.(cc:Assoc_Class_01_1n__AssoClass~[{c2}] & cc/=Instance) ) 	
+	THEN 		Assoc_Class_01_1n__Class2 := Assoc_Class_01_1n__Class2 - {Instance}
+ || Assoc_Class_01_1n__AssoClass:= {Instance}<<|Assoc_Class_01_1n__AssoClass
+	END;
+
+Assoc_Class_02_0n__Class1_Free(Instance)=
+	PRE
+	Instance : ASSOC_CLASS_02_0N__CLASS1 	&	Instance : Assoc_Class_02_0n__Class1 	
+	THEN 		Assoc_Class_02_0n__Class1 := Assoc_Class_02_0n__Class1 - {Instance}
+ || Assoc_Class_02_0n__AssoClass:= Assoc_Class_02_0n__AssoClass|>> {Instance}
+	END;
+
+Assoc_Class_02_0n__Class2_Free(Instance)=
+	PRE
+	Instance : ASSOC_CLASS_02_0N__CLASS2 	&	Instance : Assoc_Class_02_0n__Class2 	
+	THEN 		Assoc_Class_02_0n__Class2 := Assoc_Class_02_0n__Class2 - {Instance}
+ || Assoc_Class_02_0n__AssoClass:= {Instance}<<|Assoc_Class_02_0n__AssoClass
+	END;
+
+Assoc_Class_11_0n__Class1_Free(Instance)=
+	PRE
+	Instance : ASSOC_CLASS_11_0N__CLASS1 	&	Instance : Assoc_Class_11_0n__Class1 	&	Assoc_Class_11_0n__AssoClass~[{Instance}]={}
+ & Assoc_Class_11_0n__AssoClass~[{Instance}]={} 	
+	THEN 		Assoc_Class_11_0n__Class1 := Assoc_Class_11_0n__Class1 - {Instance}
+ || Assoc_Class_11_0n__AssoClass:= Assoc_Class_11_0n__AssoClass|>> {Instance}
+	END;
+
+Assoc_Class_11_0n__Class2_Free(Instance)=
+	PRE
+	Instance : ASSOC_CLASS_11_0N__CLASS2 	&	Instance : Assoc_Class_11_0n__Class2 	
+	THEN 		Assoc_Class_11_0n__Class2 := Assoc_Class_11_0n__Class2 - {Instance}
+ || Assoc_Class_11_0n__AssoClass:= {Instance}<<|Assoc_Class_11_0n__AssoClass
+	END;
+
+Assoc_Class_01_1n__AssoClass_NEW(Instance,Class2Instance,Class1Instance)=
+	PRE
+	Instance : Assoc_Class_01_1n__Class2*Assoc_Class_01_1n__Class1 	&	Instance /: Assoc_Class_01_1n__AssoClass 	&	Class2Instance : Assoc_Class_01_1n__Class2 	&	Class1Instance : Assoc_Class_01_1n__Class1 	&	( Class2Instance|->Class1Instance )= Instance 	
+	THEN 		Assoc_Class_01_1n__AssoClass := Assoc_Class_01_1n__AssoClass \/ {Instance}
+	END;
+
+Assoc_Class_02_0n__AssoClass_NEW(Instance,Class2Instance,Class1Instance)=
+	PRE
+	Instance : Assoc_Class_02_0n__Class2*Assoc_Class_02_0n__Class1 	&	Instance /: Assoc_Class_02_0n__AssoClass 	&	Class2Instance : Assoc_Class_02_0n__Class2 	&	Class1Instance : Assoc_Class_02_0n__Class1 	&	( Class2Instance|->Class1Instance )= Instance 	
+	THEN 		Assoc_Class_02_0n__AssoClass := Assoc_Class_02_0n__AssoClass \/ {Instance}
+	END;
+
+Assoc_Class_11_0n__AssoClass_NEW(Instance,Class2Instance,Class1Instance)=
+	PRE
+	Instance : Assoc_Class_11_0n__Class2*Assoc_Class_11_0n__Class1 	&	Instance /: Assoc_Class_11_0n__AssoClass 	&	Class2Instance : Assoc_Class_11_0n__Class2 	&	Class1Instance : Assoc_Class_11_0n__Class1 	&	( Class2Instance|->Class1Instance )= Instance 	
+	THEN 		Assoc_Class_11_0n__AssoClass := Assoc_Class_11_0n__AssoClass \/ {Instance}
+	END;
+
+Assoc_Class_01_1n__AssoClass_Free=
+ 		
+	END;
+
+Assoc_Class_02_0n__AssoClass_Free=
+ 		
+	END;
+
+Assoc_Class_11_0n__AssoClass_Free=
+ 		
+	END;
+
+result <-- Assoc_Class_01_1n__Class1__GetAssoClass(Instance)=
+	PRE
+	Instance : Assoc_Class_01_1n__Class1 	
+	THEN 		result := Assoc_Class_01_1n__AssoClass~(Instance)
+	END;
+
+result <-- Assoc_Class_01_1n__Class2__GetAssoClass(Instance)=
+	PRE
+	Instance : Assoc_Class_01_1n__Class2 	
+	THEN 		result := Assoc_Class_01_1n__AssoClass(Instance)
+	END;
+
+result <-- Assoc_Class_02_0n__Class1__GetAssoClass(Instance)=
+	PRE
+	Instance : Assoc_Class_02_0n__Class1 	
+	THEN 		result := Assoc_Class_02_0n__AssoClass~(Instance)
+	END;
+
+result <-- Assoc_Class_02_0n__Class2__GetAssoClass(Instance)=
+	PRE
+	Instance : Assoc_Class_02_0n__Class2 	
+	THEN 		result := Assoc_Class_02_0n__AssoClass(Instance)
+	END;
+
+result <-- Assoc_Class_11_0n__Class1__GetAssoClass(Instance)=
+	PRE
+	Instance : Assoc_Class_11_0n__Class1 	
+	THEN 		result := Assoc_Class_11_0n__AssoClass~(Instance)
+	END;
+
+result <-- Assoc_Class_11_0n__Class2__GetAssoClass(Instance)=
+	PRE
+	Instance : Assoc_Class_11_0n__Class2 	
+	THEN 		result := Assoc_Class_11_0n__AssoClass(Instance)
+	END;
+
+Assoc_Class_01_1n__Class2__SetAssoClass(Instance,Assoc_Class_01_1n__AssoClass__class1Value)=
+	PRE
+	Instance : Assoc_Class_01_1n__Class2 	&	Assoc_Class_01_1n__AssoClass__class1Value : Assoc_Class_01_1n__Class1 	&	(Instance|-> Assoc_Class_01_1n__AssoClass__class1Value) /: Assoc_Class_01_1n__AssoClass 	&	#cc.(cc: Assoc_Class_01_1n__Class2 & cc/=Instance & cc: Assoc_Class_01_1n__AssoClass~[Assoc_Class_01_1n__AssoClass[{Instance}]]) 	
+	THEN 		Assoc_Class_01_1n__AssoClass:= ({Instance}<<|Assoc_Class_01_1n__AssoClass)\/ {(Instance|-> Assoc_Class_01_1n__AssoClass__class1Value)}
+	END;
+
+Assoc_Class_11_0n__Class2__SetAssoClass(Instance,Assoc_Class_11_0n__AssoClass__class1Value)=
+	PRE
+	Instance : Assoc_Class_11_0n__Class2 	&	Assoc_Class_11_0n__AssoClass__class1Value : Assoc_Class_11_0n__Class1 	&	(Instance|-> Assoc_Class_11_0n__AssoClass__class1Value) /: Assoc_Class_11_0n__AssoClass 	
+	THEN 		Assoc_Class_11_0n__AssoClass:= ({Instance}<<|Assoc_Class_11_0n__AssoClass)\/ {(Instance|-> Assoc_Class_11_0n__AssoClass__class1Value)}
+	END;
+
+Assoc_Class_01_1n__Class1__AddAssoClass(Instance,Assoc_Class_01_1n__AssoClass__class2Values)=
+	PRE
+	Instance : Assoc_Class_01_1n__Class1 	&	Assoc_Class_01_1n__AssoClass__class2Values : Assoc_Class_01_1n__Class2 	&	(Assoc_Class_01_1n__AssoClass__class2Values|-> Instance) /:Assoc_Class_01_1n__AssoClass 	&	Assoc_Class_01_1n__AssoClass__class2Values/:dom(Assoc_Class_01_1n__AssoClass) 	
+	THEN 		Assoc_Class_01_1n__AssoClass:= Assoc_Class_01_1n__AssoClass\/{(Assoc_Class_01_1n__AssoClass__class2Values|-> Instance)}
+	END;
+
+Assoc_Class_02_0n__Class1__AddAssoClass(Instance,Assoc_Class_02_0n__AssoClass__class2Values)=
+	PRE
+	Instance : Assoc_Class_02_0n__Class1 	&	Assoc_Class_02_0n__AssoClass__class2Values : Assoc_Class_02_0n__Class2 	&	(Assoc_Class_02_0n__AssoClass__class2Values|-> Instance) /:Assoc_Class_02_0n__AssoClass 	&	not(#(c1,c2).(c1:Assoc_Class_02_0n__Class1 & c2:Assoc_Class_02_0n__Class1 & c1/=c2 & {c1,c2}<: Assoc_Class_02_0n__AssoClass[{Assoc_Class_02_0n__AssoClass__class2Values}])) 	
+	THEN 		Assoc_Class_02_0n__AssoClass:= Assoc_Class_02_0n__AssoClass\/{(Assoc_Class_02_0n__AssoClass__class2Values|-> Instance)}
+	END;
+
+Assoc_Class_02_0n__Class2__AddAssoClass(Instance,Assoc_Class_02_0n__AssoClass__class1Values)=
+	PRE
+	Instance : Assoc_Class_02_0n__Class2 	&	card(Assoc_Class_02_0n__AssoClass[{Instance}])<2 	&	Assoc_Class_02_0n__AssoClass__class1Values : Assoc_Class_02_0n__Class1 	&	(Instance|-> Assoc_Class_02_0n__AssoClass__class1Values) /:Assoc_Class_02_0n__AssoClass 	
+	THEN 		Assoc_Class_02_0n__AssoClass:= Assoc_Class_02_0n__AssoClass\/ {(Instance|-> Assoc_Class_02_0n__AssoClass__class1Values)}
+	END;
+
+Assoc_Class_11_0n__Class1__AddAssoClass(Instance,Assoc_Class_11_0n__AssoClass__class2Values)=
+	PRE
+	Instance : Assoc_Class_11_0n__Class1 	&	Assoc_Class_11_0n__AssoClass__class2Values : Assoc_Class_11_0n__Class2 	&	(Assoc_Class_11_0n__AssoClass__class2Values|-> Instance) /:Assoc_Class_11_0n__AssoClass 	&	Assoc_Class_11_0n__AssoClass__class2Values/:dom(Assoc_Class_11_0n__AssoClass) 	
+	THEN 		Assoc_Class_11_0n__AssoClass:= Assoc_Class_11_0n__AssoClass\/{(Assoc_Class_11_0n__AssoClass__class2Values|-> Instance)}
+	END;
+
+Assoc_Class_01_1n__Class1__RemoveAssoClass(Instance,Assoc_Class_01_1n__AssoClass__class2Values)=
+	PRE
+	Instance : Assoc_Class_01_1n__Class1 	&	Assoc_Class_01_1n__AssoClass__class2Values : Assoc_Class_01_1n__Class2 	&	(Assoc_Class_01_1n__AssoClass__class2Values|-> Instance) :Assoc_Class_01_1n__AssoClass 	&	#cc.(cc: Assoc_Class_01_1n__Class2& cc/=Assoc_Class_01_1n__AssoClass__class2Values & (Assoc_Class_01_1n__AssoClass__class2Values|-> Instance):Assoc_Class_01_1n__AssoClass ) 	
+	THEN 		Assoc_Class_01_1n__AssoClass:= Assoc_Class_01_1n__AssoClass-{(Assoc_Class_01_1n__AssoClass__class2Values|-> Instance)}
+	END;
+
+Assoc_Class_02_0n__Class1__RemoveAssoClass(Instance,Assoc_Class_02_0n__AssoClass__class2Values)=
+	PRE
+	Instance : Assoc_Class_02_0n__Class1 	&	Assoc_Class_02_0n__AssoClass__class2Values : Assoc_Class_02_0n__Class2 	&	(Assoc_Class_02_0n__AssoClass__class2Values|-> Instance) :Assoc_Class_02_0n__AssoClass 	
+	THEN 		Assoc_Class_02_0n__AssoClass:= Assoc_Class_02_0n__AssoClass-{(Assoc_Class_02_0n__AssoClass__class2Values|-> Instance)}
+	END;
+
+Assoc_Class_02_0n__Class2__RemoveAssoClass(Instance,Assoc_Class_02_0n__AssoClass__class1Values)=
+	PRE
+	Instance : Assoc_Class_02_0n__Class2 	&	Assoc_Class_02_0n__AssoClass__class1Values : Assoc_Class_02_0n__Class1 	&	(Instance|-> Assoc_Class_02_0n__AssoClass__class1Values) :Assoc_Class_02_0n__AssoClass 	
+	THEN 		Assoc_Class_02_0n__AssoClass:= Assoc_Class_02_0n__AssoClass-{(Instance|-> Assoc_Class_02_0n__AssoClass__class1Values)}
+	END;
+
+Assoc_Class_11_0n__Class1__RemoveAssoClass(Instance,Assoc_Class_11_0n__AssoClass__class2Values)=
+	PRE
+	Instance : Assoc_Class_11_0n__Class1 	&	Assoc_Class_11_0n__AssoClass__class2Values : Assoc_Class_11_0n__Class2 	&	(Assoc_Class_11_0n__AssoClass__class2Values|-> Instance) :Assoc_Class_11_0n__AssoClass 	&	#cc.(cc: Assoc_Class_11_0n__Class1 & cc/=Instance & cc: Assoc_Class_11_0n__AssoClass[{Assoc_Class_11_0n__AssoClass__class2Values}]) 	
+	THEN 		Assoc_Class_11_0n__AssoClass:= Assoc_Class_11_0n__AssoClass-{(Assoc_Class_11_0n__AssoClass__class2Values|-> Instance)}
+	END
+ END
+ 
+	

@@ -1,0 +1,177 @@
+import uml;
+import b;
+import trace;
+import ecore;
+import transformationconfig;
+
+extension BHelper;
+extension UMLHelper;
+extension TraceHelper;
+extension EMFHelper;
+extension TransformationContext;
+
+//uml::PrimitiveType
+BPrimitiveType getBPrimitiveType(uml::Type t):
+(!uml::PrimitiveType.isInstance(t))?
+	(
+	debug("Enable to find equivalent type for '"+t.name+"' <>uml::PrimitiveType  !")->
+	null
+	)
+:(
+	(uml::Integer.isInstance(t)||uml::UnlimitedNatural.isInstance(t)
+	||uml::LiteralInteger.isInstance(t)||uml::LiteralUnlimitedNatural.isInstance(t)
+	||t.toString().contains("Integer")||t.toString().contains("UnlimitedNatural"))?
+	ZInstance()
+	:(
+		(uml::String.isInstance(t)||uml::LiteralString.isInstance(t)
+		||t.toString().contains("String"))?
+		StringInstance()
+		:(
+			(uml::Boolean.isInstance(t)||uml::LiteralBoolean.isInstance(t)
+			||t.toString().contains("Boolean"))?
+			BoolInstance()
+			:(
+			debug("Enable to find equivalent primitiveType for '"+t+"' !")->	
+			null
+			)
+		)	
+	)
+)
+;
+
+
+
+
+
+BasicMult BasicMultFromInteger(Integer i):
+(i==0)?BasicMult::zero:((i==1)?BasicMult::one:BasicMult::star);
+
+
+BComposedType BComposedTypeFromAttribute(Property p):
+let v=mappedToBVariable(p.class):
+(
+	(BType.isInstance(v))?
+	(	
+		let ct=getBComposedType(
+			(BType)v,
+			//getBPrimitiveType(p.type),
+			(uml::PrimitiveType.isInstance(p.type))?
+				(getBPrimitiveType(p.type))
+				:
+				(
+				(uml::Enumeration.isInstance(p.type))?
+					(
+					let e=mappedTo(p.type):
+						(BEnumSet.isInstance(e))?e:
+						((BMachine.isInstance(e))?((BMachine)e).data.typeSelect(BEnumSet).first() :null)					
+					)
+					:
+					mappedToBVariable(p.type)
+				)
+			,
+			createMultiplicity(BasicMult::zero,BasicMult::star ),
+			createMultiplicity(BasicMultFromInteger(p.lower) ,BasicMultFromInteger(p.upper)) 
+		):BSPEC().sharedTypes.sharedTypes.add(ct)->ct
+	):(		
+		(BMachine.isInstance(v))?
+		(	
+			let ct=getBComposedType(
+				(BType) ((BMachine)v).data.select(e|e.name==((BMachine)v).name).first(),
+				getBPrimitiveType(p.type),
+				createMultiplicity(BasicMult::zero,BasicMult::star ),
+				createMultiplicity(BasicMultFromInteger(p.lower) ,BasicMultFromInteger(p.upper)) 
+			):BSPEC().sharedTypes.sharedTypes.add(ct)->ct
+		):(
+			null
+		)
+	)
+)
+;
+
+
+
+
+ BType BTypeFromTypedElement(uml::TypedElement p)://support primitive types and classes
+	(uml::PrimitiveType.isInstance(p.type))?
+	(
+		getBPrimitiveType(p.type)
+	):(
+		let v=mappedToBVariable(p.type):
+		v
+	)
+;
+ BType BTypeFromTypedOperation(uml::Operation p)://support primitive types and classes
+	(uml::PrimitiveType.isInstance(p.type))?
+	(
+		getBPrimitiveType(p.type)
+	):(
+		let v=mappedToBVariable(p.type):
+		v
+	)
+;
+
+
+BComposedType BComposedTypeFromAssociation(Association a):
+let src=mappedToBVariable( a.ownedEnd.first().type):
+(
+	let dest=mappedToBVariable(a.ownedEnd.last().type):
+	(
+		(src!=null && dest!=null)?
+		(
+			let ct=createBComposedType(
+				src,
+				dest,
+				createMultiplicity(BasicMultFromInteger(a.ownedEnd.first().lower) ,BasicMultFromInteger(a.ownedEnd.first().upper)),
+				createMultiplicity(BasicMultFromInteger(a.ownedEnd.last().lower) ,BasicMultFromInteger(a.ownedEnd.last().upper)) 
+			):BSPEC().sharedTypes.sharedTypes.add(ct)->ct
+		):
+			null
+	)
+)
+;
+
+
+//reverse the direction
+BComposedType ReverseBComposedTypeFromAssociation(Association a):
+let src=mappedToBVariable( a.ownedEnd.first().type):
+(
+	let dest=mappedToBVariable(a.ownedEnd.last().type):
+	(
+		(src!=null && dest!=null)?
+		(
+			let ct=createBComposedType(
+				dest,
+				src,
+				createMultiplicity( BasicMultFromInteger(a.ownedEnd.last().lower) ,
+									BasicMultFromInteger(a.ownedEnd.last().upper) ),
+				createMultiplicity( BasicMultFromInteger(a.ownedEnd.first().lower) ,
+									BasicMultFromInteger(a.ownedEnd.first().upper))
+				) 
+			 :
+				BSPEC().sharedTypes.sharedTypes.add(ct)->
+				ct
+		):
+			(null)
+	)
+)
+;
+
+BComposedType AdaptiveBComposedTypeFromAssociation(Association a):
+let src=mappedToBVariable( a.ownedEnd.first().type):
+(
+	let dest=mappedToBVariable(a.ownedEnd.last().type):
+	(
+		(src!=null && dest!=null)?
+		(
+			let ct=getBComposedType(//may reverse direction
+				src,
+				dest,
+				createMultiplicity(BasicMultFromInteger(a.ownedEnd.first().lower) ,BasicMultFromInteger(a.ownedEnd.first().upper)),
+				createMultiplicity(BasicMultFromInteger(a.ownedEnd.last().lower) ,BasicMultFromInteger(a.ownedEnd.last().upper)) 
+			):BSPEC().sharedTypes.sharedTypes.add(ct)->ct
+		):
+			null
+	)
+)
+;
+

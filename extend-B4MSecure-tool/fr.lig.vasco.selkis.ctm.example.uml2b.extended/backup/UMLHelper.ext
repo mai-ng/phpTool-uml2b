@@ -1,0 +1,115 @@
+import uml;
+import ecore;
+
+extension EMFHelper;
+
+
+
+/*
+*	these extension are used to determinate dependency between uml element
+*	generally before mapping an element his container must be mapped to
+*	some elements like class or association depends on other elements
+*		Class: require super Classes
+*		Association : require owned members classes (property.types)
+*	@see com.lig.vasco.uml2b.cfg.ConfigContext#getElementParents()
+*
+*
+*	//TODO	to be used in need
+*/
+
+
+uml::Element getDirectParent(uml::Element e):
+(Class.isInstance(e))?(
+	((Class)e).superClass.isEmpty?
+	e.owner
+	:
+	((Class)e).superClass.first()
+):
+e.owner
+;
+
+uml::Element getParents(uml::Element e):
+(Class.isInstance(e))?(
+	((Class)e).superClass.isEmpty?
+	e.owner
+	:
+	((Class)e).superClass.first()
+):
+e.owner
+;
+
+
+getQualifiedName(uml::Element e):
+(uml::NamedElement.isInstance(e))?
+	((uml::NamedElement)e).qualifiedName
+:
+	getURIFragment((EObject)e);
+	
+	
+getQualifiedName(uml::NamedElement e):e.qualifiedName;
+
+
+
+/*
+*	use this extension to set B elements names from uml elements
+*	some approach like 'UniqueMachine' may produce inconsistencies between namedElement in the same namespace
+*/
+
+
+/*
+getCannonicalName(uml::Element e):
+(NamedElement.isInstance(e))?
+	((NamedElement)e).name
+:
+	getURIFragment((EObject)e);
+//*/	
+	
+/*
+String getCannonicalName(uml::Package e):getCannonicalName((uml::Element) e);
+String getCannonicalName(uml::Class  e):getCannonicalName((uml::Element) e);
+String getCannonicalName(uml::Property  e):getCannonicalName((uml::Element) e);
+*/
+String getCannonicalName(uml::Element e):((NamedElement)e).name;	//getQualifiedName(e);
+
+
+
+
+
+
+//
+
+Property getFixMember(Association a):
+(a.ownedEnd.first().isReadOnly)?
+(
+	(a.ownedEnd.last().isReadOnly)?(
+		null //fixed by two class 
+	):(
+		a.ownedEnd.first()
+	)
+):(
+	(a.ownedEnd.last().isReadOnly)?(
+		a.ownedEnd.last()
+	):(
+		null
+	)
+)
+;
+
+// the strongest inherit the association
+Property getLowerMember(Association a):
+(a.ownedEnd.first().upper==1)?
+(
+	(a.ownedEnd.last().upper==-1)?(// ==*
+		a.ownedEnd.first()
+	):(
+		null
+	)
+):(
+	(a.ownedEnd.last().upper==1)?(// ==*
+		a.ownedEnd.last()
+	):(
+		null
+	)
+)
+;
+	

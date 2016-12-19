@@ -1,0 +1,82 @@
+«IMPORT b»
+«DEFINE file FOR BSpec»
+B Specification : «name»
+	«FILE name + ".txt"-»
+		«EXPAND machine FOREACH machines» 
+	«ENDFILE»
+END Specification
+«ENDDEFINE»
+
+
+
+
+«DEFINE machine  FOR BMachine »
+
+
+MACHINE 
+	«name»
+«IF this.includes.size>0 » 
+INCLUDES
+«FOREACH this.includes AS inc SEPARATOR ','-»
+	«inc.name-»
+«ENDFOREACH»
+«ENDIF -» 
+«IF this.uses.size>0 -» 
+USES
+«FOREACH this.uses AS inc SEPARATOR ','-»
+	«inc.name-»
+«ENDFOREACH -»
+«ENDIF »
+SETS
+«FOREACH data.typeSelect(BAbstractSet) AS dabs SEPARATOR ';'-»
+ «dabs.name-»
+«ENDFOREACH»
+«FOREACH data.typeSelect(BEnumSet) AS es -»
+ ;«es.name-»={«FOREACH es.values AS value SEPARATOR ';'»«value.name»«ENDFOREACH»}
+«ENDFOREACH»
+ABSTRACT_VARIABLES
+«FOREACH data.typeSelect(BVariable) AS dvar SEPARATOR ','-»
+ «dvar.name-»
+«ENDFOREACH»
+INVARIANT
+«FOREACH data.typeSelect(BVariable) AS bvar SEPARATOR '&'-»  
+ «bvar.typingPredicate.name.first()»
+«ENDFOREACH-»
+«IF this.initialisation.size>0 -» 
+INITIALISATION
+«FOREACH this.initialisation AS inc SEPARATOR '||'-»
+	«inc.init.name-»:={}
+«ENDFOREACH -»
+«ENDIF » 
+«IF this.operations.size>0 -» 
+OPERATIONS
+«FOREACH this.operations AS op SEPARATOR ';' »
+
+«IF (op.body!=null)&&(op.body.contains("out"))»out <-- «ENDIF»«op.name-»«IF op.param.size>0 -»
+(«FOREACH op.param  AS p SEPARATOR ',' -»
+«p.name-»
+«ENDFOREACH -»
+)«ENDIF -»=
+«IF op.param.size>0 -»
+	PRE
+«FOREACH op.param AS p SEPARATOR '&'-»
+		«p.typingPredicate.name.first()» 
+«ENDFOREACH -»
+«IF (op.substitution.precondition.body!=null)&&(op.substitution.precondition.body!="")-»
+&		«op.substitution.precondition.body»«ENDIF-»
+«FOREACH op.substitution.precondition.typingPredicate AS tp SEPARATOR '&'-» 
+		«tp.name -»
+«ENDFOREACH »
+	THEN«ENDIF -»		
+ 		«op.body »
+	END«ENDFOREACH -»
+«ENDIF »
+ END
+«ENDDEFINE»
+ «FOREACH AS » «ENDFOREACH »
+  «IF »
+  «ELSEIF »
+  «ELSE »
+  «ENDIF »
+   « »
+    « »

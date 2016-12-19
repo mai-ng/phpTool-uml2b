@@ -1,0 +1,261 @@
+		
+
+
+MACHINE 
+	Class
+
+SETS
+ STR
+; CLASS
+; APACKAGE__CONCRETECLASS
+; ABSTRACTCLASS__ABSTRACTCLASS
+; CONCRETECLASS__CONCRETECLASS
+
+
+ABSTRACT_VARIABLES
+ Class
+, APackage__ConcreteClass
+, AbstractClass__AbstractClass
+, ConcreteClass__ConcreteClass
+, Class__optionalAttribut
+, Class__SetAttribut
+, Class__mandatoryAttribut
+, Class__nonEmptySet
+, Class__staticAttribut
+, Class__readOnlyAttribut
+, Class__privateAttribut
+, Class__derivedAttribut
+, Class__text
+, Class__constrainedSet
+
+INVARIANT
+Class : POW(CLASS) 
+&APackage__ConcreteClass : POW(APACKAGE__CONCRETECLASS) 
+&AbstractClass__AbstractClass : POW(ABSTRACTCLASS__ABSTRACTCLASS) 
+&ConcreteClass__ConcreteClass : POW(CONCRETECLASS__CONCRETECLASS) 
+&Class__optionalAttribut : Class +-> INTEGER 
+&Class__SetAttribut : Class <-> INTEGER 
+&Class__mandatoryAttribut : Class --> INTEGER 
+&Class__nonEmptySet : Class <-> INTEGER 
+&Class__staticAttribut : INTEGER 
+&Class__readOnlyAttribut : Class --> INTEGER 
+&Class__privateAttribut : Class +-> BOOL 
+&Class__derivedAttribut : Class +-> BOOL 
+&Class__text : Class +-> STR 
+&Class__constrainedSet : Class <-> STR & !cc.( cc:dom(Class__constrainedSet) => card(Class__constrainedSet[{cc}])>=2)
+ & !cc.( cc:dom(Class__constrainedSet) => card(Class__constrainedSet[{cc}])<=6) 
+
+
+INITIALISATION
+	Class:={}
+||	APackage__ConcreteClass:={}
+||	AbstractClass__AbstractClass:={}
+||	ConcreteClass__ConcreteClass:={}
+||	Class__optionalAttribut:={}
+||	Class__SetAttribut:={}
+||	Class__mandatoryAttribut:={}
+||	Class__nonEmptySet:={}
+||	Class__staticAttribut:={}
+||	Class__readOnlyAttribut:={}
+||	Class__privateAttribut:={}
+||	Class__derivedAttribut:={}
+||	Class__text:={}
+||	Class__constrainedSet:={}
+ 
+OPERATIONS
+
+Class_NEW(Instance,mandatoryAttributValue,readOnlyAttributValue,constrainedSetValue)=
+	PRE
+	Instance : CLASS 	&	Instance /: Class 	&	mandatoryAttributValue : INTEGER 	&	readOnlyAttributValue : INTEGER 	&	constrainedSetValue <: STR 	&	card(constrainedSetValue)<=6 	&	card(constrainedSetValue)>=2 	
+
+	THEN 		Class := Class \/ {Instance} || Class__mandatoryAttribut:= Class__mandatoryAttribut \/ {(Instance|->mandatoryAttributValue)} || Class__readOnlyAttribut:= Class__readOnlyAttribut \/ {(Instance|->readOnlyAttributValue)} || Class__constrainedSet:= Class__constrainedSet \/ ({Instance}*constrainedSetValue)
+	END;
+APackage__ConcreteClass_NEW(Instance)=
+	PRE
+	Instance : APACKAGE__CONCRETECLASS 	&	Instance /: APackage__ConcreteClass 	
+
+	THEN 		APackage__ConcreteClass := APackage__ConcreteClass \/ {Instance}
+	END;
+AbstractClass__AbstractClass_NEW(Instance)=
+	PRE
+	Instance : ABSTRACTCLASS__ABSTRACTCLASS 	&	Instance /: AbstractClass__AbstractClass 	
+
+	THEN 		AbstractClass__AbstractClass := AbstractClass__AbstractClass \/ {Instance}
+	END;
+ConcreteClass__ConcreteClass_NEW(Instance)=
+	PRE
+	Instance : CONCRETECLASS__CONCRETECLASS 	&	Instance /: ConcreteClass__ConcreteClass 	
+
+	THEN 		ConcreteClass__ConcreteClass := ConcreteClass__ConcreteClass \/ {Instance}
+	END;
+Class_Free(Instance)=
+	PRE
+	Instance : CLASS 	&	Instance : Class 	
+
+	THEN 		Class := Class - {Instance} || Class__optionalAttribut:= {Instance}<<|Class__optionalAttribut || Class__SetAttribut:= {Instance}<<|Class__SetAttribut || Class__mandatoryAttribut:= {Instance}<<|Class__mandatoryAttribut || Class__nonEmptySet:= {Instance}<<|Class__nonEmptySet || Class__readOnlyAttribut:= {Instance}<<|Class__readOnlyAttribut || Class__privateAttribut:= {Instance}<<|Class__privateAttribut || Class__derivedAttribut:= {Instance}<<|Class__derivedAttribut || Class__text:= {Instance}<<|Class__text || Class__constrainedSet:= {Instance}<<|Class__constrainedSet
+	END;
+APackage__ConcreteClass_Free(Instance)=
+	PRE
+	Instance : APACKAGE__CONCRETECLASS 	&	Instance : APackage__ConcreteClass 	
+
+	THEN 		APackage__ConcreteClass := APackage__ConcreteClass - {Instance}
+	END;
+AbstractClass__AbstractClass_Free(Instance)=
+	PRE
+	Instance : ABSTRACTCLASS__ABSTRACTCLASS 	&	Instance : AbstractClass__AbstractClass 	
+
+	THEN 		AbstractClass__AbstractClass := AbstractClass__AbstractClass - {Instance}
+	END;
+ConcreteClass__ConcreteClass_Free(Instance)=
+	PRE
+	Instance : CONCRETECLASS__CONCRETECLASS 	&	Instance : ConcreteClass__ConcreteClass 	
+
+	THEN 		ConcreteClass__ConcreteClass := ConcreteClass__ConcreteClass - {Instance}
+	END;
+result <-- Class__GetOptionalAttribut(Instance)=
+	PRE
+	Instance : Class 	
+
+	THEN 		result := Class__optionalAttribut(Instance)
+	END;
+result <-- Class__GetSetAttribut(Instance)=
+	PRE
+	Instance : Class 	
+
+	THEN 		result := Class__SetAttribut(Instance)
+	END;
+result <-- Class__GetMandatoryAttribut(Instance)=
+	PRE
+	Instance : Class 	
+
+	THEN 		result := Class__mandatoryAttribut(Instance)
+	END;
+result <-- Class__GetNonEmptySet(Instance)=
+	PRE
+	Instance : Class 	
+
+	THEN 		result := Class__nonEmptySet(Instance)
+	END;
+result <-- Class__GetReadOnlyAttribut(Instance)=
+	PRE
+	Instance : Class 	
+
+	THEN 		result := Class__readOnlyAttribut(Instance)
+	END;
+result <-- Class__GetPrivateAttribut(Instance)=
+	PRE
+	Instance : Class 	
+
+	THEN 		result := Class__privateAttribut(Instance)
+	END;
+result <-- Class__GetDerivedAttribut(Instance)=
+	PRE
+	Instance : Class 	
+
+	THEN 		result := Class__derivedAttribut(Instance)
+	END;
+result <-- Class__GetText(Instance)=
+	PRE
+	Instance : Class 	
+
+	THEN 		result := Class__text(Instance)
+	END;
+result <-- Class__GetConstrainedSet(Instance)=
+	PRE
+	Instance : Class 	
+
+	THEN 		result := Class__constrainedSet(Instance)
+	END;
+Class__SetOptionalAttribut(Instance,optionalAttributValue)=
+	PRE
+	Instance : Class 	&	optionalAttributValue : INTEGER 	
+
+	THEN 		Class__optionalAttribut:= ({Instance}<<|Class__optionalAttribut)\/ {(Instance|-> optionalAttributValue)}
+	END;
+Class__SetSetAttribut(Instance,SetAttributValue)=
+	PRE
+	Instance : Class 	&	SetAttributValue <: INTEGER 	
+
+	THEN 		Class__SetAttribut:= ({Instance}<<|Class__SetAttribut)\/ ({Instance}*SetAttributValue)
+	END;
+Class__SetMandatoryAttribut(Instance,mandatoryAttributValue)=
+	PRE
+	Instance : Class 	&	mandatoryAttributValue : INTEGER 	
+
+	THEN 		Class__mandatoryAttribut:= ({Instance}<<|Class__mandatoryAttribut)\/ {(Instance|-> mandatoryAttributValue)}
+	END;
+Class__SetNonEmptySet(Instance,nonEmptySetValue)=
+	PRE
+	Instance : Class 	&	nonEmptySetValue <: INTEGER 	
+
+	THEN 		Class__nonEmptySet:= ({Instance}<<|Class__nonEmptySet)\/ ({Instance}*nonEmptySetValue)
+	END;
+Class__SetReadOnlyAttribut(Instance,readOnlyAttributValue)=
+	PRE
+	Instance : Class 	&	readOnlyAttributValue : INTEGER 	
+
+	THEN 		Class__readOnlyAttribut:= ({Instance}<<|Class__readOnlyAttribut)\/ {(Instance|-> readOnlyAttributValue)}
+	END;
+Class__SetPrivateAttribut(Instance,privateAttributValue)=
+	PRE
+	Instance : Class 	&	privateAttributValue : BOOL 	
+
+	THEN 		Class__privateAttribut:= ({Instance}<<|Class__privateAttribut)\/ {(Instance|-> privateAttributValue)}
+	END;
+Class__SetDerivedAttribut(Instance,derivedAttributValue)=
+	PRE
+	Instance : Class 	&	derivedAttributValue : BOOL 	
+
+	THEN 		Class__derivedAttribut:= ({Instance}<<|Class__derivedAttribut)\/ {(Instance|-> derivedAttributValue)}
+	END;
+Class__SetText(Instance,textValue)=
+	PRE
+	Instance : Class 	&	textValue : STR 	
+
+	THEN 		Class__text:= ({Instance}<<|Class__text)\/ {(Instance|-> textValue)}
+	END;
+Class__SetConstrainedSet(Instance,constrainedSetValue)=
+	PRE
+	Instance : Class 	&	constrainedSetValue <: STR 	&	card(constrainedSetValue)<=6 	&	card(constrainedSetValue)>=2 	
+
+	THEN 		Class__constrainedSet:= ({Instance}<<|Class__constrainedSet)\/ ({Instance}*constrainedSetValue)
+	END;
+Class__AddSetAttribut(Instance,SetAttributValue)=
+	PRE
+	Instance : Class 	&	SetAttributValue : INTEGER 	&	(Instance|-> SetAttributValue)/:Class__SetAttribut 	
+
+	THEN 		Class__SetAttribut:= Class__SetAttribut\/ {(Instance|-> SetAttributValue)}
+	END;
+Class__AddNonEmptySet(Instance,nonEmptySetValue)=
+	PRE
+	Instance : Class 	&	nonEmptySetValue : INTEGER 	&	(Instance|-> nonEmptySetValue)/:Class__nonEmptySet 	
+
+	THEN 		Class__nonEmptySet:= Class__nonEmptySet\/ {(Instance|-> nonEmptySetValue)}
+	END;
+Class__AddConstrainedSet(Instance,constrainedSetValue)=
+	PRE
+	Instance : Class 	&	Class__constrainedSet[{Instance}]/={} 	&	constrainedSetValue : STR 	&	(Instance|-> constrainedSetValue)/:Class__constrainedSet 	&	card(Class__constrainedSet[{Instance}])<6 	
+
+	THEN 		Class__constrainedSet:= Class__constrainedSet\/ {(Instance|-> constrainedSetValue)}
+	END;
+Class__RemoveSetAttribut(Instance,SetAttributValue)=
+	PRE
+	Instance : Class 	&	SetAttributValue : INTEGER 	&	(Instance|-> SetAttributValue):Class__SetAttribut 	
+
+	THEN 		Class__SetAttribut:= Class__SetAttribut\/ {(Instance|-> SetAttributValue)}
+	END;
+Class__RemoveNonEmptySet(Instance,nonEmptySetValue)=
+	PRE
+	Instance : Class 	&	nonEmptySetValue : INTEGER 	&	(Instance|-> nonEmptySetValue):Class__nonEmptySet 	
+
+	THEN 		Class__nonEmptySet:= Class__nonEmptySet\/ {(Instance|-> nonEmptySetValue)}
+	END;
+Class__RemoveConstrainedSet(Instance,constrainedSetValue)=
+	PRE
+	Instance : Class 	&	card(Class__constrainedSet[{Instance}])>2 	&	constrainedSetValue : STR 	&	(Instance|-> constrainedSetValue):Class__constrainedSet 	
+
+	THEN 		Class__constrainedSet:= Class__constrainedSet\/ {(Instance|-> constrainedSetValue)}
+	END
+ END
+ 
+	

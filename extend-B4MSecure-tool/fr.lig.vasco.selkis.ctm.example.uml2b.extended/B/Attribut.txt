@@ -1,0 +1,181 @@
+		
+
+
+MACHINE 
+	Attribut
+
+SETS
+ OPTIONAL__CLASS
+; MONDATORY__CLASS
+; SET__CLASS
+; NONEMPTYSET__CLASS
+; ORDEREDSET__CLASS
+; LIST__CLASS
+; FIXEDMULTIPLICITY__CLASS
+; STATIC__CLASS
+; READONLY__CLASS
+
+
+ABSTRACT_VARIABLES
+ Optional__Class
+, Mondatory__Class
+, Set__Class
+, NonEmptySet__Class
+, OrderedSet__Class
+, List__Class
+, fixedMultiplicity__Class
+, Static__Class
+, ReadOnly__Class
+, Optional__Class__attribut
+, Mondatory__Class__attribut
+, Set__Class__attribut
+, NonEmptySet__Class__attribut
+, OrderedSet__Class__attribut
+, List__Class__attribut
+, fixedMultiplicity__Class__attribut
+, Static__Class__attribut
+
+INVARIANT
+Optional__Class : POW(OPTIONAL__CLASS) 
+&Mondatory__Class : POW(MONDATORY__CLASS) 
+&Set__Class : POW(SET__CLASS) 
+&NonEmptySet__Class : POW(NONEMPTYSET__CLASS) 
+&OrderedSet__Class : POW(ORDEREDSET__CLASS) 
+&List__Class : POW(LIST__CLASS) 
+&fixedMultiplicity__Class : POW(FIXEDMULTIPLICITY__CLASS) 
+&Static__Class : POW(STATIC__CLASS) 
+&ReadOnly__Class : POW(READONLY__CLASS) 
+&
+&
+&
+&
+&
+&
+&
+&
+
+
+INITIALISATION
+	Optional__Class:={}
+||	Mondatory__Class:={}
+||	Set__Class:={}
+||	NonEmptySet__Class:={}
+||	OrderedSet__Class:={}
+||	List__Class:={}
+||	fixedMultiplicity__Class:={}
+||	Static__Class:={}
+||	ReadOnly__Class:={}
+ 
+OPERATIONS
+
+Optional__Class_NEW(Instance)=
+	PRE
+	Instance : OPTIONAL__CLASS 	&	Instance /: Optional__Class 	
+
+	THEN 		Optional__Class := Optional__Class \/ {Instance}
+	END;
+Mondatory__Class_NEW(Instance)=
+	PRE
+	Instance : MONDATORY__CLASS 	&	Instance /: Mondatory__Class 	
+
+	THEN 		Mondatory__Class := Mondatory__Class \/ {Instance}
+	END;
+Set__Class_NEW(Instance)=
+	PRE
+	Instance : SET__CLASS 	&	Instance /: Set__Class 	
+
+	THEN 		Set__Class := Set__Class \/ {Instance}
+	END;
+NonEmptySet__Class_NEW(Instance)=
+	PRE
+	Instance : NONEMPTYSET__CLASS 	&	Instance /: NonEmptySet__Class 	
+
+	THEN 		NonEmptySet__Class := NonEmptySet__Class \/ {Instance}
+	END;
+OrderedSet__Class_NEW(Instance)=
+	PRE
+	Instance : ORDEREDSET__CLASS 	&	Instance /: OrderedSet__Class 	
+
+	THEN 		OrderedSet__Class := OrderedSet__Class \/ {Instance}
+	END;
+List__Class_NEW(Instance)=
+	PRE
+	Instance : LIST__CLASS 	&	Instance /: List__Class 	
+
+	THEN 		List__Class := List__Class \/ {Instance}
+	END;
+fixedMultiplicity__Class_NEW(Instance)=
+	PRE
+	Instance : FIXEDMULTIPLICITY__CLASS 	&	Instance /: fixedMultiplicity__Class 	
+
+	THEN 		fixedMultiplicity__Class := fixedMultiplicity__Class \/ {Instance}
+	END;
+Static__Class_NEW(Instance)=
+	PRE
+	Instance : STATIC__CLASS 	&	Instance /: Static__Class 	
+
+	THEN 		Static__Class := Static__Class \/ {Instance}
+	END;
+ReadOnly__Class_NEW(Instance)=
+	PRE
+	Instance : READONLY__CLASS 	&	Instance /: ReadOnly__Class 	
+
+	THEN 		ReadOnly__Class := ReadOnly__Class \/ {Instance}
+	END;
+Optional__Class_Free(Instance)=
+	PRE
+	Instance : OPTIONAL__CLASS 	&	Instance : Optional__Class 	
+
+	THEN 		Optional__Class := Optional__Class - {Instance}
+	END;
+Mondatory__Class_Free(Instance)=
+	PRE
+	Instance : MONDATORY__CLASS 	&	Instance : Mondatory__Class 	
+
+	THEN 		Mondatory__Class := Mondatory__Class - {Instance}
+	END;
+Set__Class_Free(Instance)=
+	PRE
+	Instance : SET__CLASS 	&	Instance : Set__Class 	
+
+	THEN 		Set__Class := Set__Class - {Instance}
+	END;
+NonEmptySet__Class_Free(Instance)=
+	PRE
+	Instance : NONEMPTYSET__CLASS 	&	Instance : NonEmptySet__Class 	
+
+	THEN 		NonEmptySet__Class := NonEmptySet__Class - {Instance}
+	END;
+OrderedSet__Class_Free(Instance)=
+	PRE
+	Instance : ORDEREDSET__CLASS 	&	Instance : OrderedSet__Class 	
+
+	THEN 		OrderedSet__Class := OrderedSet__Class - {Instance}
+	END;
+List__Class_Free(Instance)=
+	PRE
+	Instance : LIST__CLASS 	&	Instance : List__Class 	
+
+	THEN 		List__Class := List__Class - {Instance}
+	END;
+fixedMultiplicity__Class_Free(Instance)=
+	PRE
+	Instance : FIXEDMULTIPLICITY__CLASS 	&	Instance : fixedMultiplicity__Class 	
+
+	THEN 		fixedMultiplicity__Class := fixedMultiplicity__Class - {Instance}
+	END;
+Static__Class_Free(Instance)=
+	PRE
+	Instance : STATIC__CLASS 	&	Instance : Static__Class 	
+
+	THEN 		Static__Class := Static__Class - {Instance}
+	END;
+ReadOnly__Class_Free(Instance)=
+	PRE
+	Instance : READONLY__CLASS 	&	Instance : ReadOnly__Class 	
+
+	THEN 		ReadOnly__Class := ReadOnly__Class - {Instance}
+	END
+ END
+ 
+	

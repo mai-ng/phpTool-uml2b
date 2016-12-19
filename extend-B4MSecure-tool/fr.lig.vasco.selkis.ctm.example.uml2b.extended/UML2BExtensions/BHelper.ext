@@ -1,0 +1,224 @@
+//import uml;
+import b;
+
+extension TransformationContext;
+extension Utils;
+//extension TraceHelper;
+
+
+
+Void debug(String s): JAVA Debugger.debug(java.lang.String);
+
+//Singleton Pattern for types
+
+cached b::Z ZInstance()://new b::Z;
+(true)?(let s= new BAbstractSet :s.setName("STR")->BSPEC().systemMachine.data.add(s)->debug("STRING was created as AbstractSet ")->s):(new b::String);
+
+cached b::Bool BoolInstance():new b::Bool;
+
+//cached b::String StringInstance():new b::String;
+cached BType StringInstance()://(new b::String);
+(BSPEC().systemMachine!=null)?(let s= new BAbstractSet :s.setName("STR")->BSPEC().systemMachine.data.add(s)->debug("STRING was created as AbstractSet ")->s):(new b::String);
+
+
+
+
+
+
+create BSpec this createBSpec(String name):this.setName(name)->this;
+
+create BMachine this createBMachine(String name):setName(name)->this;
+
+create BAbstractSet this createBAbstractSet(String name):setName(name.toUpperCase())->this;
+
+//cached BAbstractSet getBAbstractSet(String name):createBAbstractSet(name);
+
+create BVariable this createBVariable(String name,BType type):setName(name)->setType(type)->this;
+
+create BVariable this createBVariable(String name):setName(name)->this;
+
+//cached BVariable getBVariable(String name):createBVariable(name);
+
+//singleton
+//create BPowType this createBPowType(BType type):setPow(type)->this;
+//cached BPowType createBPowType(BType type):let p=new BPowType:p.setPow(type)->p;
+
+
+
+// TODO implement these features on B metaModel for more 
+
+//----------------------------------------
+Void addInclude(BMachine m,BMachine included):
+(m==included)? null: 
+(
+	m.includes.add(included)->
+	m.uses.remove(included)
+)	
+;
+
+Void addAllInclude(BMachine m,Collection[BMachine] included):
+debug("addAllInclude / Machine: "+m.name+"\n\t Include"+included)->
+m.includes.addAll(
+	included.reject( e|((m==e)|| m.includes.contains(e) ) )
+	.select(e| m.uses.remove(e)->true) 
+)
+;
+
+//---------------------------------
+
+// avoid using included machines
+Void addUse(BMachine m,BMachine used):
+((m==used)||(m.includes.contains(used)))? null: m.uses.add(used)
+;
+
+Void addAllUse(BMachine m,Collection[BMachine] used):
+//debug(" addAllUse machine :"+m+"\n\t used : "+used)->
+m.uses.addAll( used.reject(e|((m==e)|| m.includes.contains(e)) ) )
+;
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+create Multiplicity createMultiplicity(BasicMult lower,BasicMult upper):
+setLower(lower)->
+setUpper(upper)->
+this;
+*/
+
+Multiplicity createMultiplicity(BasicMult lower,BasicMult upper):
+let m=new Multiplicity:
+m.setLower(lower)->
+m.setUpper(upper)->
+m;
+
+
+
+
+create BComposedType createBComposedType(BType dom,BType ran,Multiplicity mulDom,Multiplicity mulRan):
+setDom(dom)->
+setRan(ran)->
+setMultDom(mulDom)->
+setMultRan(mulRan)->
+setExpression(getComposedTypeExpFromRelationMultiplicity(mulDom.lower,mulDom.upper,mulRan.lower,mulRan.upper))->
+this;
+
+// the range's upper multiplicity have to be lower or equal to the domain 's upper 
+//*
+BComposedType getBComposedType(BType dom,BType ran,Multiplicity mulDom,Multiplicity mulRan):
+((mulRan.upper==BasicMult::star)&&(mulDom.upper!=BasicMult::star))?//mulDom.upper<mulRan.upper
+//reverse direction
+	createBComposedType(ran,dom,mulRan,mulDom)
+:	
+	createBComposedType(dom,ran,mulDom,mulRan)
+;
+//*/
+
+
+Boolean compareBasicMultLists(List[BasicMult] a,List[BasicMult] b):
+((a.size==b.size))?
+(
+	((a.size==0))?
+		true
+	:
+		(a.first()==b.first())&&(compareBasicMultLists(a.withoutFirst(),b.withoutFirst()))	
+):
+false
+;
+
+/*
+BasicMult::zero,
+BasicMult::one,
+BasicMult::star,
+*/
+//don't support product
+cached ComposedTypeExp getComposedTypeExpFromRelationMultiplicity(BasicMult  dl,BasicMult  du,BasicMult  rl,BasicMult  ru):
+let mul={dl,du,rl,ru}.toList():
+switch(true){
+	case compareBasicMultLists(mul,{BasicMult::zero,BasicMult::star,BasicMult::zero,BasicMult::star}.toList()) : ComposedTypeExp::Relation
+	case compareBasicMultLists(mul,{BasicMult::zero,BasicMult::star,BasicMult::zero,BasicMult::one}.toList()) : ComposedTypeExp::PartialFunction
+	case compareBasicMultLists(mul,{BasicMult::zero,BasicMult::star,BasicMult::one,BasicMult::one}.toList()) : ComposedTypeExp::TotalFunction
+	case compareBasicMultLists(mul,{BasicMult::zero,BasicMult::one,BasicMult::zero,BasicMult::one}.toList()) : ComposedTypeExp::PartialInjection
+	case compareBasicMultLists(mul,{BasicMult::zero,BasicMult::one,BasicMult::one,BasicMult::one}.toList()) : ComposedTypeExp::TotalInjection
+	case compareBasicMultLists(mul,{BasicMult::one,BasicMult::star,BasicMult::zero,BasicMult::one}.toList()) : ComposedTypeExp::PartialSurjection
+	case compareBasicMultLists(mul,{BasicMult::one,BasicMult::star,BasicMult::one,BasicMult::one}.toList()) : ComposedTypeExp::TotalSurjection
+	case compareBasicMultLists(mul,{BasicMult::one,BasicMult::one,BasicMult::zero,BasicMult::one}.toList()) : ComposedTypeExp::PartialBijection
+	case compareBasicMultLists(mul,{BasicMult::one,BasicMult::one,BasicMult::one,BasicMult::one}.toList()) : ComposedTypeExp::TotalBijection
+	default:ComposedTypeExp::Relation
+}
+
+;
+
+
+
+
+
+
+
+//-------------------
+String getPrintableString(ComposedTypeExp t):
+switch(t){
+	case ComposedTypeExp::Relation : "<->"
+	case ComposedTypeExp::TotalFunction : "-->"
+	case ComposedTypeExp::PartialFunction : "+->"
+	case ComposedTypeExp::TotalInjection : ">->"
+	case ComposedTypeExp::PartialInjection : ">+>"
+	case ComposedTypeExp::TotalSurjection : "-->>"
+	case ComposedTypeExp::PartialSurjection : "+->>"
+	case ComposedTypeExp::TotalBijection : ">->>"
+	case ComposedTypeExp::PartialBijection : ">+>>"
+	default : "UnknownComposition"
+}
+;
+
+String getPrintableString(BPrimitiveType t):
+	(b::String.isInstance(t))?(
+	"String"
+	):(
+		(b::Z.isInstance(t))?(
+		"INTEGER"
+		):(
+			(b::Bool.isInstance(t))?(
+				"BOOL"	
+			):(
+				"UNKNOWN"
+			)	
+		)
+	)
+;
+
+
+
+String getPrintableString(BComposedType t):	
+	""+getPrintableString( t.dom )+" "+
+	getPrintableString( t.expression )+" "+
+	getPrintableString( t.ran );
+
+String getPrintableString(BPowType t):	
+	"POW("+getPrintableString(t.pow)+")";
+
+String getPrintableString(BNamedElement e):e.name;
+
+String getPrintableString(Void e):" NULL ";
+
+
+String getPrintableString(TypingOperator to):
+switch(to){
+	case TypingOperator::In  :":"
+	case TypingOperator::SubSet :"<"
+	case TypingOperator::SubSetEqual :"<:"
+	case TypingOperator::Equal :"="
+	default : "UnknownTypingOperator '"+to+"'"
+}
+;
+
+

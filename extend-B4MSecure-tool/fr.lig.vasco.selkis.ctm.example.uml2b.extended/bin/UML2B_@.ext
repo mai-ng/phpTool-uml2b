@@ -1,0 +1,719 @@
+import uml;
+import b;
+import trace;
+import ecore;
+import transformationconfig;
+
+extension BHelper reexport;
+extension typing reexport;
+extension composedType reexport;
+extension EMFHelper;
+extension UMLHelper;
+extension TransformationContext;
+extension TraceHelper;
+extension ConfigHelper;
+
+/*
+
+
+!!!!! use uppercased name for AbstractSets
+
+*/
+
+
+Void debug(String s): JAVA Debugger.debug(java.lang.String);
+
+
+/*
+exemple of init
+*/
+
+
+init(uml::Package p):
+
+//debug("INIT :"+p.name)->
+//p.setName("newName")->
+BSPEC().setSharedTypes(new SharedTypes)->
+BSPEC().sharedTypes.sharedTypes.addAll({StringInstance(),ZInstance(),BoolInstance()})->
+null
+;
+
+
+
+//for main package only 
+create b::BMachine this createSysMachine(uml::Package p):
+setName(p.getCannonicalName())->
+BSPEC().machines.add(this)->
+BSPEC().setSystemMachine(this)->
+this;
+
+//PackageToBSpec(uml::Package p):null;
+
+
+
+
+
+
+
+
+
+
+
+create b::BMachine this _createSysMachine(uml::Package p):
+setName(p.getCannonicalName())->
+BSPEC().machines.add(this)->
+BSPEC().setSystemMachine(this)->
+this;
+
+
+create b::BMachine this _SubPackagesToBMachine(uml::Package p):
+setName(p.getCannonicalName())->
+BSPEC().machines.add(this)->
+this;
+
+
+
+//Create machine from uml element 
+// create statement is cached so we can't create more than 1 machine for 1 elemet using this extension
+
+create BMachine createMachineFromElement(uml::NamedElement e):
+setName(e.getCannonicalName())->// setname using parametrable extension
+(
+	(getBoolConfigElement(e,"IncludeMachinesInSysMachine")&&(BSPEC().systemMachine!=null))?
+		(BSPEC().systemMachine.addInclude(this)->null)
+	:	null
+)->
+BSPEC().machines.add(this)->	
+
+this;
+
+
+b::BMachine SubPackagesToBMachine(uml::Package p):
+createMachineFromElement(p);
+//setName(p.getCannonicalName())->
+//BSPEC().machines.add(this)->//debug("Pkg2Machine")->
+//this;
+
+
+SubPackageToNone(uml::Package p):null;
+
+
+
+
+
+
+create b::BMachine this _createSysMachine(uml::Package p):
+setName(p.getCannonicalName())->
+BSPEC().machines.add(this)->
+BSPEC().setSystemMachine(this)->
+this;
+
+_NoSysMachine(uml::Package p):null;
+
+create b::BMachine this _SubPackagesToBMachine(uml::Package p):
+setName(p.getCannonicalName())->
+BSPEC().machines.add(this)->
+this;
+
+_SubPackageToNone(uml::Package p):null;
+
+
+
+
+create  b::BMachine this _ClassToMachine(uml::Class c):
+let v = new BVariable: 
+let as= new BAbstractSet :
+let p=new TypingPredicate:
+this.setName(c.getCannonicalName())->//set machine name
+BSPEC().machines.add(this)->//add machine to the spec
+//process the BVariable
+v.setName(c.name)->
+this.data.add(v)->
+//process the AbstractSet
+as.setName(name.toUpperCase())->
+this.data.add(as)->
+v.setType(as)->
+//process the typingPredicate
+p.setOperator(TypingOperator::SubSetEqual)->
+p.setType(as)->
+v.typingPredicate.add(p)->
+p.setName(v.name+" "+getPrintableString(p.operator)+" "+getPrintableString(p.type))->
+
+//include this machine to the system machine if the latter exist and the config option "IncludeMachinesInSysMachine" is enabled
+(
+	(getBoolConfigElement(c,"IncludeMachinesInSysMachine")&&(BSPEC().systemMachine!=null))?
+		(BSPEC().systemMachine.addInclude(this)->null)
+	:	null
+)->
+this;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+create BVariable this _ClassToBVariableInSysMachine(uml::Class c):
+setName(c.getCannonicalName())->
+c.superClass.isEmpty?
+(
+let as=  new BAbstractSet:
+as.setName(name.toUpperCase())->
+BSPEC().systemMachine.data.add(as)->
+this.setType(as,c)
+)
+:(
+this.setType( mappedToBVariable(c.superClass.first()) ,c)
+->datadeclare.addUse(((BVariable)type).datadeclare)//if not included
+)->
+BSPEC().systemMachine.data.add(this)->
+this;
+
+
+
+create  b::BMachine this _ClassToMachine_Inh(uml::Class c):
+let v = new BVariable: //create a new variable v
+let p=new TypingPredicate://create a new typing predicate p
+this.setName(c.getCannonicalName())->//set machine name from the class name
+BSPEC().machines.add(this)->//add machine to the spece
+//process the BVariable
+v.setName(c.name)->//assign the name of the class to the variable 
+this.data.add(v)->//add the variable v to the current machine
+c.superClass.isEmpty?//check simple inheritance
+(//no super class
+let as= new BAbstractSet :// create a new abstract set "as"
+as.setName(name.toUpperCase())->// assign the uppercase-d machine's name to the abstract set
+v.setType(as)-> // type assignement 
+this.data.add(as)// add the the abstract set "as" to the machine's data
+)
+:(//inheritance =>
+v.setType( mappedToBVariable(c.superClass.first()))//retrieve the variable representing the parent from the trace and use it as type for the current class's variable
+//define a Use link to the machine declaring the parent's BVariable to be able to use it
+->addUse(((BVariable)v.type).datadeclare)
+)->
+//process the typing
+p.setOperator(TypingOperator::SubSetEqual)->
+p.setType(v.type)->
+v.typingPredicate.add(p)->
+p.setName(v.name+" "+getPrintableString(p.operator)+" "+getPrintableString(p.type))->
+
+//include this machine to the system machine if the latter exist and the config option "IncludeMachinesInSysMachine" is enabled
+(
+	(getBoolConfigElement(c,"IncludeMachinesInSysMachine")&&(BSPEC().systemMachine!=null))?
+		(BSPEC().systemMachine.addInclude(this)->null)
+	:	null
+)->
+debug("Lu1")->
+this;
+
+
+
+
+
+create  b::BMachine  _ClassToMachine_Inh_(uml::Class c):
+this.setName(c.getCannonicalName())->//set machine name from the class name
+BSPEC().machines.add(this)->//add machine to the B model
+//process the BVariable
+(let v = new BVariable: //create a new variable v
+v.setName(c.name)->//assign the name of the class to the variable 
+this.data.add(v)->//add the variable v to the current machine
+//check simple inheritance
+c.superClass.isEmpty?
+(//no super class
+let as= new BAbstractSet :// create a new abstract set "as"
+as.setName(name.toUpperCase())->// assign the uppercase-d machine's name to the abstract set
+v.setType(as,c)-> // type assignement 
+this.data.add(as)// add the the abstract set "as" to the machine's data
+)
+:(//inheritance =>
+v.setType( mappedToBVariable(c.superClass.first()),c)//retrieve the variable representing the parent from the trace and use it as type for the current class's variable
+//define a Use link to the machine declaring the parent's BVariable to be able to use it
+->addUse(((BVariable)v.type).datadeclare)
+)->
+
+//include this machine to the system machine if the latter exist and the config option "IncludeMachinesInSysMachine" is enabled
+(
+	(getBoolConfigElement(c,"IncludeMachinesInSysMachine")&&(BSPEC().systemMachine!=null))?
+		(BSPEC().systemMachine.addInclude(this)->null)
+	:	null
+)->
+debug("Lu2")->
+this);
+
+//-------------------------------------------------------
+
+
+
+
+create  b::BAbstractSet DataTypeToAbstractSetInSysMachine (uml::DataType dt):
+setName(dt.name)->
+BSPEC().systemMachine.data.add(this)->
+debug("DataTypeToAbstractSetInSysMachine")->
+this;
+
+
+
+	
+
+Void LinkInheritance(uml::Class c, BVariable v, BVariable parent):
+
+(getBoolConfigElement(c,"LinkInheritanceByUsing/NotIncluding"))?
+(	debug("LinkUse")->	
+	v.datadeclare.addUse(parent.datadeclare)
+):(
+	debug("LinkInclude")->
+	v.datadeclare.addInclude(parent.datadeclare)
+)
+;
+
+
+
+
+private  b::BMachine _ClassToBMachine(uml::Class p):
+
+let m=createMachineFromElement(p):
+let v=createBVariable(m.name):debug("VARs : "+PACKAGE().toString())->
+m.data.add(v)->
+p.superClass.isEmpty?
+(
+let as= createBAbstractSet(m.name):
+m.data.add(as)->
+v.setType(as,p)
+)
+:(
+	let parent=mappedToBVariable(p.superClass.first()):
+	v.setType( parent  ,p)
+	->LinkInheritance(p,v,parent)
+)->
+m;
+
+
+Void LinkInheritance(uml::Class c, BVariable v, BVariable parent):
+(getBoolConfigElement(c,"LinkInheritanceByUsing/NotIncluding"))?
+(	debug("LinkUse")->	
+	v.datadeclare.addUse(parent.datadeclare)
+):(
+	debug("LinkInclude")->
+	v.datadeclare.addInclude(parent.datadeclare)
+)
+;
+
+ClassToBMachine(uml::Class p):ClassToBMachineUsingSuper(p);
+/*
+create b::BMachine this ClassToBMachine(uml::Class p):
+let v=createBVariable(p.getCannonicalName()):
+setName(p.getCannonicalName())->
+BSPEC().machines.add(this)->//debug("C2M")->
+p.superClass.isEmpty?
+(
+let as= createBAbstractSet(name):
+data.add(as)->
+v.setType(as,p)
+//v.setType(as)
+)
+:(
+v.setType( mappedToBVariable(p.superClass.first()) ,p)
+->addUse(((BVariable)v.type).datadeclare)
+)->
+data.add(v)->
+this;
+*/
+
+ClassToBMachineUsingSuper(uml::Class c):
+let m= _ClassToBMachine(c):
+	(c.superClass.isEmpty)?
+		m
+	:
+		//m.addUse(((BVariable)(m.data.typeSelect(BVariable).first()).type).datadeclare)->
+		m	
+;
+
+ClassToBMachineIncludingSuper(uml::Class c):
+let m= _ClassToBMachine(c):
+	(c.superClass.isEmpty)?
+		m
+	:
+		//m.addInclude(((BVariable)(m.data.typeSelect(BVariable).first()).type).datadeclare)->
+		m	
+;
+
+
+
+/*
+create BAbstractSet this ClassToBAbstractSet(uml::Class p):
+setName(p.name)->
+getBVariable(name).setType(this)->
+BSPEC().machines.select(e|e.name==p.allOwningPackages().first().name).first().data.addAll({this,getBVariable(name)})->debug("C2S")->
+this;
+*/
+
+//*
+create BVariable this ClassToBVariableInSysMachine(uml::Class p):
+setName(p.getCannonicalName())->
+p.superClass.isEmpty?
+(
+let as= createBAbstractSet(name):
+BSPEC().systemMachine.data.add(as)->
+this.setType(as,p)
+)
+:(
+this.setType( mappedToBVariable(p.superClass.first()) ,p)
+->datadeclare.addUse(((BVariable)type).datadeclare)//if not included
+)->
+BSPEC().systemMachine.data.add(this)->
+this;
+//*/
+
+
+//*
+create BVariable this ClassToBVariableInPackageMachine(uml::Class p):
+let pk=mappedToBMachine(p.owner):
+//debug("Pack of  "+p.name+" : "+pk)->
+setName(p.getCannonicalName())->
+p.superClass.isEmpty?
+(
+let as= createBAbstractSet(name):
+pk.data.add(as)->
+this.setType(as,p)
+)
+:(
+this.setType( mappedToBVariable(p.superClass.first()) ,p)
+->datadeclare.addUse(((BVariable)type).datadeclare)//if not included in pkgMachine
+)->
+pk.data.add(this)->
+this;
+//*/
+
+
+
+
+//*
+create BVariable this ClassToBVariableInParentMachine(uml::Class p):
+setName(p.getCannonicalName())->
+p.superClass.isEmpty?
+(
+let as= createBAbstractSet(name):
+BSPEC().systemMachine.data.add(as)->
+this.setType(as,p)->
+BSPEC().systemMachine.data.add(this)//put in SysMachine
+)
+:(
+this.setType( mappedToBVariable(p.superClass.first()) ,p)->
+((BVariable)this.type).datadeclare.data.add(this)
+//->datadeclare.addUse(((BVariable)type).datadeclare)//in the same machine
+//BSPEC().machines.select(e|e.data.contains(this.type)).first().data.add(this)
+//((BAbstractSet)this.type).datadeclare.data.add(this)->debug(((BAbstractSet)this.type).datadeclare.name)
+//->BSPEC().systemMachine.data.add(this)
+)->
+
+this;
+//*/
+
+
+
+/*
+TODO complete implementation to support attribute features
+	ReadOnly ->to be created with instance (need constructor implementation)
+	Static -> become a value  either a relation 
+	Visibility
+	...
+
+*/
+create BVariable AttributeToBVariable(uml::Property p):
+setName(p.getCannonicalName())->//debug("AttribToVar :"+p.type)->
+mappedToBMachine(p.class).data.add(this)->
+setRelType(this, BComposedTypeFromAttribute(p))
+->
+(//resolve visibility when attribute type is not a primitive type 
+(BData.isInstance(((BComposedType)type).ran  ))?
+(addUse(datadeclare,((BData)((BComposedType)type).ran).datadeclare))
+:null
+)->
+this;
+
+
+
+AttributeToBVariableInSysMachine():null;
+
+
+
+
+
+BMachine AssociationToBMachine(uml::Association a):
+let m=createMachineFromElement(a):
+(
+let v=AdaptiveAssociationToBVariable(a):
+m.data.add(v)->
+linkAssociation(a,v)
+//m.addAllUse({((BVariable) ((BComposedType)v.type).dom).datadeclare, ((BVariable) ((BComposedType)v.type).ran).datadeclare })
+
+)->m;
+
+
+
+private create BVariable AssociationToBVariable(uml::Association a):
+setName(a.getCannonicalName())->
+setRelType(BComposedTypeFromAssociation(a))->
+this;
+
+//may reverse the direction 
+private create BVariable AdaptiveAssociationToBVariable(uml::Association a):
+setName(a.getCannonicalName())->
+setRelType(AdaptiveBComposedTypeFromAssociation(a))->
+this;
+
+private create BVariable ReverseAssociationToBVariable(uml::Association a):
+setName(a.getCannonicalName())->
+setRelType(ReverseBComposedTypeFromAssociation(a))->
+this;
+
+private linkAssociation(Element a,BVariable v):
+(getBoolConfigElement(a,"LinkAssociationByUsing/NotIncluding"))?
+	v.datadeclare.addAllUse({ ( (BVariable) ((BComposedType)v.type).dom ).datadeclare, 
+						((BVariable) ((BComposedType)v.type).ran).datadeclare })
+:
+	v.datadeclare.addAllInclude({ ( (BVariable) ((BComposedType)v.type).dom ).datadeclare, 
+						((BVariable) ((BComposedType)v.type).ran).datadeclare })
+;
+
+
+BVariable AssociationToBVariableInSystemMachine(uml::Association a):
+let v=AdaptiveAssociationToBVariable(a):
+BSPEC().systemMachine.data.add(v)->
+//debug("Assoc : "+a+"\n var: "+v+"\n CT: "+v.type+"\n Dom : "+((BComposedType)v.type).dom+"\n Ran: "+((BComposedType)v.type).ran)->
+//v.datadeclare.addAllUse({ ( (BVariable) ((BComposedType)v.type).dom ).datadeclare, 
+//						((BVariable) ((BComposedType)v.type).ran).datadeclare })->
+linkAssociation(a,v)->
+debug("AssoInSysM :"+a.toString())->
+v;
+
+BVariable AssociationToBVariableInPackageMachine(uml::Association a):
+let v=AdaptiveAssociationToBVariable(a):
+mappedToBMachine(a.owner).data.add(v)->
+//v.datadeclare.addAllUse({ ( (BVariable) ((BComposedType)v.type) .dom ).datadeclare, ((BVariable) ((BComposedType)v.type).ran).datadeclare })->
+linkAssociation(a,v)->
+
+v;
+
+
+BVariable AssociationToBVariableInFirstEnd(uml::Association a):
+
+	let e= mappedToBVariable(a.ownedEnd.first().type):
+	(e!=null)?
+	(
+		let v =AdaptiveAssociationToBVariable(a)://AssociationToBVariable(a):
+		e.datadeclare.data.add(v)->
+		linkAssociation(a,v)->
+		//v.datadeclare.addUse(((BVariable) ((BComposedType)v.type).ran).datadeclare)->//machine use second end machine 
+		v
+	)
+	:
+	(
+		debug("AssociationToBVariableInFirstEnd("+a+") -> fail to resolve first end '"+a.ownedEnd.first().class+"' !")->
+		null
+	)
+
+;
+
+BVariable AssociationToBVariableInSecondEnd(uml::Association a):
+
+	let e= mappedToBVariable(a.ownedEnd.last().type):
+	(e!=null)?
+	(
+		let v =AdaptiveAssociationToBVariable(a)://ReverseAssociationToBVariable(a):
+		e.datadeclare.data.add(v)->
+		linkAssociation(a,v)->
+		//v.datadeclare.addUse(((BVariable) ((BComposedType)v.type).ran).datadeclare)->//machine use second end machine
+		v
+	)
+	:
+	(
+		debug("AssociationToBVariableInSecondEnd("+a+") -> fail to resolve second end '"+a.ownedEnd.last().class+"' !")->
+		null
+	)
+
+;
+
+/*
+support fix Association
+*/
+BVariable AssociationToBVariableInEnd(uml::Association a):
+if (getFixMember(a)!=null) then
+{
+	if (getFixMember(a)==a.ownedEnd.first()) then
+		AssociationToBVariableInSecondEnd(a)
+	else
+		AssociationToBVariableInFirstEnd(a)
+} 
+else
+{
+	if (getLowerMember(a)!=null) then
+	{
+		if (getLowerMember(a)==a.ownedEnd.first()) then
+			AssociationToBVariableInSecondEnd(a)
+		else
+			AssociationToBVariableInFirstEnd(a)
+	}
+	else 
+	null 
+
+}
+;
+
+
+AssociationToBMachineIfNotFix(uml::Association a):
+if (getFixMember(a)!=null) then
+{
+	if (getFixMember(a)==a.ownedEnd.first()) then
+		AssociationToBVariableInSecondEnd(a)
+	else
+		AssociationToBVariableInFirstEnd(a)
+} 
+else
+	AssociationToBMachine(a);
+
+
+
+create b::BOperation OperationToOperation(uml::Operation o):
+//debug("OperationToOperation : "+o.name)->
+setName(o.getCannonicalName())->
+mappedToBMachine(o.class).operations.add(this)->
+(
+	(o.type!=null)?(
+		setBody("out : "+
+		getPrintableString(BTypeFromTypedOperation(o))
+		)->
+		null
+			
+	): null
+)->
+(
+(o.isStatic)?null:
+	(
+	this.param.add(new BOpParameter)->//add object instance parameter
+		param.first().setName(o.class.name+"Instance")->
+		param.first().typingPredicate.add(new TypingPredicate)->
+		param.first().typingPredicate.first().setName(param.first().name+" : "+o.class.getCannonicalName())
+	)
+)->
+param.addAll(o.ownedParameter.select(e|e.direction==uml::ParameterDirectionKind::in)
+			.collect(e|e.getBOpParameter())  )->//add parameter
+debug("getOperationMetaData : "+getOperationMetaData(o))->
+(let opmd=getOperationMetaData(o):
+	((opmd.first()!=null)?//Precond
+		(
+		setSubstitution(new BSubstitution)->
+		substitution.setPrecondition(new BPrecondition)->
+		this.substitution.precondition.setBody(opmd.first())
+	//	->debug("Precond :-> "+this.substitution.precondition.body)	
+		):	null
+	)->
+	((opmd.last()!=null)?//body
+		//this.setBody( ((body!=null)?(body+" & \n ") : "") +opmd.last())
+		this.setBody(opmd.last())
+			
+
+	:	
+	null
+	)
+)->
+//debug(" Operation Body : "+ body)->
+this;
+
+
+private getBOpParameter(uml::Parameter p):
+	let bp=new BOpParameter:
+	bp.setName(p.getCannonicalName())->
+	bp.setRelType(BTypeFromTypedElement(p) )->	
+	bp
+;
+
+
+
+uml::Operation GenerateSetter(uml::Property p):
+	(p.class!=null)?(
+		let op=p.class.ownedOperation.select(e| e.name==("set"+p.name.toFirstUpper())): 
+		((op.isEmpty)?(//no setter defined ()
+			CreateSetter(p)
+		)://return found setter
+			op.first()  
+		)
+	):
+		null
+;
+
+
+uml::Operation genConstructor(uml::Class c):
+	( ! c.isAbstract)?(
+		let op=c.ownedOperation.select(e| e.name==("new"+e.name.toFirstUpper()) || e.name==c.name ): 
+		((op.isEmpty)?(//no setter defined ()
+			createConstructor(c)
+		)://return found setter
+			op.first()  
+		)
+	):
+		null
+;
+
+
+uml::Operation GenerateGetter(uml::Property p):
+	(p.class!=null)?(
+		let op=p.class.ownedOperation.select(e| e.name==("get"+p.name.toFirstUpper()) || e.name==("is"+p.name.toFirstUpper()) ): 
+		((op.isEmpty)?(//no setter defined ()
+			CreateGetter(p)
+		)://return found setter
+			op.first()  
+		)
+	):
+		null
+;
+
+
+create BMachine EnumerationToBMachine(uml::Enumeration e):
+setName(e.name)->
+data.add(EnumerationToBEnumSet(e))->
+BSPEC().machines.add(this)->
+this
+;
+
+BEnumSet EnumerationToBEnumSetInSystemMachine(uml::Enumeration e):
+let e=EnumerationToBEnumSet(e):
+BSPEC().systemMachine.data.add(e)->
+e
+;
+
+
+
+
+private create b::BEnumSet EnumerationToBEnumSet(uml::Enumeration e):
+setName(e.name)->
+values.addAll(e.ownedLiteral.collect(e|e.EnumerationLiteralToBValue() ))-> 
+this
+;
+private create BValue EnumerationLiteralToBValue(uml::EnumerationLiteral el):
+setName(el.name)->
+setType(StringInstance())->
+this
+;
+
+/*
+cInitClass(uml::Class c):
+BSPEC().machines.data.
+null; 
+*/

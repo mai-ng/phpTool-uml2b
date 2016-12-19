@@ -1,0 +1,188 @@
+		
+
+
+MACHINE 
+	Heritage_multiple2
+
+SETS
+ OBJECTS_AS
+; CLASS1
+
+
+ABSTRACT_VARIABLES
+ OBJECTS
+, Class1
+, SuperClass1
+, SuperClass2
+, SuperClass22
+, SuperClass21
+, SubClass
+, SuperClass1__superAttribut
+, SuperClass2__superAttribut
+, SuperClass22__attrib
+
+INVARIANT
+OBJECTS <: OBJECTS_AS 
+&Class1 <: CLASS1 
+&SuperClass1 <: OBJECTS 
+&SuperClass2 <: OBJECTS 
+&SuperClass22 <: SuperClass2 
+&SuperClass21 <: SuperClass2 
+&SubClass <: OBJECTS_AS & SubClass <: SuperClass1 & SubClass <: SuperClass22 & SubClass <: SuperClass21 
+&SuperClass1__superAttribut : SuperClass1 <-> INTEGER 
+&SuperClass2__superAttribut : SuperClass2 >+> BOOL 
+&SuperClass22__attrib : SuperClass22 >-> INTEGER 
+&
+SuperClass1 /\ SuperClass2 = SubClass\/SubClass
+& SuperClass22 /\ SuperClass21 = SubClass
+
+INITIALISATION
+	OBJECTS:={}
+||	Class1:={}
+||	SuperClass1:={}
+||	SuperClass2:={}
+||	SuperClass22:={}
+||	SuperClass21:={}
+||	SubClass:={}
+||	SuperClass1__superAttribut:={}
+||	SuperClass2__superAttribut:={}
+||	SuperClass22__attrib:={}
+ 
+OPERATIONS
+
+
+OBJECTS_NEW(Instance)=
+	PRE
+	Instance : OBJECTS_AS 	&	Instance /: OBJECTS 	
+	THEN 		OBJECTS := OBJECTS \/ {Instance}
+	END;
+
+Class1_NEW(Instance)=
+	PRE
+	Instance : CLASS1 	&	Instance /: Class1 	
+	THEN 		Class1 := Class1 \/ {Instance}
+	END;
+
+SuperClass1_NEW(Instance)=
+	PRE
+	Instance : OBJECTS_AS 	&	Instance /: OBJECTS 	
+	THEN 		SuperClass1 := SuperClass1 \/ {Instance} 
+ || OBJECTS := OBJECTS \/ {Instance}
+	END;
+
+SuperClass2_NEW(Instance)=
+	PRE
+	Instance : OBJECTS_AS 	&	Instance /: OBJECTS 	
+	THEN 		SuperClass2 := SuperClass2 \/ {Instance} 
+ || OBJECTS := OBJECTS \/ {Instance}
+	END;
+
+SuperClass21_NEW(Instance)=
+	PRE
+	Instance : OBJECTS_AS 	&	Instance /: OBJECTS 	
+	THEN 		SuperClass21 := SuperClass21 \/ {Instance} 
+ || SuperClass2 := SuperClass2 \/ {Instance} 
+ || OBJECTS := OBJECTS \/ {Instance}
+	END;
+
+SubClass_NEW(Instance,SuperClass22__attribValue)=
+	PRE
+	Instance : OBJECTS_AS 	&	Instance /: OBJECTS 	&	SuperClass22__attribValue : INTEGER 	&	SuperClass22__attribValue /:ran(SuperClass22__attrib) 	
+	THEN 		SubClass := SubClass \/ {Instance} 
+ || SuperClass1 := SuperClass1 \/ {Instance} 
+ || OBJECTS := OBJECTS \/ {Instance} 
+ || SuperClass22 := SuperClass22 \/ {Instance} 
+ || SuperClass2 := SuperClass2 \/ {Instance} 
+ || SuperClass21 := SuperClass21 \/ {Instance}
+ || SuperClass22__attrib:= SuperClass22__attrib \/ {(Instance|->SuperClass22__attribValue)}
+	END;
+
+OBJECTS_Free(Instance)=
+	PRE
+	Instance : OBJECTS_AS 	&	Instance : OBJECTS 	&	Instance /: (SuperClass1 \/ SuperClass2 ) 	
+	THEN 		OBJECTS := OBJECTS - {Instance}
+	END;
+
+Class1_Free(Instance)=
+	PRE
+	Instance : CLASS1 	&	Instance : Class1 	
+	THEN 		Class1 := Class1 - {Instance}
+	END;
+
+SuperClass1_Free(Instance)=
+	PRE
+	Instance : OBJECTS_AS 	&	Instance : SuperClass1 	&	Instance /: (SubClass ) 	
+	THEN 		SuperClass1 := SuperClass1 - {Instance} 
+ || OBJECTS := OBJECTS - {Instance}
+ || SuperClass1__superAttribut:= {Instance}<<|SuperClass1__superAttribut
+	END;
+
+SuperClass2_Free(Instance)=
+	PRE
+	Instance : OBJECTS_AS 	&	Instance : SuperClass2 	&	Instance /: (SuperClass22 \/ SuperClass21 ) 	
+	THEN 		SuperClass2 := SuperClass2 - {Instance} 
+ || OBJECTS := OBJECTS - {Instance}
+ || SuperClass2__superAttribut:= {Instance}<<|SuperClass2__superAttribut
+	END;
+
+SuperClass21_Free(Instance)=
+	PRE
+	Instance : OBJECTS_AS 	&	Instance : SuperClass21 	&	Instance /: (SubClass ) 	
+	THEN 		SuperClass21 := SuperClass21 - {Instance} 
+ || SuperClass2 := SuperClass2 - {Instance} 
+ || OBJECTS := OBJECTS - {Instance}
+ || SuperClass2__superAttribut:= {Instance}<<|SuperClass2__superAttribut
+	END;
+
+SubClass_Free(Instance)=
+	PRE
+	Instance : OBJECTS_AS 	&	Instance : SubClass 	
+	THEN 		SubClass := SubClass - {Instance} 
+ || SuperClass1 := SuperClass1 - {Instance} 
+ || OBJECTS := OBJECTS - {Instance} 
+ || SuperClass22 := SuperClass22 - {Instance} 
+ || SuperClass2 := SuperClass2 - {Instance} 
+ || SuperClass21 := SuperClass21 - {Instance}
+ || SuperClass1__superAttribut:= {Instance}<<|SuperClass1__superAttribut
+ || SuperClass2__superAttribut:= {Instance}<<|SuperClass2__superAttribut
+ || SuperClass22__attrib:= {Instance}<<|SuperClass22__attrib
+	END;
+
+result <-- SuperClass1__GetSuperAttribut(Instance)=
+	PRE
+	Instance : SuperClass1 	
+	THEN 		result := SuperClass1__superAttribut(Instance)
+	END;
+
+result <-- SuperClass2__GetSuperAttribut(Instance)=
+	PRE
+	Instance : SuperClass2 	
+	THEN 		result := SuperClass2__superAttribut(Instance)
+	END;
+
+result <-- SuperClass22__GetAttrib(Instance)=
+	PRE
+	Instance : SuperClass22 	
+	THEN 		result := SuperClass22__attrib(Instance)
+	END;
+
+SuperClass1__SetSuperAttribut(Instance,SuperClass1__superAttributValue)=
+	PRE
+	Instance : SuperClass1 	&	SuperClass1__superAttributValue <: INTEGER 	
+	THEN 		SuperClass1__superAttribut:= ({Instance}<<|SuperClass1__superAttribut)\/ ({Instance}*SuperClass1__superAttributValue)
+	END;
+
+SuperClass2__SetSuperAttribut(Instance,SuperClass2__superAttributValue)=
+	PRE
+	Instance : SuperClass2 	&	SuperClass2__superAttributValue : BOOL 	&	SuperClass2__superAttributValue /: ran(SuperClass2__superAttribut) 	
+	THEN 		SuperClass2__superAttribut:= ({Instance}<<|SuperClass2__superAttribut)\/ {(Instance|-> SuperClass2__superAttributValue)}
+	END;
+
+SuperClass22__SetAttrib(Instance,SuperClass22__attribValue)=
+	PRE
+	Instance : SuperClass22 	&	SuperClass22__attribValue : INTEGER 	&	SuperClass22__attribValue /: ran(SuperClass22__attrib) 	
+	THEN 		SuperClass22__attrib:= ({Instance}<<|SuperClass22__attrib)\/ {(Instance|-> SuperClass22__attribValue)}
+	END
+ END
+ 
+	

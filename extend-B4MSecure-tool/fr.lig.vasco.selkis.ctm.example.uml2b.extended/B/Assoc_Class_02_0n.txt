@@ -1,0 +1,106 @@
+		
+
+
+MACHINE 
+	Assoc_Class_02_0n
+
+SETS
+ CLASS1
+; CLASS2
+
+
+ABSTRACT_VARIABLES
+ Class1
+, Class2
+, AssoClass
+
+INVARIANT
+Class1 <: CLASS1 
+&Class2 <: CLASS2 
+&AssoClass : Class2 <-> Class1 & !c2.( c2:dom(AssoClass) => card(AssoClass[{c2}])<=2) 
+
+
+INITIALISATION
+	Class1:={}
+||	Class2:={}
+||	AssoClass:={}
+ 
+OPERATIONS
+
+
+Class1_NEW(Instance)=
+	PRE
+	Instance : CLASS1 	&	Instance /: Class1 	
+	THEN 		Class1 := Class1 \/ {Instance}
+	END;
+
+Class2_NEW(Instance)=
+	PRE
+	Instance : CLASS2 	&	Instance /: Class2 	
+	THEN 		Class2 := Class2 \/ {Instance}
+	END;
+
+Class1_Free(Instance)=
+	PRE
+	Instance : CLASS1 	&	Instance : Class1 	
+	THEN 		Class1 := Class1 - {Instance}
+ || AssoClass:= AssoClass|>> {Instance}
+	END;
+
+Class2_Free(Instance)=
+	PRE
+	Instance : CLASS2 	&	Instance : Class2 	
+	THEN 		Class2 := Class2 - {Instance}
+ || AssoClass:= {Instance}<<|AssoClass
+	END;
+
+AssoClass_NEW(Instance,Class2Instance,Class1Instance)=
+	PRE
+	Instance : Class2*Class1 	&	Instance /: AssoClass 	&	Class2Instance : Class2 	&	Class1Instance : Class1 	&	( Class2Instance|->Class1Instance )= Instance 	&	 card(AssoClass[{Class2Instance }])< 2 	
+	THEN 		AssoClass := AssoClass \/ {Instance}
+	END;
+
+AssoClass_Free(Instance)=
+	PRE
+	Instance :  POW(String POW()  INTEGER POW(  BOOL  BOOL  ) BOOL INTEGER INTEGER  BOOL INTEGER POW(   )      INTEGER    String POW( BOOL ) BOOL POW(String)    BOOL  BOOL    BOOL BOOL    POW(POW())  BOOL  String   String POW(String) POW(INTEGER INTEGER  )  INTEGER  String POW(BOOL)    POW()     POW()   INTEGER     INTEGER    INTEGER   BOOL  INTEGER String   INTEGER POW() POW(  BOOL ) String    POW(INTEGER  BOOL    BOOL  String String String)    INTEGER    String  INTEGER  INTEGER String String  String  BOOL  BOOL  BOOL POW(INTEGER  BOOL)   String  String  POW(String)  BOOL POW(String)      POW(POW(String))  String INTEGER  String   String  BOOL INTEGER  POW(POW(String))         String   BOOL         INTEGER INTEGER   BOOL   INTEGER  String INTEGER String )  INTEGER String 	&	Instance : AssoClass 	
+	THEN 		AssoClass := AssoClass - {Instance}
+	END;
+
+result <-- Class1__GetAssoClass(Instance)=
+	PRE
+	Instance : Class1 	
+	THEN 		result := AssoClass~(Instance)
+	END;
+
+result <-- Class2__GetAssoClass(Instance)=
+	PRE
+	Instance : Class2 	
+	THEN 		result := AssoClass(Instance)
+	END;
+
+Class1__AddAssoClass(Instance,AssoClass__class2Values)=
+	PRE
+	Instance : Class1 	&	AssoClass__class2Values : Class2 	&	(AssoClass__class2Values|-> Instance) /:AssoClass 	&	not(#(c1,c2).(c1:Class1 & c2:Class1 & c1/=c2 & {c1,c2}<: AssoClass[{AssoClass__class2Values}])) 	
+	THEN 		AssoClass:= AssoClass\/{(AssoClass__class2Values|-> Instance)}
+	END;
+
+Class2__AddAssoClass(Instance,AssoClass__class1Values)=
+	PRE
+	Instance : Class2 	&	card(AssoClass[{Instance}])<2 	&	AssoClass__class1Values : Class1 	&	(Instance|-> AssoClass__class1Values) /:AssoClass 	
+	THEN 		AssoClass:= AssoClass\/ {(Instance|-> AssoClass__class1Values)}
+	END;
+
+Class1__RemoveAssoClass(Instance,AssoClass__class2Values)=
+	PRE
+	Instance : Class1 	&	AssoClass__class2Values : Class2 	&	(AssoClass__class2Values|-> Instance) :AssoClass 	
+	THEN 		AssoClass:= AssoClass-{(AssoClass__class2Values|-> Instance)}
+	END;
+
+Class2__RemoveAssoClass(Instance,AssoClass__class1Values)=
+	PRE
+	Instance : Class2 	&	AssoClass__class1Values : Class1 	&	(Instance|-> AssoClass__class1Values) :AssoClass 	
+	THEN 		AssoClass:= AssoClass-{(Instance|-> AssoClass__class1Values)}
+	END
+ END
+ 
+	

@@ -1,0 +1,292 @@
+		
+
+
+MACHINE 
+	Heritage
+
+SETS
+ STR
+; HERITAGE_SIMPLE__SUPERCLASS
+; HERITAGE_SIMPLE2__SUPERCLASS
+; HERITAGE_MULTIPLE__OBJECTS
+
+
+ABSTRACT_VARIABLES
+ Heritage_Simple__SuperClass
+, Heritage_Simple__SubClass
+, Heritage_Simple2__SuperClass
+, Heritage_Simple2__SubClass1
+, Heritage_Simple2__SubClass2
+, Heritage_multiple__OBJECTS
+, Heritage_multiple__SuperClass1
+, Heritage_multiple__SuperClass2
+, Heritage_multiple__SubClass
+, Heritage_Simple__SuperClass__superAttribut
+, Heritage_Simple__SubClass__subAttribut
+, Heritage_Simple2__SuperClass__superAttribut
+, Heritage_Simple2__SubClass1__subAttribut
+, Heritage_Simple2__SubClass2__subAttribut
+, Heritage_multiple__SuperClass1__superAttribut
+, Heritage_multiple__SuperClass2__superAttribut
+
+INVARIANT
+Heritage_Simple__SuperClass : POW(HERITAGE_SIMPLE__SUPERCLASS) 
+&Heritage_Simple__SubClass : POW(Heritage_Simple__SuperClass) 
+&Heritage_Simple2__SuperClass : POW(HERITAGE_SIMPLE2__SUPERCLASS) 
+&Heritage_Simple2__SubClass1 : POW(Heritage_Simple2__SuperClass) 
+&Heritage_Simple2__SubClass2 : POW(Heritage_Simple2__SuperClass) 
+&Heritage_multiple__OBJECTS : POW(HERITAGE_MULTIPLE__OBJECTS) 
+&Heritage_multiple__SuperClass1 : POW(Heritage_multiple__OBJECTS) 
+&Heritage_multiple__SuperClass2 : POW(Heritage_multiple__OBJECTS) 
+&Heritage_multiple__SubClass : POW(Heritage_multiple__SuperClass1) 
+&Heritage_Simple__SuperClass__superAttribut : Heritage_Simple__SuperClass <-> INTEGER 
+&Heritage_Simple__SubClass__subAttribut : Heritage_Simple__SubClass --> INTEGER 
+&Heritage_Simple2__SuperClass__superAttribut : Heritage_Simple2__SuperClass +-> INTEGER 
+&Heritage_Simple2__SubClass1__subAttribut : Heritage_Simple2__SubClass1 +-> INTEGER 
+&Heritage_Simple2__SubClass2__subAttribut : Heritage_Simple2__SubClass2 +-> INTEGER 
+&Heritage_multiple__SuperClass1__superAttribut : Heritage_multiple__SuperClass1 <-> INTEGER & !cc.( cc:dom(Heritage_multiple__SuperClass1__superAttribut) => card(Heritage_multiple__SuperClass1__superAttribut[{cc}])>=2)
+ & !cc.( cc:dom(Heritage_multiple__SuperClass1__superAttribut) => card(Heritage_multiple__SuperClass1__superAttribut[{cc}])<=5) 
+&Heritage_multiple__SuperClass2__superAttribut : Heritage_multiple__SuperClass2 +-> BOOL 
+&
+Heritage_Simple2__SubClass1 /\ Heritage_Simple2__SubClass2 = {}
+& Heritage_multiple__SuperClass1 /\ Heritage_multiple__SuperClass2 = Heritage_multiple__SubClass
+
+INITIALISATION
+	Heritage_Simple__SuperClass:={}
+||	Heritage_Simple__SubClass:={}
+||	Heritage_Simple2__SuperClass:={}
+||	Heritage_Simple2__SubClass1:={}
+||	Heritage_Simple2__SubClass2:={}
+||	Heritage_multiple__OBJECTS:={}
+||	Heritage_multiple__SuperClass1:={}
+||	Heritage_multiple__SuperClass2:={}
+||	Heritage_multiple__SubClass:={}
+||	Heritage_Simple__SuperClass__superAttribut:={}
+||	Heritage_Simple__SubClass__subAttribut:={}
+||	Heritage_Simple2__SuperClass__superAttribut:={}
+||	Heritage_Simple2__SubClass1__subAttribut:={}
+||	Heritage_Simple2__SubClass2__subAttribut:={}
+||	Heritage_multiple__SuperClass1__superAttribut:={}
+||	Heritage_multiple__SuperClass2__superAttribut:={}
+ 
+OPERATIONS
+
+Heritage_Simple__SuperClass_NEW(Instance)=
+	PRE
+	Instance : HERITAGE_SIMPLE__SUPERCLASS 	&	Instance /: Heritage_Simple__SuperClass 	
+
+	THEN 		Heritage_Simple__SuperClass := Heritage_Simple__SuperClass \/ {Instance}
+	END;
+Heritage_Simple__SubClass_NEW(Instance,Heritage_Simple__SubClass__subAttributValue)=
+	PRE
+	Instance : HERITAGE_SIMPLE__SUPERCLASS 	&	Instance /: Heritage_Simple__SuperClass 	&	Heritage_Simple__SubClass__subAttributValue : INTEGER 	
+
+	THEN 		Heritage_Simple__SubClass := Heritage_Simple__SubClass \/ {Instance} || Heritage_Simple__SuperClass := Heritage_Simple__SuperClass \/ {Instance} || Heritage_Simple__SubClass__subAttribut:= Heritage_Simple__SubClass__subAttribut \/ {(Instance|->Heritage_Simple__SubClass__subAttributValue)}
+	END;
+Heritage_Simple2__SuperClass_NEW(Instance)=
+	PRE
+	Instance : HERITAGE_SIMPLE2__SUPERCLASS 	&	Instance /: Heritage_Simple2__SuperClass 	
+
+	THEN 		Heritage_Simple2__SuperClass := Heritage_Simple2__SuperClass \/ {Instance}
+	END;
+Heritage_Simple2__SubClass1_NEW(Instance)=
+	PRE
+	Instance : HERITAGE_SIMPLE2__SUPERCLASS 	&	Instance /: Heritage_Simple2__SuperClass 	
+
+	THEN 		Heritage_Simple2__SubClass1 := Heritage_Simple2__SubClass1 \/ {Instance} || Heritage_Simple2__SuperClass := Heritage_Simple2__SuperClass \/ {Instance}
+	END;
+Heritage_Simple2__SubClass2_NEW(Instance)=
+	PRE
+	Instance : HERITAGE_SIMPLE2__SUPERCLASS 	&	Instance /: Heritage_Simple2__SuperClass 	
+
+	THEN 		Heritage_Simple2__SubClass2 := Heritage_Simple2__SubClass2 \/ {Instance} || Heritage_Simple2__SuperClass := Heritage_Simple2__SuperClass \/ {Instance}
+	END;
+Heritage_multiple__OBJECTS_NEW(Instance)=
+	PRE
+	Instance : HERITAGE_MULTIPLE__OBJECTS 	&	Instance /: Heritage_multiple__OBJECTS 	
+
+	THEN 		Heritage_multiple__OBJECTS := Heritage_multiple__OBJECTS \/ {Instance}
+	END;
+Heritage_multiple__SuperClass1_NEW(Instance,Heritage_multiple__SuperClass1__superAttributValue)=
+	PRE
+	Instance : HERITAGE_MULTIPLE__OBJECTS 	&	Instance /: Heritage_multiple__OBJECTS 	&	Heritage_multiple__SuperClass1__superAttributValue <: INTEGER 	&	card(Heritage_multiple__SuperClass1__superAttributValue)<=5 	&	card(Heritage_multiple__SuperClass1__superAttributValue)>=2 	
+
+	THEN 		Heritage_multiple__SuperClass1 := Heritage_multiple__SuperClass1 \/ {Instance} || Heritage_multiple__OBJECTS := Heritage_multiple__OBJECTS \/ {Instance} || Heritage_multiple__SuperClass1__superAttribut:= Heritage_multiple__SuperClass1__superAttribut \/ ({Instance}*Heritage_multiple__SuperClass1__superAttributValue)
+	END;
+Heritage_multiple__SuperClass2_NEW(Instance)=
+	PRE
+	Instance : HERITAGE_MULTIPLE__OBJECTS 	&	Instance /: Heritage_multiple__OBJECTS 	
+
+	THEN 		Heritage_multiple__SuperClass2 := Heritage_multiple__SuperClass2 \/ {Instance} || Heritage_multiple__OBJECTS := Heritage_multiple__OBJECTS \/ {Instance}
+	END;
+Heritage_multiple__SubClass_NEW(Instance,Heritage_multiple__SuperClass1__superAttributValue)=
+	PRE
+	Instance : HERITAGE_MULTIPLE__OBJECTS 	&	Instance /: Heritage_multiple__OBJECTS 	&	Heritage_multiple__SuperClass1__superAttributValue <: INTEGER 	&	card(Heritage_multiple__SuperClass1__superAttributValue)<=5 	&	card(Heritage_multiple__SuperClass1__superAttributValue)>=2 	
+
+	THEN 		Heritage_multiple__SubClass := Heritage_multiple__SubClass \/ {Instance} || Heritage_multiple__SuperClass1 := Heritage_multiple__SuperClass1 \/ {Instance} || Heritage_multiple__OBJECTS := Heritage_multiple__OBJECTS \/ {Instance} || Heritage_multiple__SuperClass2 := Heritage_multiple__SuperClass2 \/ {Instance} || Heritage_multiple__SuperClass1__superAttribut:= Heritage_multiple__SuperClass1__superAttribut \/ ({Instance}*Heritage_multiple__SuperClass1__superAttributValue)
+	END;
+Heritage_Simple__SuperClass_Free(Instance)=
+	PRE
+	Instance : HERITAGE_SIMPLE__SUPERCLASS 	&	Instance : Heritage_Simple__SuperClass 	&	Instance /: (Heritage_Simple__SubClass ) 	
+
+	THEN 		Heritage_Simple__SuperClass := Heritage_Simple__SuperClass - {Instance} || Heritage_Simple__SuperClass__superAttribut:= {Instance}<<|Heritage_Simple__SuperClass__superAttribut
+	END;
+Heritage_Simple__SubClass_Free(Instance)=
+	PRE
+	Instance : HERITAGE_SIMPLE__SUPERCLASS 	&	Instance : Heritage_Simple__SubClass 	
+
+	THEN 		Heritage_Simple__SubClass := Heritage_Simple__SubClass - {Instance} || Heritage_Simple__SuperClass := Heritage_Simple__SuperClass - {Instance} || Heritage_Simple__SuperClass__superAttribut:= {Instance}<<|Heritage_Simple__SuperClass__superAttribut || Heritage_Simple__SubClass__subAttribut:= {Instance}<<|Heritage_Simple__SubClass__subAttribut
+	END;
+Heritage_Simple2__SuperClass_Free(Instance)=
+	PRE
+	Instance : HERITAGE_SIMPLE2__SUPERCLASS 	&	Instance : Heritage_Simple2__SuperClass 	&	Instance /: (Heritage_Simple2__SubClass1 \/ Heritage_Simple2__SubClass2 ) 	
+
+	THEN 		Heritage_Simple2__SuperClass := Heritage_Simple2__SuperClass - {Instance} || Heritage_Simple2__SuperClass__superAttribut:= {Instance}<<|Heritage_Simple2__SuperClass__superAttribut
+	END;
+Heritage_Simple2__SubClass1_Free(Instance)=
+	PRE
+	Instance : HERITAGE_SIMPLE2__SUPERCLASS 	&	Instance : Heritage_Simple2__SubClass1 	
+
+	THEN 		Heritage_Simple2__SubClass1 := Heritage_Simple2__SubClass1 - {Instance} || Heritage_Simple2__SuperClass := Heritage_Simple2__SuperClass - {Instance} || Heritage_Simple2__SuperClass__superAttribut:= {Instance}<<|Heritage_Simple2__SuperClass__superAttribut || Heritage_Simple2__SubClass1__subAttribut:= {Instance}<<|Heritage_Simple2__SubClass1__subAttribut
+	END;
+Heritage_Simple2__SubClass2_Free(Instance)=
+	PRE
+	Instance : HERITAGE_SIMPLE2__SUPERCLASS 	&	Instance : Heritage_Simple2__SubClass2 	
+
+	THEN 		Heritage_Simple2__SubClass2 := Heritage_Simple2__SubClass2 - {Instance} || Heritage_Simple2__SuperClass := Heritage_Simple2__SuperClass - {Instance} || Heritage_Simple2__SuperClass__superAttribut:= {Instance}<<|Heritage_Simple2__SuperClass__superAttribut || Heritage_Simple2__SubClass2__subAttribut:= {Instance}<<|Heritage_Simple2__SubClass2__subAttribut
+	END;
+Heritage_multiple__OBJECTS_Free(Instance)=
+	PRE
+	Instance : HERITAGE_MULTIPLE__OBJECTS 	&	Instance : Heritage_multiple__OBJECTS 	&	Instance /: (Heritage_multiple__SuperClass1 \/ Heritage_multiple__SuperClass2 ) 	
+
+	THEN 		Heritage_multiple__OBJECTS := Heritage_multiple__OBJECTS - {Instance}
+	END;
+Heritage_multiple__SuperClass1_Free(Instance)=
+	PRE
+	Instance : HERITAGE_MULTIPLE__OBJECTS 	&	Instance : Heritage_multiple__SuperClass1 	&	Instance /: (Heritage_multiple__SubClass ) 	
+
+	THEN 		Heritage_multiple__SuperClass1 := Heritage_multiple__SuperClass1 - {Instance} || Heritage_multiple__OBJECTS := Heritage_multiple__OBJECTS - {Instance} || Heritage_multiple__SuperClass1__superAttribut:= {Instance}<<|Heritage_multiple__SuperClass1__superAttribut
+	END;
+Heritage_multiple__SuperClass2_Free(Instance)=
+	PRE
+	Instance : HERITAGE_MULTIPLE__OBJECTS 	&	Instance : Heritage_multiple__SuperClass2 	&	Instance /: (Heritage_multiple__SubClass ) 	
+
+	THEN 		Heritage_multiple__SuperClass2 := Heritage_multiple__SuperClass2 - {Instance} || Heritage_multiple__OBJECTS := Heritage_multiple__OBJECTS - {Instance} || Heritage_multiple__SuperClass2__superAttribut:= {Instance}<<|Heritage_multiple__SuperClass2__superAttribut
+	END;
+Heritage_multiple__SubClass_Free(Instance)=
+	PRE
+	Instance : HERITAGE_MULTIPLE__OBJECTS 	&	Instance : Heritage_multiple__SubClass 	
+
+	THEN 		Heritage_multiple__SubClass := Heritage_multiple__SubClass - {Instance} || Heritage_multiple__SuperClass1 := Heritage_multiple__SuperClass1 - {Instance} || Heritage_multiple__OBJECTS := Heritage_multiple__OBJECTS - {Instance} || Heritage_multiple__SuperClass2 := Heritage_multiple__SuperClass2 - {Instance} || Heritage_multiple__SuperClass1__superAttribut:= {Instance}<<|Heritage_multiple__SuperClass1__superAttribut || Heritage_multiple__SuperClass2__superAttribut:= {Instance}<<|Heritage_multiple__SuperClass2__superAttribut
+	END;
+result <-- Heritage_Simple__SuperClass__GetSuperAttribut(Instance)=
+	PRE
+	Instance : Heritage_Simple__SuperClass 	
+
+	THEN 		result := Heritage_Simple__SuperClass__superAttribut(Instance)
+	END;
+result <-- Heritage_Simple__SubClass__GetSubAttribut(Instance)=
+	PRE
+	Instance : Heritage_Simple__SubClass 	
+
+	THEN 		result := Heritage_Simple__SubClass__subAttribut(Instance)
+	END;
+result <-- Heritage_Simple2__SuperClass__GetSuperAttribut(Instance)=
+	PRE
+	Instance : Heritage_Simple2__SuperClass 	
+
+	THEN 		result := Heritage_Simple2__SuperClass__superAttribut(Instance)
+	END;
+result <-- Heritage_Simple2__SubClass1__GetSubAttribut(Instance)=
+	PRE
+	Instance : Heritage_Simple2__SubClass1 	
+
+	THEN 		result := Heritage_Simple2__SubClass1__subAttribut(Instance)
+	END;
+result <-- Heritage_Simple2__SubClass2__GetSubAttribut(Instance)=
+	PRE
+	Instance : Heritage_Simple2__SubClass2 	
+
+	THEN 		result := Heritage_Simple2__SubClass2__subAttribut(Instance)
+	END;
+result <-- Heritage_multiple__SuperClass1__GetSuperAttribut(Instance)=
+	PRE
+	Instance : Heritage_multiple__SuperClass1 	
+
+	THEN 		result := Heritage_multiple__SuperClass1__superAttribut(Instance)
+	END;
+result <-- Heritage_multiple__SuperClass2__GetSuperAttribut(Instance)=
+	PRE
+	Instance : Heritage_multiple__SuperClass2 	
+
+	THEN 		result := Heritage_multiple__SuperClass2__superAttribut(Instance)
+	END;
+Heritage_Simple__SuperClass__SetSuperAttribut(Instance,Heritage_Simple__SuperClass__superAttributValue)=
+	PRE
+	Instance : Heritage_Simple__SuperClass 	&	Heritage_Simple__SuperClass__superAttributValue <: INTEGER 	
+
+	THEN 		Heritage_Simple__SuperClass__superAttribut:= ({Instance}<<|Heritage_Simple__SuperClass__superAttribut)\/ ({Instance}*Heritage_Simple__SuperClass__superAttributValue)
+	END;
+Heritage_Simple__SubClass__SetSubAttribut(Instance,Heritage_Simple__SubClass__subAttributValue)=
+	PRE
+	Instance : Heritage_Simple__SubClass 	&	Heritage_Simple__SubClass__subAttributValue : INTEGER 	
+
+	THEN 		Heritage_Simple__SubClass__subAttribut:= ({Instance}<<|Heritage_Simple__SubClass__subAttribut)\/ {(Instance|-> Heritage_Simple__SubClass__subAttributValue)}
+	END;
+Heritage_Simple2__SuperClass__SetSuperAttribut(Instance,Heritage_Simple2__SuperClass__superAttributValue)=
+	PRE
+	Instance : Heritage_Simple2__SuperClass 	&	Heritage_Simple2__SuperClass__superAttributValue : INTEGER 	
+
+	THEN 		Heritage_Simple2__SuperClass__superAttribut:= ({Instance}<<|Heritage_Simple2__SuperClass__superAttribut)\/ {(Instance|-> Heritage_Simple2__SuperClass__superAttributValue)}
+	END;
+Heritage_Simple2__SubClass1__SetSubAttribut(Instance,Heritage_Simple2__SubClass1__subAttributValue)=
+	PRE
+	Instance : Heritage_Simple2__SubClass1 	&	Heritage_Simple2__SubClass1__subAttributValue : INTEGER 	
+
+	THEN 		Heritage_Simple2__SubClass1__subAttribut:= ({Instance}<<|Heritage_Simple2__SubClass1__subAttribut)\/ {(Instance|-> Heritage_Simple2__SubClass1__subAttributValue)}
+	END;
+Heritage_Simple2__SubClass2__SetSubAttribut(Instance,Heritage_Simple2__SubClass2__subAttributValue)=
+	PRE
+	Instance : Heritage_Simple2__SubClass2 	&	Heritage_Simple2__SubClass2__subAttributValue : INTEGER 	
+
+	THEN 		Heritage_Simple2__SubClass2__subAttribut:= ({Instance}<<|Heritage_Simple2__SubClass2__subAttribut)\/ {(Instance|-> Heritage_Simple2__SubClass2__subAttributValue)}
+	END;
+Heritage_multiple__SuperClass1__SetSuperAttribut(Instance,Heritage_multiple__SuperClass1__superAttributValue)=
+	PRE
+	Instance : Heritage_multiple__SuperClass1 	&	Heritage_multiple__SuperClass1__superAttributValue <: INTEGER 	&	card(Heritage_multiple__SuperClass1__superAttributValue)<=5 	&	card(Heritage_multiple__SuperClass1__superAttributValue)>=2 	
+
+	THEN 		Heritage_multiple__SuperClass1__superAttribut:= ({Instance}<<|Heritage_multiple__SuperClass1__superAttribut)\/ ({Instance}*Heritage_multiple__SuperClass1__superAttributValue)
+	END;
+Heritage_multiple__SuperClass2__SetSuperAttribut(Instance,Heritage_multiple__SuperClass2__superAttributValue)=
+	PRE
+	Instance : Heritage_multiple__SuperClass2 	&	Heritage_multiple__SuperClass2__superAttributValue : BOOL 	
+
+	THEN 		Heritage_multiple__SuperClass2__superAttribut:= ({Instance}<<|Heritage_multiple__SuperClass2__superAttribut)\/ {(Instance|-> Heritage_multiple__SuperClass2__superAttributValue)}
+	END;
+Heritage_Simple__SuperClass__AddSuperAttribut(Instance,Heritage_Simple__SuperClass__superAttributValue)=
+	PRE
+	Instance : Heritage_Simple__SuperClass 	&	Heritage_Simple__SuperClass__superAttributValue : INTEGER 	&	(Instance|-> Heritage_Simple__SuperClass__superAttributValue)/:Heritage_Simple__SuperClass__superAttribut 	
+
+	THEN 		Heritage_Simple__SuperClass__superAttribut:= Heritage_Simple__SuperClass__superAttribut\/ {(Instance|-> Heritage_Simple__SuperClass__superAttributValue)}
+	END;
+Heritage_multiple__SuperClass1__AddSuperAttribut(Instance,Heritage_multiple__SuperClass1__superAttributValue)=
+	PRE
+	Instance : Heritage_multiple__SuperClass1 	&	Heritage_multiple__SuperClass1__superAttribut[{Instance}]/={} 	&	Heritage_multiple__SuperClass1__superAttributValue : INTEGER 	&	(Instance|-> Heritage_multiple__SuperClass1__superAttributValue)/:Heritage_multiple__SuperClass1__superAttribut 	&	card(Heritage_multiple__SuperClass1__superAttribut[{Instance}])<5 	
+
+	THEN 		Heritage_multiple__SuperClass1__superAttribut:= Heritage_multiple__SuperClass1__superAttribut\/ {(Instance|-> Heritage_multiple__SuperClass1__superAttributValue)}
+	END;
+Heritage_Simple__SuperClass__RemoveSuperAttribut(Instance,Heritage_Simple__SuperClass__superAttributValue)=
+	PRE
+	Instance : Heritage_Simple__SuperClass 	&	Heritage_Simple__SuperClass__superAttributValue : INTEGER 	&	(Instance|-> Heritage_Simple__SuperClass__superAttributValue):Heritage_Simple__SuperClass__superAttribut 	
+
+	THEN 		Heritage_Simple__SuperClass__superAttribut:= Heritage_Simple__SuperClass__superAttribut\/ {(Instance|-> Heritage_Simple__SuperClass__superAttributValue)}
+	END;
+Heritage_multiple__SuperClass1__RemoveSuperAttribut(Instance,Heritage_multiple__SuperClass1__superAttributValue)=
+	PRE
+	Instance : Heritage_multiple__SuperClass1 	&	card(Heritage_multiple__SuperClass1__superAttribut[{Instance}])>2 	&	Heritage_multiple__SuperClass1__superAttributValue : INTEGER 	&	(Instance|-> Heritage_multiple__SuperClass1__superAttributValue):Heritage_multiple__SuperClass1__superAttribut 	
+
+	THEN 		Heritage_multiple__SuperClass1__superAttribut:= Heritage_multiple__SuperClass1__superAttribut\/ {(Instance|-> Heritage_multiple__SuperClass1__superAttributValue)}
+	END
+ END
+ 
+	

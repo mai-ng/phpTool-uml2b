@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformationconfig:Config xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:transformationconfig="http://www.liglab.fr/vasco/ctm/transformationconfig/1.0" ref="MyConfig" defaultMethod="UniqueMachine">
+  <methods ref="UniqueMachine" complied="AttributeToBVariable ClassToBVariableInSysMachine UML2B.Transfo.UML2B_Selkis.createSysMachine init AssociationToBVariableInSystemMachine UML2B.Transfo.UML2B_Selkis.InsertMachineInvariantsFromPackage EnumerationToBEnumSetInSystemMachine DataTypeToAbstractSetInSysMachine genConstructor UML2B.Transfo.UML2B_Selkis.GenerateConstructor UML2B.Transfo.UML2B_Selkis.GenerateDestructor UML2B.Transfo.UML2B_Selkis.Attr_UpdateDestructor UML2B.Transfo.UML2B_Selkis.Attr_UpdateConstructor_DefaultSupport UML2B.Transfo.UML2B_Selkis.InheritanceDisjonctionInvariant UML2B.Transfo.UML2B_Selkis.Role_UpdateConstructor UML2B.Transfo.UML2B_Selkis.Role_UpdateDestructor UML2B.Transfo.UML2B_Selkis.GenerateAttributeBVariable UML2B.Transfo.UML2B_Selkis.GeneratePrimitiveTypes_WRT_attributes UML2B.Transfo.UML2B_Selkis.Attr_GenerateAccessor UML2B.Transfo.UML2B_Selkis.Attr_GenerateSetter UML2B.Transfo.UML2B_Selkis.Attr_MultiValued_GenerateMutator_add UML2B.Transfo.UML2B_Selkis.Attr_MultiValued_GenerateMutator_remove UML2B.Transfo.UML2B_Selkis.NavigableRole_GenerateAccessor UML2B.Transfo.UML2B_Selkis.NavigableRole_GenerateMutator_monovaluedSetter UML2B.Transfo.UML2B_Selkis.GenerateOperationSkeleton UML2B.Transfo.UML2B_Selkis.GenerateEnumerationSet UML2B.Transfo.UML2B_Selkis.GenerateUniqueMonovaluedAttributeBVariable UML2B.Transfo.UML2B_Selkis.UniqueAttr_UpdateConstructor UML2B.Transfo.UML2B_Selkis.UniqueAttr_GenerateSetter UML2B.Transfo.UML2B_Selkis.NavigableRole_GenerateMutator_multivaluedAdder UML2B.Transfo.UML2B_Selkis.GenerateClassBVariableInSystemMachine UML2B.Transfo.UML2B_Selkis.GenerateAssociationBVariable UML2B.Transfo.UML2B_Selkis.GenerateAssociationBVariable UML2B.Transfo.UML2B_Selkis.AssociationClass_GenerateConstructor UML2B.Transfo.UML2B_Selkis.AssociationClass_GenerateDestructor"/>
+  <rules ref="CreateSystemMachine" active="true" src="This" AdvisedRule="UML2B.Transfo.UML2B_Selkis.createSysMachine">
+    <dependencies xsi:type="transformationconfig:StaticConfigDependency" staticConfigElement="SystemMachine"/>
+    <rules ref="UML2B.Transfo.UML2B_Selkis.createSysMachine" ComplyWith="UniqueMachine"/>
+  </rules>
+  <rules ref="Initialization" active="true" src="This" AdvisedRule="init">
+    <rules ref="UML2B.Transfo.UML2B_Selkis.GeneratePrimitiveTypes_WRT_attributes" ComplyWith="UniqueMachine"/>
+    <rules ref="init" ComplyWith="UniqueMachine"/>
+    <rules ref="UML2B.Transfo.UML2B_Selkis.GeneratePrimitiveTypes"/>
+  </rules>
+  <rules ref="ClassTo" active="true" src="Class" AdvisedRule="ClassToBVariableInSysMachine">
+    <rules ref="UML2B.Transfo.UML2B_Selkis.GenerateClassBVariableInSystemMachine" ComplyWith="UniqueMachine"/>
+    <rules ref="ClassToBVariableInSysMachine" ComplyWith="UniqueMachine">
+      <dependencies xsi:type="transformationconfig:StaticConfigDependency" staticConfigElement="SystemMachine"/>
+    </rules>
+  </rules>
+  <rules ref="InheritanceDisjonctionInvariant" active="true" src="Class" AdvisedRule="UML2B.Transfo.UML2B_Selkis.InheritanceDisjonctionInvariant">
+    <rules ref="UML2B.Transfo.UML2B_Selkis.InheritanceDisjonctionInvariant" ComplyWith="UniqueMachine"/>
+  </rules>
+  <rules ref="GenerateOperationSkeleton" active="true" src="Operation">
+    <rules ref="UML2B.Transfo.UML2B_Selkis.GenerateOperationSkeleton" ComplyWith="UniqueMachine"/>
+  </rules>
+  <rules ref="GenerateConstructor" active="true" src="Class" AdvisedRule="UML2B.Transfo.UML2B_Selkis.GenerateConstructor">
+    <rules ref="UML2B.Transfo.UML2B_Selkis.GenerateConstructor" ComplyWith="UniqueMachine"/>
+    <rules ref="genConstructor" ComplyWith="UniqueMachine"/>
+  </rules>
+  <rules ref="GenerateDestructor" active="true" src="Class" AdvisedRule="UML2B.Transfo.UML2B_Selkis.GenerateDestructor">
+    <rules ref="UML2B.Transfo.UML2B_Selkis.GenerateDestructor" ComplyWith="UniqueMachine"/>
+  </rules>
+  <rules ref="EnumerationTo" active="true" src="Enumeration" AdvisedRule="EnumerationToBEnumSetInSystemMachine">
+    <rules ref="UML2B.Transfo.UML2B_Selkis.GenerateEnumerationSet" ComplyWith="UniqueMachine">
+      <dependencies xsi:type="transformationconfig:RuleDependency" type="REQUIRED" orRules="CreateSystemMachine"/>
+    </rules>
+    <rules ref="EnumerationToBEnumSetInSystemMachine" ComplyWith="UniqueMachine">
+      <dependencies xsi:type="transformationconfig:RuleDependency" orRules="UML2B.Transfo.UML2B_Selkis.createSysMachine"/>
+    </rules>
+  </rules>
+  <rules ref="DataTypeTo" active="true" src="DataType" AdvisedRule="DataTypeToAbstractSetInSysMachine">
+    <rules ref="DataTypeToAbstractSetInSysMachine" ComplyWith="UniqueMachine"/>
+  </rules>
+  <rules ref="AssociationClassAsAssociation" active="true" src="AssociationClass">
+    <rules ref="UML2B.Transfo.UML2B_Selkis.GenerateAssociationBVariable" ComplyWith="UniqueMachine"/>
+  </rules>
+  <rules ref="AssociationTo" active="true" src="Association" AdvisedRule="AssociationToBVariableInSystemMachine">
+    <rules ref="UML2B.Transfo.UML2B_Selkis.GenerateAssociationBVariable" ComplyWith="UniqueMachine"/>
+    <rules ref="AssociationToBVariableInSystemMachine" ComplyWith="UniqueMachine">
+      <dependencies xsi:type="transformationconfig:RuleDependency" orRules="CreateSystemMachine"/>
+    </rules>
+  </rules>
+  <rules ref="AssociationClass_GenerateConst" active="true" src="AssociationClass">
+    <rules ref="UML2B.Transfo.UML2B_Selkis.AssociationClass_GenerateConstructor" ComplyWith="UniqueMachine"/>
+  </rules>
+  <rules ref="AssociationClass_GenerateDest" active="true" src="AssociationClass">
+    <rules ref="UML2B.Transfo.UML2B_Selkis.AssociationClass_GenerateDestructor" ComplyWith="UniqueMachine"/>
+  </rules>
+  <rules ref="Role_UpdateConst" active="true" src="Role" AdvisedRule="UML2B.Transfo.UML2B_Selkis.Role_UpdateConstructor">
+    <rules ref="UML2B.Transfo.UML2B_Selkis.Role_UpdateConstructor" ComplyWith="UniqueMachine"/>
+  </rules>
+  <rules ref="Role_UpdateDest" active="true" src="Role" AdvisedRule="UML2B.Transfo.UML2B_Selkis.Role_UpdateDestructor">
+    <rules ref="UML2B.Transfo.UML2B_Selkis.Role_UpdateDestructor" ComplyWith="UniqueMachine"/>
+  </rules>
+  <rules ref="NavigableRole_GenerateAccessor" active="true" src="Navigable_ROLE" AdvisedRule="UML2B.Transfo.UML2B_Selkis.NavigableRole_GenerateAccessor">
+    <rules ref="UML2B.Transfo.UML2B_Selkis.NavigableRole_GenerateAccessor" ComplyWith="UniqueMachine"/>
+  </rules>
+  <rules ref="NavigableRole_GenerateMutator_monovaluedSetter" active="true" src="ROLE_Mutable_Navigable" AdvisedRule="UML2B.Transfo.UML2B_Selkis.NavigableRole_GenerateMutator_monovaluedSetter">
+    <rules ref="UML2B.Transfo.UML2B_Selkis.NavigableRole_GenerateMutator_monovaluedSetter" ComplyWith="UniqueMachine"/>
+  </rules>
+  <rules ref="NavigableRole_GenerateMutator_multivaluedAdder" active="true" src="ROLE_Mutable_Navigable" AdvisedRule="UML2B.Transfo.UML2B_Selkis.NavigableRole_GenerateMutator_multivaluedAdder">
+    <rules ref="UML2B.Transfo.UML2B_Selkis.NavigableRole_GenerateMutator_multivaluedAdder" ComplyWith="UniqueMachine"/>
+  </rules>
+  <rules ref="NavigableRole_GenerateMutator_multivaluedRemover" active="true" src="ROLE_Mutable_Navigable" AdvisedRule="UML2B.Transfo.UML2B_Selkis.NavigableRole_GenerateMutator_multivaluedRemover">
+    <rules ref="UML2B.Transfo.UML2B_Selkis.NavigableRole_GenerateMutator_multivaluedRemover"/>
+  </rules>
+  <rules ref="AttributeTo" active="true" src="NonUniqueAttribute" AdvisedRule="AttributeToBVariable">
+    <rules ref="UML2B.Transfo.UML2B_Selkis.GenerateAttributeBVariable" ComplyWith="UniqueMachine"/>
+    <rules ref="AttributeToBVariable" ComplyWith="UniqueMachine"/>
+  </rules>
+  <rules ref="GenerateUniqueMonovaluedAttributeBVariable" active="true" src="UniqueAttribute">
+    <rules ref="UML2B.Transfo.UML2B_Selkis.GenerateUniqueMonovaluedAttributeBVariable" ComplyWith="UniqueMachine"/>
+  </rules>
+  <rules ref="Attribute_updateDestructor" active="true" src="Attribute" AdvisedRule="UML2B.Transfo.UML2B_Selkis.Attr_UpdateDestructor">
+    <rules ref="UML2B.Transfo.UML2B_Selkis.Attr_UpdateDestructor" ComplyWith="UniqueMachine"/>
+  </rules>
+  <rules ref="Attribute_UpdateConstructor" active="true" src="NonUniqueAttribute" AdvisedRule="UML2B.Transfo.UML2B_Selkis.Attr_UpdateConstructor_DefaultSupport">
+    <rules ref="UML2B.Transfo.UML2B_Selkis.Attr_UpdateConstructor_DefaultSupport" ComplyWith="UniqueMachine"/>
+  </rules>
+  <rules ref="UniqueAttr_UpdateConstructor" active="true" src="UniqueAttribute">
+    <rules ref="UML2B.Transfo.UML2B_Selkis.UniqueAttr_UpdateConstructor" ComplyWith="UniqueMachine"/>
+  </rules>
+  <rules ref="Attribute_GenerateAccessor" active="true" src="NonStaticAttribute" AdvisedRule="UML2B.Transfo.UML2B_Selkis.Attr_GenerateAccessor">
+    <rules ref="UML2B.Transfo.UML2B_Selkis.Attr_GenerateAccessor" ComplyWith="UniqueMachine"/>
+  </rules>
+  <rules ref="Attribute_GenerateMutator_MonoValued" active="true" src="NonUniqueATTRIBUTE_Mutable" AdvisedRule="UML2B.Transfo.UML2B_Selkis.Attr_GenerateSetter">
+    <rules ref="UML2B.Transfo.UML2B_Selkis.Attr_GenerateSetter" ComplyWith="UniqueMachine"/>
+  </rules>
+  <rules ref="UniqueAttr_GenerateSetter" active="true" src="UniqueATTRIBUTE_Mutable">
+    <rules ref="UML2B.Transfo.UML2B_Selkis.UniqueAttr_GenerateSetter" ComplyWith="UniqueMachine"/>
+  </rules>
+  <rules ref="Attribute_GenerateMutator_MultiValued_add" active="true" src="ATTRIBUTE_Mutable" AdvisedRule="UML2B.Transfo.UML2B_Selkis.Attr_MultiValued_GenerateMutator_add">
+    <rules ref="UML2B.Transfo.UML2B_Selkis.Attr_MultiValued_GenerateMutator_add" ComplyWith="UniqueMachine"/>
+  </rules>
+  <rules ref="Attribute_GenerateMutator_MultiValued_remove" active="true" src="ATTRIBUTE_Mutable" AdvisedRule="UML2B.Transfo.UML2B_Selkis.Attr_MultiValued_GenerateMutator_remove">
+    <rules ref="UML2B.Transfo.UML2B_Selkis.Attr_MultiValued_GenerateMutator_remove" ComplyWith="UniqueMachine"/>
+  </rules>
+  <rules ref="InsertMachineInvariants" active="true" src="This" AdvisedRule="UML2B.Transfo.UML2B_Selkis.InsertMachineInvariantsFromPackage">
+    <rules ref="UML2B.Transfo.UML2B_Selkis.InsertMachineInvariantsFromPackage" ComplyWith="UniqueMachine"/>
+  </rules>
+  <srcModelElements ref="This" rule="CreateSystemMachine Initialization InsertMachineInvariants"/>
+  <srcModelElements ref="Class" rule="ClassTo GenerateConstructor GenerateDestructor InheritanceDisjonctionInvariant"/>
+  <srcModelElements ref="AssociationClass" rule="AssociationClassAsAssociation AssociationClass_GenerateConst AssociationClass_GenerateDest"/>
+  <srcModelElements ref="DataType" rule="DataTypeTo"/>
+  <srcModelElements ref="Attribute" rule="Attribute_updateDestructor"/>
+  <srcModelElements ref="NonUniqueAttribute" rule="AttributeTo Attribute_UpdateConstructor"/>
+  <srcModelElements ref="UniqueAttribute" rule="GenerateUniqueMonovaluedAttributeBVariable UniqueAttr_UpdateConstructor"/>
+  <srcModelElements ref="ATTRIBUTE_Mutable" rule="Attribute_GenerateMutator_MultiValued_add Attribute_GenerateMutator_MultiValued_remove"/>
+  <srcModelElements ref="NonUniqueATTRIBUTE_Mutable" rule="Attribute_GenerateMutator_MonoValued"/>
+  <srcModelElements ref="UniqueATTRIBUTE_Mutable" rule="UniqueAttr_GenerateSetter"/>
+  <srcModelElements ref="NonStaticAttribute" rule="Attribute_GenerateAccessor"/>
+  <srcModelElements ref="Association" rule="AssociationTo"/>
+  <srcModelElements ref="Role" rule="Role_UpdateConst Role_UpdateDest"/>
+  <srcModelElements ref="Navigable_ROLE" rule="NavigableRole_GenerateAccessor"/>
+  <srcModelElements ref="ROLE_Mutable_Navigable" rule="NavigableRole_GenerateMutator_monovaluedSetter NavigableRole_GenerateMutator_multivaluedAdder NavigableRole_GenerateMutator_multivaluedRemover"/>
+  <srcModelElements ref="Operation" rule="GenerateOperationSkeleton"/>
+  <srcModelElements ref="Enumeration" rule="EnumerationTo"/>
+  <staticConfigBloc>
+    <elements ref="InitSpec" value="true"/>
+    <elements ref="SystemMachine" value="true"/>
+    <elements ref="SubPackages" value="true"/>
+    <elements ref="PowerdClassType"/>
+  </staticConfigBloc>
+</transformationconfig:Config>

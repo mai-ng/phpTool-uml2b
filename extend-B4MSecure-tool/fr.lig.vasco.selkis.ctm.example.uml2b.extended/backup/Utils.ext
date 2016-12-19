@@ -1,0 +1,3 @@
+//TODO implement Logging (Log4j 1.2) extensions and provide each level entry 
+
+Void debug(String s): JAVA Debugger.debug(java.lang.String);

@@ -1,0 +1,9 @@
+//TODO implement Logging (Log4j 1.2) extensions and provide each level entry 
+import uml;
+
+extension TransformationContext;
+
+Void debug(String s): JAVA Debugger.debug(java.lang.String);
+
+String getTargetLabel(uml::NamedElement element):getTargetLabel_Internal(element,PACKAGE());
+String getTargetLabel_Internal(uml::NamedElement element,uml::Package root): JAVA UML2B.Transfo.UML2B_NamingRules.getLabel(org.eclipse.uml2.uml.NamedElement,org.eclipse.uml2.uml.Package);

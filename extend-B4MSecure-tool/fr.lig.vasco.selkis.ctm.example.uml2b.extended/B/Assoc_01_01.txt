@@ -1,0 +1,58 @@
+		
+
+
+MACHINE 
+	Assoc_01_01
+
+SETS
+ CLASS1
+; CLASS2
+
+
+ABSTRACT_VARIABLES
+ Class1
+, Class2
+, AssociationClass1_Class2
+
+INVARIANT
+Class1 : POW(CLASS1) 
+&Class2 : POW(CLASS2) 
+&AssociationClass1_Class2 : Class1 >+> Class2 
+
+
+INITIALISATION
+	Class1:={}
+||	Class2:={}
+||	AssociationClass1_Class2:={}
+ 
+OPERATIONS
+
+
+Class1_NEW(Instance)=
+	PRE
+	Instance : CLASS1 	&	Instance /: Class1 	
+	THEN 		Class1 := Class1 \/ {Instance}
+	END;
+
+Class2_NEW(Instance)=
+	PRE
+	Instance : CLASS2 	&	Instance /: Class2 	
+	THEN 		Class2 := Class2 \/ {Instance}
+	END;
+
+Class1_Free(Instance)=
+	PRE
+	Instance : CLASS1 	&	Instance : Class1 	
+	THEN 		Class1 := Class1 - {Instance}
+ || AssociationClass1_Class2:= {Instance}<<|AssociationClass1_Class2
+	END;
+
+Class2_Free(Instance)=
+	PRE
+	Instance : CLASS2 	&	Instance : Class2 	
+	THEN 		Class2 := Class2 - {Instance}
+ || AssociationClass1_Class2:= AssociationClass1_Class2|>> {Instance}
+	END
+ END
+ 
+	

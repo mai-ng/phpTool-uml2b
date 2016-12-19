@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<diagrams:Diagrams xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.topcased.org/DI/1.0" xmlns:diagrams="http://www.topcased.org/Diagrams/1.0" xmi:id="_OdwBAddxEd-Hv89eFB3QSQ" activeDiagram="_OdwBAtdxEd-Hv89eFB3QSQ">
+  <model href="Selkis_VASCO_ORBAC.uml#_w8IxIM37EdqwVrslYOdUDA"/>
+  <diagrams xmi:id="_OdwBAtdxEd-Hv89eFB3QSQ" position="0,0" size="100,100" name="Selkis_VASCO_ORBAC" viewport="-5,0">
+    <property xmi:id="_Od5yANdxEd-Hv89eFB3QSQ" key="pageFormatName" value="A4"/>
+    <property xmi:id="_Od5yAddxEd-Hv89eFB3QSQ" key="diagramWidth" value="840"/>
+    <property xmi:id="_Od5yAtdxEd-Hv89eFB3QSQ" key="diagramHeight" value="1188"/>
+    <property xmi:id="_Od5yA9dxEd-Hv89eFB3QSQ" key="pageMarginName" value="Small Margin"/>
+    <property xmi:id="_Od5yBNdxEd-Hv89eFB3QSQ" key="diagramTopMargin" value="20"/>
+    <property xmi:id="_Od5yBddxEd-Hv89eFB3QSQ" key="diagramBottomMargin" value="20"/>
+    <property xmi:id="_Od5yBtdxEd-Hv89eFB3QSQ" key="diagramLeftMargin" value="20"/>
+    <property xmi:id="_Od5yB9dxEd-Hv89eFB3QSQ" key="diagramRightMargin" value="20"/>
+    <property xmi:id="_Od5yCNdxEd-Hv89eFB3QSQ" key="orientation" value="landscape"/>
+    <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_OdwBA9dxEd-Hv89eFB3QSQ" presentation="org.topcased.modeler.uml.classdiagram">
+      <element href="Selkis_VASCO_ORBAC.uml#_w8IxIM37EdqwVrslYOdUDA"/>
+    </semanticModel>
+    <contained xsi:type="di:GraphNode" xmi:id="_RuqYINdxEd-Hv89eFB3QSQ" position="16,156" size="100,-1">
+      <anchorage xmi:id="_nKUocNdxEd-Hv89eFB3QSQ" graphEdge="_nKUoctdxEd-Hv89eFB3QSQ _1IsAwddxEd-Hv89eFB3QSQ"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_RuqYIddxEd-Hv89eFB3QSQ" presentation="default">
+        <element href="Selkis_VASCO_ORBAC.uml#_Ru0JINdxEd-Hv89eFB3QSQ"/>
+      </semanticModel>
+      <contained xsi:type="di:GraphNode" xmi:id="_RuqYItdxEd-Hv89eFB3QSQ">
+        <property xmi:id="_RuqYI9dxEd-Hv89eFB3QSQ" key="eStructuralFeatureID" value="37"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_RuqYJNdxEd-Hv89eFB3QSQ" presentation="default">
+          <element href="Selkis_VASCO_ORBAC.uml#_Ru0JINdxEd-Hv89eFB3QSQ"/>
+        </semanticModel>
+      </contained>
+      <contained xsi:type="di:GraphNode" xmi:id="_RuqYJddxEd-Hv89eFB3QSQ">
+        <property xmi:id="_RuqYJtdxEd-Hv89eFB3QSQ" key="eStructuralFeatureID" value="47 50 "/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_RuqYJ9dxEd-Hv89eFB3QSQ" presentation="default">
+          <element href="Selkis_VASCO_ORBAC.uml#_Ru0JINdxEd-Hv89eFB3QSQ"/>
+        </semanticModel>
+      </contained>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_VIOU8NdxEd-Hv89eFB3QSQ" position="479,34" size="100,-1">
+      <anchorage xmi:id="_dXSBENdxEd-Hv89eFB3QSQ" graphEdge="_YXftUtdxEd-Hv89eFB3QSQ"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_VIOU8ddxEd-Hv89eFB3QSQ" presentation="default">
+        <element href="Selkis_VASCO_ORBAC.uml#_VIOU-NdxEd-Hv89eFB3QSQ"/>
+      </semanticModel>
+      <contained xsi:type="di:GraphNode" xmi:id="_VIOU8tdxEd-Hv89eFB3QSQ">
+        <property xmi:id="_VIOU89dxEd-Hv89eFB3QSQ" key="eStructuralFeatureID" value="37"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_VIOU9NdxEd-Hv89eFB3QSQ" presentation="default">
+          <element href="Selkis_VASCO_ORBAC.uml#_VIOU-NdxEd-Hv89eFB3QSQ"/>
+        </semanticModel>
+      </contained>
+      <contained xsi:type="di:GraphNode" xmi:id="_VIOU9ddxEd-Hv89eFB3QSQ">
+        <property xmi:id="_VIOU9tdxEd-Hv89eFB3QSQ" key="eStructuralFeatureID" value="47 50 "/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_VIOU99dxEd-Hv89eFB3QSQ" presentation="default">
+          <element href="Selkis_VASCO_ORBAC.uml#_VIOU-NdxEd-Hv89eFB3QSQ"/>
+        </semanticModel>
+      </contained>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_WfGBQNdxEd-Hv89eFB3QSQ" position="168,34" size="100,-1">
+      <anchorage xmi:id="_dXSBEddxEd-Hv89eFB3QSQ" graphEdge="_YXftUtdxEd-Hv89eFB3QSQ _iqnUMdd3Ed-Hv89eFB3QSQ"/>
+      <anchorage xmi:id="_iqnUMNd3Ed-Hv89eFB3QSQ" graphEdge="_iqnUMdd3Ed-Hv89eFB3QSQ"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_WfGBQddxEd-Hv89eFB3QSQ" presentation="default">
+        <element href="Selkis_VASCO_ORBAC.uml#_WfGBSNdxEd-Hv89eFB3QSQ"/>
+      </semanticModel>
+      <contained xsi:type="di:GraphNode" xmi:id="_WfGBQtdxEd-Hv89eFB3QSQ">
+        <property xmi:id="_WfGBQ9dxEd-Hv89eFB3QSQ" key="eStructuralFeatureID" value="37"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_WfGBRNdxEd-Hv89eFB3QSQ" presentation="default">
+          <element href="Selkis_VASCO_ORBAC.uml#_WfGBSNdxEd-Hv89eFB3QSQ"/>
+        </semanticModel>
+      </contained>
+      <contained xsi:type="di:GraphNode" xmi:id="_WfGBRddxEd-Hv89eFB3QSQ">
+        <property xmi:id="_WfGBRtdxEd-Hv89eFB3QSQ" key="eStructuralFeatureID" value="47 50 "/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_WfGBR9dxEd-Hv89eFB3QSQ" presentation="default">
+          <element href="Selkis_VASCO_ORBAC.uml#_WfGBSNdxEd-Hv89eFB3QSQ"/>
+        </semanticModel>
+      </contained>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_YXftUtdxEd-Hv89eFB3QSQ" anchor="_dXSBENdxEd-Hv89eFB3QSQ _dXSBEddxEd-Hv89eFB3QSQ">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_YXftU9dxEd-Hv89eFB3QSQ" presentation="default">
+        <element href="Selkis_VASCO_ORBAC.uml#_YXftYtdxEd-Hv89eFB3QSQ"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_YXftVNdxEd-Hv89eFB3QSQ" id="srcNameEdgeObject" uDistance="10" vDistance="19"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_YXftVddxEd-Hv89eFB3QSQ" id="srcCountEdgeObject" uDistance="10" vDistance="-10"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_YXftVtdxEd-Hv89eFB3QSQ" id="targetNameEdgeObject" uDistance="22" vDistance="-31"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_YXftV9dxEd-Hv89eFB3QSQ" id="targetCountEdgeObject" uDistance="10" vDistance="20"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_YXftWNdxEd-Hv89eFB3QSQ" visible="false" id="middleNameEdgeObject" offset="0,20"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_YXftWddxEd-Hv89eFB3QSQ" id="stereotypeEdgeObject"/>
+      <contained xsi:type="di:GraphNode" xmi:id="_YXftWtdxEd-Hv89eFB3QSQ" position="346,188" size="100,-1">
+        <anchorage xmi:id="_nKUocddxEd-Hv89eFB3QSQ" graphEdge="_nKUoctdxEd-Hv89eFB3QSQ _DrQ5YNdyEd-Hv89eFB3QSQ _JNDRgddzEd-Hv89eFB3QSQ"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_YXftW9dxEd-Hv89eFB3QSQ" presentation="default">
+          <element href="Selkis_VASCO_ORBAC.uml#_YXftYtdxEd-Hv89eFB3QSQ"/>
+        </semanticModel>
+        <contained xsi:type="di:GraphNode" xmi:id="_YXftXNdxEd-Hv89eFB3QSQ">
+          <property xmi:id="_YXftXddxEd-Hv89eFB3QSQ" key="eStructuralFeatureID" value="37"/>
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_YXftXtdxEd-Hv89eFB3QSQ" presentation="default">
+            <element href="Selkis_VASCO_ORBAC.uml#_YXftYtdxEd-Hv89eFB3QSQ"/>
+          </semanticModel>
+        </contained>
+        <contained xsi:type="di:GraphNode" xmi:id="_YXftX9dxEd-Hv89eFB3QSQ">
+          <property xmi:id="_YXftYNdxEd-Hv89eFB3QSQ" key="eStructuralFeatureID" value="47 50 "/>
+          <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_YXftYddxEd-Hv89eFB3QSQ" presentation="default">
+            <element href="Selkis_VASCO_ORBAC.uml#_YXftYtdxEd-Hv89eFB3QSQ"/>
+          </semanticModel>
+        </contained>
+      </contained>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_nKUoctdxEd-Hv89eFB3QSQ" anchor="_nKUocNdxEd-Hv89eFB3QSQ _nKUocddxEd-Hv89eFB3QSQ">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_nKUoc9dxEd-Hv89eFB3QSQ" presentation="default">
+        <element href="Selkis_VASCO_ORBAC.uml#_nKUofNdxEd-Hv89eFB3QSQ"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_nKUodNdxEd-Hv89eFB3QSQ" id="srcNameEdgeObject" uDistance="20" vDistance="9"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_nKUodddxEd-Hv89eFB3QSQ" id="srcPropertiesEdgeObject" uDistance="25" vDistance="10"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_nKUodtdxEd-Hv89eFB3QSQ" id="srcCountEdgeObject" uDistance="10" vDistance="-10"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_nKUod9dxEd-Hv89eFB3QSQ" id="targetNameEdgeObject" uDistance="6" vDistance="18"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_nKUoeNdxEd-Hv89eFB3QSQ" id="targetPropertiesEdgeObject" uDistance="25" vDistance="10"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_nKUoeddxEd-Hv89eFB3QSQ" id="targetCountEdgeObject" uDistance="8" vDistance="-1"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_nKUoetdxEd-Hv89eFB3QSQ" id="middleNameEdgeObject" offset="0,10"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_nKUoe9dxEd-Hv89eFB3QSQ" id="stereotypeEdgeObject" offset="0,-10"/>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_zrQZcNdxEd-Hv89eFB3QSQ" position="168,315" size="100,-1">
+      <anchorage xmi:id="_1IsAwNdxEd-Hv89eFB3QSQ" graphEdge="_1IsAwddxEd-Hv89eFB3QSQ _DrQ5YNdyEd-Hv89eFB3QSQ"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_zrQZcddxEd-Hv89eFB3QSQ" presentation="default">
+        <element href="Selkis_VASCO_ORBAC.uml#_zrQZeNdxEd-Hv89eFB3QSQ"/>
+      </semanticModel>
+      <contained xsi:type="di:GraphNode" xmi:id="_zrQZctdxEd-Hv89eFB3QSQ">
+        <property xmi:id="_zrQZc9dxEd-Hv89eFB3QSQ" key="eStructuralFeatureID" value="37"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_zrQZdNdxEd-Hv89eFB3QSQ" presentation="default">
+          <element href="Selkis_VASCO_ORBAC.uml#_zrQZeNdxEd-Hv89eFB3QSQ"/>
+        </semanticModel>
+      </contained>
+      <contained xsi:type="di:GraphNode" xmi:id="_zrQZdddxEd-Hv89eFB3QSQ">
+        <property xmi:id="_zrQZdtdxEd-Hv89eFB3QSQ" key="eStructuralFeatureID" value="47 50 "/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_zrQZd9dxEd-Hv89eFB3QSQ" presentation="default">
+          <element href="Selkis_VASCO_ORBAC.uml#_zrQZeNdxEd-Hv89eFB3QSQ"/>
+        </semanticModel>
+      </contained>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_1IsAwddxEd-Hv89eFB3QSQ" anchor="_nKUocNdxEd-Hv89eFB3QSQ _1IsAwNdxEd-Hv89eFB3QSQ">
+      <property xmi:id="_5Q6k8NdyEd-Hv89eFB3QSQ" key="router" value="Rectilinear"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_1IsAwtdxEd-Hv89eFB3QSQ" presentation="default">
+        <element href="Selkis_VASCO_ORBAC.uml#_1IsAy9dxEd-Hv89eFB3QSQ"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_1IsAw9dxEd-Hv89eFB3QSQ" id="srcNameEdgeObject" uDistance="3" vDistance="-27"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_1IsAxNdxEd-Hv89eFB3QSQ" id="srcPropertiesEdgeObject" uDistance="25" vDistance="10"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_1IsAxddxEd-Hv89eFB3QSQ" id="srcCountEdgeObject" uDistance="9" vDistance="4"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_1IsAxtdxEd-Hv89eFB3QSQ" id="targetNameEdgeObject" uDistance="10" vDistance="10"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_1IsAx9dxEd-Hv89eFB3QSQ" id="targetPropertiesEdgeObject" uDistance="25" vDistance="10"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_1IsAyNdxEd-Hv89eFB3QSQ" id="targetCountEdgeObject" uDistance="10" vDistance="-10"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_1IsAyddxEd-Hv89eFB3QSQ" visible="false" id="middleNameEdgeObject" offset="0,10"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_1IsAytdxEd-Hv89eFB3QSQ" id="stereotypeEdgeObject" offset="0,-10"/>
+      <waypoints>[19, 159, -133, 0]</waypoints>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_DrQ5YNdyEd-Hv89eFB3QSQ" anchor="_1IsAwNdxEd-Hv89eFB3QSQ _nKUocddxEd-Hv89eFB3QSQ">
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_DrQ5YddyEd-Hv89eFB3QSQ" presentation="default">
+        <element href="Selkis_VASCO_ORBAC.uml#_DrQ5atdyEd-Hv89eFB3QSQ"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_DrQ5YtdyEd-Hv89eFB3QSQ" id="srcNameEdgeObject" uDistance="10" vDistance="10"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_DrQ5Y9dyEd-Hv89eFB3QSQ" id="srcPropertiesEdgeObject" uDistance="25" vDistance="10"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_DrQ5ZNdyEd-Hv89eFB3QSQ" id="srcCountEdgeObject" uDistance="10" vDistance="-10"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_DrQ5ZddyEd-Hv89eFB3QSQ" id="targetNameEdgeObject" uDistance="8" vDistance="5"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_DrQ5ZtdyEd-Hv89eFB3QSQ" id="targetPropertiesEdgeObject" uDistance="25" vDistance="10"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_DrQ5Z9dyEd-Hv89eFB3QSQ" id="targetCountEdgeObject" uDistance="9" vDistance="-3"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_DrQ5aNdyEd-Hv89eFB3QSQ" visible="false" id="middleNameEdgeObject" offset="0,10"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_DrQ5addyEd-Hv89eFB3QSQ" id="stereotypeEdgeObject" offset="0,-10"/>
+      <waypoints>[154, 0, 0, 157]</waypoints>
+    </contained>
+    <contained xsi:type="di:GraphNode" xmi:id="_DcF_gNdzEd-Hv89eFB3QSQ" position="666,156" size="100,-1">
+      <anchorage xmi:id="_JNDRgNdzEd-Hv89eFB3QSQ" graphEdge="_6F2MYddzEd-Hv89eFB3QSQ _JNDRgddzEd-Hv89eFB3QSQ"/>
+      <anchorage xmi:id="_6F2MYNdzEd-Hv89eFB3QSQ" graphEdge="_6F2MYddzEd-Hv89eFB3QSQ"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_DcF_gddzEd-Hv89eFB3QSQ" presentation="default">
+        <element href="Selkis_VASCO_ORBAC.uml#_DcF_iNdzEd-Hv89eFB3QSQ"/>
+      </semanticModel>
+      <contained xsi:type="di:GraphNode" xmi:id="_DcF_gtdzEd-Hv89eFB3QSQ">
+        <property xmi:id="_DcF_g9dzEd-Hv89eFB3QSQ" key="eStructuralFeatureID" value="37"/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_DcF_hNdzEd-Hv89eFB3QSQ" presentation="default">
+          <element href="Selkis_VASCO_ORBAC.uml#_DcF_iNdzEd-Hv89eFB3QSQ"/>
+        </semanticModel>
+      </contained>
+      <contained xsi:type="di:GraphNode" xmi:id="_DcF_hddzEd-Hv89eFB3QSQ">
+        <property xmi:id="_DcF_htdzEd-Hv89eFB3QSQ" key="eStructuralFeatureID" value="47 50 "/>
+        <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_DcF_h9dzEd-Hv89eFB3QSQ" presentation="default">
+          <element href="Selkis_VASCO_ORBAC.uml#_DcF_iNdzEd-Hv89eFB3QSQ"/>
+        </semanticModel>
+      </contained>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_JNDRgddzEd-Hv89eFB3QSQ" anchor="_nKUocddxEd-Hv89eFB3QSQ _JNDRgNdzEd-Hv89eFB3QSQ">
+      <property xmi:id="_aVmigNeiEd-M0alx1fbymw" key="router" value="Oblique"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_JNDRgtdzEd-Hv89eFB3QSQ" presentation="default">
+        <element href="Selkis_VASCO_ORBAC.uml#_JNDRi9dzEd-Hv89eFB3QSQ"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_JNDRg9dzEd-Hv89eFB3QSQ" id="srcNameEdgeObject" uDistance="16" vDistance="-15"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_JNDRhNdzEd-Hv89eFB3QSQ" id="srcPropertiesEdgeObject" uDistance="25" vDistance="10"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_JNDRhddzEd-Hv89eFB3QSQ" id="srcCountEdgeObject" uDistance="2" vDistance="4"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_JNDRhtdzEd-Hv89eFB3QSQ" id="targetNameEdgeObject" uDistance="42" vDistance="7"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_JNDRh9dzEd-Hv89eFB3QSQ" id="targetPropertiesEdgeObject" uDistance="25" vDistance="10"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_JNDRiNdzEd-Hv89eFB3QSQ" id="targetCountEdgeObject" uDistance="10" vDistance="-2"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_JNDRiddzEd-Hv89eFB3QSQ" id="middleNameEdgeObject" offset="54,-31"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_JNDRitdzEd-Hv89eFB3QSQ" id="stereotypeEdgeObject" offset="0,-10"/>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_6F2MYddzEd-Hv89eFB3QSQ" anchor="_JNDRgNdzEd-Hv89eFB3QSQ _6F2MYNdzEd-Hv89eFB3QSQ">
+      <property xmi:id="_7nJnENdzEd-Hv89eFB3QSQ" key="router" value="Rectilinear"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_6F2MYtdzEd-Hv89eFB3QSQ" presentation="default">
+        <element href="Selkis_VASCO_ORBAC.uml#_6F2Ma9dzEd-Hv89eFB3QSQ"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_6F2MY9dzEd-Hv89eFB3QSQ" id="srcNameEdgeObject" uDistance="3" vDistance="-23"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_6F2MZNdzEd-Hv89eFB3QSQ" id="srcPropertiesEdgeObject" uDistance="25" vDistance="10"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_6F2MZddzEd-Hv89eFB3QSQ" id="srcCountEdgeObject" uDistance="18" vDistance="1"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_6F2MZtdzEd-Hv89eFB3QSQ" id="targetNameEdgeObject" uDistance="44"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_6F2MZ9dzEd-Hv89eFB3QSQ" id="targetPropertiesEdgeObject" uDistance="25" vDistance="10"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_6F2MaNdzEd-Hv89eFB3QSQ" id="targetCountEdgeObject" uDistance="4" vDistance="10"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_6F2MaddzEd-Hv89eFB3QSQ" visible="false" id="middleNameEdgeObject" offset="1,0"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_6F2MatdzEd-Hv89eFB3QSQ" id="stereotypeEdgeObject" offset="0,-10"/>
+      <waypoints>[94, 4, 94, 4]</waypoints>
+      <waypoints>[94, 53, 94, 53]</waypoints>
+      <waypoints>[35, 53, 35, 53]</waypoints>
+    </contained>
+    <contained xsi:type="di:GraphEdge" xmi:id="_iqnUMdd3Ed-Hv89eFB3QSQ" anchor="_dXSBEddxEd-Hv89eFB3QSQ _iqnUMNd3Ed-Hv89eFB3QSQ">
+      <property xmi:id="_l_tAsNd3Ed-Hv89eFB3QSQ" key="router" value="Rectilinear"/>
+      <semanticModel xsi:type="di:EMFSemanticModelBridge" xmi:id="_iqnUMtd3Ed-Hv89eFB3QSQ" presentation="default">
+        <element href="Selkis_VASCO_ORBAC.uml#_iqnUO9d3Ed-Hv89eFB3QSQ"/>
+      </semanticModel>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_iqnUM9d3Ed-Hv89eFB3QSQ" id="srcNameEdgeObject" uDistance="10" vDistance="10"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_iqnUNNd3Ed-Hv89eFB3QSQ" id="srcPropertiesEdgeObject" uDistance="25" vDistance="10"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_iqnUNdd3Ed-Hv89eFB3QSQ" id="srcCountEdgeObject" uDistance="20" vDistance="-2"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_iqnUNtd3Ed-Hv89eFB3QSQ" id="targetNameEdgeObject" uDistance="25" vDistance="5"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_iqnUN9d3Ed-Hv89eFB3QSQ" id="targetPropertiesEdgeObject" uDistance="25" vDistance="10"/>
+      <contained xsi:type="di:EdgeObjectUV" xmi:id="_iqnUONd3Ed-Hv89eFB3QSQ" id="targetCountEdgeObject" uDistance="10" vDistance="-10"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_iqnUOdd3Ed-Hv89eFB3QSQ" visible="false" id="middleNameEdgeObject" offset="0,10"/>
+      <contained xsi:type="di:EdgeObjectOffset" xmi:id="_iqnUOtd3Ed-Hv89eFB3QSQ" id="stereotypeEdgeObject" offset="0,-10"/>
+      <waypoints>[-87, 7, -87, 7]</waypoints>
+      <waypoints>[-87, 61, -87, 61]</waypoints>
+      <waypoints>[7, 61, 7, 61]</waypoints>
+    </contained>
+  </diagrams>
+</diagrams:Diagrams>

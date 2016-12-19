@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_qb8akM37EdqwVrslYOdUDA" name="Selkis_VASCO_ORBAC">
+  <packagedElement xmi:type="uml:Package" xmi:id="_w8IxIM37EdqwVrslYOdUDA" name="Selkis_VASCO_ORBAC">
+    <packagedElement xmi:type="uml:Class" xmi:id="_Ru0JINdxEd-Hv89eFB3QSQ" name="User"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_VIOU-NdxEd-Hv89eFB3QSQ" name="Org"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_WfGBSNdxEd-Hv89eFB3QSQ" name="Role"/>
+    <packagedElement xmi:type="uml:AssociationClass" xmi:id="_YXftYtdxEd-Hv89eFB3QSQ" name="Position" memberEnd="_YXftY9dxEd-Hv89eFB3QSQ _YXftZtdxEd-Hv89eFB3QSQ" navigableOwnedEnd="_YXftY9dxEd-Hv89eFB3QSQ _YXftZtdxEd-Hv89eFB3QSQ">
+      <ownedEnd xmi:id="_YXftY9dxEd-Hv89eFB3QSQ" name="org" type="_VIOU-NdxEd-Hv89eFB3QSQ" association="_YXftYtdxEd-Hv89eFB3QSQ">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_YXftZNdxEd-Hv89eFB3QSQ" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_YXftZddxEd-Hv89eFB3QSQ"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_YXftZtdxEd-Hv89eFB3QSQ" name="role" type="_WfGBSNdxEd-Hv89eFB3QSQ" association="_YXftYtdxEd-Hv89eFB3QSQ">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_YXftZ9dxEd-Hv89eFB3QSQ" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_YXftaNdxEd-Hv89eFB3QSQ"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_nKUofNdxEd-Hv89eFB3QSQ" name="UserAssignment" memberEnd="_nKUofddxEd-Hv89eFB3QSQ _nKUogNdxEd-Hv89eFB3QSQ" navigableOwnedEnd="_nKUogNdxEd-Hv89eFB3QSQ">
+      <ownedEnd xmi:id="_nKUofddxEd-Hv89eFB3QSQ" name="user" type="_Ru0JINdxEd-Hv89eFB3QSQ" association="_nKUofNdxEd-Hv89eFB3QSQ">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_nKUoftdxEd-Hv89eFB3QSQ" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_nKUof9dxEd-Hv89eFB3QSQ"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_nKUogNdxEd-Hv89eFB3QSQ" name="positions" type="_YXftYtdxEd-Hv89eFB3QSQ" association="_nKUofNdxEd-Hv89eFB3QSQ">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_nKUogddxEd-Hv89eFB3QSQ" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_nKUogtdxEd-Hv89eFB3QSQ"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_zrQZeNdxEd-Hv89eFB3QSQ" name="Session"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_1IsAy9dxEd-Hv89eFB3QSQ" name="SessionUser" memberEnd="_1IsAzNdxEd-Hv89eFB3QSQ _1IsAz9dxEd-Hv89eFB3QSQ" navigableOwnedEnd="_1IsAzNdxEd-Hv89eFB3QSQ _1IsAz9dxEd-Hv89eFB3QSQ">
+      <ownedEnd xmi:id="_1IsAzNdxEd-Hv89eFB3QSQ" name="user" visibility="private" type="_Ru0JINdxEd-Hv89eFB3QSQ" isReadOnly="true" association="_1IsAy9dxEd-Hv89eFB3QSQ">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_1IsAzddxEd-Hv89eFB3QSQ" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_1IsAztdxEd-Hv89eFB3QSQ" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_1IsAz9dxEd-Hv89eFB3QSQ" name="session" type="_zrQZeNdxEd-Hv89eFB3QSQ" association="_1IsAy9dxEd-Hv89eFB3QSQ">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_1IsA0NdxEd-Hv89eFB3QSQ" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_1IsA0ddxEd-Hv89eFB3QSQ"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_DrQ5atdyEd-Hv89eFB3QSQ" name="SessionActivePositions" memberEnd="_DrQ5a9dyEd-Hv89eFB3QSQ _DrQ5btdyEd-Hv89eFB3QSQ" navigableOwnedEnd="_DrQ5btdyEd-Hv89eFB3QSQ">
+      <ownedEnd xmi:id="_DrQ5a9dyEd-Hv89eFB3QSQ" name="session" type="_zrQZeNdxEd-Hv89eFB3QSQ" association="_DrQ5atdyEd-Hv89eFB3QSQ">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_DrQ5bNdyEd-Hv89eFB3QSQ" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_DrQ5bddyEd-Hv89eFB3QSQ"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_DrQ5btdyEd-Hv89eFB3QSQ" name="activePositions" type="_YXftYtdxEd-Hv89eFB3QSQ" association="_DrQ5atdyEd-Hv89eFB3QSQ">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_DrQ5b9dyEd-Hv89eFB3QSQ" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_DrQ5cNdyEd-Hv89eFB3QSQ" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_DcF_iNdzEd-Hv89eFB3QSQ" name="Action"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_JNDRi9dzEd-Hv89eFB3QSQ" name="PermissionAssignment" memberEnd="_JNDRjNdzEd-Hv89eFB3QSQ _JNDRj9dzEd-Hv89eFB3QSQ" navigableOwnedEnd="_JNDRj9dzEd-Hv89eFB3QSQ">
+      <ownedEnd xmi:id="_JNDRjNdzEd-Hv89eFB3QSQ" name="position" type="_YXftYtdxEd-Hv89eFB3QSQ" association="_JNDRi9dzEd-Hv89eFB3QSQ">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JNDRjddzEd-Hv89eFB3QSQ" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JNDRjtdzEd-Hv89eFB3QSQ"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_JNDRj9dzEd-Hv89eFB3QSQ" name="action" type="_DcF_iNdzEd-Hv89eFB3QSQ" association="_JNDRi9dzEd-Hv89eFB3QSQ">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JNDRkNdzEd-Hv89eFB3QSQ" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JNDRkddzEd-Hv89eFB3QSQ"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_6F2Ma9dzEd-Hv89eFB3QSQ" name="SubActions" memberEnd="_6F2MbNdzEd-Hv89eFB3QSQ _6F2Mb9dzEd-Hv89eFB3QSQ" navigableOwnedEnd="_6F2MbNdzEd-Hv89eFB3QSQ">
+      <ownedEnd xmi:id="_6F2MbNdzEd-Hv89eFB3QSQ" name="subActions" type="_DcF_iNdzEd-Hv89eFB3QSQ" aggregation="composite" association="_6F2Ma9dzEd-Hv89eFB3QSQ">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_6F2MbddzEd-Hv89eFB3QSQ" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_6F2MbtdzEd-Hv89eFB3QSQ"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_6F2Mb9dzEd-Hv89eFB3QSQ" name="parentAction" visibility="private" type="_DcF_iNdzEd-Hv89eFB3QSQ" isReadOnly="true" association="_6F2Ma9dzEd-Hv89eFB3QSQ">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_6F2McNdzEd-Hv89eFB3QSQ" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_6F2McddzEd-Hv89eFB3QSQ"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_iqnUO9d3Ed-Hv89eFB3QSQ" name="RoleInheritance" memberEnd="_iqnUPNd3Ed-Hv89eFB3QSQ _iqnUP9d3Ed-Hv89eFB3QSQ" navigableOwnedEnd="_iqnUPNd3Ed-Hv89eFB3QSQ _iqnUP9d3Ed-Hv89eFB3QSQ">
+      <ownedEnd xmi:id="_iqnUPNd3Ed-Hv89eFB3QSQ" name="subRoles" type="_WfGBSNdxEd-Hv89eFB3QSQ" association="_iqnUO9d3Ed-Hv89eFB3QSQ">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iqnUPdd3Ed-Hv89eFB3QSQ" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iqnUPtd3Ed-Hv89eFB3QSQ"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_iqnUP9d3Ed-Hv89eFB3QSQ" name="parentRole" type="_WfGBSNdxEd-Hv89eFB3QSQ" association="_iqnUO9d3Ed-Hv89eFB3QSQ">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iqnUQNd3Ed-Hv89eFB3QSQ" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iqnUQdd3Ed-Hv89eFB3QSQ"/>
+      </ownedEnd>
+    </packagedElement>
+  </packagedElement>
+</uml:Model>

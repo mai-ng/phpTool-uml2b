@@ -1,0 +1,19 @@
+import ecore;
+
+
+
+
+String getURI(EObject o): 
+JAVA fr.lig.vasco.selkis.ctm.emf.util.EMFHelper.getURI(org.eclipse.emf.ecore.EObject);
+
+EObject getEObjectFromRS(String uri,EObject o): 
+JAVA fr.lig.vasco.selkis.ctm.emf.util.EMFHelper.getObjectInSameResourceSet(java.lang.String 
+																,org.eclipse.emf.ecore.EObject);
+
+String getURIFragment(EObject o): 
+JAVA fr.lig.vasco.selkis.ctm.emf.util.EMFHelper.getURIFragment(org.eclipse.emf.ecore.EObject);
+
+
+EObject resolveProxy(EObject o,EObject ctx): 
+	JAVA org.eclipse.emf.ecore.util.EcoreUtil.resolve(org.eclipse.emf.ecore.EObject
+													,org.eclipse.emf.ecore.EObject);

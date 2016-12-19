@@ -1,0 +1,143 @@
+import uml;
+import trace;
+import b;
+import ecore;
+
+
+extension UMLHelper;
+extension EMFHelper;
+extension BHelper;
+extension TransformationContext;
+
+
+/*
+EObject mappedTo(uml::Element e,EClass type):
+let src=TRACE().resolve(e.getURI().toString() ):
+	((src!=null)&&(src.mapping.dest.ref!=null))?
+	(
+		//get BElement from trace
+		//debug("resolved '"+e.getQualifiedName()+"'  \n\t uri: "+getURI(e).toString()+" \n\t  src: "+src+"  \n\t dest ref : "+src.mapping.dest.ref)->
+		//debug(getEObjectFromRS(src.mapping.dest.ref ,e).toString())->
+		(	let o=src.mapping.dest.ref.collect(r|r.getEObjectFromRS(e) ).select(i | type.isInstance(i)).first():
+		//getEObjectFromRS(src.mapping.dest.ref ,e):
+			(	(o!=null)?
+					o
+				:(//get BElement from spec using name
+					debug(" mappedTo("+((uml::NamedElement) e).qualifiedName+", "+type+") :Enable to getEObjectFromRS '"+src.mapping.dest.ref+"'  \n\t  srcContext: "+e)->
+					debug("ref:  "+src.mapping.dest.ref.collect(r|r.getEObjectFromRS(e) ))->
+				//	BSPEC().eAllContents.typeSelect(BNamedElement).selectFirst(b|b.name==e.getCannonicalName() )
+				null
+				)
+			
+			)
+		)
+	)
+	:
+	(//get BElement from spec using name
+		debug("Enable to resolve '"+e.getQualifiedName()+"'  \n\t uri: "+getURI(e).toString()+" \n\t  src: "+src+"  \n\t dest ref : "+src.mapping.dest.ref+"\n\t mappings : "+TRACE().maps)->
+	//	BSPEC().eAllContents.typeSelect(BNamedElement).selectFirst(b|b.name==e.getCannonicalName() )
+	null
+	)
+
+;
+*/
+
+
+EObject mappedTo(uml::Element e,xpand2::Type type):
+let src=TRACE().resolve(e.getURI().toString() ):
+	((src!=null)&&(src.mapping.dest.ref!=null))?
+	(
+		//get BElement from trace
+		//debug("resolved '"+e.getQualifiedName()+"'  \n\t uri: "+getURI(e).toString()+" \n\t  src: "+src+"  \n\t dest ref : "+src.mapping.dest.ref)->
+		//debug(getEObjectFromRS(src.mapping.dest.ref ,e).toString())->
+		(	let o=src.mapping.dest.ref.collect(r|r.getEObjectFromRS(e) ).select(i | type.isInstance(i)).first():
+		//getEObjectFromRS(src.mapping.dest.ref ,e):
+			(	(o!=null)?
+					o
+				:(//get BElement from spec using name
+					debug(" mappedTo("+((uml::NamedElement) e).qualifiedName+", "+type+") :Enable to getEObjectFromRS '"+src.mapping.dest.ref+"'  \n\t  srcContext: "+e)->
+					debug("ref:  "+src.mapping.dest.ref.collect(r|r.getEObjectFromRS(e) ))->
+				//	BSPEC().eAllContents.typeSelect(BNamedElement).selectFirst(b|b.name==e.getCannonicalName() )
+				null
+				)			
+			)
+		)
+	)
+	:
+	(//get BElement from spec using name
+		debug("Enable to resolve '"+e.getQualifiedName()+"'  \n\t uri: "+getURI(e).toString()+" \n\t  src: "+src+"  \n\t dest ref : "+src.mapping.dest.ref+"\n\t mappings : "+TRACE().maps)->
+	//	BSPEC().eAllContents.typeSelect(BNamedElement).selectFirst(b|b.name==e.getCannonicalName() )
+	null
+	)
+;
+
+
+
+EObject mappedTo(uml::Element e):
+let src=TRACE().resolve( getURI(e).toString() ):
+	((src!=null)&&(src.mapping.dest.ref!=null))?
+	(
+		//get BElement from trace
+		//debug("resolved '"+e.getQualifiedName()+"'  \n\t uri: "+getURI(e).toString()+" \n\t  src: "+src+"  \n\t dest ref : "+src.mapping.dest.ref)->
+		//debug(getEObjectFromRS(src.mapping.dest.ref ,e).toString())->
+		(	let o=getEObjectFromRS(src.mapping.dest.ref.first() ,e):
+			(	(o!=null)?
+					o
+				:(//get BElement from spec using name
+					debug("Enable to getEObjectFromRS '"+src.mapping.dest.ref+"'  \n\t  srcContext: "+e)->
+					BSPEC().eAllContents.typeSelect(BNamedElement).selectFirst(b|b.name==e.getCannonicalName() )
+				)
+			
+			)
+		)
+	)
+	:
+	(//get BElement from spec using name
+		debug("Enable to resolve '"+e.getQualifiedName()+"'  \n\t uri: "+getURI(e).toString()+" \n\t  src: "+src+"  \n\t dest ref : "+src.mapping.dest.ref)->
+		BSPEC().eAllContents.typeSelect(BNamedElement).selectFirst(b|b.name==e.getCannonicalName() )
+	
+	)
+
+;
+
+//BVariable mappedToBVariable(uml::Element e):mappedTo(e,BVariable);
+//BMachine mappedToBMachine(uml::Element e):mappedTo(e,BMachine);
+
+BVariable mappedToBVariable(uml::Element e):
+let dest=mappedTo(e,EObject)://mappedTo(e):
+	(BVariable.isInstance(dest))?
+		dest
+	:(
+		(BMachine.isInstance(dest))?(
+			(BVariable) ((BMachine)dest).data.select(
+				e | (e.name==((BMachine)dest).name)&&(BVariable.isInstance(e))  
+			).first()
+		):
+			null
+	)
+;
+
+
+BVariable mappedToBAbstractSet(uml::Element e):
+let dest=mappedTo(e,EObject):
+	(BAbstractSet.isInstance(dest))?
+		dest
+	:
+			null
+	
+;
+
+
+
+BMachine mappedToBMachine(uml::Element e):
+let dest=mappedTo(e,EObject)://mappedTo(e):
+	(BMachine.isInstance(dest))?
+		dest
+	:(
+		(BVariable.isInstance(dest))?(
+			 ((BVariable)dest).datadeclare
+		):
+			null
+	)
+;
+

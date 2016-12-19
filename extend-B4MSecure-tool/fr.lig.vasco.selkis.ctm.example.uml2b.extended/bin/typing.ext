@@ -1,0 +1,71 @@
+import uml;
+import b;
+import trace;//
+import ecore;//to use some ecore feature
+import transformationconfig;
+
+extension ConfigHelper;
+extension BHelper;
+extension TransformationContext;
+
+
+
+/*
+some out of date Model or some static casting operation may appear like error(oAW Problem) but it still runnable;
+*/
+
+create BPowType this createBPowType(BType t ):
+this.setPow(t)-> BSPEC().sharedTypes.sharedTypes.add(this)-> this;
+
+//M2 level
+setTypeM2(BVariable var, BType as):
+(isPowerdClassType())?(
+let p=new TypingPredicate:
+p.setOperator(TypingOperator::In)->
+p.setType(createBPowType(as))->
+var.typingPredicate.add(p)->
+p.setName(var.name+" In P("+as.name+")")
+):(
+let p=new TypingPredicate:
+p.setOperator(TypingOperator::SubSetEqual)->
+p.setType(as)->
+var.typingPredicate.add(p)->
+p.setName(var.name+" SubSetEqual "+as.name)
+)
+->
+var.setType(as)->
+var;
+
+
+//	TODO change BVariable to BTypedElement
+//	M1 level
+setType(BVariable var,BType as,Element e):
+(isPowerdClassType(e))?(//var In P(as)
+	let p=new TypingPredicate:
+	p.setOperator(TypingOperator::In)->
+	p.setType(createBPowType(as))->
+	var.typingPredicate.add(p)
+	//->	//p.setName(var.name+" "+getPrintableString(p.operator)+" "+getPrintableString(p.type))
+):(// var subSetEqual as
+	let p=new TypingPredicate:
+	p.setOperator(TypingOperator::SubSetEqual)->
+	p.setType(as)->
+	var.typingPredicate.add(p)
+	//->p.setName(var.name+" "+getPrintableString(p.operator)+" "+getPrintableString(p.type))
+)
+->
+var.setType(as)->
+var;
+
+
+
+setRelType(BTypedElement var,BType as):// var : as
+	let p=new TypingPredicate:
+	p.setOperator(TypingOperator::In)->
+	p.setType(as)->
+	var.setType(as)->
+	var.typingPredicate.add(p)
+	//->p.setName(var.name+" "+getPrintableString(p.operator)+" "+getPrintableString(p.type) )
+	;
+	
+	
