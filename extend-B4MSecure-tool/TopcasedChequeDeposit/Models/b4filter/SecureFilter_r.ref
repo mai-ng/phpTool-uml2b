@@ -1,0 +1,31 @@
+REFINEMENT SecureFilter_r
+REFINES SecureFilter
+	
+SEES 
+   Context, ADTranslation, SecureUMLTranslation, SecureUMLContext
+   
+INCLUDES
+    ActionsHistory	
+    
+OPERATIONS
+	
+result,access<--FilterDeposit__validate(ch, cl, usr)=
+ VAR staticRight IN
+	staticRight<--SecureDeposit__validate(usr);
+	IF staticRight = granted THEN
+		VAR dynamicRight IN
+			dynamicRight<--ADDeposit__validate(ch, cl, usr);
+			IF dynamicRight = granted THEN
+				result<--ExecutionDeposit__validate(ch, usr)
+			ELSE
+				result := Ko
+			END;
+			access := dynamicRight
+		END
+	ELSE
+		access := denied; result := Ko
+	END
+ END
+
+END
+ 

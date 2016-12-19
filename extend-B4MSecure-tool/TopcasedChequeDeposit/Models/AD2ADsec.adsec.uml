@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adsec:DynamicPolicy xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:adsec="http://adsec/1.0" xmi:id="_p6iAkP0FEeWhP6YaK2CglQ">
+  <operations xmi:id="_p6iAkf0FEeWhP6YaK2CglQ" name="Deposit__validate">
+    <postOperation xmi:id="_p6iAkv0FEeWhP6YaK2CglQ" operationToSecure="Deposit__validate" name="User__leaveBank">
+      <parameters xmi:id="_p6iAk_0FEeWhP6YaK2CglQ" operationToSecure="Deposit__validate" type="User" name="uu"/>
+    </postOperation>
+    <preOperation xmi:id="_p6iAlP0FEeWhP6YaK2CglQ" operationToSecure="Deposit__validate" orderExecution="1" name="Deposit__create">
+      <actor xmi:id="_p6iAlf0FEeWhP6YaK2CglQ" operationToSecure="Deposit__validate" actOn="Deposit__create" name="usr1"/>
+      <parameters xmi:id="_p6iAlv0FEeWhP6YaK2CglQ" operationToSecure="Deposit__validate" type="Cheque" name="ch"/>
+      <parameters xmi:id="_p6iAl_0FEeWhP6YaK2CglQ" operationToSecure="Deposit__validate" type="Client" name="cl"/>
+      <preOperation xmi:id="_p6iAmP0FEeWhP6YaK2CglQ" operationToSecure="Deposit__validate" orderExecution="2" name="User__joinBank">
+        <parameters xmi:id="_p6iAmf0FEeWhP6YaK2CglQ" operationToSecure="Deposit__validate" type="User" name="uu"/>
+        <parameters xmi:id="_p6iAmv0FEeWhP6YaK2CglQ" operationToSecure="Deposit__validate" type="Bank" name="bb"/>
+      </preOperation>
+    </preOperation>
+    <actor xmi:id="_p6iAm_0FEeWhP6YaK2CglQ" operationToSecure="Deposit__validate" actOn="Deposit__validate" name="usr2"/>
+    <parameters xmi:id="_p6iAnP0FEeWhP6YaK2CglQ" operationToSecure="Deposit__validate" type="Cheque" name="ch"/>
+  </operations>
+</adsec:DynamicPolicy>

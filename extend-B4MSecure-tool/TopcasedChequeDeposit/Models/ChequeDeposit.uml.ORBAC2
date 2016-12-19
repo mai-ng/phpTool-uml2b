@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ORBAC2:Policy xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ORBAC2="http://ORBAC2/1.0">
+  <roles permissions="//@permissions.0" name="Teller"/>
+  <roles permissions="//@permissions.1" name="Advisor"/>
+  <permissions role="//@roles.0" name="TellerPerm">
+    <actions xsi:type="ORBAC2:MethodAction">
+      <operation href="ChequeDeposit.uml#_IWplkPzWEeW5WKAC5NQtKA"/>
+    </actions>
+    <actions xsi:type="ORBAC2:MethodAction">
+      <operation href="ChequeDeposit.uml#_JPLwEPzWEeW5WKAC5NQtKA"/>
+    </actions>
+    <actions xsi:type="ORBAC2:MethodAction">
+      <operation href="ChequeDeposit.uml#_LDdKEPzWEeW5WKAC5NQtKA"/>
+    </actions>
+    <entity href="ChequeDeposit.uml#_K8lX8PzUEeW5WKAC5NQtKA"/>
+  </permissions>
+  <permissions role="//@roles.1" name="AdvisorPerm">
+    <actions xsi:type="ORBAC2:MethodAction">
+      <operation href="ChequeDeposit.uml#_IWplkPzWEeW5WKAC5NQtKA"/>
+    </actions>
+    <actions xsi:type="ORBAC2:MethodAction">
+      <operation href="ChequeDeposit.uml#_KG9soPzWEeW5WKAC5NQtKA"/>
+    </actions>
+    <actions xsi:type="ORBAC2:MethodAction">
+      <operation href="ChequeDeposit.uml#_LDdKEPzWEeW5WKAC5NQtKA"/>
+    </actions>
+    <entity href="ChequeDeposit.uml#_K8lX8PzUEeW5WKAC5NQtKA"/>
+  </permissions>
+  <users name="Paul">
+    <assignments role="//@roles.0"/>
+  </users>
+  <users name="Martin">
+    <assignments role="//@roles.1"/>
+  </users>
+  <users name="Jack">
+    <assignments role="//@roles.0"/>
+  </users>
+</ORBAC2:Policy>

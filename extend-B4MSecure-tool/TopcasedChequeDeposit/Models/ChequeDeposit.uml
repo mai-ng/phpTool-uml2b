@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:SecureAD="http:///schemas/SecureAD/_d-PVYPkuEeWEL5sJNF3PMw/4" xmlns:UML_CD_AC_profile="http:///schemas/UML_CD_AC_profile/_3SdtkN38Ed-DE4W08mVfRg/5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xsi:schemaLocation="http:///schemas/SecureAD/_d-PVYPkuEeWEL5sJNF3PMw/4 ../../UML2B4Security/profiles/SecureAD.uml#_d-PVYfkuEeWEL5sJNF3PMw http:///schemas/UML_CD_AC_profile/_3SdtkN38Ed-DE4W08mVfRg/5 ../../Selkis_B4MSecure/SelkisProfile/UML_CD_AC_profile.uml#_3Sdtkd38Ed-DE4W08mVfRg">
+  <uml:Model xmi:id="_qb8akM37EdqwVrslYOdUDA" name="B4MSecureModel">
+    <packagedElement xmi:type="uml:Package" xmi:id="_w8IxIM37EdqwVrslYOdUDA" name="ChequeDeposit">
+      <packagedElement xmi:type="uml:Package" xmi:id="_XiKAEPzOEeW5WKAC5NQtKA" name="Functional">
+        <packagedElement xmi:type="uml:Class" xmi:id="_dQA6wPzOEeW5WKAC5NQtKA" name="Bank"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_d7xNgPzOEeW5WKAC5NQtKA" name="Client">
+          <ownedAttribute xmi:id="_xzzu8PzOEeW5WKAC5NQtKA" name="id">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_6hFoIPzOEeW5WKAC5NQtKA" name="name" isUnique="false">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_-iWeIPzOEeW5WKAC5NQtKA" name="amount" isUnique="false">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+          </ownedAttribute>
+          <ownedOperation xmi:id="_OWylAP2EEeW0ss3vwSu2qw" name="create">
+            <ownedParameter xmi:id="_O43-YP2EEeW0ss3vwSu2qw" name="cl" type="_d7xNgPzOEeW5WKAC5NQtKA"/>
+            <ownedParameter xmi:id="_aeG8IP2EEeW0ss3vwSu2qw" name="na">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </ownedParameter>
+            <ownedParameter xmi:id="_cN4QoP2EEeW0ss3vwSu2qw" name="am">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:id="_RRZ8AP2EEeW0ss3vwSu2qw" name="modifyAmount">
+            <ownedParameter xmi:id="_SpM1YP2EEeW0ss3vwSu2qw" name="cl" type="_d7xNgPzOEeW5WKAC5NQtKA"/>
+            <ownedParameter xmi:id="_UYXs8P2EEeW0ss3vwSu2qw" name="am">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:id="_XStXIP2EEeW0ss3vwSu2qw" name="delete">
+            <ownedParameter xmi:id="_Xy-LkP2EEeW0ss3vwSu2qw" name="cl" type="_d7xNgPzOEeW5WKAC5NQtKA"/>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_fmXuIPzOEeW5WKAC5NQtKA" name="User">
+          <ownedOperation xmi:id="_S8tCcPzPEeW5WKAC5NQtKA" name="joinBank">
+            <eAnnotations xmi:id="_bIJkcPzQEeW5WKAC5NQtKA" source="uml2b">
+              <details xmi:id="_dSU9APzQEeW5WKAC5NQtKA" key="Precondition" value="uu|->bb /: WorkingBankOf"/>
+              <details xmi:id="_gnzrEPzQEeW5WKAC5NQtKA" key="Body" value="WorkingBankOf(uu) := bb"/>
+            </eAnnotations>
+            <ownedParameter xmi:id="_T4WyYPzPEeW5WKAC5NQtKA" name="uu" type="_fmXuIPzOEeW5WKAC5NQtKA"/>
+            <ownedParameter xmi:id="_W5ircPzPEeW5WKAC5NQtKA" name="bb" type="_dQA6wPzOEeW5WKAC5NQtKA"/>
+          </ownedOperation>
+          <ownedOperation xmi:id="_YdRvEPzPEeW5WKAC5NQtKA" name="leaveBank">
+            <eAnnotations xmi:id="_rJ_QYPzQEeW5WKAC5NQtKA" source="uml2b">
+              <details xmi:id="_sbWKkPzQEeW5WKAC5NQtKA" key="Precondition" value="uu : dom(WorkingBankOf)"/>
+              <details xmi:id="_tG_IkPzQEeW5WKAC5NQtKA" key="Body" value="WorkingBankOf := {uu} &lt;&lt;| WorkingBankOf "/>
+            </eAnnotations>
+            <ownedParameter xmi:id="_ZMtn8PzPEeW5WKAC5NQtKA" name="uu" type="_fmXuIPzOEeW5WKAC5NQtKA"/>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_gnEWIPzOEeW5WKAC5NQtKA" name="Cheque">
+          <ownedAttribute xmi:id="_FHmT0PzPEeW5WKAC5NQtKA" name="id">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_HZ7i0PzPEeW5WKAC5NQtKA" name="value" isUnique="false">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+          </ownedAttribute>
+          <ownedOperation xmi:id="_Ij71kP2EEeW0ss3vwSu2qw" name="create">
+            <ownedParameter xmi:id="_JVoYQP2EEeW0ss3vwSu2qw" name="ch" type="_gnEWIPzOEeW5WKAC5NQtKA"/>
+          </ownedOperation>
+          <ownedOperation xmi:id="_LuVVAP2EEeW0ss3vwSu2qw" name="delete">
+            <ownedParameter xmi:id="_MRP00P2EEeW0ss3vwSu2qw" name="ch" type="_gnEWIPzOEeW5WKAC5NQtKA"/>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:AssociationClass" xmi:id="_hwFzsPzOEeW5WKAC5NQtKA" name="Deposit" memberEnd="_hwFzsfzOEeW5WKAC5NQtKA _hwFztPzOEeW5WKAC5NQtKA" navigableOwnedEnd="_hwFzsfzOEeW5WKAC5NQtKA">
+          <ownedAttribute xmi:id="_6YT0sPzQEeW5WKAC5NQtKA" name="status" type="_0YsmMPzREeW5WKAC5NQtKA" isUnique="false"/>
+          <ownedOperation xmi:id="_cp6uoPzPEeW5WKAC5NQtKA" name="createDeposit">
+            <eAnnotations xmi:id="_BkDpsPzREeW5WKAC5NQtKA" source="uml2b">
+              <details xmi:id="_CyjdIPzREeW5WKAC5NQtKA" key="Precondition" value="ch /: dom(Deposit)"/>
+              <details xmi:id="_GglOEPzREeW5WKAC5NQtKA" key="Body" value="Deposit := Deposit \/ {ch|->cl} ||&#xD;&#xA;Deposit__status(ch, Deposit(ch)) := created"/>
+            </eAnnotations>
+            <ownedParameter xmi:id="_dbpGgPzPEeW5WKAC5NQtKA" name="ch" type="_gnEWIPzOEeW5WKAC5NQtKA"/>
+            <ownedParameter xmi:id="_eo8AEPzPEeW5WKAC5NQtKA" name="cl" type="_d7xNgPzOEeW5WKAC5NQtKA"/>
+          </ownedOperation>
+          <ownedOperation xmi:id="_gCE9QPzPEeW5WKAC5NQtKA" name="validateDeposit">
+            <eAnnotations xmi:id="_LrsBAPzREeW5WKAC5NQtKA" source="uml2b">
+              <details xmi:id="_NHTDYPzREeW5WKAC5NQtKA" key="Precondition" value="ch : dom(Deposit)"/>
+              <details xmi:id="_Z362MPzREeW5WKAC5NQtKA" key="Body" value="Deposit__status(ch, Deposit(ch)) := validated"/>
+            </eAnnotations>
+            <ownedParameter xmi:id="_hu65kPzPEeW5WKAC5NQtKA" name="ch" type="_gnEWIPzOEeW5WKAC5NQtKA"/>
+          </ownedOperation>
+          <ownedOperation xmi:id="_lQs-QPzPEeW5WKAC5NQtKA" name="verifyDeposit">
+            <eAnnotations xmi:id="_ia1ScPzREeW5WKAC5NQtKA" source="uml2b">
+              <details xmi:id="_jDMS8PzREeW5WKAC5NQtKA" key="Body" value="Deposit__status(ch, Deposit(ch)) := verified"/>
+              <details xmi:id="_w0wlYPzREeW5WKAC5NQtKA" key="Precondition" value="ch : dom(Deposit)"/>
+            </eAnnotations>
+            <ownedParameter xmi:id="_uVib0PzPEeW5WKAC5NQtKA" name="ch" type="_gnEWIPzOEeW5WKAC5NQtKA"/>
+          </ownedOperation>
+          <ownedOperation xmi:id="_xRw8YPzPEeW5WKAC5NQtKA" name="saveDeposit">
+            <eAnnotations xmi:id="_ohPQAPzREeW5WKAC5NQtKA" source="uml2b">
+              <details xmi:id="_pE6k0PzREeW5WKAC5NQtKA" key="Body" value="Deposit__status(ch, Deposit(ch)) := saved"/>
+              <details xmi:id="_pm4CYPzREeW5WKAC5NQtKA" key="Precondition" value="ch : dom(Deposit)"/>
+            </eAnnotations>
+            <ownedParameter xmi:id="_yi3X4PzPEeW5WKAC5NQtKA" name="ch" type="_gnEWIPzOEeW5WKAC5NQtKA"/>
+          </ownedOperation>
+          <ownedEnd xmi:id="_hwFzsfzOEeW5WKAC5NQtKA" name="client" type="_d7xNgPzOEeW5WKAC5NQtKA" association="_hwFzsPzOEeW5WKAC5NQtKA">
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_hwFzsvzOEeW5WKAC5NQtKA" value="1"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_hwFzs_zOEeW5WKAC5NQtKA"/>
+          </ownedEnd>
+          <ownedEnd xmi:id="_hwFztPzOEeW5WKAC5NQtKA" name="cheque" type="_gnEWIPzOEeW5WKAC5NQtKA" association="_hwFzsPzOEeW5WKAC5NQtKA">
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_hwFztfzOEeW5WKAC5NQtKA" value="*"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_hwFztvzOEeW5WKAC5NQtKA"/>
+          </ownedEnd>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_o1LnEPzOEeW5WKAC5NQtKA" name="BankAccountOf" memberEnd="_o1LnEfzOEeW5WKAC5NQtKA _o1LnFPzOEeW5WKAC5NQtKA" navigableOwnedEnd="_o1LnFPzOEeW5WKAC5NQtKA">
+          <ownedEnd xmi:id="_o1LnEfzOEeW5WKAC5NQtKA" name="client" type="_d7xNgPzOEeW5WKAC5NQtKA" association="_o1LnEPzOEeW5WKAC5NQtKA">
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_o1LnEvzOEeW5WKAC5NQtKA" value="*"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_o1LnE_zOEeW5WKAC5NQtKA" value="1"/>
+          </ownedEnd>
+          <ownedEnd xmi:id="_o1LnFPzOEeW5WKAC5NQtKA" name="bank" type="_dQA6wPzOEeW5WKAC5NQtKA" association="_o1LnEPzOEeW5WKAC5NQtKA">
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_o1LnFfzOEeW5WKAC5NQtKA" value="1"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_o1LnFvzOEeW5WKAC5NQtKA"/>
+          </ownedEnd>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_3zKz4PzPEeW5WKAC5NQtKA" name="WorkingBankOf" memberEnd="_3zKz4fzPEeW5WKAC5NQtKA _3zKz5PzPEeW5WKAC5NQtKA" navigableOwnedEnd="_3zKz5PzPEeW5WKAC5NQtKA">
+          <ownedEnd xmi:id="_3zKz4fzPEeW5WKAC5NQtKA" name="user" type="_fmXuIPzOEeW5WKAC5NQtKA" association="_3zKz4PzPEeW5WKAC5NQtKA">
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_3zKz4vzPEeW5WKAC5NQtKA" value="*"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_3zKz4_zPEeW5WKAC5NQtKA" value="1"/>
+          </ownedEnd>
+          <ownedEnd xmi:id="_3zKz5PzPEeW5WKAC5NQtKA" name="bank" type="_dQA6wPzOEeW5WKAC5NQtKA" association="_3zKz4PzPEeW5WKAC5NQtKA">
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_3zKz5fzPEeW5WKAC5NQtKA" value="1"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_3zKz5vzPEeW5WKAC5NQtKA"/>
+          </ownedEnd>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Enumeration" xmi:id="_0YsmMPzREeW5WKAC5NQtKA" name="DepositStatus">
+          <ownedLiteral xmi:id="_2LR-IPzREeW5WKAC5NQtKA" name="validated"/>
+          <ownedLiteral xmi:id="_3FF7APzREeW5WKAC5NQtKA" name="verified"/>
+          <ownedLiteral xmi:id="_4f0MkPzREeW5WKAC5NQtKA" name="saved"/>
+          <ownedLiteral xmi:id="_5_8ikPzREeW5WKAC5NQtKA" name="created"/>
+        </packagedElement>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_YdoJ0PzOEeW5WKAC5NQtKA" name="Policy">
+        <packagedElement xmi:type="uml:Class" xmi:id="_Hp100PzUEeW5WKAC5NQtKA" name="Teller"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_K8lX8PzUEeW5WKAC5NQtKA" name="Deposit">
+          <ownedOperation xmi:id="_IWplkPzWEeW5WKAC5NQtKA" name="create"/>
+          <ownedOperation xmi:id="_JPLwEPzWEeW5WKAC5NQtKA" name="validate"/>
+          <ownedOperation xmi:id="_KG9soPzWEeW5WKAC5NQtKA" name="verify"/>
+          <ownedOperation xmi:id="_LDdKEPzWEeW5WKAC5NQtKA" name="save"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_RptXQPzUEeW5WKAC5NQtKA" name="Advisor"/>
+        <packagedElement xmi:type="uml:AssociationClass" xmi:id="_TvHkkPzUEeW5WKAC5NQtKA" name="TellerPerm" memberEnd="_TvHkkfzUEeW5WKAC5NQtKA _TvHklPzUEeW5WKAC5NQtKA">
+          <ownedOperation xmi:id="_YuGAAPzUEeW5WKAC5NQtKA" name="create"/>
+          <ownedOperation xmi:id="_adoD8PzUEeW5WKAC5NQtKA" name="validate"/>
+          <ownedOperation xmi:id="_btDrgPzUEeW5WKAC5NQtKA" name="save"/>
+          <ownedEnd xmi:id="_TvHkkfzUEeW5WKAC5NQtKA" name="teller" type="_Hp100PzUEeW5WKAC5NQtKA" isUnique="false" association="_TvHkkPzUEeW5WKAC5NQtKA">
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_TvHkkvzUEeW5WKAC5NQtKA" value="*"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_TvHkk_zUEeW5WKAC5NQtKA"/>
+          </ownedEnd>
+          <ownedEnd xmi:id="_TvHklPzUEeW5WKAC5NQtKA" name="deposit" type="_K8lX8PzUEeW5WKAC5NQtKA" isUnique="false" association="_TvHkkPzUEeW5WKAC5NQtKA">
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_TvHklfzUEeW5WKAC5NQtKA" value="*"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_TvHklvzUEeW5WKAC5NQtKA"/>
+          </ownedEnd>
+        </packagedElement>
+        <packagedElement xmi:type="uml:AssociationClass" xmi:id="_UxBGcPzUEeW5WKAC5NQtKA" name="AdvisorPerm" memberEnd="_UxBtgPzUEeW5WKAC5NQtKA _UxBtg_zUEeW5WKAC5NQtKA">
+          <ownedOperation xmi:id="_gzwfkPzUEeW5WKAC5NQtKA" name="create"/>
+          <ownedOperation xmi:id="_h2mcoPzUEeW5WKAC5NQtKA" name="verify"/>
+          <ownedOperation xmi:id="_jIPDoPzUEeW5WKAC5NQtKA" name="save"/>
+          <ownedEnd xmi:id="_UxBtgPzUEeW5WKAC5NQtKA" name="deposit" type="_K8lX8PzUEeW5WKAC5NQtKA" isUnique="false" association="_UxBGcPzUEeW5WKAC5NQtKA">
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UxBtgfzUEeW5WKAC5NQtKA" value="*"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UxBtgvzUEeW5WKAC5NQtKA"/>
+          </ownedEnd>
+          <ownedEnd xmi:id="_UxBtg_zUEeW5WKAC5NQtKA" name="advisor" type="_RptXQPzUEeW5WKAC5NQtKA" isUnique="false" association="_UxBGcPzUEeW5WKAC5NQtKA">
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UxBthPzUEeW5WKAC5NQtKA" value="*"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UxBthfzUEeW5WKAC5NQtKA"/>
+          </ownedEnd>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_zdir4PzZEeW5WKAC5NQtKA" name="Martin"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_0AYTMPzZEeW5WKAC5NQtKA" name="Paul"/>
+        <packagedElement xmi:type="uml:Association" xmi:id="_07mlUPzZEeW5WKAC5NQtKA" name="A_&lt;tome>_&lt;teller>" memberEnd="_07mlUfzZEeW5WKAC5NQtKA _07mlVPzZEeW5WKAC5NQtKA">
+          <ownedEnd xmi:id="_07mlUfzZEeW5WKAC5NQtKA" name="tome" type="_0AYTMPzZEeW5WKAC5NQtKA" association="_07mlUPzZEeW5WKAC5NQtKA">
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_07mlUvzZEeW5WKAC5NQtKA" value="1"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_07mlU_zZEeW5WKAC5NQtKA" value="1"/>
+          </ownedEnd>
+          <ownedEnd xmi:id="_07mlVPzZEeW5WKAC5NQtKA" name="teller" type="_Hp100PzUEeW5WKAC5NQtKA" association="_07mlUPzZEeW5WKAC5NQtKA">
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_07mlVfzZEeW5WKAC5NQtKA" value="1"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_07mlVvzZEeW5WKAC5NQtKA" value="1"/>
+          </ownedEnd>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_2dq1APzZEeW5WKAC5NQtKA" name="A_&lt;class1>_&lt;advisor>" memberEnd="_2dq1AfzZEeW5WKAC5NQtKA _2dq1BPzZEeW5WKAC5NQtKA">
+          <ownedEnd xmi:id="_2dq1AfzZEeW5WKAC5NQtKA" name="class1" type="_zdir4PzZEeW5WKAC5NQtKA" association="_2dq1APzZEeW5WKAC5NQtKA">
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_2dq1AvzZEeW5WKAC5NQtKA" value="1"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_2dq1A_zZEeW5WKAC5NQtKA" value="1"/>
+          </ownedEnd>
+          <ownedEnd xmi:id="_2dq1BPzZEeW5WKAC5NQtKA" name="advisor" type="_RptXQPzUEeW5WKAC5NQtKA" association="_2dq1APzZEeW5WKAC5NQtKA">
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_2dq1BfzZEeW5WKAC5NQtKA" value="1"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_2dq1BvzZEeW5WKAC5NQtKA" value="1"/>
+          </ownedEnd>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_k0eBEP2GEeW0ss3vwSu2qw" name="Jack"/>
+        <packagedElement xmi:type="uml:Association" xmi:id="_mfXcoP2GEeW0ss3vwSu2qw" name="A_&lt;jack>_&lt;teller>" memberEnd="_mfXcof2GEeW0ss3vwSu2qw _mfYDsP2GEeW0ss3vwSu2qw">
+          <ownedEnd xmi:id="_mfXcof2GEeW0ss3vwSu2qw" name="jack" type="_k0eBEP2GEeW0ss3vwSu2qw" association="_mfXcoP2GEeW0ss3vwSu2qw">
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mfXcov2GEeW0ss3vwSu2qw" value="1"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mfXco_2GEeW0ss3vwSu2qw" value="1"/>
+          </ownedEnd>
+          <ownedEnd xmi:id="_mfYDsP2GEeW0ss3vwSu2qw" name="teller" type="_Hp100PzUEeW5WKAC5NQtKA" association="_mfXcoP2GEeW0ss3vwSu2qw">
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mfYDsf2GEeW0ss3vwSu2qw" value="1"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mfYDsv2GEeW0ss3vwSu2qw" value="1"/>
+          </ownedEnd>
+        </packagedElement>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_ZaR_UPzOEeW5WKAC5NQtKA" name="SecureAD">
+        <packagedElement xmi:type="uml:Activity" xmi:id="_VvAJ8PzaEeW5WKAC5NQtKA" name="Rule1">
+          <node xmi:type="uml:CallOperationAction" xmi:id="_kYaDUPzaEeW5WKAC5NQtKA" name="create" outgoing="_sjCicPzaEeW5WKAC5NQtKA" inPartition="_b4sFAPzaEeW5WKAC5NQtKA" operation="_cp6uoPzPEeW5WKAC5NQtKA">
+            <argument xmi:id="_lqYBgPzaEeW5WKAC5NQtKA" name="cl" type="_d7xNgPzOEeW5WKAC5NQtKA">
+              <upperBound xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lqYBgfzaEeW5WKAC5NQtKA" value="*"/>
+            </argument>
+            <argument xmi:id="_r5_nYP2IEeW0ss3vwSu2qw" name="ch" type="_gnEWIPzOEeW5WKAC5NQtKA">
+              <upperBound xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_r5_nYf2IEeW0ss3vwSu2qw" value="*"/>
+            </argument>
+            <target xmi:id="_lqYokPzaEeW5WKAC5NQtKA" name="target" type="_hwFzsPzOEeW5WKAC5NQtKA"/>
+          </node>
+          <node xmi:type="uml:CallOperationAction" xmi:id="_pfVg4PzaEeW5WKAC5NQtKA" name="saveDeposit" incoming="_sjCicPzaEeW5WKAC5NQtKA" inPartition="_dsIYkPzaEeW5WKAC5NQtKA" operation="_xRw8YPzPEeW5WKAC5NQtKA">
+            <argument xmi:id="_oO-uMP2IEeW0ss3vwSu2qw" name="ch" type="_gnEWIPzOEeW5WKAC5NQtKA">
+              <upperBound xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_oO-uMf2IEeW0ss3vwSu2qw" value="*"/>
+            </argument>
+            <target xmi:id="_qmiZgPzaEeW5WKAC5NQtKA" name="target" type="_hwFzsPzOEeW5WKAC5NQtKA"/>
+          </node>
+          <node xmi:type="uml:InputPin" xmi:id="_qmf9QPzaEeW5WKAC5NQtKA" name="ch" type="_gnEWIPzOEeW5WKAC5NQtKA">
+            <upperBound xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_qmf9QfzaEeW5WKAC5NQtKA" value="*"/>
+          </node>
+          <node xmi:type="uml:InputPin" xmi:id="_nRWBQP2IEeW0ss3vwSu2qw" name="ch" type="_gnEWIPzOEeW5WKAC5NQtKA">
+            <upperBound xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_nRWBQf2IEeW0ss3vwSu2qw" value="*"/>
+          </node>
+          <node xmi:type="uml:InputPin" xmi:id="_lqWMUPzaEeW5WKAC5NQtKA" name="ch" type="_gnEWIPzOEeW5WKAC5NQtKA">
+            <upperBound xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lqWMUfzaEeW5WKAC5NQtKA" value="*"/>
+          </node>
+          <edge xmi:type="uml:ControlFlow" xmi:id="_sjCicPzaEeW5WKAC5NQtKA" name="ControlFlow2" source="_kYaDUPzaEeW5WKAC5NQtKA" target="_pfVg4PzaEeW5WKAC5NQtKA">
+            <guard xmi:type="uml:LiteralBoolean" xmi:id="_sjCicfzaEeW5WKAC5NQtKA" value="true"/>
+            <weight xmi:type="uml:LiteralInteger" xmi:id="_sjCicvzaEeW5WKAC5NQtKA" value="1"/>
+          </edge>
+          <group xmi:type="uml:ActivityPartition" xmi:id="_b4sFAPzaEeW5WKAC5NQtKA" name="usr1" node="_kYaDUPzaEeW5WKAC5NQtKA"/>
+          <group xmi:type="uml:ActivityPartition" xmi:id="_dsIYkPzaEeW5WKAC5NQtKA" name="usr2" node="_pfVg4PzaEeW5WKAC5NQtKA"/>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
+    <profileApplication xmi:id="_32S10PzOEeW5WKAC5NQtKA">
+      <eAnnotations xmi:id="_32XHQPzOEeW5WKAC5NQtKA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="../../Selkis_B4MSecure/SelkisProfile/UML_CD_AC_profile.uml#_3Sdtkd38Ed-DE4W08mVfRg"/>
+      </eAnnotations>
+      <appliedProfile href="../../Selkis_B4MSecure/SelkisProfile/UML_CD_AC_profile.uml#__XqpYEucEd-CqrFOuMEbzg"/>
+    </profileApplication>
+    <profileApplication xmi:id="_z7v1YPzaEeW5WKAC5NQtKA">
+      <eAnnotations xmi:id="_z7wccPzaEeW5WKAC5NQtKA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="../../UML2B4Security/profiles/SecureAD.uml#_d-PVYfkuEeWEL5sJNF3PMw"/>
+      </eAnnotations>
+      <appliedProfile href="../../UML2B4Security/profiles/SecureAD.uml#_XkGiwB07Ed-QQ4mYkrb7Gg"/>
+    </profileApplication>
+  </uml:Model>
+  <UML_CD_AC_profile:Permission xmi:id="_VzB9EPzUEeW5WKAC5NQtKA" base_AssociationClass="_UxBGcPzUEeW5WKAC5NQtKA"/>
+  <UML_CD_AC_profile:Role xmi:id="_WbgSUPzUEeW5WKAC5NQtKA" base_Class="_RptXQPzUEeW5WKAC5NQtKA"/>
+  <UML_CD_AC_profile:Role xmi:id="_W5Ls0PzUEeW5WKAC5NQtKA" base_Class="_Hp100PzUEeW5WKAC5NQtKA"/>
+  <UML_CD_AC_profile:Permission xmi:id="_XXA4UPzUEeW5WKAC5NQtKA" base_AssociationClass="_TvHkkPzUEeW5WKAC5NQtKA"/>
+  <UML_CD_AC_profile:MethodAction xmi:id="_bP-G4PzUEeW5WKAC5NQtKA" base_Operation="_adoD8PzUEeW5WKAC5NQtKA"/>
+  <UML_CD_AC_profile:MethodAction xmi:id="_ci1c8PzUEeW5WKAC5NQtKA" base_Operation="_btDrgPzUEeW5WKAC5NQtKA"/>
+  <UML_CD_AC_profile:EntityAction xmi:id="_epMsgPzUEeW5WKAC5NQtKA"/>
+  <UML_CD_AC_profile:MethodAction xmi:id="_iwQogPzUEeW5WKAC5NQtKA" base_Operation="_h2mcoPzUEeW5WKAC5NQtKA"/>
+  <UML_CD_AC_profile:MethodAction xmi:id="_j3wcEPzUEeW5WKAC5NQtKA" base_Operation="_jIPDoPzUEeW5WKAC5NQtKA"/>
+  <UML_CD_AC_profile:MethodAction xmi:id="_I8-T0PzYEeW5WKAC5NQtKA" base_Operation="_YuGAAPzUEeW5WKAC5NQtKA"/>
+  <UML_CD_AC_profile:MethodAction xmi:id="_JnFAwPzYEeW5WKAC5NQtKA" base_Operation="_gzwfkPzUEeW5WKAC5NQtKA"/>
+  <UML_CD_AC_profile:UA xmi:id="_1YbrQPzZEeW5WKAC5NQtKA" base_Association="_07mlUPzZEeW5WKAC5NQtKA"/>
+  <UML_CD_AC_profile:User xmi:id="_19NMQPzZEeW5WKAC5NQtKA" base_Class="_0AYTMPzZEeW5WKAC5NQtKA"/>
+  <UML_CD_AC_profile:UA xmi:id="_29wqUPzZEeW5WKAC5NQtKA" base_Association="_2dq1APzZEeW5WKAC5NQtKA"/>
+  <UML_CD_AC_profile:User xmi:id="_3dCAQPzZEeW5WKAC5NQtKA" base_Class="_zdir4PzZEeW5WKAC5NQtKA"/>
+  <SecureAD:Secure xmi:id="_0hlGUPzaEeW5WKAC5NQtKA" base_CallOperationAction="_pfVg4PzaEeW5WKAC5NQtKA"/>
+  <UML_CD_AC_profile:User xmi:id="_l1h1cP2GEeW0ss3vwSu2qw" base_Class="_k0eBEP2GEeW0ss3vwSu2qw"/>
+  <UML_CD_AC_profile:UA xmi:id="_m6ocUP2GEeW0ss3vwSu2qw" base_Association="_mfXcoP2GEeW0ss3vwSu2qw"/>
+  <SecureAD:Secure xmi:id="_q5plkAF2Eea3X9Ibt3CZFw"/>
+</xmi:XMI>

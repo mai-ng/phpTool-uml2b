@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<trace:Trace xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:trace="http:///www.eclipse.org/m2m/qvt/operational/trace.ecore">
+  <traceRecords>
+    <mappingOperation name="getADsecPackage" package="AD2ADsec" module="AD2ADsec">
+      <runtimeMappingOperation href="qvto:/module.env#//getADsecPackage"/>
+    </mappingOperation>
+    <context>
+      <context name="self" type="Package">
+        <value>
+          <modelElement href="platform:/resource/TopcasedChequeDeposit/Models/ChequeDeposit.uml#_qb8akM37EdqwVrslYOdUDA"/>
+        </value>
+      </context>
+    </context>
+    <parameters/>
+    <result>
+      <result kind="OUT" name="result" type="DynamicPolicy">
+        <value>
+          <modelElement href="platform:/resource/TopcasedChequeDeposit/Models/ChequeDeposit.adsec.uml#_u5OuoAF4Eea3X9Ibt3CZFw"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="secureOperation" package="AD2ADsec" module="AD2ADsec">
+      <runtimeMappingOperation href="qvto:/module.env#//secureOperation"/>
+    </mappingOperation>
+    <context>
+      <context name="self" type="CallOperationAction">
+        <value>
+          <modelElement href="platform:/resource/TopcasedChequeDeposit/Models/ChequeDeposit.uml#_pfVg4PzaEeW5WKAC5NQtKA"/>
+        </value>
+      </context>
+    </context>
+    <parameters/>
+    <result>
+      <result kind="OUT" name="result" type="SecOperation">
+        <value>
+          <modelElement href="platform:/resource/TopcasedChequeDeposit/Models/ChequeDeposit.adsec.uml#_u5OuoQF4Eea3X9Ibt3CZFw"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="Actor" package="AD2ADsec" module="AD2ADsec">
+      <runtimeMappingOperation href="qvto:/module.env#//Actor"/>
+    </mappingOperation>
+    <context>
+      <context name="self" type="ActivityPartition">
+        <value>
+          <modelElement href="platform:/resource/TopcasedChequeDeposit/Models/ChequeDeposit.uml#_dsIYkPzaEeW5WKAC5NQtKA"/>
+        </value>
+      </context>
+    </context>
+    <parameters>
+      <parameters name="op" type="CallOperationAction">
+        <value>
+          <modelElement href="platform:/resource/TopcasedChequeDeposit/Models/ChequeDeposit.uml#_pfVg4PzaEeW5WKAC5NQtKA"/>
+        </value>
+      </parameters>
+      <parameters name="secOp" type="CallOperationAction">
+        <value>
+          <modelElement href="platform:/resource/TopcasedChequeDeposit/Models/ChequeDeposit.uml#_pfVg4PzaEeW5WKAC5NQtKA"/>
+        </value>
+      </parameters>
+    </parameters>
+    <result>
+      <result kind="OUT" name="result" type="Actor">
+        <value>
+          <modelElement href="platform:/resource/TopcasedChequeDeposit/Models/ChequeDeposit.adsec.uml#_u5OupgF4Eea3X9Ibt3CZFw"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="Parameter" package="AD2ADsec" module="AD2ADsec">
+      <runtimeMappingOperation href="qvto:/module.env#//Parameter"/>
+    </mappingOperation>
+    <context>
+      <context name="self" type="Parameter">
+        <value>
+          <modelElement href="platform:/resource/TopcasedChequeDeposit/Models/ChequeDeposit.uml#_yi3X4PzPEeW5WKAC5NQtKA"/>
+        </value>
+      </context>
+    </context>
+    <parameters>
+      <parameters name="secOp" type="CallOperationAction">
+        <value>
+          <modelElement href="platform:/resource/TopcasedChequeDeposit/Models/ChequeDeposit.uml#_pfVg4PzaEeW5WKAC5NQtKA"/>
+        </value>
+      </parameters>
+    </parameters>
+    <result>
+      <result kind="OUT" name="result" type="Parameter">
+        <value>
+          <modelElement href="platform:/resource/TopcasedChequeDeposit/Models/ChequeDeposit.adsec.uml#_u5OupwF4Eea3X9Ibt3CZFw"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="PreOperation" package="AD2ADsec" module="AD2ADsec">
+      <runtimeMappingOperation href="qvto:/module.env#//PreOperation"/>
+    </mappingOperation>
+    <context>
+      <context name="self" type="CallOperationAction">
+        <value>
+          <modelElement href="platform:/resource/TopcasedChequeDeposit/Models/ChequeDeposit.uml#_kYaDUPzaEeW5WKAC5NQtKA"/>
+        </value>
+      </context>
+    </context>
+    <parameters>
+      <parameters name="secOp" type="CallOperationAction">
+        <value>
+          <modelElement href="platform:/resource/TopcasedChequeDeposit/Models/ChequeDeposit.uml#_pfVg4PzaEeW5WKAC5NQtKA"/>
+        </value>
+      </parameters>
+      <parameters name="order" type="Integer">
+        <value primitiveValue="1"/>
+      </parameters>
+    </parameters>
+    <result>
+      <result kind="OUT" name="result" type="PreOperation">
+        <value>
+          <modelElement href="platform:/resource/TopcasedChequeDeposit/Models/ChequeDeposit.adsec.uml#_u5OuogF4Eea3X9Ibt3CZFw"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="Parameter" package="AD2ADsec" module="AD2ADsec">
+      <runtimeMappingOperation href="qvto:/module.env#//Parameter"/>
+    </mappingOperation>
+    <context>
+      <context name="self" type="Parameter">
+        <value>
+          <modelElement href="platform:/resource/TopcasedChequeDeposit/Models/ChequeDeposit.uml#_dbpGgPzPEeW5WKAC5NQtKA"/>
+        </value>
+      </context>
+    </context>
+    <parameters>
+      <parameters name="secOp" type="CallOperationAction">
+        <value>
+          <modelElement href="platform:/resource/TopcasedChequeDeposit/Models/ChequeDeposit.uml#_pfVg4PzaEeW5WKAC5NQtKA"/>
+        </value>
+      </parameters>
+    </parameters>
+    <result>
+      <result kind="OUT" name="result" type="Parameter">
+        <value>
+          <modelElement href="platform:/resource/TopcasedChequeDeposit/Models/ChequeDeposit.adsec.uml#_u5OupAF4Eea3X9Ibt3CZFw"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="Parameter" package="AD2ADsec" module="AD2ADsec">
+      <runtimeMappingOperation href="qvto:/module.env#//Parameter"/>
+    </mappingOperation>
+    <context>
+      <context name="self" type="Parameter">
+        <value>
+          <modelElement href="platform:/resource/TopcasedChequeDeposit/Models/ChequeDeposit.uml#_eo8AEPzPEeW5WKAC5NQtKA"/>
+        </value>
+      </context>
+    </context>
+    <parameters>
+      <parameters name="secOp" type="CallOperationAction">
+        <value>
+          <modelElement href="platform:/resource/TopcasedChequeDeposit/Models/ChequeDeposit.uml#_pfVg4PzaEeW5WKAC5NQtKA"/>
+        </value>
+      </parameters>
+    </parameters>
+    <result>
+      <result kind="OUT" name="result" type="Parameter">
+        <value>
+          <modelElement href="platform:/resource/TopcasedChequeDeposit/Models/ChequeDeposit.adsec.uml#_u5OupQF4Eea3X9Ibt3CZFw"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="Actor" package="AD2ADsec" module="AD2ADsec">
+      <runtimeMappingOperation href="qvto:/module.env#//Actor"/>
+    </mappingOperation>
+    <context>
+      <context name="self" type="ActivityPartition">
+        <value>
+          <modelElement href="platform:/resource/TopcasedChequeDeposit/Models/ChequeDeposit.uml#_b4sFAPzaEeW5WKAC5NQtKA"/>
+        </value>
+      </context>
+    </context>
+    <parameters>
+      <parameters name="op" type="CallOperationAction">
+        <value>
+          <modelElement href="platform:/resource/TopcasedChequeDeposit/Models/ChequeDeposit.uml#_kYaDUPzaEeW5WKAC5NQtKA"/>
+        </value>
+      </parameters>
+      <parameters name="secOp" type="CallOperationAction">
+        <value>
+          <modelElement href="platform:/resource/TopcasedChequeDeposit/Models/ChequeDeposit.uml#_pfVg4PzaEeW5WKAC5NQtKA"/>
+        </value>
+      </parameters>
+    </parameters>
+    <result>
+      <result kind="OUT" name="result" type="Actor">
+        <value>
+          <modelElement href="platform:/resource/TopcasedChequeDeposit/Models/ChequeDeposit.adsec.uml#_u5OuowF4Eea3X9Ibt3CZFw"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+</trace:Trace>

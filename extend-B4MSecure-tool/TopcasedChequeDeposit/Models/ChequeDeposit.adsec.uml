@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adsec:DynamicPolicy xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:adsec="http://adsec/1.0" xmi:id="_u5OuoAF4Eea3X9Ibt3CZFw">
+  <operations xmi:id="_u5OuoQF4Eea3X9Ibt3CZFw" name="Deposit__saveDeposit">
+    <preOperation xmi:id="_u5OuogF4Eea3X9Ibt3CZFw" operationToSecure="Deposit__saveDeposit" orderExecution="1" name="Deposit__createDeposit">
+      <actor xmi:id="_u5OuowF4Eea3X9Ibt3CZFw" operationToSecure="Deposit__saveDeposit" actOn="Deposit__createDeposit" name="usr1"/>
+      <parameters xmi:id="_u5OupAF4Eea3X9Ibt3CZFw" operationToSecure="Deposit__saveDeposit" type="Cheque" name="ch"/>
+      <parameters xmi:id="_u5OupQF4Eea3X9Ibt3CZFw" operationToSecure="Deposit__saveDeposit" type="Client" name="cl"/>
+    </preOperation>
+    <actor xmi:id="_u5OupgF4Eea3X9Ibt3CZFw" operationToSecure="Deposit__saveDeposit" actOn="Deposit__saveDeposit" name="usr2"/>
+    <parameters xmi:id="_u5OupwF4Eea3X9Ibt3CZFw" operationToSecure="Deposit__saveDeposit" type="Cheque" name="ch"/>
+  </operations>
+</adsec:DynamicPolicy>
