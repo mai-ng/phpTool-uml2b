@@ -1,0 +1,44 @@
+grammar secureuml2SQL.SecureUML2SQL with org.eclipse.xtext.common.Terminals
+
+generate secureUML2SQL "http://www.SecureUML2SQL.secureuml2SQL"
+
+SecureUML2SQL :
+	BMachine
+    ;
+
+BMachine:
+	'MACHINE' m_name=ID
+	'SETS' 
+		//sets+=BSet(';' sets+=BSet)*
+		esets+=BESet(';' esets+=BESet)*
+	'CONSTANTS'
+		cons+=BConstant(',' cons+=BConstant)*
+	'PROPERTIES'
+		pros += BProperties('&' pros += BProperties)*
+	'END'
+	
+;
+
+BProperties:
+	cons=ID '=' prop='{' pairs+=BTuple(',' pairs+=BTuple)* '}'
+;
+
+BTuple:
+	ran=ID '|->' dom=ID
+;
+
+BSet:
+	set_name=ID
+;
+
+BESet:
+	set_name=ID '=' '{' values+=BSetValue(',' values+=BSetValue)* '}'
+;
+
+BSetValue:
+	value_name=ID
+;
+
+BConstant:
+	constant_name=ID
+;

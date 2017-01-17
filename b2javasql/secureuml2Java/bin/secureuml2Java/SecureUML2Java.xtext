@@ -1,0 +1,95 @@
+grammar secureuml2Java.SecureUML2Java with org.eclipse.xtext.common.Terminals
+
+generate secureUML2Java "http://www.SecureUML2Java.secureuml2Java"
+
+SecureUML2Java :
+	BMachine
+    ;
+
+BMachine:
+	'MACHINE' m_name=ID
+	'SEES' 
+		sees+=BSees(',' sees+=BSees)*
+	'VARIABLES'
+		vars+=BVariable(',' vars+=BVariable)*
+	'INVARIANT'
+		invs += BInvariant('&' invs += BInvariant)*
+	'INITIALISATION'
+    	inits += BInit('||' inits += BInit)*
+	'OPERATIONS'
+		vops+=VoidOperation(';' vops+=VoidOperation)*';'
+		sops+=StringOperation(';' sops+=StringOperation)*
+	'END'
+	
+;
+
+VoidOperation:
+	op_name=ID '(' (pList+=ID(',' pList+=ID)*)? ')' '='
+ 	'PRE' (params+=BParameter('&' params+=BParameter)*) 
+ 			('&' pre+=BPredicate)*
+ 	'THEN'
+ 		subs += BSubstitution('||' subs += BSubstitution)* 		
+ 	'END'
+;
+
+StringOperation:
+ 	res1=ID '<--' op_name=ID '(' (pList+=ID(',' pList+=ID)*)? ')' '='
+ 	'PRE' (params+=BParameter('&' params+=BParameter)*) 'THEN'
+ 		'IF' pres1 += BPredicate('&' pres1 += BPredicate)* 'THEN'
+ 			'IF' pres2 += BPredicate('&' pres2 += BPredicate)* 'THEN'
+ 				subif = BSubstitution
+ 			'ELSE'
+ 				subelse2 = BSubstitution
+ 			'END'
+ 		'ELSE'
+ 			subelse1 = BSubstitution
+ 		'END'
+ 	'END' 	
+ ;
+
+BSubstitution:
+	sleft=(BType|BOperationCall) ':=' sright=ID
+;
+
+BPredicate:
+	pleft=(BType|BTuple) ':' pright=(BDom|BType)
+;
+
+BDom:
+	'dom' '(' obj=BType ')'
+;
+
+BParameter:
+	 p_name=ID ':' type=BType
+;
+   
+BType:
+	type_name=ID
+;
+BInit:
+	var=ID ':=' '{' pair+=BTuple '}'
+;
+
+BTuple:
+	ran=(BType|BOperationCall) '|->' dom=ID
+;
+
+BOperationCall:
+	op=ID '('par=ID ')' 
+;
+BInvariant:
+	var=ID ':' vardif=BFunction
+	| dom=ID '<:' ran=ID
+;
+
+BFunction:
+	ran=ID ('-->'|'+->'|'<->') dom=ID
+;
+
+BVariable:
+	var_name=ID
+;
+
+BSees:
+	m_name=ID
+;

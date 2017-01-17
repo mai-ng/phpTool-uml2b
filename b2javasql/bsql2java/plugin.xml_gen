@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<?eclipse version="3.0"?>
+<plugin>
+	<extension point="org.eclipse.emf.ecore.generated_package">
+		<package 
+			uri = "http://www.BSQL2Java.bsql2java"
+			class = "bsql2java.bSQL2Java.BSQL2JavaPackage"
+			genModel = "model/generated/BSQL2Java.genmodel" />
+	</extension>
+</plugin>

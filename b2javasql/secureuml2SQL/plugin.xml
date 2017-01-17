@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<?eclipse version="3.0"?>
+<plugin>
+	<extension point="org.eclipse.emf.ecore.generated_package">
+		<package 
+			uri = "http://www.SecureUML2SQL.secureuml2SQL"
+			class = "secureuml2SQL.secureUML2SQL.SecureUML2SQLPackage"
+			genModel = "model/generated/SecureUML2SQL.genmodel" />
+	</extension>
+</plugin>

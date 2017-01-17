@@ -1,0 +1,30 @@
+grammar bfun2java.BFun2Java with org.eclipse.xtext.common.Terminals
+
+generate bFun2Java "http://www.BFun2Java.bfun2java"
+
+BFun2Java :
+	BFunImpl
+    ;
+
+
+BFunImpl:
+	'IMPLEMNTATION' m_name=ID
+	'REFINES' initialM=ID
+	'SEES'
+		msees+=ID(',' msees+=ID)*
+	'IMPORTS'
+		mimports+=ID(',' mimports+=ID)*
+	'OPERATIONS'
+		sops+=StringOperation(';' sops+=StringOperation)*
+;
+
+StringOperation:
+ 	res1=ID '<--' op_name=ID '(' (pList+=ID(',' pList+=ID)*)? ')' '='
+ 	'PRE' (params+=BParameter('&' params+=BParameter)*) 'THEN'
+ 		'ANY' var1=ID 'WHERE'
+ 			var2=BParameter '&'pres += BPredicate('&' pres += BPredicate)*
+ 		'THEN'
+ 			sub = BSubstitution
+ 		'END'
+ 	'END' 	
+ ;

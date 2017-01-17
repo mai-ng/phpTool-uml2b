@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: secureuml2Java.ide
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: secureuml2Java.ide; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: secureuml2Java,
+ org.eclipse.xtext.ide,
+ org.eclipse.xtext.xbase.ide
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: secureuml2Java.ide.contentassist.antlr,
+ secureuml2Java.ide.contentassist.antlr.internal
+

@@ -1,0 +1,84 @@
+grammar bsql2sql.BSQL2SQL with org.eclipse.xtext.common.Terminals
+
+generate bSQL2SQL "http://www.BSQL2SQL.bsql2sql"
+
+BSQL2SQL :
+	BSQLMachine
+    ;
+  
+terminal STRING:
+  '#'
+  '"' ( '\\'('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') | !('\\'|'"') )* '"' 
+;
+
+BSQLMachine:
+	'MACHINE' m_name=ID
+	'VARIABLES' vars=ID
+	'INVARIANT'
+		inv=BTable
+	'INITIALISATION'
+		init=ID ':=' '{}'
+	'OPERATIONS'
+		(ops+=BSOperation)+
+;
+    
+ BTable:
+	 table_name=ID '<:' 'struct' '('
+		attributes+=Attribute(',' attributes+=Attribute)*
+	')';
+
+Attribute:
+	att_name=ID ':' type=BType; 
+   
+BType:
+	type_name=ID
+;
+
+BValue:
+ ID|INT|'FALSE'|'TRUE'
+;
+  
+ BSOperation:
+ 	bop=BoolOperation|
+ 	vop=VoidOperation;
+ 
+ BoolOperation:
+ 	'res' '<--' op_name=ID '(' (pList+=ID(',' pList+=ID)*)? ')' '='
+ 	'PRE' (params+=BParameter('&' params+=BParameter)*) 'THEN'
+ 		//(subs += BSubstitution)*
+ 		'res' ':=' 'bool(' '#'objTable=TableInstance '&'pres += BPredicate('&' pres += BPredicate)* ')' ')'
+ 	'END' 	
+ ;
+ 
+  VoidOperation:
+ 	op_name=ID '(' (pList+=ID(',' pList+=ID)*)? ')' '='
+ 	'PRE' (params+=BParameter('&' params+=BParameter)*) 'THEN'
+ 		(subs += BSubstitution)*
+ 	'END'
+ ;
+ 
+BPredicate:
+	{BPredicate} (PLeft=SQLCall '=' PRight=BValue)
+;  
+
+SQLCall:
+	SLeft=ID"'"SRight=ID
+; 
+
+ TableInstance:
+ 	ti_name = ID '.(' ti_type=TIAssignment
+ ;
+ 
+ TIAssignment:
+ 	instance_name=ID ':' instance_type=ID
+ ;
+ 
+BParameter:
+	 p_name=ID ':' type=BType
+;
+
+BSubstitution:
+	left=ID ':=' right=BPredicate
+;
+
+

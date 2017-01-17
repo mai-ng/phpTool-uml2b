@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: bsql2sql.ide
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: bsql2sql.ide; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: bsql2sql,
+ org.eclipse.xtext.ide,
+ org.eclipse.xtext.xbase.ide
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: bsql2sql.ide.contentassist.antlr,
+ bsql2sql.ide.contentassist.antlr.internal
+

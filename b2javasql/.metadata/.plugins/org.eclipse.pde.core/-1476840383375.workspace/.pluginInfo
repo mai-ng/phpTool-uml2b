@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map>
+	<bundle bundleID="829" class="b2sql_v2.ui.internal.B2sql_v2Activator" localization="OSGI-INF/l10n/bundle" name="b2sql_v2.ui" project="b2sql_v2.ui" provider="My Company"/>
+	<bundle bundleID="862" localization="OSGI-INF/l10n/bundle" name="secureuml2Java.ide" project="secureuml2Java.ide" provider="My Company"/>
+	<bundle bundleID="856" localization="OSGI-INF/l10n/bundle" name="org.example.domainmodel" project="org.example.domainmodel" provider="My Company"/>
+	<bundle bundleID="865" localization="OSGI-INF/l10n/bundle" name="secureuml2Java.ui.tests" project="secureuml2Java.ui.tests" provider="My Company"/>
+	<bundle bundleID="845" localization="OSGI-INF/l10n/bundle" name="bsql2java_v2.ui.tests" project="bsql2java_v2.ui.tests" provider="My Company"/>
+	<bundle bundleID="826" localization="OSGI-INF/l10n/bundle" name="b2sql_v2" project="b2sql_v2" provider="My Company"/>
+	<bundle bundleID="863" localization="OSGI-INF/l10n/bundle" name="secureuml2Java.tests" project="secureuml2Java.tests" provider="My Company"/>
+	<bundle bundleID="840" localization="OSGI-INF/l10n/bundle" name="bsql2java.ui.tests" project="bsql2java.ui.tests" provider="My Company"/>
+	<bundle bundleID="869" class="secureuml2SQL.ui.internal.Secureuml2SQLActivator" localization="OSGI-INF/l10n/bundle" name="secureuml2SQL.ui" project="secureuml2SQL.ui" provider="My Company"/>
+	<bundle bundleID="843" localization="OSGI-INF/l10n/bundle" name="bsql2java_v2.tests" project="bsql2java_v2.tests" provider="My Company"/>
+	<bundle bundleID="837" localization="OSGI-INF/l10n/bundle" name="bsql2java.ide" project="bsql2java.ide" provider="My Company"/>
+	<bundle bundleID="870" localization="OSGI-INF/l10n/bundle" name="secureuml2SQL.ui.tests" project="secureuml2SQL.ui.tests" provider="My Company"/>
+	<bundle bundleID="846" localization="OSGI-INF/l10n/bundle" name="bsql2sql" project="bsql2sql" provider="My Company"/>
+	<bundle bundleID="851" localization="OSGI-INF/l10n/bundle" name="bsqllog2java" project="bsqllog2java" provider="My Company"/>
+	<bundle bundleID="858" localization="OSGI-INF/l10n/bundle" name="org.example.domainmodel.tests" project="org.example.domainmodel.tests" provider="My Company"/>
+	<bundle bundleID="836" localization="OSGI-INF/l10n/bundle" name="bsql2java" project="bsql2java" provider="My Company"/>
+	<bundle bundleID="838" localization="OSGI-INF/l10n/bundle" name="bsql2java.tests" project="bsql2java.tests" provider="My Company"/>
+	<bundle bundleID="828" localization="OSGI-INF/l10n/bundle" name="b2sql_v2.tests" project="b2sql_v2.tests" provider="My Company"/>
+	<bundle bundleID="854" class="bsqllog2java.ui.internal.Bsqllog2javaActivator" localization="OSGI-INF/l10n/bundle" name="bsqllog2java.ui" project="bsqllog2java.ui" provider="My Company"/>
+	<bundle bundleID="861" localization="OSGI-INF/l10n/bundle" name="secureuml2Java" project="secureuml2Java" provider="My Company"/>
+	<bundle bundleID="857" localization="OSGI-INF/l10n/bundle" name="org.example.domainmodel.ide" project="org.example.domainmodel.ide" provider="My Company"/>
+	<bundle bundleID="849" class="bsql2sql.ui.internal.Bsql2sqlActivator" localization="OSGI-INF/l10n/bundle" name="bsql2sql.ui" project="bsql2sql.ui" provider="My Company"/>
+	<bundle bundleID="860" localization="OSGI-INF/l10n/bundle" name="org.example.domainmodel.ui.tests" project="org.example.domainmodel.ui.tests" provider="My Company"/>
+	<bundle bundleID="832" localization="OSGI-INF/l10n/bundle" name="bfun2java.ide" project="bfun2java.ide" provider="My Company"/>
+	<bundle bundleID="855" localization="OSGI-INF/l10n/bundle" name="bsqllog2java.ui.tests" project="bsqllog2java.ui.tests" provider="My Company"/>
+	<bundle bundleID="827" localization="OSGI-INF/l10n/bundle" name="b2sql_v2.ide" project="b2sql_v2.ide" provider="My Company"/>
+	<bundle bundleID="853" localization="OSGI-INF/l10n/bundle" name="bsqllog2java.tests" project="bsqllog2java.tests" provider="My Company"/>
+	<bundle bundleID="868" localization="OSGI-INF/l10n/bundle" name="secureuml2SQL.tests" project="secureuml2SQL.tests" provider="My Company"/>
+	<bundle bundleID="833" localization="OSGI-INF/l10n/bundle" name="bfun2java.tests" project="bfun2java.tests" provider="My Company"/>
+	<bundle bundleID="831" localization="OSGI-INF/l10n/bundle" name="bfun2java" project="bfun2java" provider="My Company"/>
+	<bundle bundleID="848" localization="OSGI-INF/l10n/bundle" name="bsql2sql.tests" project="bsql2sql.tests" provider="My Company"/>
+	<bundle bundleID="859" class="org.example.domainmodel.ui.internal.DomainmodelActivator" localization="OSGI-INF/l10n/bundle" name="org.example.domainmodel.ui" project="org.example.domainmodel.ui" provider="My Company"/>
+	<bundle bundleID="839" class="bsql2java.ui.internal.Bsql2javaActivator" localization="OSGI-INF/l10n/bundle" name="bsql2java.ui" project="bsql2java.ui" provider="My Company"/>
+	<bundle bundleID="867" localization="OSGI-INF/l10n/bundle" name="secureuml2SQL.ide" project="secureuml2SQL.ide" provider="My Company"/>
+	<bundle bundleID="841" localization="OSGI-INF/l10n/bundle" name="bsql2java_v2" project="bsql2java_v2" provider="My Company"/>
+	<bundle bundleID="830" localization="OSGI-INF/l10n/bundle" name="b2sql_v2.ui.tests" project="b2sql_v2.ui.tests" provider="My Company"/>
+	<bundle bundleID="842" localization="OSGI-INF/l10n/bundle" name="bsql2java_v2.ide" project="bsql2java_v2.ide" provider="My Company"/>
+	<bundle bundleID="835" localization="OSGI-INF/l10n/bundle" name="bfun2java.ui.tests" project="bfun2java.ui.tests" provider="My Company"/>
+	<bundle bundleID="852" localization="OSGI-INF/l10n/bundle" name="bsqllog2java.ide" project="bsqllog2java.ide" provider="My Company"/>
+	<bundle bundleID="834" localization="OSGI-INF/l10n/bundle" name="bfun2java.ui" project="bfun2java.ui" provider="My Company"/>
+	<bundle bundleID="844" class="bsql2java_v2.ui.internal.Bsql2java_v2Activator" localization="OSGI-INF/l10n/bundle" name="bsql2java_v2.ui" project="bsql2java_v2.ui" provider="My Company"/>
+	<bundle bundleID="847" localization="OSGI-INF/l10n/bundle" name="bsql2sql.ide" project="bsql2sql.ide" provider="My Company"/>
+	<bundle bundleID="866" localization="OSGI-INF/l10n/bundle" name="secureuml2SQL" project="secureuml2SQL" provider="My Company"/>
+	<bundle bundleID="850" localization="OSGI-INF/l10n/bundle" name="bsql2sql.ui.tests" project="bsql2sql.ui.tests" provider="My Company"/>
+	<bundle bundleID="864" class="secureuml2Java.ui.internal.Secureuml2JavaActivator" localization="OSGI-INF/l10n/bundle" name="secureuml2Java.ui" project="secureuml2Java.ui" provider="My Company"/>
+</map>

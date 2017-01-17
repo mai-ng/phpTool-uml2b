@@ -1,0 +1,29 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: secureuml2Java
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: secureuml2Java; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.emf.ecore,
+ org.eclipse.xtext.xbase.lib,
+ org.antlr.runtime,
+ org.eclipse.xtext.util,
+ org.eclipse.xtend.lib,
+ org.eclipse.emf.common
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: secureuml2Java.services,
+ secureuml2Java.validation,
+ secureuml2Java.secureUML2Java.util,
+ secureuml2Java.parser.antlr,
+ secureuml2Java.generator,
+ secureuml2Java,
+ secureuml2Java.secureUML2Java,
+ secureuml2Java.serializer,
+ secureuml2Java.scoping,
+ secureuml2Java.secureUML2Java.impl,
+ secureuml2Java.parser.antlr.internal
+Import-Package: org.apache.log4j
