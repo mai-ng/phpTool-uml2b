@@ -1,7 +1,7 @@
-Source code of the tool including two features:
+This is a toolset that supports:
 - uml to b translation
 - b to java/sql translation
-
+---
 1. uml2b:
 	
 	an extension of the B4MSecure tool (http://b4msecure.forge.imag.fr/) including three sub-projects:
